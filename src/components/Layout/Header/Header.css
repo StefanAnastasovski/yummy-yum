@@ -1,1 +1,27 @@
 /*Header.css*/
+
+.h-menu {
+    background: rgb(250, 161, 32);
+    background: linear-gradient(339deg,
+    rgba(250, 161, 32, 1) 0%,
+    rgba(252, 172, 56, 1) 50%,
+    rgba(245, 195, 122, 0.6110819327731092) 86%);
+    padding: 10px 0 10px 0;
+}
+
+.nav-menu li:not(:last-child) {
+    padding-right: 12px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+}
+
+.nav-menu li a:hover {
+    color: #6b9958;
+    border-bottom: 3px solid #6b9958;
+}
+
+.no-border {
+    border: none !important;
+}

@@ -2,11 +2,12 @@
 
 .h-menu {
     background: rgb(250, 161, 32);
-    background: linear-gradient(339deg,
+    background: linear-gradient(330deg,
     rgba(250, 161, 32, 1) 0%,
-    rgba(252, 172, 56, 1) 50%,
-    rgba(245, 195, 122, 0.6110819327731092) 86%);
+    rgba(252, 172, 56, 1) 60%,
+    rgba(245, 195, 122, 0.6110819327731092) 85%);
     padding: 10px 0 10px 0;
+    box-shadow: 0 0 5px 5px rgba(151, 92, 6, 0.33);
 }
 
 .nav-menu li:not(:last-child) {
@@ -18,7 +19,6 @@
 }
 
 .nav-menu li a:hover {
-    color: #6b9958;
     border-bottom: 3px solid #6b9958;
 }
 

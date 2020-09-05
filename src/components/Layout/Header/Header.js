@@ -2,7 +2,7 @@ import React from "react";
 
 import './Header.css';
 
-import YYLogo1 from '../../../images/yy-logo-8.svg'
+import YYLogo1 from '../../../images/Logo/yy-logo-8.svg'
 
 const Header = () => {
 
@@ -38,9 +38,11 @@ const Header = () => {
                 <div className="nav-menu-right d-flex">
 
                     <ul className="nav navbar-nav flex-row nav-menu align-items-center font-weight-bold">
+
                         <li className="pl-2">
-                            <a href="/">Log in</a>
+                            <a href="/">Login</a>
                         </li>
+
                         <li className="pl-2">
                             <a href="/">Sign Up</a>
                         </li>
@@ -51,7 +53,6 @@ const Header = () => {
 
 
             </div>
-
 
         </div>
     )

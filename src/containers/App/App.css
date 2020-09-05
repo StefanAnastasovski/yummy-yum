@@ -1,6 +1,17 @@
 /*App.css*/
 
-body, p, h1, h2, h3, h4, h5, a {
+body, p, h1, h2, h3, h4, h5, a, input {
     font-family: 'Work Sans', sans-serif;
-     color: #4a099a !important;
+    color: #4a099a !important;
+    padding: 0;
+    margin: 0;
+}
+
+.text-color-green{
+    color:#6b9958 !important;
+}
+
+body .row, body .col{
+    padding:0 ;
+    margin:0 ;
 }

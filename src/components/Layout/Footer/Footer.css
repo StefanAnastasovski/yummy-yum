@@ -1,1 +1,53 @@
 /*Footer.css*/
+
+.footer-wrapper {
+    background: rgb(250, 161, 32);
+    background: linear-gradient(330deg,
+    rgba(250, 161, 32, 1) 0%,
+    rgba(252, 172, 56, 1) 60%,
+    rgba(245, 195, 122, 0.6110819327731092) 85%);
+}
+
+.footer-wrapper .subscribe-wrapper {
+    border-left: 1px lightgrey solid;
+}
+
+.footer-wrapper .submit-email-btn {
+    background-color: #6b9958;
+    border: none;
+    /*padding: 5px 5px;*/
+    text-align: center;
+    border-radius: 5px;
+}
+
+.footer-wrapper .subscribe-email-btn {
+}
+
+.footer-wrapper .nav-menu li a {
+    text-decoration: none;
+}
+
+.footer-wrapper .nav-menu-footer .nav-menu li a:hover {
+    border-bottom: 3px solid #6b9958;
+}
+
+.footer-wrapper .social-media-icons li:not(:last-child) {
+    padding-right: 12px;
+}
+
+.footer-wrapper .social-media-icons li a:hover {
+    color: #6b9958 !important;
+}
+
+.footer-wrapper .subscribe-wrapper .submit-email-btn:hover {
+    background-color: #579843;
+    border:1px #4a099a solid;
+}
+
+.btn-section{
+    height:40px;
+}
+
+.btn-section .submit-email-btn, .btn-section .subscribe-email-btn{
+    height:100%;
+}

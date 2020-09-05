@@ -44,10 +44,14 @@
     border:1px #4a099a solid;
 }
 
-.btn-section{
+.footer-wrapper .btn-section{
     height:40px;
 }
 
-.btn-section .submit-email-btn, .btn-section .subscribe-email-btn{
+.footer-wrapper .btn-section .submit-email-btn, .btn-section .subscribe-email-btn{
     height:100%;
+}
+
+.footer-wrapper .footer-subscribe-pic {
+    border-radius: 20px;
 }

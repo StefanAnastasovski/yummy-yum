@@ -1,5 +1,11 @@
 /*Header.css*/
 
+.header-wrapper {
+    position: sticky;
+    background-color: white;
+    top: 0;
+}
+
 .header-wrapper .h-menu {
     background: rgb(250, 161, 32);
     background: linear-gradient(330deg,

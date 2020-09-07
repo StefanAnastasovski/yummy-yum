@@ -28,4 +28,15 @@ import YYLogo6 from '../../../images/yy-logo-circle-1.svg'
     rgba(252, 172, 56, 1) 60%,
     rgba(245, 195, 122, 0.6110819327731092) 85%);
     
+We believe eating healthy and fresh should be easy for everyone.
     
+SIMPLIFY YOUR
+Fresh weekly meal kits customized to your liking and starting at $6.99 per serving.
+Select
+Carb conscious, calorie conscious, vegetarian – we’ve got lots of options to fit your schedule and diet.
+
+Customize It
+Use our Customize It feature to upgrade, swap, or double up proteins on select meals.
+
+Enjoy
+Effortlessly create and plate your meals in no time. Meal is on the table!

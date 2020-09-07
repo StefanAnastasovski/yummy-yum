@@ -1,1 +1,65 @@
 /*Main.css*/
+
+.main-wrapper .main-section-1 .ms1-img {
+    height: 60vh;
+}
+
+.main-wrapper .main-section-1 {
+    position: relative;
+}
+
+.main-wrapper .main-section-1 .ms1-btn {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.main-wrapper .main-section-1 .d-btn {
+    margin-top: 10px;
+    background-color: #579843;
+    color: #4a099a;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 20px
+}
+
+.main-wrapper .main-section-1 .d-btn:hover {
+    background-color: white;
+    border: 1px #4a099a solid;
+}
+
+/*section 2*/
+.main-wrapper .main-section-2 .ms2-left-side .ms2-ls-btn  .ms2-lr-btn{
+
+    border: none;
+    background-color: #6b9958;
+    color: #4a099a;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.main-wrapper .main-section-2 .ms2-img .ms2-img-2 {
+    border-radius: 40%;
+    object-fit: cover;
+}
+
+/*section 3*/
+.main-wrapper .main-section-3{
+    background-color: rgba(243, 218, 187, 0.61);
+}
+
+.main-section-1{
+
+}
+
+svg{
+     fill: #4a099a;
+ }
+
+svg:hover{
+    fill: #530ea2;
+}

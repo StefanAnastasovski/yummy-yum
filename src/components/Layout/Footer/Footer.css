@@ -15,7 +15,6 @@
 .footer-wrapper .submit-email-btn {
     background-color: #6b9958;
     border: none;
-    /*padding: 5px 5px;*/
     text-align: center;
     border-radius: 5px;
 }
@@ -40,16 +39,20 @@
 }
 
 .footer-wrapper .subscribe-wrapper .submit-email-btn:hover {
-    background-color: #579843;
-    border:1px #4a099a solid;
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
 }
 
-.footer-wrapper .btn-section{
-    height:40px;
+.footer-wrapper .btn-section {
+    height: 2.5em;
 }
 
-.footer-wrapper .btn-section .submit-email-btn, .btn-section .subscribe-email-btn{
-    height:100%;
+.footer-wrapper .btn-section .submit-email-btn, .btn-section .subscribe-email-btn {
+    height: 100%;
 }
 
 .footer-wrapper .footer-subscribe-pic {

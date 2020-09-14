@@ -8,7 +8,7 @@ const Section3 = () => {
 
     return (
 
-        <div className="main-section-3 pt-3 pb-5">
+        <div className="main-section-3 py-5">
 
             <div className="container">
 
@@ -31,7 +31,10 @@ const Section3 = () => {
                                 <h5 className="text-color-green text-center">
                                     SAVE TIME
                                 </h5>
-                                Skip the tedious trips to the grocery store
+
+                                <p className="pt-2">
+                                    Skip the tedious trips to the grocery store
+                                </p>
 
                             </div>
 
@@ -51,7 +54,9 @@ const Section3 = () => {
                                     SAVE MONEY
                                 </h5>
 
-                                Enjoy tasty dinners that won’t break the bank, at only $6.99 per serving
+                                <p className="pt-2">
+                                    Enjoy tasty dinners that won’t break the bank, at only $6.99 per serving
+                                </p>
 
                             </div>
 
@@ -70,7 +75,10 @@ const Section3 = () => {
                                 <h5 className="text-color-green text-center">
                                     EASY TO COOK
                                 </h5>
-                                Our recipes have only 6 simple steps and will turn you into a chef
+
+                                <p className="pt-2">
+                                    Our recipes have only 6 simple steps and will turn you into a chef
+                                </p>
 
                             </div>
 
@@ -85,6 +93,7 @@ const Section3 = () => {
             </div>
 
         </div>
+
     )
 
 };

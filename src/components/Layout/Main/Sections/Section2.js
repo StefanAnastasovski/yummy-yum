@@ -9,13 +9,14 @@ const Section2 = () => {
 
     return (
 
-        <div className="main-section-2 pt-3 pb-5">
+        <div className="main-section-2 py-5">
 
             <div className="container">
 
-                <div className="ms2-simplify-your-meal">
+                <div className="ms2-simplify-your-meal pb-5">
 
                     <h2 className="text-uppercase text-center">Simplify Your Meal</h2>
+
                     <p className="text-center text-color-green font-size-1 w-75 container">
                         Fresh weekly meal kits customized to your
                         liking and starting at
@@ -33,6 +34,7 @@ const Section2 = () => {
                                 <h5 className="pt-1">
                                     Select
                                 </h5>
+
                                 <p className="pt-1 font-size-2 px-2">
                                     Carb conscious, calorie conscious, vegetarian – we’ve got lots of options to
                                     fit your schedule and diet.
@@ -47,6 +49,7 @@ const Section2 = () => {
                                 <h5 className="pt-1">
                                     Customize It
                                 </h5>
+
                                 <p className="pt-1 font-size-2 px-2">
                                     Use our Customize It feature to upgrade, swap, or double up proteins on
                                     select meals.
@@ -61,6 +64,7 @@ const Section2 = () => {
                                 <h5 className="pt-1">
                                     Delivery
                                 </h5>
+
                                 <p className="pt-1 font-size-2 px-2">
                                     If you are tired of going to the store,
                                     you will enjoy having
@@ -76,6 +80,7 @@ const Section2 = () => {
                                 <h5 className="pt-1">
                                     Enjoy
                                 </h5>
+
                                 <p className="pt-1 font-size-2 px-2">
                                     Effortlessly create and plate your meals in no time.
                                     Meal is on the table within a second!

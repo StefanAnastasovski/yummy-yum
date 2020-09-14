@@ -34,7 +34,7 @@ const Section1 = () => {
 
                     </h2>
 
-                    <button type="submit" className="d-btn pick-your-meal">
+                    <button type="submit" className="ms1-pym-btn pick-your-meal w-25">
                         Pick Your Meal
                     </button>
 

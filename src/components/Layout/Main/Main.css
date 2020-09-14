@@ -18,7 +18,7 @@
     z-index: 1000;
 }
 
-.main-wrapper .main-section-1 .d-btn {
+.main-wrapper .main-section-1 .ms1-pym-btn {
     margin-top: 10px;
     background-color: #579843;
     color: #4a099a;
@@ -27,9 +27,13 @@
     padding: 5px 20px
 }
 
-.main-wrapper .main-section-1 .d-btn:hover {
-    background-color: white;
+.main-wrapper .main-section-1 .ms1-pym-btn:hover {
     border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
 }
 
 /*section 2*/
@@ -51,7 +55,7 @@ svg:hover {
 
 }
 
-.main-wrapper .main-section-4 .ms4-dd-menu-btn .dd-menu-btn {
+.main-wrapper .main-section-4 .ms4-dd-menu-btn .ms4-ddm-btn {
     width: 100%;
     border: none;
     padding: 10px 20px;
@@ -61,8 +65,8 @@ svg:hover {
 
 }
 
-.main-wrapper .main-section-4 .ms4-dd-menu-btn .dd-menu-btn:hover {
-    border-radius: 10px 10px 0 0;
+.main-wrapper .main-section-4 .ms4-dd-menu-btn .ms4-ddm-btn:hover {
+    border: 1px #4a099a solid;
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
     rgb(168, 214, 98) 60%,
@@ -136,7 +140,7 @@ svg:hover {
     border-radius: .25em;
 }
 
-.main-wrapper .main-section-4 .ms4-full-menu-btn .full-menu-btn {
+.main-wrapper .main-section-4 .ms4-full-menu-btn .ms4-fm-btn {
     width: 50%;
     border: none;
     padding: 10px 20px;
@@ -145,7 +149,8 @@ svg:hover {
     background-color: #6b9958;
 }
 
-.main-wrapper .main-section-4 .ms4-full-menu-btn .full-menu-btn:hover {
+.main-wrapper .main-section-4 .ms4-full-menu-btn .ms4-fm-btn:hover {
+    border: 1px #4a099a solid;
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
     rgb(168, 214, 98) 60%,
@@ -159,19 +164,20 @@ svg:hover {
 }
 
 /*section5*/
-.main-wrapper .main-section-5 .ms5-img img{
+.main-wrapper .main-section-5 .ms5-img img {
     border-radius: 50px;
 }
 
 
-.main-wrapper .main-section-5 .ms5-mk-btn{
-    border:none;
+.main-wrapper .main-section-5 .ms5-mk-btn {
+    border: none;
     border-radius: 10px;
     padding: 0.5em 1em;
     background-color: #6b9958;
 }
 
 .main-wrapper .main-section-5 .ms5-mk-btn:hover {
+    border: 1px #4a099a solid;
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
     rgb(168, 214, 98) 60%,
@@ -179,7 +185,7 @@ svg:hover {
     z-index: 1000;
 }
 
-/*section 2 - 6*/
+/*section 6*/
 .main-wrapper .main-section-6 .ms6-left-side .ms6-ls-btn .ms6-lr-btn {
 
     border: none;
@@ -190,11 +196,25 @@ svg:hover {
 
 }
 
-/*section 6*/
+.main-wrapper .main-section-6 .ms6-left-side .ms6-ls-btn .ms6-lr-btn:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
 .main-wrapper .main-section-6 .ms6-img .ms6-img-2 {
     border-radius: 40%;
     object-fit: cover;
 }
+
 .main-wrapper .main-section-6 {
     background-color: rgba(243, 218, 187, 0.61);
+}
+
+/*------------*/
+.main-wrapper .ms1-pym-btn, .ms4-ddm-btn, .ms4-fm-btn, .ms5-mk-btn, .ms6-lr-btn{
+    height: 2.5em;
 }

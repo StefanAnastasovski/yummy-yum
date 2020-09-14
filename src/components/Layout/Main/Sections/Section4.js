@@ -129,11 +129,11 @@ class Section4 extends Component {
 
         return (
 
-            <div className="main-section-4 pt-3 pb-5">
+            <div className="main-section-4 py-5">
 
                 <div className="container">
 
-                    <div className="ms4-dd-menu">
+                    <div className="ms4-dd-menu pb-3">
 
                         <h2 className="text-center text-uppercase">What's on your menu</h2>
 
@@ -152,7 +152,7 @@ class Section4 extends Component {
 
                                         <li>
                                             <input type="submit" value={chooseMenu}
-                                                   className="dd-menu-btn font-size-1" />
+                                                   className="ms4-ddm-btn font-size-1"/>
                                         </li>
 
                                         <li>
@@ -185,7 +185,7 @@ class Section4 extends Component {
                                 {/*See Full Menu*/}
                                 <div className="ms4-full-menu-btn d-flex justify-content-center pt-5">
 
-                                    <input type="submit" value="See Full Menu" className="full-menu-btn font-size-1" />
+                                    <input type="submit" value="See Full Menu" className="ms4-fm-btn font-size-1"/>
 
                                 </div>
 

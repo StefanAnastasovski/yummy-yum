@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Main.css';
+import './Home.css';
 
 import Section1 from "./Sections/Section1";
 import Section6 from "./Sections/Section6";
@@ -9,7 +9,7 @@ import Section3 from "./Sections/Section3";
 import Section4 from "./Sections/Section4";
 import Section5 from "./Sections/Section5";
 
-const Main = () => {
+const Home = () => {
 
     return (
 
@@ -43,4 +43,4 @@ const Main = () => {
 
 };
 
-export default Main;
+export default Home;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import IMG2 from '../../../../images/MainSection/ms6-images/ms6-img-1.jpg'
+import IMG2 from '../../../../../images/MainSection/ms6-images/ms6-img-1.jpg'
 
 const Section6 = () => {
 

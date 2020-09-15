@@ -2,7 +2,7 @@ import React from "react";
 
 import './Header.css';
 
-import YYLogo1 from '../../../images/Logo/yy-logo-8.svg'
+import YYLogo1 from '../../../../images/Logo/yy-logo-8.svg'
 
 const Header = () => {
 

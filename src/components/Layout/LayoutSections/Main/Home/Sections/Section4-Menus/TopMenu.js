@@ -2,7 +2,7 @@ import React from "react";
 
 import TopMenuAllImages from "./TopMenuAllImages";
 
-import Aux from "../../../../../../hoc/Auxilliary";
+import Aux from "../../../../../../../hoc/Auxilliary";
 
 const TopMenu = (props) => {
 

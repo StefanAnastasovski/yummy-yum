@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom';
 
 
 
-import IMG1 from '../../../../../images/MainSection/ms1-images/ms1-img-1.jpg'
+import IMG1 from '../../../../../../images/MainSection/ms1-images/ms1-img-1.jpg'
 
 class Section1 extends Component {
 

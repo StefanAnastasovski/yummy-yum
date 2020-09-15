@@ -1,8 +1,12 @@
 import React, {Component} from "react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
-import Header from "./Header/Header"
-import Footer from "./Footer/Footer";
-import Home from "./Main/Home/Home";
+import Aux from "../../hoc/Auxilliary";
+
+
+import Header from "./LayoutSections/Header/Header"
+import Footer from "./LayoutSections/Footer/Footer";
+import MainRouter from "./Routers/MainRouter/MainRouter";
 
 import './Layout.css';
 
@@ -23,8 +27,8 @@ class Layout extends Component {
                 {/*Header*/}
                 <Header/>
 
-                {/*Main*/}
-                <Home/>
+                {/*MainRouter - Routing Main components*/}
+                <MainRouter/>
 
                 {/*Footer*/}
                 <Footer/>

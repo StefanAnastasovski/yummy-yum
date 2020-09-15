@@ -8,7 +8,7 @@ import {faInstagram} from "@fortawesome/free-brands-svg-icons";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {faMailBulk} from "@fortawesome/free-solid-svg-icons";
 
-import SubscribePic from '../../../images/Subscribe/subscribe-pic.jpg'
+import SubscribePic from '../../../../images/Subscribe/subscribe-pic.jpg'
 
 const Footer = () => {
 

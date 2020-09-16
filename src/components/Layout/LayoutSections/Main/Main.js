@@ -1,11 +1,10 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 import './Main.css';
 
 import Aux from "../../../../hoc/Auxilliary";
 
-import Home from "./Home/Home";
+import MainRouter from "../../Routers/MainRouter/MainRouter";
 
 
 const Main = () => {
@@ -14,7 +13,8 @@ const Main = () => {
 
         <Aux>
 
-            <Home/>
+            {/*MainRouter - Routing Main components*/}
+            <MainRouter/>
 
         </Aux>
 

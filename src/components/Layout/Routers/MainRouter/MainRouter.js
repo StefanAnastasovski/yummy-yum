@@ -6,6 +6,8 @@ import Aux from "../../../../hoc/Auxilliary";
 import Home from "../../LayoutSections/Main/Home/Home";
 import CustomizeMeal from "../../LayoutSections/Main/CustomizeMeal/CustomizeMeal";
 import WeeklyMenu from "../../LayoutSections/Main/WeeklyMenu/WeeklyMenu";
+import SignUp from "../../LayoutSections/Main/SignUp/SignUp";
+import Login from "../../LayoutSections/Main/Login/Login";
 
 
 class MainRouter extends Component {
@@ -49,6 +51,26 @@ class MainRouter extends Component {
                         <Route exact path="/weekly-menu">
 
                             <WeeklyMenu/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/login">
+
+                            <Login/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/sign-up">
+
+                            <SignUp/>
 
                         </Route>
 

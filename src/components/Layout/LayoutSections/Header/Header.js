@@ -40,11 +40,11 @@ const Header = () => {
                     <ul className="nav navbar-nav flex-row nav-menu align-items-center font-weight-bold">
 
                         <li className="pl-2">
-                            <a href="/">Login</a>
+                            <a href="/login">Login</a>
                         </li>
 
                         <li className="pl-2">
-                            <a href="/">Sign Up</a>
+                            <a href="/sign-up">Sign Up</a>
                         </li>
 
                     </ul>

@@ -1,8 +1,8 @@
 import React from "react";
 
-import SaveTimeIcon from '../WHYYYIcons/SaveTimeIcon'
-import SaveMoneyIcon from '../WHYYYIcons/SaveMoneyIcon'
-import EasyToCookIcon from '../WHYYYIcons/EasyToCookIcon'
+import SaveTimeIcon from './WHYYYIcons/SaveTimeIcon'
+import SaveMoneyIcon from './WHYYYIcons/SaveMoneyIcon'
+import EasyToCookIcon from './WHYYYIcons/EasyToCookIcon'
 
 const Section3 = () => {
 

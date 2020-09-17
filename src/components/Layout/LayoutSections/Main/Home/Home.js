@@ -13,32 +13,28 @@ const Home = () => {
 
     return (
 
-        <div>
+            <div className="yy-main-wrapper">
 
-            <div className="main-wrapper">
-
-                {/*Main Section 1*/}
+                {/*Home Section 1*/}
                 <Section1/>
 
-                {/*Main Section 3 - 2*/}
+                {/*Home Section 2*/}
                 <Section2/>
 
-                {/*Main Section 4 - 3*/}
+                {/*Home Section 3*/}
                 <Section3/>
 
-                {/*Main Section 5 - 4 -> class component*/}
+                {/*Home Section 4*/}
                 <Section4/>
 
-                {/*Main Section 6 -5*/}
+                {/*Home Section 5*/}
                 <Section5/>
 
-                {/*Main Section 2 - 6*/}
+                {/*Home Section 6*/}
                 <Section6/>
 
             </div>
 
-
-        </div>
     )
 
 };

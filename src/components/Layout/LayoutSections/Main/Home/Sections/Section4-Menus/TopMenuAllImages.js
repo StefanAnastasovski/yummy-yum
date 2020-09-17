@@ -49,7 +49,7 @@ const TopMenuAllImages = (props) => {
         img2 = QASImg2;
         img3 = QASImg3;
         img4 = QASImg4;
-    } else if (props.menuName === "vegetarian") {
+    } else if (props.menuName === "Vegetarian") {
         img1 = VegImg1;
         img2 = VegImg2;
         img3 = VegImg3;

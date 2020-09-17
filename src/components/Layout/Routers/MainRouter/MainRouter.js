@@ -3,7 +3,10 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom
 
 import Aux from "../../../../hoc/Auxilliary";
 
-import Main from "../../LayoutSections/Main/Main";
+import Home from "../../LayoutSections/Main/Home/Home";
+import CustomizeMeal from "../../LayoutSections/Main/CustomizeMeal/CustomizeMeal";
+import WeeklyMenu from "../../LayoutSections/Main/WeeklyMenu/WeeklyMenu";
+
 
 class MainRouter extends Component {
 
@@ -17,21 +20,43 @@ class MainRouter extends Component {
 
         return (
 
-                <Aux>
-                    <Router>
+            <Aux>
 
-                        <Switch>
+                <Router>
 
-                            <Route exact path="/">
+                    <Switch>
 
-                                <Main />
+                        <Route exact path="/">
 
-                            </Route>
+                            <Home/>
 
-                        </Switch>
+                        </Route>
 
-                    </Router>
-                </Aux>
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/choices">
+
+                            <CustomizeMeal/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/weekly-menu">
+
+                            <WeeklyMenu/>
+
+                        </Route>
+
+                    </Switch>
+
+                </Router>
+
+            </Aux>
 
         )
 

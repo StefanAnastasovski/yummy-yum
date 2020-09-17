@@ -1,49 +1,68 @@
-import React from "react";
+import React, {Component} from "react";
+import {Redirect} from 'react-router-dom';
 
 import IMG2 from '../../../../../../images/MainSection/ms6-images/ms6-img-1.jpg'
 
-const Section6 = () => {
+class Section6 extends Component {
 
-    return (
+    state = {
+        redirect: null
+    }
 
-        <div className="main-section-6 py-5">
 
-            <div className="container">
+    onSubmit = () => {
+        this.setState({
+            redirect: "/choices"
+        })
+    }
 
-                <div className="row">
+    render() {
 
-                    <div className="col-6 ms6-left-side d-flex flex-column  justify-content-center">
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect}/>
+        }
 
-                        <h3 className="text-center py-6 mb-2">
-                            We believe eating healthy and fresh
-                            should be easy for everyone.
-                        </h3>
-                        <p className="pr-5 text-color-green">
-                            That’s why we do the work of making
-                            food ready when you are with both
-                            nutrition and taste in mind.
-                        </p>
+        return (
 
-                        <div className="ms6-ls-btn text-center mt-2">
+            <div className="main-section-6 py-5">
 
-                            <button className="ms6-lr-btn w-50" type="submit">
-                                Learn More
-                            </button>
+                <div className="container">
+
+                    <div className="row">
+
+                        <div className="col-6 ms6-left-side d-flex flex-column  justify-content-center">
+
+                            <h3 className="text-center py-6 mb-2">
+                                We believe eating healthy and fresh
+                                should be easy for everyone.
+                            </h3>
+                            <p className="pr-5 text-color-green">
+                                That’s why we do the work of making
+                                food ready when you are with both
+                                nutrition and taste in mind.
+                            </p>
+
+                            <div className="ms6-ls-btn text-center mt-2">
+
+                                <input type="submit" onClick={this.onSubmit} value="Learn More"
+                                       className="ms6-lr-btn w-50"/>
+
+                            </div>
 
                         </div>
 
-                    </div>
+                        <div className="col-6 ms6-right-side">
 
-                    <div className="col-6 ms6-right-side">
+                            <div className="ms6-img">
 
-                        <div className="ms6-img">
+                                <img className="ms6-img-2"
+                                     src={IMG2}
+                                     alt="Eating Healthy and Fresh "
+                                     width="100%"
+                                     height="100%"
+                                />
 
-                            <img className="ms6-img-2"
-                                 src={IMG2}
-                                 alt="Eating Healthy and Fresh "
-                                 width="100%"
-                                 height="100%"
-                            />
+                            </div>
 
                         </div>
 
@@ -53,10 +72,9 @@ const Section6 = () => {
 
             </div>
 
-        </div>
+        )
+    }
 
-    )
-
-};
+}
 
 export default Section6;

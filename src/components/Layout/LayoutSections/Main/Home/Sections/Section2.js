@@ -1,9 +1,9 @@
 import React from "react";
 
-import CustomizeIcon from '../SYMIcons/CustomizeIcon'
-import MenuChooseIcon from '../SYMIcons/MenuChooseIcon'
-import DeliveryIcon from '../SYMIcons/DeliveryIcon'
-import EnjoyIcon from '../SYMIcons/EnjoyIcon'
+import CustomizeIcon from './SYMIcons/CustomizeIcon'
+import MenuChooseIcon from './SYMIcons/MenuChooseIcon'
+import DeliveryIcon from './SYMIcons/DeliveryIcon'
+import EnjoyIcon from './SYMIcons/EnjoyIcon'
 
 const Section2 = () => {
 

@@ -65,7 +65,7 @@ svg:hover {
 
 }
 
-.main-wrapper .main-section-4 .ms4-dd-menu-btn .ms4-ddm-btn:hover {
+.main-wrapper .main-section-4 .ms4-dd-menu-btn .ms4-ddm-main > li:first-child .ms4-ddm-btn:hover {
     border: 1px #4a099a solid;
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
@@ -73,6 +73,19 @@ svg:hover {
     rgb(112, 188, 95) 85%);
     padding: 10px 0 10px 0;
     box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+
+}
+
+.ddm-btn-bottom-border-radius{
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.main-wrapper .main-section-4 .ms4-dd-menu-btn .ms4-ddm-main > li:nth-child(2) .ms4-ddm-btn:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 10px 0 10px 0;
 
 }
 
@@ -104,7 +117,6 @@ svg:hover {
 
 .main-wrapper .main-section-4 .ms4-dd-menu-btn .dd-menu li {
     width: 100%;
-    padding: .5em 0;
 }
 
 .main-wrapper .main-section-4 .ms4-dd-menu-btn .dd-menu li:not(:last-child):hover {
@@ -158,10 +170,9 @@ svg:hover {
     z-index: 1000;
 }
 
-.main-wrapper .main-section-4 .ms4-dd-menu-btn:hover .dd-menu {
-    display: block;
-    animation-delay: 2000ms;
-}
+/*.main-wrapper .main-section-4 .ms4-dd-menu-btn:hover .dd-menu {*/
+/*    display: block;*/
+/*}*/
 
 /*section5*/
 .main-wrapper .main-section-5 .ms5-img img {

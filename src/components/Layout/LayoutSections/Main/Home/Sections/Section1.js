@@ -1,17 +1,26 @@
 import React, {Component} from "react";
 import {Redirect} from 'react-router-dom';
 
-
-
 import IMG1 from '../../../../../../images/MainSection/ms1-images/ms1-img-1.jpg'
 
 class Section1 extends Component {
 
+    state = {
+        redirect: null
+    }
+
     onSubmit = () => {
-        // return <Redirect to="/123" />
+        this.setState({
+            redirect : "/choices"
+        })
     }
 
     render() {
+
+        //Redirect to /choices
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect}/>
+        }
 
         return (
 

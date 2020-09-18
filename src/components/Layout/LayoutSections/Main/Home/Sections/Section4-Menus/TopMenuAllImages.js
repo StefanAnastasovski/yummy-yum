@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 
 import AdvImg1 from '../../../../../../../images/MainSection/ms4-menu/adventurous/Burger/1.1.jpg'
 import AdvImg2 from '../../../../../../../images/MainSection/ms4-menu/adventurous/HuliHuliChickenRice/2.1.jpg'

@@ -1,1 +1,30 @@
 /*Login*/
+
+.log-in-wrapper .log-in-container .log-in .log-in-card > div.card {
+    width: 50%;
+    border-radius: 10%;
+}
+
+.log-in-wrapper .log-in-container .log-in .log-in-card input {
+    border-radius: 10px;
+    border: 1px solid #4a099a;
+}
+
+
+.log-in-wrapper .log-in-submit-btn:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 10px 0 10px 0;
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+}
+
+.log-in-wrapper .log-in-submit-btn {
+    border: none;
+    padding: 10px 20px;
+    height: 3em;
+    color: #4a099a;
+    background-color: #6b9958;
+}

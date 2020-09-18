@@ -8,11 +8,6 @@ import './Layout.css';
 
 class Layout extends Component {
 
-    // state = {};
-
-    // method = () => {
-    //
-    // };
 
     render() {
 

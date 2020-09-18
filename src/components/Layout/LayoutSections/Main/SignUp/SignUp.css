@@ -1,1 +1,32 @@
 /*SignUp*/
+
+.sign-up-wrapper .signup-container .sign-up-card > div.card {
+    width: 50%;
+    border-radius: 10%;
+}
+
+.sign-up-wrapper .signup-container .sign-up .sign-up-card input {
+    border-radius: 10px;
+    border: 1px solid #4a099a;
+}
+
+.sign-up-wrapper .signup-container .sign-up-submit-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    height: 3em;
+    color: #4a099a;
+    background-color: #6b9958;
+
+}
+
+
+.sign-up-wrapper .signup-container .sign-up-submit-btn:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 10px 0 10px 0;
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+}

@@ -1,14 +1,19 @@
 /*App.css*/
 
 body, p, h1, h2, h3, h4, h5, a, input {
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Muli", "Helvetica Neue", Helmet, Freesans, sans-serif;
+    font-weight: 600 !important;
     color: #4a099a !important;
     padding: 0;
     margin: 0;
 }
 
 .text-color-green{
-    color:#6b9958 !important;
+    color: #6b9958 !important;
+}
+
+.text-color-mlgreen{
+    color: #579843 !important;
 }
 
 body .row, body .col, body .col-3, body ul{
@@ -17,9 +22,13 @@ body .row, body .col, body .col-3, body ul{
 }
 
 .font-size-1{
-    font-size: 1.2em;
+    font-size: 1.2em !important;
 }
 
 .font-size-2{
-    font-size: 0.9em;
+    font-size: 0.9em !important;
+}
+
+.font-size-3{
+    font-size:0.7em !important;
 }

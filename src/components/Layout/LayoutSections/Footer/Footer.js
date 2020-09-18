@@ -13,14 +13,20 @@ import SubscribePic from '../../../../images/Subscribe/subscribe-pic.jpg'
 const Footer = () => {
 
 
-    return (
+    let urlPath = window.location.pathname
+    let showFooterNavMenu = "";
+    if (showFooterNavMenu === "")
+        if (urlPath === "/log-in" || urlPath === "/join-now") {
+            showFooterNavMenu = "d-none";
+        }
 
+    return (
         <div className="footer-wrapper py-3">
 
             <div className="container">
 
                 {/*nav-menu footer*/}
-                <div className="nav-menu-footer">
+                <div className={"nav-menu-footer " + showFooterNavMenu}>
 
                     <div className="row py-2">
 
@@ -40,8 +46,8 @@ const Footer = () => {
                                         <li><a href="/">Login</a></li>
                                         <li><a href="/">Sign Up</a></li>
                                         <li><a href="/">Students</a></li>
-                                        <li><a href="/">Terms of Service</a></li>
-                                        <li><a href="/">Privacy Policy</a></li>
+                                        <li><a href="/terms">Terms of Service</a></li>
+                                        <li><a href="/privacy-policy">Privacy Policy</a></li>
                                         <li><a href="/">Do Not Sell My Info</a></li>
 
                                     </ul>

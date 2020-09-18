@@ -8,6 +8,8 @@ import CustomizeMeal from "../../LayoutSections/Main/CustomizeMeal/CustomizeMeal
 import WeeklyMenu from "../../LayoutSections/Main/WeeklyMenu/WeeklyMenu";
 import SignUp from "../../LayoutSections/Main/SignUp/SignUp";
 import Login from "../../LayoutSections/Main/Login/Login";
+import Terms from "../../LayoutSections/Main/Terms/Terms";
+import PrivacyPolicy from "../../LayoutSections/Main/PrivacyPolicy/PrivacyPolicy";
 
 
 class MainRouter extends Component {
@@ -58,7 +60,7 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/login">
+                        <Route exact path="/log-in">
 
                             <Login/>
 
@@ -68,9 +70,25 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/sign-up">
+                        <Route exact path="/join-now">
 
                             <SignUp/>
+
+                        </Route>
+
+                    </Switch>
+
+                      <Switch>
+
+                        <Route exact path="/terms">
+
+                            <Terms/>
+
+                        </Route>
+
+                           <Route exact path="/privacy-policy">
+
+                            <PrivacyPolicy/>
 
                         </Route>
 

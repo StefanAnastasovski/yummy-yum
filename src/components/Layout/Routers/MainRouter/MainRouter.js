@@ -11,6 +11,7 @@ import Login from "../../LayoutSections/Main/Login/Login";
 import Terms from "../../LayoutSections/Main/Terms/Terms";
 import PrivacyPolicy from "../../LayoutSections/Main/PrivacyPolicy/PrivacyPolicy";
 import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
+import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 
 
 class MainRouter extends Component {
@@ -49,7 +50,7 @@ class MainRouter extends Component {
 
                     </Switch>
 
-                   <Switch>
+                    <Switch>
 
                         <Route exact path="/why-yummyyum">
 
@@ -59,60 +60,70 @@ class MainRouter extends Component {
 
                     </Switch>
 
-                <Switch>
+                    <Switch>
 
-                    <Route exact path="/weekly-menu">
+                        <Route exact path="/weekly-menu">
 
-                        <WeeklyMenu/>
+                            <WeeklyMenu/>
 
-                    </Route>
+                        </Route>
 
-                </Switch>
+                    </Switch>
 
-                <Switch>
+                    <Switch>
 
-                    <Route exact path="/log-in">
+                        <Route exact path="/log-in">
 
-                        <Login/>
+                            <Login/>
 
-                    </Route>
+                        </Route>
 
-                </Switch>
+                    </Switch>
 
-                <Switch>
+                    <Switch>
 
-                    <Route exact path="/join-now">
+                        <Route exact path="/forgot-password">
 
-                        <SignUp/>
+                            <ForgotPassword/>
 
-                    </Route>
+                        </Route>
 
-                </Switch>
+                    </Switch>
 
-                <Switch>
+                    <Switch>
 
-                    <Route exact path="/terms">
+                        <Route exact path="/join-now">
 
-                        <Terms/>
+                            <SignUp/>
 
-                    </Route>
+                        </Route>
 
-                    <Route exact path="/privacy-policy">
+                    </Switch>
 
-                        <PrivacyPolicy/>
+                    <Switch>
 
-                    </Route>
+                        <Route exact path="/terms">
 
-                </Switch>
+                            <Terms/>
 
-            </Router>
+                        </Route>
 
-    </Aux>
+                        <Route exact path="/privacy-policy">
 
-    )
+                            <PrivacyPolicy/>
+
+                        </Route>
+
+                    </Switch>
+
+                </Router>
+
+            </Aux>
+
+        )
 
     }
 
-    }
+}
 
-    export default MainRouter;
+export default MainRouter;

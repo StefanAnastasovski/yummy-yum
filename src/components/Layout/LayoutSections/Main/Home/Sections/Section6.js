@@ -12,7 +12,7 @@ class Section6 extends Component {
 
     onSubmit = () => {
         this.setState({
-            redirect: "/choices"
+            redirect: "/why-yummyyum"
         })
     }
 

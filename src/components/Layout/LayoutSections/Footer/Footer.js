@@ -15,8 +15,10 @@ const Footer = () => {
 
     let urlPath = window.location.pathname
     let showFooterNavMenu = "";
+    let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password"];
+
     if (showFooterNavMenu === "")
-        if (urlPath === "/log-in" || urlPath === "/join-now") {
+        if (urlShowFooterPaths.includes(urlPath)) {
             showFooterNavMenu = "d-none";
         }
 

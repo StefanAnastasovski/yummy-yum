@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Redirect} from 'react-router-dom';
 
-import Img1 from "../../../../../../images/MainSection/ms5-images/ms5-img1.jpg"
-import Img2 from "../../../../../../images/MainSection/ms5-images/ms5-img2.jpg"
-import Img3 from "../../../../../../images/MainSection/ms5-images/ms5-img3.jpg"
+import Img1 from "../../../../../../images/HomeComponent/ms5-images/ms5-img1.jpg"
+import Img2 from "../../../../../../images/HomeComponent/ms5-images/ms5-img2.jpg"
+import Img3 from "../../../../../../images/HomeComponent/ms5-images/ms5-img3.jpg"
 
 class Section5 extends Component {
 

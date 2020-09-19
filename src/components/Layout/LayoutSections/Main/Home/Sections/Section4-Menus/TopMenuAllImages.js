@@ -1,29 +1,29 @@
 import React from "react";
 
-import AdvImg1 from '../../../../../../../images/MainSection/ms4-menu/adventurous/Burger/1.1.jpg'
-import AdvImg2 from '../../../../../../../images/MainSection/ms4-menu/adventurous/HuliHuliChickenRice/2.1.jpg'
-import AdvImg3 from '../../../../../../../images/MainSection/ms4-menu/adventurous/CrustedFiletMignon/3.1.jpg'
-import AdvImg4 from '../../../../../../../images/MainSection/ms4-menu/adventurous/KoreanFriedChicken/4.1.jpg'
+import AdvImg1 from '../../../../../../../images/HomeComponent/ms4-menu/adventurous/Burger/1.1.jpg'
+import AdvImg2 from '../../../../../../../images/HomeComponent/ms4-menu/adventurous/HuliHuliChickenRice/2.1.jpg'
+import AdvImg3 from '../../../../../../../images/HomeComponent/ms4-menu/adventurous/CrustedFiletMignon/3.1.jpg'
+import AdvImg4 from '../../../../../../../images/HomeComponent/ms4-menu/adventurous/KoreanFriedChicken/4.1.jpg'
 
-import QASImg1 from '../../../../../../../images/MainSection/ms4-menu/quickandsimple/CrispyCaesarChicken/1.1.jpg'
-import QASImg2 from '../../../../../../../images/MainSection/ms4-menu/quickandsimple/CreamyTomato/2.1.jpg'
-import QASImg3 from '../../../../../../../images/MainSection/ms4-menu/quickandsimple/Apple&ChickenSalad/3.1.jpg'
-import QASImg4 from '../../../../../../../images/MainSection/ms4-menu/quickandsimple/BBQChickenFlatbreads/4.1.jpg'
+import QASImg1 from '../../../../../../../images/HomeComponent/ms4-menu/quickandsimple/CrispyCaesarChicken/1.1.jpg'
+import QASImg2 from '../../../../../../../images/HomeComponent/ms4-menu/quickandsimple/CreamyTomato/2.1.jpg'
+import QASImg3 from '../../../../../../../images/HomeComponent/ms4-menu/quickandsimple/Apple&ChickenSalad/3.1.jpg'
+import QASImg4 from '../../../../../../../images/HomeComponent/ms4-menu/quickandsimple/BBQChickenFlatbreads/4.1.jpg'
 
-import CCImg1 from '../../../../../../../images/MainSection/ms4-menu/carbconcious/PorkChop/1.1.jpg'
-import CCImg2 from '../../../../../../../images/MainSection/ms4-menu/carbconcious/Ginger-GlazedSalmon/2.1.jpg'
-import CCImg3 from '../../../../../../../images/MainSection/ms4-menu/carbconcious/ChiliPork-CrispyRice/3.1.jpg'
-import CCImg4 from '../../../../../../../images/MainSection/ms4-menu/carbconcious/ChickenTaco/4.1.jpg'
+import CCImg1 from '../../../../../../../images/HomeComponent/ms4-menu/carbconcious/PorkChop/1.1.jpg'
+import CCImg2 from '../../../../../../../images/HomeComponent/ms4-menu/carbconcious/Ginger-GlazedSalmon/2.1.jpg'
+import CCImg3 from '../../../../../../../images/HomeComponent/ms4-menu/carbconcious/ChiliPork-CrispyRice/3.1.jpg'
+import CCImg4 from '../../../../../../../images/HomeComponent/ms4-menu/carbconcious/ChickenTaco/4.1.jpg'
 
-import LCImg1 from '../../../../../../../images/MainSection/ms4-menu/lowcal/BBQShrimpPizzas/1.1.jpg'
-import LCImg2 from '../../../../../../../images/MainSection/ms4-menu/lowcal/GreekSpinach-FetaChicken/2.1.jpg'
-import LCImg3 from '../../../../../../../images/MainSection/ms4-menu/lowcal/PorkTenderloin/3.1.jpg'
-import LCImg4 from '../../../../../../../images/MainSection/ms4-menu/lowcal/RoastedSalmon/4.1.jpg'
+import LCImg1 from '../../../../../../../images/HomeComponent/ms4-menu/lowcal/BBQShrimpPizzas/1.1.jpg'
+import LCImg2 from '../../../../../../../images/HomeComponent/ms4-menu/lowcal/GreekSpinach-FetaChicken/2.1.jpg'
+import LCImg3 from '../../../../../../../images/HomeComponent/ms4-menu/lowcal/PorkTenderloin/3.1.jpg'
+import LCImg4 from '../../../../../../../images/HomeComponent/ms4-menu/lowcal/RoastedSalmon/4.1.jpg'
 
-import VegImg1 from '../../../../../../../images/MainSection/ms4-menu/vegetarian/FigGoatCheeseFlatbread/1.1.jpg'
-import VegImg2 from '../../../../../../../images/MainSection/ms4-menu/vegetarian/TomatoPestoSpaghetti/2.1.jpg'
-import VegImg3 from '../../../../../../../images/MainSection/ms4-menu/vegetarian/BrusselsBrownButterRisotto/3.1.jpg'
-import VegImg4 from '../../../../../../../images/MainSection/ms4-menu/vegetarian/CrispyTeriyakiTofuTacos/4.1.jpg'
+import VegImg1 from '../../../../../../../images/HomeComponent/ms4-menu/vegetarian/FigGoatCheeseFlatbread/1.1.jpg'
+import VegImg2 from '../../../../../../../images/HomeComponent/ms4-menu/vegetarian/TomatoPestoSpaghetti/2.1.jpg'
+import VegImg3 from '../../../../../../../images/HomeComponent/ms4-menu/vegetarian/BrusselsBrownButterRisotto/3.1.jpg'
+import VegImg4 from '../../../../../../../images/HomeComponent/ms4-menu/vegetarian/CrispyTeriyakiTofuTacos/4.1.jpg'
 
 const TopMenuAllImages = (props) => {
 

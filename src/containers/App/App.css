@@ -32,3 +32,8 @@ body .row, body .col, body .col-3, body ul{
 .font-size-3{
     font-size:0.7em !important;
 }
+
+div.card:hover {
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+
+}

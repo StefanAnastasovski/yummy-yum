@@ -145,7 +145,7 @@ svg:hover {
 }
 
 .main-wrapper .main-section-4 .ms4-menu-section .card:hover {
-    box-shadow: 2px 2px 10px 5px rgba(167, 117, 45, 0.33);
+    box-shadow: 2px 2px 10px 5px rgba(167, 117, 45, 0.33) !important;
 }
 
 .main-wrapper .main-section-4 .ms4-ms img {

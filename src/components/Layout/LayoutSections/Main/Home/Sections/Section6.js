@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Redirect} from 'react-router-dom';
 
-import IMG2 from '../../../../../../images/MainSection/ms6-images/ms6-img-1.jpg'
+import IMG2 from '../../../../../../images/HomeComponent/ms6-images/ms6-img-1.jpg'
 
 class Section6 extends Component {
 

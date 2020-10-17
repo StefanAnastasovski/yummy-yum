@@ -1,6 +1,7 @@
-import React from "react";
+import React, {Component} from "react";
 
 import './Footer.css';
+import 'reactjs-popup/dist/index.css';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";
@@ -8,77 +9,150 @@ import {faInstagram} from "@fortawesome/free-brands-svg-icons";
 import {faTwitter} from "@fortawesome/free-brands-svg-icons";
 import {faMailBulk} from "@fortawesome/free-solid-svg-icons";
 
-import SubscribePic from '../../../../images/Subscribe/subscribe-pic.jpg'
+import SubscribePic from '../../../../images/Footer/Subscribe/subscribe-pic.jpg'
+import Aux from "../../../../hoc/Auxilliary";
 
-const Footer = () => {
+
+class Footer extends Component {
+
+    state = {
+        shouldReset: "koko"
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        if(!(!this.props.showBorderDanger && this.props.showPopUp))
+            event.target.reset()
+    }
+
+    render() {
+
+        let urlPath = window.location.pathname
+        let showFooterNavMenu = "";
+        let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password"];
+
+        if (showFooterNavMenu === "")
+            if (urlShowFooterPaths.includes(urlPath)) {
+                showFooterNavMenu = "d-none";
+            }
 
 
-    let urlPath = window.location.pathname
-    let showFooterNavMenu = "";
-    let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password"];
+        return (
 
-    if (showFooterNavMenu === "")
-        if (urlShowFooterPaths.includes(urlPath)) {
-            showFooterNavMenu = "d-none";
-        }
+            <Aux>
 
-    return (
-        <div className="footer-wrapper py-3">
+                <div className="footer-wrapper py-3">
 
-            <div className="container">
+                    <div className="container">
 
-                {/*nav-menu footer*/}
-                <div className={"nav-menu-footer " + showFooterNavMenu}>
+                        {/*nav-menu footer*/}
+                        <div className={"nav-menu-footer " + showFooterNavMenu}>
 
-                    <div className="row py-2">
+                            <div className="row py-2">
 
-                        {/*nav-menu footer left side - information*/}
-                        <div className="col-8 nav-menu-footer-left">
+                                {/*nav-menu footer left side - information*/}
+                                <div className="col-8 nav-menu-footer-left">
 
-                            <div className="row">
+                                    <div className="row">
 
-                                <div className="col">
+                                        <div className="col">
 
-                                    <h5 className="text-uppercase text-color-green">Service</h5>
-                                    <ul className="nav navbar-nav nav-menu">
+                                            <h5 className="text-uppercase text-color-green">Service</h5>
+                                            <ul className="nav navbar-nav nav-menu">
 
-                                        <li><a href="/">Our Menu</a></li>
-                                        <li><a href="/">How It Works</a></li>
-                                        <li><a href="/">Gift Cards</a></li>
-                                        <li><a href="/">Login</a></li>
-                                        <li><a href="/">Sign Up</a></li>
-                                        <li><a href="/">Students</a></li>
-                                        <li><a href="/terms">Terms of Service</a></li>
-                                        <li><a href="/privacy-policy">Privacy Policy</a></li>
-                                        <li><a href="/">Do Not Sell My Info</a></li>
+                                                <li><a href="/">Our Menu</a></li>
+                                                <li><a href="/">How It Works</a></li>
+                                                <li><a href="/">Gift Cards</a></li>
+                                                <li><a href="/log-in">Login</a></li>
+                                                <li><a href="/join-now">Sign Up</a></li>
+                                                <li><a href="/">Students</a></li>
+                                                <li><a href="/terms">Terms of Service</a></li>
+                                                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                                <li><a href="/">Do Not Sell My Info</a></li>
 
-                                    </ul>
+                                            </ul>
+
+                                        </div>
+
+                                        <div className="col">
+
+                                            <h5 className="text-uppercase text-color-green">Resources</h5>
+                                            <ul className="nav navbar-nav  nav-menu">
+
+                                                <li><a href="/">The Table</a></li>
+                                                <li><a href="/">Recipe Categories</a></li>
+                                                <li><a href="/">Kitchenware</a></li>
+                                                <li><a href="/"> FAQs & Support</a></li>
+
+                                            </ul>
+
+                                        </div>
+
+                                        <div className="col">
+
+                                            <h5 className="text-uppercase text-color-green">About Us</h5>
+                                            <ul className="nav navbar-nav  nav-menu">
+
+                                                <li><a href="/">Our Goal</a></li>
+                                                <li><a href="/">Meet the Team</a></li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
-                                <div className="col">
+                                {/*footer - subscribe section*/}
+                                {/*nav-menu footer right side - subscribe*/}
+                                <div className="col-4 subscribe-wrapper px-2">
 
-                                    <h5 className="text-uppercase text-color-green">Resources</h5>
-                                    <ul className="nav navbar-nav  nav-menu">
+                                    <div>
 
-                                        <li><a href="/">The Table</a></li>
-                                        <li><a href="/">Recipe Categories</a></li>
-                                        <li><a href="/">Kitchenware</a></li>
-                                        <li><a href="/"> FAQs & Support</a></li>
+                                        <img className="footer-subscribe-pic"
+                                             src={SubscribePic}
+                                             alt="meal"
+                                             width="100%"
+                                             height="100%"
+                                        />
 
-                                    </ul>
+                                    </div>
 
-                                </div>
+                                    <h5 className="text-center py-2">
+                                        Get free recipes and special
+                                        offers delivered to your inbox every week!
+                                    </h5>
 
-                                <div className="col">
+                                    <form className="subscribe-email" onSubmit={this.handleSubmit.bind(this)}>
 
-                                    <h5 className="text-uppercase text-color-green">About Us</h5>
-                                    <ul className="nav navbar-nav  nav-menu">
+                                        <div className="d-flex w-100 btn-section border-">
 
-                                        <li><a href="/">Our Goal</a></li>
-                                        <li><a href="/">Meet the Team</a></li>
+                                            <div className="col-8 p-0">
 
-                                    </ul>
+                                                <input
+                                                    className={"subscribe-email-btn px-2     w-100 no-border" +
+                                                    ((!this.props.showBorderDanger && this.props.showPopUp)
+                                                        ? " border-danger border" : "")
+                                                    }
+                                                    placeholder="Email"
+                                                    type="email"
+                                                    onChange={this.props.isFieldCorrectHandler}
+                                                />
+
+                                            </div>
+
+                                            <div className="col-4 p-0 ml-1">
+
+                                                <input className="submit-email-btn w-100"
+                                                       onClick={this.props.clicked}
+                                                       type="submit"/>
+
+                                            </div>
+
+                                        </div>
+
+                                    </form>
 
                                 </div>
 
@@ -86,47 +160,40 @@ const Footer = () => {
 
                         </div>
 
-                        {/*footer - subscribe section*/}
-                        {/*nav-menu footer right side - subscribe*/}
-                        <div className="col-4 subscribe-wrapper px-2">
+                        {/*footer - copyrights*/}
+                        <div className="cr-section mx-5">
 
-                            <div>
+                            <p className="text-center w-100 px-5 pt-3">
+                                ©2020 YummyYum Inc. YummyYum is a meal delivery service supplying
+                                weekly deliveries of fresh, perfectly
+                                portioned ingredients and chef-designed recipes.
+                            </p>
 
-                                <img className="footer-subscribe-pic"
-                                     src={SubscribePic}
-                                     alt="meal"
-                                     width="100%"
-                                     height="100%"
-                                />
+                        </div>
 
-                            </div>
+                        {/*footer - social media icons*/}
+                        <div className="social-media-icons pt-4">
 
-                            <h5 className="text-center py-2">
-                                Get free recipes and special
-                                offers delivered to your inbox every week!
-                            </h5>
+                            <ul className="nav navbar-nav flex-row justify-content-center nav-menu">
 
-                            <form className="subscribe-email">
+                                <li><a href="http://www.facebook.com/">
+                                    <FontAwesomeIcon icon={faFacebook} className="fa-2x">facebook</FontAwesomeIcon>
+                                </a></li>
 
-                                <div className="d-flex w-100 btn-section">
+                                <li><a href="https://www.instagram.com/">
+                                    <FontAwesomeIcon icon={faInstagram}
+                                                     className="fa-2x">instagram</FontAwesomeIcon>
+                                </a></li>
 
-                                    <div className="col-8 p-0">
+                                <li><a href="http://www.twitter.com/">
+                                    <FontAwesomeIcon icon={faTwitter} className="fa-2x">facebook</FontAwesomeIcon>
+                                </a></li>
 
-                                        <input className="subscribe-email-btn px-1 w-100" placeholder="Email"
-                                               type="email"/>
+                                <li><a href="https://www.gmail.com/">
+                                    <FontAwesomeIcon icon={faMailBulk} className="fa-2x">facebook</FontAwesomeIcon>
+                                </a></li>
 
-                                    </div>
-
-                                    <div className="col-4 p-0 ml-1">
-
-                                        <input className="submit-email-btn w-100" type="submit"/>
-
-                                    </div>
-
-                                </div>
-
-
-                            </form>
+                            </ul>
 
                         </div>
 
@@ -134,49 +201,13 @@ const Footer = () => {
 
                 </div>
 
-                {/*footer - copyrights*/}
-                <div className="cr-section mx-5">
+            </Aux>
 
-                    <p className="text-center w-100 px-5 pt-3">
-                        ©2020 YummyYum Inc. YummyYum is a meal delivery service supplying
-                        weekly deliveries of fresh, perfectly
-                        portioned ingredients and chef-designed recipes.
-                    </p>
 
-                </div>
+        )
 
-                {/*footer - social media icons*/}
-                <div className="social-media-icons pt-4">
+    }
 
-                    <ul className="nav navbar-nav flex-row justify-content-center nav-menu">
-
-                        <li><a href="http://www.facebook.com/">
-                            <FontAwesomeIcon icon={faFacebook} className="fa-2x">facebook</FontAwesomeIcon>
-                        </a></li>
-
-                        <li><a href="https://www.instagram.com/">
-                            <FontAwesomeIcon icon={faInstagram}
-                                             className="fa-2x">instagram</FontAwesomeIcon>
-                        </a></li>
-
-                        <li><a href="http://www.twitter.com/">
-                            <FontAwesomeIcon icon={faTwitter} className="fa-2x">facebook</FontAwesomeIcon>
-                        </a></li>
-
-                        <li><a href="https://www.gmail.com/">
-                            <FontAwesomeIcon icon={faMailBulk} className="fa-2x">facebook</FontAwesomeIcon>
-                        </a></li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    );
-
-};
+}
 
 export default Footer;

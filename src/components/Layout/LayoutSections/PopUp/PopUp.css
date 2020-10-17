@@ -1,0 +1,58 @@
+.footer-pop-up {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1002;
+}
+
+.f-pop-up-center {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.f-pop-up {
+    position: relative;
+    text-align: center;
+    background-color: rgba(107, 153, 88, 0.9);
+    border-radius: 10px;
+}
+
+
+.f-pu-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.f-pop-up:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+}
+
+.f-pu-close > svg {
+    display: flex;
+    padding-right: 5px;
+    padding-top: 5px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.f-pop-up p {
+    line-height: 2;
+}
+
+.f-pop-up-danger {
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    background-color: rgba(243, 218, 187, 1) !important;
+}

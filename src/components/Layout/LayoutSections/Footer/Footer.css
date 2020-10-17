@@ -16,10 +16,12 @@
     background-color: #6b9958;
     border: none;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .footer-wrapper .subscribe-email-btn {
+    border-radius: 10px;
+    border: none;
 }
 
 .footer-wrapper .nav-menu li a {

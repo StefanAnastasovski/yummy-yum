@@ -115,11 +115,6 @@ const TopMenuInfo = (props) => {
         menuInfo = {...QuickAndSimple};
     else if (props.MenuName === "Vegetarian")
         menuInfo = {...Vegetarian};
-    console.log("MenuName: ")
-    console.log(props.MenuName);
-    console.log("MenuInfo: ");
-    console.log(menuInfo );
-    console.log("-------------------------------------")
 
     return (
 

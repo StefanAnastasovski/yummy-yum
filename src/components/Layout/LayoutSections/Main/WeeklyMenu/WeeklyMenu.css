@@ -1,0 +1,111 @@
+.weekly-menu-wrapper ul {
+    list-style: none;
+}
+
+.weekly-menu-wrapper .wm-ddm-main li {
+    width: 100%;
+}
+
+.weekly-menu-wrapper .wm-nav-ddm-main {
+    width: 35%;
+    position: relative;
+}
+
+.weekly-menu-wrapper .wm-ddm-main .dd-menu {
+    display: none;
+}
+
+.dd-menu {
+    width: 100% !important;
+}
+
+.weekly-menu-wrapper .wm-ddm-main .wm-ddm-btn {
+    width: 100%;
+    height: 2.5em;
+    border: none;
+    padding: 10px 20px;
+    color: #4a099a;
+    background-color: #6b9958;
+    border-radius: 10px;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-ddm-main > li:first-child .wm-ddm-btn:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 10px 0 10px 0;
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+}
+
+.ddm-btn-bottom-border-radius {
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-ddm-main > li:nth-child(2) .wm-ddm-btn:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 10px 0 10px 0;
+
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-ddm-main .dd-menu {
+    border-radius: 0 0 10px 10px;
+    background-color: #6B9958;
+    display: none;
+    position: absolute;
+    z-index: 1000;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-ddm-main .dd-menu li:not(:last-child):hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-ddm-main .dd-menu li:last-child:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+    border-radius: 0 0 10px 10px;
+}
+
+
+.weekly-menu-wrapper .wm-nav-ddm-main .dd-menu li:not(:last-child):hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.weekly-menu-wrapper .wm-icon{
+    width:40px;
+    height:40px;
+}
+
+.main-wrapper .weekly-menu-wrapper ul.wm-tags li:after {
+    content: "|";
+    padding: 0 4px;
+}
+
+.main-wrapper .weekly-menu-wrapper ul.wm-tags-ingredients li:not(:last-child)::after {
+    content: "\00B7";
+    padding: 0 4px;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-icon svg:hover {
+    fill: #6b9958;
+    cursor: pointer;
+}
+
+.main-wrapper .weekly-menu-wrapper .wm-menu-cards .card:hover{
+    cursor:pointer;
+}

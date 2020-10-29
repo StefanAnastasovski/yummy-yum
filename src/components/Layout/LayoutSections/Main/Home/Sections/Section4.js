@@ -37,7 +37,6 @@ class Section4 extends Component {
     }
 
     onClickChooseMenu = (event) => {
-        console.log(event.target.value)
         this.setState({
             chooseMenu: event.target.value,
             showChooseMenuClass: "",
@@ -59,7 +58,8 @@ class Section4 extends Component {
         } else {
             this.setState({
                 showChooseMenu: !this.state.showChooseMenu,
-                showChooseMenuClass: ""
+                showChooseMenuClass: "",
+                showChooseMenuBtnForm: ""
             })
         }
 

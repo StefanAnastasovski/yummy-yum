@@ -6,3 +6,7 @@
     flex: 1 0 auto;
     /*justify-content: center;*/
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}

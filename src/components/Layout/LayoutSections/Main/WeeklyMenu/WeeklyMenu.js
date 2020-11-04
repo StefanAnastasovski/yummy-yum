@@ -11,6 +11,7 @@ class WeeklyMenu extends Component {
         mealFilter: "Mix",
         showMealFilterClass: "",
         showMealFilterBtnForm: "",
+        weekMonth: "",
         weekMonthName: "",
         weekSelect: "",
         weekSelectDate: ""
@@ -45,62 +46,34 @@ class WeeklyMenu extends Component {
     }
 
     componentDidMount() {
-        let mondayDate = this.getMondayInWeek();
+        let [mondayDate, month] = this.getMondayInWeek();
         let mondayDateWithSuffix = this.addDateSuffix(mondayDate);
-        let monthName = this.addMonthName(new Date().getMonth());
+        let monthName = this.addMonthName(month);
         this.setState({
             weekSelect: "Week Of Monday, " + monthName + " " + mondayDateWithSuffix,
-            weekSelectDate: mondayDate
+            weekSelectDate: mondayDate,
+            weekMonth: month
         })
     }
 
-    // componentWillUpdate(nextProps, nextState, nextContext) {
-    //     console.log(nextProps);
-    //     console.log(nextState);
-    // }
-
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //
-    //
-    //     if(this.state.weekSelectDate === ""){
-    //
-    //     }
-    //     else if (this.state.weekSelectDate !== nextState.weekSelectDate) {
-    //         let weekSelectDate = this.state.weekSelectDate;
-    //         console.log(weekSelectDate)
-    //         let mondayDateWithSuffix = this.addDateSuffix(weekSelectDate);
-    //         let monthName = this.addMonthName(new Date().getMonth());
-    //         this.setState(prevState => ({
-    //             weekSelect: "Week Of Monday, " + monthName + " " + mondayDateWithSuffix,
-    //         }))
-    //         console.log(this.state.weekSelectDate)
-    //         return true;
-    //
-    //     }
-    //
-    //
-    //     console.log("currentWeekSelectDate");
-    //     console.log(this.state.weekSelectDate)
-    //     console.log("nextWeekSelectDate");
-    //     console.log(nextState.weekSelectDate)
-    //
-    //     return true;
-    // }
-
     getMondayInWeek = () => {
         let currentDate = new Date();
-        let dayInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
-        let monthDate = dayInMonth.getDate();
+        let month = currentDate.getMonth();
+        let monthDate = currentDate.getDate();
+        let dayInMonth = new Date(currentDate.getFullYear(), month, monthDate);
         let dayInMonthNumber = dayInMonth.getDay();
+        let fullDate;
 
         if (dayInMonthNumber === 0) {
-            monthDate = monthDate - 6;
+            fullDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 6);
+            monthDate = fullDate.getDate();
+            month = fullDate.getMonth();
         } else {
             let mondayInWeek = (dayInMonthNumber - 1);
             monthDate = monthDate - mondayInWeek;
         }
 
-        return monthDate;
+        return [monthDate, month];
     }
 
     addDateSuffix = (date) => {
@@ -136,12 +109,16 @@ class WeeklyMenu extends Component {
     }
 
     onClickNextWeek = (e) => {
+
         let weekSelectDateState = this.state.weekSelectDate;
-        let newCurrentDate = new Date();
-        let nextWeekDate = new Date(newCurrentDate.getFullYear(), newCurrentDate.getMonth(), weekSelectDateState + 7).getDate()
+        let weekMonth = this.state.weekMonth;
+        let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
+        let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState + 7);
 
         this.setState({
-            weekSelectDate: nextWeekDate
+            weekSelectDate: previousWeekDate.getDate(),
+            weekSelect: "Week Of Monday, " + this.addMonthName(previousWeekDate.getMonth()) + " " + this.addDateSuffix(previousWeekDate.getDate()),
+            weekMonth: previousWeekDate.getMonth()
         })
 
     }
@@ -149,16 +126,42 @@ class WeeklyMenu extends Component {
     onClickPreviousWeek = (e) => {
 
         let weekSelectDateState = this.state.weekSelectDate;
-        let newCurrentDate = new Date();
-        let previousWeekDate = new Date(newCurrentDate.getFullYear(), newCurrentDate.getMonth(), weekSelectDateState - 7).getDate()
+        let weekMonth = this.state.weekMonth;
+        let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
+        let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState - 7);
 
         this.setState({
-            weekSelectDate: previousWeekDate,
-            weekSelect: "Week Of Monday, " + newCurrentDate.getMonth() + " " + previousWeekDate
+            weekSelectDate: previousWeekDate.getDate(),
+            weekSelect: "Week Of Monday, " +
+                this.addMonthName(previousWeekDate.getMonth()) +
+                " " + this.addDateSuffix(previousWeekDate.getDate()),
+            weekMonth: previousWeekDate.getMonth()
         })
+
     }
 
     render() {
+
+        let rowNumbers = 3;
+        let itemNumbers = 3;
+        let rows = [];
+
+        for (let i = 0; i < rowNumbers; i++) {
+
+            let items = [];
+            for (let j = 0; j < itemNumbers; j++) {
+                items.push(
+                    <div className="col m-3">
+                        <WeeklyMenuCard/>
+                    </div>
+                )
+            }
+            rows.push(
+                <div className="row">
+                    {items}
+                </div>
+            );
+        }
 
         return (
 
@@ -238,18 +241,7 @@ class WeeklyMenu extends Component {
 
                         <div className="row">
 
-                            <div className="col m-3">
-                                <WeeklyMenuCard/>
-                            </div>
-
-                            <div className="col m-3">
-                                <WeeklyMenuCard/>
-                            </div>
-
-                            <div className="col m-3">
-                                <WeeklyMenuCard/>
-                            </div>
-
+                            {rows}
 
                         </div>
 
@@ -279,6 +271,5 @@ class WeeklyMenu extends Component {
     }
 
 }
-;
 
 export default WeeklyMenu;

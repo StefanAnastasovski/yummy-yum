@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import './Footer.css';
-import 'reactjs-popup/dist/index.css';
+import '../../../../index.css';
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFacebook} from "@fortawesome/free-brands-svg-icons";

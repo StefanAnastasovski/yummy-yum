@@ -51,7 +51,7 @@ class Layout extends Component {
 
             <div className="container-wrapper">
 
-                {/*Header*/}
+                {/*MRHeader*/}
                 <Header/>
 
                 {/*Main*/}

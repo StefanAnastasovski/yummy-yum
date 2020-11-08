@@ -1,6 +1,6 @@
 import React from "react";
 
-const NextWeekIcon = () => {
+const NextIcon = () => {
 
     return (
 
@@ -19,7 +19,7 @@ const NextWeekIcon = () => {
 
 };
 
-export default NextWeekIcon;
+export default NextIcon;
 
 
 

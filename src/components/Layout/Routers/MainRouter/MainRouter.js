@@ -12,6 +12,7 @@ import Terms from "../../LayoutSections/Main/Terms/Terms";
 import PrivacyPolicy from "../../LayoutSections/Main/PrivacyPolicy/PrivacyPolicy";
 import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
+import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
 
 
 class MainRouter extends Component {
@@ -65,6 +66,18 @@ class MainRouter extends Component {
                         <Route exact path="/weekly-menu">
 
                             <WeeklyMenu/>
+
+                        </Route>
+
+                        <Route exact path='/meals/:mealName'>
+
+                            <MealRecipe />
+
+                        </Route>
+
+                        <Route exact path='/meals'>
+
+                            <MealRecipe />
 
                         </Route>
 

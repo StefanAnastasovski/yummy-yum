@@ -1,0 +1,22 @@
+/*MRSlider*/
+
+.meal-recipe-wrapper .mr-slider-img {
+    padding: 15px 0;
+    height: 560px;
+}
+.meal-recipe-wrapper .mr-slider-img .mr-img{
+     border-radius: 10px;
+}
+
+.mr-icon {
+    width: 5em;
+    height: 5em;
+}
+
+.meal-recipe-wrapper .mr-slider .mr-icon svg:hover {
+
+    fill: #6b9958;
+    cursor: pointer;
+
+}
+

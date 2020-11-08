@@ -1,9 +1,11 @@
 import React, {Component} from "react";
+import {Redirect} from "react-router";
 
 import './WeeklyMenu.css';
-import PreviousWeekIcon from "./WeekIcons/PreviousWeekIcon";
-import NextWeekIcon from "./WeekIcons/NextWeekIcon";
+
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
+import NextIcon from "./WeekIcons/NextIcon";
+import PreviousIcon from "./WeekIcons/PreviousIcon";
 
 class WeeklyMenu extends Component {
 
@@ -14,10 +16,13 @@ class WeeklyMenu extends Component {
         weekMonth: "",
         weekMonthName: "",
         weekSelect: "",
-        weekSelectDate: ""
+        weekSelectDate: "",
+        redirect: false,
+        mealName: "",
     }
 
     onClickMealFilter = (event) => {
+
         this.setState({
             mealFilter: event.target.value,
             showMealFilterClass: "",
@@ -26,6 +31,7 @@ class WeeklyMenu extends Component {
     }
 
     onClickShowMealFilter = () => {
+
         let showFilter = this.state.showMealFilterClass;
         if (showFilter === "") {
 
@@ -46,6 +52,7 @@ class WeeklyMenu extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props)
         let [mondayDate, month] = this.getMondayInWeek();
         let mondayDateWithSuffix = this.addDateSuffix(mondayDate);
         let monthName = this.addMonthName(month);
@@ -54,9 +61,11 @@ class WeeklyMenu extends Component {
             weekSelectDate: mondayDate,
             weekMonth: month
         })
+
     }
 
     getMondayInWeek = () => {
+
         let currentDate = new Date();
         let month = currentDate.getMonth();
         let monthDate = currentDate.getDate();
@@ -74,9 +83,11 @@ class WeeklyMenu extends Component {
         }
 
         return [monthDate, month];
+
     }
 
     addDateSuffix = (date) => {
+
         let mondayDate = date;
         let mondayDateWithSuffix;
 
@@ -108,7 +119,7 @@ class WeeklyMenu extends Component {
 
     }
 
-    onClickNextWeek = (e) => {
+    onClickNextWeek = () => {
 
         let weekSelectDateState = this.state.weekSelectDate;
         let weekMonth = this.state.weekMonth;
@@ -123,7 +134,7 @@ class WeeklyMenu extends Component {
 
     }
 
-    onClickPreviousWeek = (e) => {
+    onClickPreviousWeek = () => {
 
         let weekSelectDateState = this.state.weekSelectDate;
         let weekMonth = this.state.weekMonth;
@@ -140,26 +151,51 @@ class WeeklyMenu extends Component {
 
     }
 
+    setRedirect = (mealName) => {
+        this.setState({
+            redirect: true,
+            mealName: mealName
+
+        })
+    }
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            // let path = `/weekly-menu/meal-recipe/${mealName}`
+            return <Redirect to={`/meals/${this.state.mealName}`}/>
+        }
+    }
+
+    routeChange = () => {
+        // let history = useHistory();
+        // console.log(history)
+        // this.props.history.push('/rec-1/');
+
+    }
+
     render() {
 
         let rowNumbers = 3;
         let itemNumbers = 3;
         let rows = [];
+        let cardID = 0;
+        let columnID = 0;
+        let rowID = 0;
 
         for (let i = 0; i < rowNumbers; i++) {
 
             let items = [];
             for (let j = 0; j < itemNumbers; j++) {
                 items.push(
-                    <div className="col m-3">
-                        <WeeklyMenuCard/>
-                    </div>
+                    <li key={columnID++} className="col m-3">
+                        <WeeklyMenuCard key={"CardID" + cardID++} clicked={this.setRedirect.bind(this, cardID)}/>
+                    </li>
                 )
             }
             rows.push(
-                <div className="row">
+                <ul key={"row" + rowID++} className="row">
                     {items}
-                </div>
+                </ul>
             );
         }
 
@@ -241,7 +277,12 @@ class WeeklyMenu extends Component {
 
                         <div className="row">
 
-                            {rows}
+                            {this.renderRedirect()}
+                            <ul>
+
+                                {rows}
+
+                            </ul>
 
                         </div>
 
@@ -250,7 +291,7 @@ class WeeklyMenu extends Component {
                     <div className="wm-week-slider d-flex justify-content-center py-5">
 
                         <div className="wm-icon" onClick={this.onClickPreviousWeek}>
-                            <PreviousWeekIcon/>
+                            <PreviousIcon/>
                         </div>
 
                         <div>
@@ -258,7 +299,7 @@ class WeeklyMenu extends Component {
                         </div>
 
                         <div className="wm-icon" onClick={this.onClickNextWeek}>
-                            <NextWeekIcon/>
+                                <NextIcon/>
                         </div>
 
                     </div>

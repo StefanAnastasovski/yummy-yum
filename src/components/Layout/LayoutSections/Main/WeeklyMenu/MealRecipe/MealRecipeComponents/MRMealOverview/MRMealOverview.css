@@ -1,0 +1,13 @@
+.mr-mo-item div.d-flex div {
+    height: 100%;
+}
+.mr-meal-overview span.difficulty-lvl-item{
+    width:10px;
+    height:10px;
+    border: 1px solid #6b9958;
+    border-radius: 50%;
+}
+
+.d-lvl-true{
+    background: #6b9958;
+}

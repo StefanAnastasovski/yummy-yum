@@ -7,7 +7,7 @@ const WeeklyMenuCard = (props) => {
 
     return (
 
-        <div className="card">
+        <div className="card" id={props.id} onClick={props.clicked}>
 
             <TopMenuAllImages menuName="Adventurous" imgNumber="1"/>
 

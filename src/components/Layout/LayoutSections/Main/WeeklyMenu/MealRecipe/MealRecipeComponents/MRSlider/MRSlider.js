@@ -4,12 +4,15 @@ import './MRSlider.css';
 
 import Aux from "../../../../../../../../hoc/Auxilliary";
 
-import IMG from "../../../../../../../../images/MealRecipe/meal1.jpg"
 import PreviousIcon from "../../../WeekIcons/PreviousIcon";
 import NextIcon from "../../../WeekIcons/NextIcon";
+import MRSliderController from "./MRSliderController/MRSliderCOntroller";
 
-const MRSlider = () => {
 
+const MRSlider = (props) => {
+
+    let images = [];
+    let img;
 
     return (
 
@@ -17,16 +20,11 @@ const MRSlider = () => {
 
             <div className="mr-slider-img d-flex justify-content-center align-items-center">
 
-                <div className="mr-icon"><PreviousIcon/></div>
+                <div className="mr-icon" onClick={props.previousImg}><PreviousIcon/></div>
 
-                <img className={"mr-img"}
-                     src={IMG}
-                     alt="mr-slider"
-                     width="100%"
-                     height="100%"
-                />
+                <MRSliderController />
 
-                <div className="mr-icon"><NextIcon/></div>
+                <div className="mr-icon" onClick={props.nextImg}><NextIcon/></div>
 
             </div>
 

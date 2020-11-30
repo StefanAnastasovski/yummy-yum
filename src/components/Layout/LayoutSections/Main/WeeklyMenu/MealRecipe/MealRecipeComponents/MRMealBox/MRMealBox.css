@@ -1,0 +1,52 @@
+.mr-mb .mr-mb-items {
+    list-style: square;
+}
+
+.mr-mb .mr-mb-nutrition ul{
+}
+
+.mr-mb .mr-mb-meal-nutrition li {
+    list-style: none;
+}
+.mr-mb .mr-mb-right{
+    background-color: #f5f5f6;
+}
+
+ul.mr-mb-meal-nutrition {
+    max-width: 40em;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none
+}
+
+ul.mr-mb-meal-nutrition li:not(:first-child){
+    padding-bottom: 0.3em;
+}
+
+ul.mr-mb-meal-nutrition li:not(:first-child)::before {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    flex-grow: 1;
+    content:
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "
+ ". . . . . . . . . . . . . . . . . . . . "}
+
+ul.mr-mb-meal-nutrition span:first-child {
+    padding-right: 0.33em;
+    background: #f5f5f6
+}
+
+ul.mr-mb-meal-nutrition span + span {
+    float: right;
+    padding-left: 0.33em;
+    background: #f5f5f6
+}
+
+.mr-mb .mr-mb-right li::after {
+    display: block;
+    clear: both;
+    content: "";
+}

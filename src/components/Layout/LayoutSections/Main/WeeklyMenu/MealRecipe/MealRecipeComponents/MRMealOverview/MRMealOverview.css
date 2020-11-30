@@ -1,7 +1,7 @@
 .mr-mo-item div.d-flex div {
     height: 100%;
 }
-.mr-meal-overview span.difficulty-lvl-item{
+.mr-meal-overview-wrapper span.difficulty-lvl-item{
     width:10px;
     height:10px;
     border: 1px solid #6b9958;

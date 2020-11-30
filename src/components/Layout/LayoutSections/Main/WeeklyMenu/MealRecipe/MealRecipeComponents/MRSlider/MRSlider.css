@@ -13,7 +13,7 @@
     height: 5em;
 }
 
-.meal-recipe-wrapper .mr-slider .mr-icon svg:hover {
+.meal-recipe-wrapper .mr-slider-wrapper .mr-icon svg:hover {
 
     fill: #6b9958;
     cursor: pointer;

@@ -17,15 +17,21 @@ class MRMealBox extends Component {
 
             <Aux>
 
-                <div className="mr-mb py-2 d-flex">
+                <div className="mr-mb py-5 d-flex">
 
                     <div className="mr-mb-left col-8">
 
                         <h3 className="mr-mb-title d-inline">
                             In Your Box
                         </h3>
-                        <span> <h5
-                            className="d-inline text-color-green font-italic">(Serve {this.state.serveNumber}) </h5> </span>
+
+                        <span>
+
+                            <h5
+                                className="d-inline text-color-green font-italic"> (Serve {this.state.serveNumber})
+                            </h5>
+
+                        </span>
 
                         <hr/>
 

@@ -7,6 +7,8 @@ import MRSlider from "./MealRecipeComponents/MRSlider/MRSlider";
 import MRMealInfo from "./MealRecipeComponents/MRMealInfo/MRMealInfo";
 import MRMealChef from "./MealRecipeComponents/MRMealChef/MRMealChef";
 import MRMealBox from "./MealRecipeComponents/MRMealBox/MRMealBox";
+import MRRecipeSteps from "./MealRecipeComponents/MRRecipeSteps/MRRecipeSteps";
+import MRFooter from "./MealRecipeComponents/MRFooter/MRFooter";
 
 class MealRecipe extends Component {
 
@@ -32,9 +34,9 @@ class MealRecipe extends Component {
 
         return (
 
-            <div className="meal-recipe-wrapper">
+            <div className="meal-recipe-wrapper container">
 
-                <div className="container">
+                <div className="">
 
                     <div className="mr-header-wrapper p-3">
                         <MRHeader/>
@@ -52,19 +54,23 @@ class MealRecipe extends Component {
                     </div>
 
                     <div className="mr-meal-info-wrapper">
-                        <MRMealInfo />
+                        <MRMealInfo/>
                     </div>
 
                     <div className="mr-meal-chef-wrapper">
-                        <MRMealChef />
+                        <MRMealChef/>
                     </div>
 
                     <div className="mr-meal-box-wrapper">
-                        <MRMealBox />
+                        <MRMealBox/>
                     </div>
 
-                    <div className="mr-recipe-steps-wrapper">
+                    <div className="mr-recipe-steps-wrapper ">
+                        <MRRecipeSteps/>
+                    </div>
 
+                    <div className="mr-recipe-footer-wrapper">
+                        <MRFooter />
                     </div>
 
                 </div>

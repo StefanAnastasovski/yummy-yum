@@ -1,0 +1,38 @@
+/*MRRecipeSteps*/
+
+
+.mr-rs .mr-rs-meal-utensils li {
+    background-color: rgb(255 171 47);
+    padding: 0.6em;
+    border-radius: 50px;
+    border: 1px solid #6b9958;
+}
+
+.mr-rs.s4 {
+    border: 2px solid grey;
+    padding: 1em;
+}
+
+.mr-rs-s4 {
+    border: 1px solid #6b9958;
+    padding: 2em;
+}
+
+.mr-rs .mr-rs-customize-it-instructions > li {
+    background-color: rgb(255 171 47);
+    padding: 0.6em;
+    border-radius: 10px;
+    margin: 5px 0;
+    border: 1px solid #6b9958;
+}
+.meal-steps-card .card-img{
+    height: 300px;
+}
+
+.mr-rs .meal-steps-card {
+    border: 1px solid green;
+}
+
+.meal-steps-card .card-body{
+   background-color:     rgba(243, 218, 187, 0.61);
+}

@@ -48,5 +48,4 @@ ul.mr-mb-meal-nutrition span + span {
 .mr-mb .mr-mb-right li::after {
     display: block;
     clear: both;
-    content: "";
 }

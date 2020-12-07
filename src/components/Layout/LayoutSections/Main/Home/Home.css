@@ -110,7 +110,7 @@ svg:hover {
     background-color: #6B9958;
     display: none;
     position: absolute;
-    width: 75%;
+    width: 75% !important;
     z-index: 1000;
 }
 

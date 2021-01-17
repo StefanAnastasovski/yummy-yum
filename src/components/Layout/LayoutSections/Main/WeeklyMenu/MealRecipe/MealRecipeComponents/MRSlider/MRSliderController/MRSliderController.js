@@ -3,8 +3,6 @@ import React from "react";
 
 import img from '../../../../../../../../../images/MealRecipe/meal1.jpg'
 
-import images from './MealImages/MealOneImages'
-
 const MRSliderController = (props) => {
 
     return (

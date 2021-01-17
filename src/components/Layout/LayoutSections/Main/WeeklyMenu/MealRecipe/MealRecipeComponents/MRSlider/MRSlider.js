@@ -6,13 +6,10 @@ import Aux from "../../../../../../../../hoc/Auxilliary";
 
 import PreviousIcon from "../../../WeekIcons/PreviousIcon";
 import NextIcon from "../../../WeekIcons/NextIcon";
-import MRSliderController from "./MRSliderController/MRSliderCOntroller";
+import MRSliderController from "./MRSliderController/MRSliderController";
 
 
 const MRSlider = (props) => {
-
-    let images = [];
-    let img;
 
     return (
 

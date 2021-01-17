@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Aux from "../../../../hoc/Auxilliary";
 
@@ -13,6 +13,8 @@ import PrivacyPolicy from "../../LayoutSections/Main/PrivacyPolicy/PrivacyPolicy
 import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
+import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
+import CreateRecipe from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/CreateRecipe";
 
 
 class MainRouter extends Component {
@@ -71,13 +73,13 @@ class MainRouter extends Component {
 
                         <Route exact path='/meals/:mealName'>
 
-                            <MealRecipe />
+                            <MealRecipe/>
 
                         </Route>
 
                         <Route exact path='/meals'>
 
-                            <MealRecipe />
+                            <MealRecipe/>
 
                         </Route>
 
@@ -129,6 +131,23 @@ class MainRouter extends Component {
 
                     </Switch>
 
+                    <Switch>
+
+                        <Route exact path="/admin/dashboard">
+
+                            <AdminDashboard routeComponent="Dashboard"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+                        <Route exact path="/admin/dashboard/create-recipe">
+
+                            <AdminDashboard routeComponent="Create Recipe"/>
+
+                        </Route>
+                    </Switch>
                 </Router>
 
             </Aux>

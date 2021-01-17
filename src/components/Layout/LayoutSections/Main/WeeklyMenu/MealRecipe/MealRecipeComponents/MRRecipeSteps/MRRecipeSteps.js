@@ -46,7 +46,7 @@ const MRRecipeSteps = () => {
 
                         <h5 className="font-size-1">Before You Cook: </h5>
 
-                        <ul className="mr-rs-meal-steps-before-cook py-2 list-unstyled w-75 text-color-green">
+                        <ul className="mr-rs-meal-steps-before-cooknp py-2 list-unstyled w-75 text-color-green">
                             <li>
                                 <input type="checkbox" className="mr-3"/>
                                 <span className="mr-rs-checked">Preheat oven to 425 degrees</span>

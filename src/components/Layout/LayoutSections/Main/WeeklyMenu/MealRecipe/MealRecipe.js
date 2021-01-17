@@ -17,7 +17,7 @@ class MealRecipe extends Component {
     }
 
     componentDidMount() {
-
+        window.scrollTo(0, 0);
     }
 
     sliderNextImg = () => {
@@ -70,7 +70,7 @@ class MealRecipe extends Component {
                     </div>
 
                     <div className="mr-recipe-footer-wrapper">
-                        <MRFooter />
+                        <MRFooter/>
                     </div>
 
                 </div>

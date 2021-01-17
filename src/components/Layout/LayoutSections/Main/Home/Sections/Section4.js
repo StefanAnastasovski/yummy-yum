@@ -34,6 +34,7 @@ class Section4 extends Component {
         this.setState({
             redirect: "/weekly-menu"
         })
+
     }
 
     onClickChooseMenu = (event) => {
@@ -43,6 +44,10 @@ class Section4 extends Component {
             showChooseMenuBtnForm: ""
         });
 
+    }
+
+    redirectToAnotherPage = (path) => {
+        return <Redirect to={path} />
     }
 
     onClickShowChooseMenu = () => {
@@ -68,7 +73,8 @@ class Section4 extends Component {
     render() {
 
         if (this.state.redirect) {
-            return <Redirect to={this.state.redirect}/>
+            return this.redirectToAnotherPage(this.state.redirect);
+
         }
 
         return (
@@ -153,9 +159,9 @@ class Section4 extends Component {
                                 {/*See Full Menu*/}
                                 <div className="ms4-full-menu-btn d-flex justify-content-center pt-5">
 
-                                    <input type="submit" onClick={this.onSubmit} value="See Full Menu"
-                                           className="ms4-fm-btn font-size-1"/>
-
+                                    <input type="submit" onClick={this.onSubmit}
+                                            value="See Full Menu"
+                                            className="ms4-fm-btn font-size-1"/>
                                 </div>
 
 

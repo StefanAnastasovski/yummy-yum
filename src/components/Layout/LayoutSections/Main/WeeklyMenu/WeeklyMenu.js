@@ -52,6 +52,7 @@ class WeeklyMenu extends Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         console.log(this.props)
         let [mondayDate, month] = this.getMondayInWeek();
         let mondayDateWithSuffix = this.addDateSuffix(mondayDate);
@@ -299,7 +300,7 @@ class WeeklyMenu extends Component {
                         </div>
 
                         <div className="wm-icon" onClick={this.onClickNextWeek}>
-                                <NextIcon/>
+                            <NextIcon/>
                         </div>
 
                     </div>

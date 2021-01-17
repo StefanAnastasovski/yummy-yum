@@ -1,6 +1,6 @@
 /*App.css*/
 
-body, p, h1, h2, h3, h4, h5, a, input {
+body, p, h1, h2, h3, h4, h5, a, input, textarea {
     font-family: "Muli", "Helvetica Neue", Helmet, Freesans, sans-serif;
     font-weight: 600 !important;
     color: #4a099a !important;

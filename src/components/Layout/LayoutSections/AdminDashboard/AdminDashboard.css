@@ -1,0 +1,62 @@
+/*Admin Dashboard*/
+
+.main-wrapper .admin-dashboard-wrapper {
+    background-color: rgb(255 226 187);
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.main-wrapper .admin-dashboard-wrapper .button-go-back-to-dashboard input {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #6b9958;
+}
+
+.main-wrapper .admin-dashboard-wrapper .btn-new-utensil,
+.btn-new-cook-step, #btn-new-guideline, #btn-new-ingredient,
+#btn-new-customize-instruction, .btn-create-recipe,
+.btn-create-menu, .btn-send-email {
+    border: none;
+    border-radius: 10px;
+    background-color: #6b9958;
+    color: #4a099a;
+    font-weight: bold;
+    width: 3em;
+    height: 2em;
+}
+
+.main-wrapper .admin-dashboard-wrapper .btn-new-utensil:hover,
+.btn-new-cook-step:hover, #btn-new-guideline:hover, #btn-new-ingredient:hover,
+#btn-new-customize-instruction:hover, .btn-go-back-to-dashboard:hover,
+.btn-create-recipe:hover, .btn-create-menu:hover, .btn-send-email:hover {
+    border: 1px solid #4a099a;
+    background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.main-wrapper .admin-dashboard-wrapper .btn-meal {
+    border: none;
+    border-radius: 10px;
+    background-color: #6b9958;
+    padding: 10px 0;
+    color: #4a099a;
+    font-weight: bold;
+    height: 3em;
+}
+
+.main-wrapper .admin-dashboard-wrapper .btn-meal:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
+    z-index: 1000;
+
+}
+
+.main-wrapper .admin-dashboard-wrapper input, .main-wrapper .admin-dashboard-wrapper textarea {
+    border: none;
+    border-radius: 10px;
+    padding: 2px 10px !important;
+    border: 1px solid #4a099a;
+    background-color: #c6f6b9;
+}

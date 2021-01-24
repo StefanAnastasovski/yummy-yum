@@ -3,6 +3,8 @@ import React, {Component} from "react";
 import "./AdminDashboard.css";
 import CreateRecipe from "./AdminDashboardComponents/CreateRecipe";
 import Dashboard from "./AdminDashboardComponents/Dashboard";
+import CreateMenu from "./AdminDashboardComponents/CreateMenu";
+import SendEmail from "./AdminDashboardComponents/SendEmail";
 
 class AdminDashboard extends Component {
 
@@ -64,8 +66,10 @@ class AdminDashboard extends Component {
                                            onSubmitRoute={this.onSubmitRoute}
             />
         } else if (this.state.routeComponent === "Create Menu") {
+            routeComponent = <CreateMenu route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>
 
         } else if (this.state.routeComponent === "Send Email") {
+            routeComponent = <SendEmail route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>
 
         } else {
             routeComponent = <Dashboard route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>

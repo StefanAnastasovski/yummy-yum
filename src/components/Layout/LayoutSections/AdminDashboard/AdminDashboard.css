@@ -30,7 +30,8 @@
 .main-wrapper .admin-dashboard-wrapper .btn-new-utensil:hover,
 .btn-new-cook-step:hover, #btn-new-guideline:hover, #btn-new-ingredient:hover,
 #btn-new-customize-instruction:hover, .btn-go-back-to-dashboard:hover,
-.btn-create-recipe:hover, .btn-create-menu:hover, .btn-send-email:hover {
+.btn-create-recipe:hover, .btn-create-menu:hover,
+.btn-send-email:hover, .btn-create-next-menu:hover {
     border: 1px solid #4a099a;
     background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
     z-index: 1000;
@@ -59,4 +60,39 @@
     padding: 2px 10px !important;
     border: 1px solid #4a099a;
     background-color: #c6f6b9;
+}
+
+.react-calendar__navigation__label__labelText, .react-calendar span, .react-calendar abbr{
+    font-weight: bold;
+}
+.react-calendar{
+    border-radius: 20px 0;
+    border: 6px solid #530ea2;
+}
+.react-calendar__viewContainer, .react-calendar__navigation{
+    background-color: #abf192;
+    margin: 0 !important;
+}
+.react-calendar__viewContainer {
+    border-bottom-right-radius: 20px;
+}
+
+.react-calendar__navigation {
+    border-top-left-radius: 20px;
+}
+.react-calendar__navigation :first-child{
+    border-top-left-radius: 20px;
+}
+.react-calendar__viewContainer :last-child{
+    border-bottom-right-radius: 20px;
+}
+
+.btn-email-attach{
+    background-color: unset !important;
+    border: none !important;
+    color: #530ea2;
+}
+
+input[type="file"]{
+    background-color: #530ea2;
 }

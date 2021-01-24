@@ -14,8 +14,6 @@ import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
 import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
-import CreateRecipe from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/CreateRecipe";
-
 
 class MainRouter extends Component {
 
@@ -142,12 +140,35 @@ class MainRouter extends Component {
                     </Switch>
 
                     <Switch>
+
                         <Route exact path="/admin/dashboard/create-recipe">
 
                             <AdminDashboard routeComponent="Create Recipe"/>
 
                         </Route>
+
                     </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/admin/dashboard/create-menu">
+
+                            <AdminDashboard routeComponent="Create Menu"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/admin/dashboard/send-email">
+
+                            <AdminDashboard routeComponent="Send Email"/>
+
+                        </Route>
+
+                    </Switch>
+
                 </Router>
 
             </Aux>

@@ -12,7 +12,7 @@ class Layout extends Component {
     state = {
         showPopUp: false,
         isSubscribeFieldCorrect: false,
-        showBorderDanger: false
+        showBorderDanger: false,
     }
 
     showPopUpHandler = () => {

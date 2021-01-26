@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/CreateMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/SendEmail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ApiTest/User.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ApiTest/funcAddNewUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ApiTest/funcIsUserExist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/AccountCreated/AccountCreated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/custom-axios/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/get/getEmail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/get/getUser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/post/postEmail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/post/postUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +57,11 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\repository\get" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -80,7 +94,9 @@
       <workItem from="1611183505653" duration="621000" />
       <workItem from="1611279789542" duration="6181000" />
       <workItem from="1611436167455" duration="5038000" />
-      <workItem from="1611504607934" duration="1713000" />
+      <workItem from="1611504607934" duration="19636000" />
+      <workItem from="1611585682837" duration="2735000" />
+      <workItem from="1611658516798" duration="20159000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -89,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610854610993</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="AdminDashboard - CreateMenu + Send Email added">
+      <created>1611508419252</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611508419252</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,41 +123,42 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="AdminDashboard - CreateRecipe added" />
-    <option name="LAST_COMMIT_MESSAGE" value="AdminDashboard - CreateRecipe added" />
+    <MESSAGE value="AdminDashboard - CreateMenu + Send Email added" />
+    <option name="LAST_COMMIT_MESSAGE" value="AdminDashboard - CreateMenu + Send Email added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1610751744650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610751744650" />
-    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1610854607587">
+    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1611508417500">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1610854607587" />
-    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1608395096613">
+    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1611508417500" />
+    <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1611510606929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608395096613" />
+    <state x="740" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611510606929" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1610668047416">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610668047416" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1611284814593">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1611671604304">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1611284814593" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1610854625077">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1611671604304" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611508610532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1610854625077" />
-    <state x="667" y="253" width="873" height="534" key="find.popup" timestamp="1610852943873">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611508610532" />
+    <state x="667" y="253" width="873" height="534" key="find.popup" timestamp="1611686408268">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="873" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610852943873" />
-    <state x="615" y="244" key="run.anything.popup" timestamp="1611280861815">
+    <state x="667" y="253" width="873" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611686408268" />
+    <state x="615" y="244" key="run.anything.popup" timestamp="1611678655785">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611280861815" />
+    <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611678655785" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1610844607374">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

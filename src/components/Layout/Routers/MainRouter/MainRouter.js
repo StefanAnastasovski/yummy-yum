@@ -14,6 +14,8 @@ import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
 import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
+import User from "../../../../ApiTest/User";
+import AccountCreated from "../../LayoutSections/Main/SignUp/AccountCreated/AccountCreated";
 
 class MainRouter extends Component {
 
@@ -111,6 +113,12 @@ class MainRouter extends Component {
 
                         </Route>
 
+                        <Route exact path="/joined">
+
+                            <AccountCreated/>
+
+                        </Route>
+
                     </Switch>
 
                     <Switch>
@@ -167,6 +175,12 @@ class MainRouter extends Component {
 
                         </Route>
 
+                    </Switch>
+
+                    <Switch>
+                        <Route exact path="/getusers">
+                            <User/>
+                        </Route>
                     </Switch>
 
                 </Router>

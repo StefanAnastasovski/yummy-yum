@@ -20,8 +20,7 @@
 
 }
 
-
-.sign-up-wrapper .signup-container .sign-up-submit-btn:hover {
+.sign-up-wrapper .signup-container .sign-up-submit-btn:hover, .btn-go-to-login:hover {
     border: 1px #4a099a solid;
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
@@ -29,4 +28,28 @@
     rgb(112, 188, 95) 85%);
     padding: 10px 0 10px 0;
     box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+}
+
+.main-wrapper .sign-up-success-wrapper {
+    display: flex;
+    flex: 1;
+}
+
+.sign-up-success-wrapper .btn-go-to-login{
+    border:none;
+    border-radius: 10px;
+    padding: 10px 0;
+    background-color: #579843;
+}
+.sign-up-success-wrapper .sign-up-success {
+    background-color: #f5f5f6;
+    margin: 20px;
+    border-radius: 20px;
+    border:1px solid #579843;
+    height:50%
+
+}
+
+.sign-up-success-wrapper .sign-up-success:hover{
+        box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
 }

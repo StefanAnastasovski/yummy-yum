@@ -89,7 +89,11 @@ class MainRouter extends Component {
 
                         <Route exact path="/log-in">
 
-                            <Login/>
+                            <Login logIn = {this.props.logIn}
+                                   isLoggedIn = {this.props.isLoggedIn}
+                                   handleLogin = {this.props.handleLogin}
+                                   addUsername = {this.props.addUsername}
+                            />
 
                         </Route>
 

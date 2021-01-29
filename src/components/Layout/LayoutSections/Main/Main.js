@@ -5,14 +5,18 @@ import './Main.css';
 import MainRouter from "../../Routers/MainRouter/MainRouter";
 
 
-const Main = () => {
+const Main = (props) => {
 
     return (
 
         <div className="main-wrapper">
 
             {/*MainRouter - Routing Main components*/}
-            <MainRouter/>
+            <MainRouter logIn = {props.logIn}
+                        isLoggedIn = {props.isLoggedIn}
+                        handleLogin = {props.handleLogin}
+                        addUsername = {props.addUsername}
+            />
 
         </div>
 

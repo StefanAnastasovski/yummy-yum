@@ -13,6 +13,7 @@ class Layout extends Component {
         showPopUp: false,
         isSubscribeFieldCorrect: false,
         showBorderDanger: false,
+        isLoggedIn: false
     }
 
     showPopUpHandler = () => {
@@ -45,6 +46,33 @@ class Layout extends Component {
         }
     }
 
+    handleLogin = () => {
+        this.setState(prevState => ({
+            isLogin: !prevState.isLogin
+        }))
+    }
+
+    addUsername = (username) => {
+        this.setState({
+            username: username
+        })
+    }
+
+    onClickLogOut = () => {
+        localStorage.setItem("username", "")
+        localStorage.setItem("isLoggedIn", "NO")
+        localStorage.setItem("isAdmin", "NO")
+        this.setState({
+            isLoggedIn: false
+        })
+    }
+
+    onClickLogIn = () => {
+        this.setState(prevState => ({
+            isLoggedIn: true
+        }))
+    }
+
     render() {
 
         return (
@@ -52,10 +80,17 @@ class Layout extends Component {
             <div className="container-wrapper">
 
                 {/*MRHeader*/}
-                <Header/>
+                <Header
+                    logOut={this.onClickLogOut.bind(this)}
+                    isLoggedIn={this.state.isLoggedIn}
+                />
 
                 {/*Main*/}
-                <Main/>
+                <Main logIn={this.onClickLogIn}
+                      isLoggedIn={this.state.isLoggedIn}
+                      handleLogin={this.handleLogin.bind(this)}
+                      addUsername={this.addUsername.bind(this)}
+                />
 
                 {/*Subscribe Pop Up*/}
                 {

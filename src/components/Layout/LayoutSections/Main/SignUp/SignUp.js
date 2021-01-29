@@ -73,7 +73,7 @@ class SignUp extends Component {
                 newUser: obj
             })
         } else if (event.target.name === "su-password") {
-            const hashedPassword = passwordHash.generate(this.state.newUser.password);
+            const hashedPassword = passwordHash.generate(event.target.value);
             obj = {
                 ...this.state.newUser,
                 password: hashedPassword,
@@ -96,19 +96,20 @@ class SignUp extends Component {
                     isEmailExist: response.data.success,
                 })
             }
-            console.log(response.data.success)
-            console.log(this.state.isEmailExist)
         })
 
-        console.log(this.state.isEmailExist)
         if (this.state.isEmailExist === false) {
-            console.log("!isEmailExist")
+
             let firstName = this.state.newUser.firstName;
             let lastName = this.state.newUser.lastName;
-            let username = firstName + "." + lastName;
             let newUser;
             let flag = false;
             let i = 1;
+
+            firstName = firstName.toLowerCase()[0].toUpperCase() + firstName.toLowerCase().slice(1, firstName.length);
+            lastName = lastName.toLowerCase()[0].toUpperCase() + lastName.toLowerCase().slice(1, lastName.length);
+            let username = firstName + "." + lastName;
+
             while (!flag) {
 
                 await UserCalls.fetchIsUserExist(username).then((response) => {
@@ -118,10 +119,16 @@ class SignUp extends Component {
                 })
 
                 if (!this.state.isUserExist) {
+                    let email = {
+                        email: this.state.newUser.email.email.toLowerCase()
+                    }
                     newUser = {
                         ...this.state.newUser,
                         username: username,
-                        signUpDate: new Date()
+                        firstName: firstName,
+                        lastName: lastName,
+                        signUpDate: new Date(),
+                        email: email
                     }
                     postUser.addUser(newUser).then(response => {
                         console.log(response.data);
@@ -239,7 +246,6 @@ class SignUp extends Component {
                                         </div>
 
                                     </form>
-
 
                                     <hr/>
 

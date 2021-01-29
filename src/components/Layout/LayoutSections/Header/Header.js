@@ -3,8 +3,10 @@ import React from "react";
 import './Header.css';
 
 import YYLogo1 from '../../../../images/Logo/yy-logo-8.svg'
+import HeaderComponent from "./HeaderComponents/HeaderComponent";
+import HeaderUsername from "./HeaderComponents/HeaderUsername";
 
-const Header = () => {
+const Header = (props) => {
 
     return (
 
@@ -29,28 +31,16 @@ const Header = () => {
                         <li className="pl-1"><a href="/">Our Plans</a></li>
                         <li><a href="/">How It Works</a></li>
                         <li><a href="/">Pricing</a></li>
-                        <li><a href="/">Gifts</a></li>
                     </ul>
 
                 </div>
 
-                {/*nav-menu right side*/}
-                <div className="nav-menu-right d-flex">
-
-                    <ul className="nav navbar-nav flex-row nav-menu align-items-center font-weight-bold">
-
-                        <li className="pl-2">
-                            <a href="/log-in">Log In</a>
-                        </li>
-
-                        <li className="pl-2">
-                            <a href="/join-now">Sign Up</a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
+                {
+                    localStorage.getItem("isLoggedIn") === "YES"
+                    ?
+                    <HeaderUsername logOut={props.logOut} /> :
+                    <HeaderComponent/>
+                }
 
             </div>
 

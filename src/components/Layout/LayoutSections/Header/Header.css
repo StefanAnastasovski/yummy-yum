@@ -32,3 +32,22 @@
 .header-wrapper .no-border {
     border: none !important;
 }
+
+.header-wrapper .btn-log-out{
+    background-color: #579843;
+    border:none;
+    border: 1px solid #530ea2;
+    border-radius: 10px;
+    padding: 0 10px;
+    height: 80%;
+    display: flex;
+}
+
+.header-wrapper .btn-log-out:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}

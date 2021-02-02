@@ -15,10 +15,6 @@ import Aux from "../../../../hoc/Auxilliary";
 
 class Footer extends Component {
 
-    state = {
-        shouldReset: "koko"
-    }
-
     handleSubmit(event) {
         event.preventDefault();
         if(!(!this.props.showBorderDanger && this.props.showPopUp))
@@ -26,10 +22,9 @@ class Footer extends Component {
     }
 
     render() {
-
         let urlPath = window.location.pathname
         let showFooterNavMenu = "";
-        let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password"];
+        let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password", "/weekly-menu", "/meals/"];
 
         if (showFooterNavMenu === "")
             if (urlShowFooterPaths.includes(urlPath)) {

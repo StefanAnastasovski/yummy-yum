@@ -6,6 +6,9 @@ import './WeeklyMenu.css';
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
 import NextIcon from "./WeekIcons/NextIcon";
 import PreviousIcon from "./WeekIcons/PreviousIcon";
+import Menu from "./Menu";
+import MenuCalls from "../../../../../repository/get/getMenu";
+
 
 class WeeklyMenu extends Component {
 
@@ -18,15 +21,75 @@ class WeeklyMenu extends Component {
         weekSelect: "",
         weekSelectDate: "",
         redirect: false,
-        mealName: "",
+        mealRecipes: [],
+        objMeals: [],
+        obj: {},
+        mealRecipe: {
+            mealName: "",
+            mealDescription: "",
+            mealTimeTag: "",
+            mealIngredientTag: "",
+            price: 6.99,
+            mealCategory: "",
+            mealOverview: {
+                difficultyLevel: "",
+                spiceLevel: "",
+                prepCookTime: "",
+                cookWithin: 1
+            },
+            mealChef: {
+                fullName: "",
+                chefMealDescription: ""
+            },
+            mealBox: {
+                serveQuantity: 2,
+                mealIngredients: ""
+            },
+            mealBoxNutrition: {
+                calories: 0,
+                protein: 0,
+                carbohydrates: 0,
+                fat: 0
+            },
+            cookingSteps: {
+                stepNumber: 1,
+                stepTitle: "",
+                stepDescription: ""
+            },
+            recipeSteps: {
+                mealUtensilsRow1: "",
+                mealUtensilsRow2: ""
+            },
+            recipeInstructions: {
+                cookSteps: "",
+                guidelines: "",
+                customizeInstructions: ""
+            }
+        },
+        isMix: true,
+        menu: [],
+        mixMenu: [],
+        loading: true,
+        menuCards: []
+
     }
 
     onClickMealFilter = (event) => {
+        console.log(event.target)
+        if (event.target.value === "Mix") {
+            this.setState({
+                mealFilter: event.target.value,
+                showMealFilterClass: "",
+                isMix: true
+            });
+        } else {
+            this.setState({
+                mealFilter: event.target.value,
+                showMealFilterClass: "",
+                isMix: false,
+            });
 
-        this.setState({
-            mealFilter: event.target.value,
-            showMealFilterClass: "",
-        });
+        }
 
     }
 
@@ -51,19 +114,134 @@ class WeeklyMenu extends Component {
 
     }
 
-    componentDidMount() {
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     return !nextState.loading;
+    // }
+
+    getMenuByMenuName = async (menuName) => {
+
+        await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
+
+            this.setState({
+                menu: response.data.mealCategories
+            })
+
+        }).catch(function (error) {
+            console.log(error)
+        })
+        // });
+        return this.state.menu;
+    }
+
+    getRndInteger = (min, max) => {
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    async componentDidMount() {
+
         window.scrollTo(0, 0);
-        console.log(this.props)
+
+        await this.getMenuByMenuName("M1");
+        await this.createMixMenu();
+        await this.createAllMenus();
+        await this.setDate();
+        await this.isLoadingDone()
+
+
+        // this.createMixMealMenu();
+
+
+    }
+
+    setDate = async () => {
         let [mondayDate, month] = this.getMondayInWeek();
         let mondayDateWithSuffix = this.addDateSuffix(mondayDate);
         let monthName = this.addMonthName(month);
+        let date = [mondayDate, month, mondayDateWithSuffix, monthName];
         this.setState({
             weekSelect: "Week Of Monday, " + monthName + " " + mondayDateWithSuffix,
             weekSelectDate: mondayDate,
             weekMonth: month
         })
 
+        return date;
+
     }
+
+    createMixMenu = async () => {
+        let obj = {};
+        let mixMenu = [];
+        let mealCategoryLength;
+        let mealsLength;
+        let isElementExistInArray = false;
+        let isElementExistInArrayNext = false;
+
+        let i = 0;
+
+        while (i < 9) {
+
+            isElementExistInArray = false;
+            isElementExistInArrayNext = false;
+            mealCategoryLength = this.getRndInteger(0, 4);
+            mealsLength = this.getRndInteger(0, 8);
+
+            obj = {
+                category: this.state.menu[mealCategoryLength].category,
+                meal: this.state.menu[mealCategoryLength].meals[mealsLength]
+            }
+
+            if (mixMenu.length === 0) {
+                mixMenu.push(obj);
+                i++;
+            }
+
+            if (mixMenu.length > 0) {
+
+                for (let q = 0; q < mixMenu.length; q++) {
+
+                    if (mixMenu[q].meal.mealName === obj.meal.mealName) {
+                        isElementExistInArrayNext = true;
+                    }
+
+                    if (!isElementExistInArray && isElementExistInArrayNext) {
+                        isElementExistInArray = isElementExistInArrayNext
+                    }
+
+                }
+
+                if (!isElementExistInArray) {
+                    mixMenu.push(obj);
+                    i++;
+                }
+
+            }
+
+        }
+
+
+        this.setState({
+            mixMenu: mixMenu
+        })
+
+        return mixMenu
+    }
+
+    createAllMenus = async () => {
+
+        let allMenu = [];
+        let menu;
+        let mealsLength = this.state.menu.length;
+        console.log(this.state.menu)
+        for (let i = 0; i < mealsLength; i++) {
+            menu = this.state.menu[i].meals;
+            allMenu.push(menu);
+        }
+
+        this.setState({
+            menu: allMenu
+        })
+    }
+
 
     getMondayInWeek = () => {
 
@@ -153,6 +331,8 @@ class WeeklyMenu extends Component {
     }
 
     setRedirect = (mealName) => {
+        console.log("Set Rediredct")
+        console.log(mealName)
         this.setState({
             redirect: true,
             mealName: mealName
@@ -163,152 +343,49 @@ class WeeklyMenu extends Component {
     renderRedirect = () => {
         if (this.state.redirect) {
             // let path = `/weekly-menu/meal-recipe/${mealName}`
-            return <Redirect to={`/meals/${this.state.mealName}`}/>
+            return <Redirect to={`/meals/2${this.state.mealName}`}/>
         }
     }
 
-    routeChange = () => {
-        // let history = useHistory();
-        // console.log(history)
-        // this.props.history.push('/rec-1/');
+    isLoadingDone = () => {
+        this.setState({
+            loading: false
+        })
 
     }
 
     render() {
-
-        let rowNumbers = 3;
-        let itemNumbers = 3;
-        let rows = [];
-        let cardID = 0;
-        let columnID = 0;
-        let rowID = 0;
-
-        for (let i = 0; i < rowNumbers; i++) {
-
-            let items = [];
-            for (let j = 0; j < itemNumbers; j++) {
-                items.push(
-                    <li key={columnID++} className="col m-3">
-                        <WeeklyMenuCard key={"CardID" + cardID++} clicked={this.setRedirect.bind(this, cardID)}/>
-                    </li>
-                )
-            }
-            rows.push(
-                <ul key={"row" + rowID++} className="row">
-                    {items}
-                </ul>
-            );
-        }
-
+        console.log("redirect: " + this.state.redirect);
+        console.log("redirect: " + this.state.mealName);
         return (
 
             <div className="weekly-menu-wrapper">
 
+                {/*{!this.state.loading ?*/}
+
                 <div className="container">
 
-                    <h1 className="text-center py-5">Weekly Menu</h1>
-
-                    <div className="wm-nav d-flex justify-content-between">
-
-                        <h3 className="">Meal Kits</h3>
-
-                        <div className="wm-nav-right-menu d-flex align-items-center w-50 justify-content-end">
-
-                            <h4 className="pr-3">Meal Filter: </h4>
-
-                            <div className="wm-nav-ddm-main">
-
-                                <ul className="wm-ddm-main">
-
-                                    <li>
-                                        <input type="submit" onClick={this.onClickShowMealFilter}
-                                               value={this.state.mealFilter}
-                                               className={"wm-ddm-btn font-size-1 " +
-                                               this.state.showMealFilterBtnForm}/>
-                                    </li>
-
-                                    <li>
-
-                                        <ul className={"dd-menu " + this.state.showMealFilterClass}>
-
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Mix"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Adventurous"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Quick and Simple"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Low-Cal"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Carb-Conscious"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-                                            <li>
-                                                <input type="submit" onClick={this.onClickMealFilter}
-                                                       value="Vegetarian"
-                                                       className="wm-ddm-btn font-size-1"/>
-                                            </li>
-
-                                        </ul>
-
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div className="wm-menu-cards">
-
-                        <div className="row">
-
-                            {this.renderRedirect()}
-                            <ul>
-
-                                {rows}
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                    <div className="wm-week-slider d-flex justify-content-center py-5">
-
-                        <div className="wm-icon" onClick={this.onClickPreviousWeek}>
-                            <PreviousIcon/>
-                        </div>
-
-                        <div>
-                            <h3>{this.state.weekSelect}</h3>
-                        </div>
-
-                        <div className="wm-icon" onClick={this.onClickNextWeek}>
-                            <NextIcon/>
-                        </div>
-
-                    </div>
+                    <Menu
+                        mealFilter={this.state.mealFilter}
+                        showMealFilterBtnForm={this.state.showMealFilterBtnForm}
+                        showMealFilterClass={this.state.showMealFilterClass}
+                        redirect={this.renderRedirect}
+                        onClickPreviousWeek={this.onClickPreviousWeek.bind(this)}
+                        onClickNextWeek={this.onClickNextWeek.bind(this)}
+                        onClickMealFilter={this.onClickMealFilter.bind(this)}
+                        onClickShowMealFilter={this.onClickShowMealFilter.bind(this)}
+                        weekSelect={this.state.weekSelect}
+                        mixRows={this.state.mixMenu}
+                        menu={this.state.menu}
+                        mealName={this.state.mealName}
+                        mealMenuName={this.state.mealFilter}
+                        isMix={this.state.isMix}
+                        setRedirect={this.setRedirect}
+                    />
 
                 </div>
 
             </div>
-
         )
     }
 

@@ -6,14 +6,80 @@ import Main from "./LayoutSections/Main/Main";
 
 import './Layout.css';
 import SubscribePopUp from "./LayoutSections/PopUp/SubscribePopUp";
+//
+// import MenuCalls from "../../repository/get/getMenu";
+// import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
 
 class Layout extends Component {
-
+//
     state = {
         showPopUp: false,
         isSubscribeFieldCorrect: false,
         showBorderDanger: false,
-        isLoggedIn: false
+        isLoggedIn: false,
+
+        //weekly-menu
+        mealRecipe: {
+            mealName: "",
+            mealDescription: "",
+            mealTimeTag: "",
+            mealIngredientTag: "",
+            price: 6.99,
+            mealCategory: "",
+            mealOverview: {
+                difficultyLevel: "",
+                spiceLevel: "",
+                prepCookTime: "",
+                cookWithin: 1
+            },
+            mealChef: {
+                fullName: "",
+                chefMealDescription: ""
+            },
+            mealBox: {
+                serveQuantity: 2,
+                mealIngredients: ""
+            },
+            mealBoxNutrition: {
+                calories: 0,
+                protein: 0,
+                carbohydrates: 0,
+                fat: 0
+            },
+            cookingSteps: {
+                stepNumber: 1,
+                stepTitle: "",
+                stepDescription: ""
+            },
+            recipeSteps: {
+                mealUtensilsRow1: "",
+                mealUtensilsRow2: ""
+            },
+            recipeInstructions: {
+                cookSteps: "",
+                guidelines: "",
+                customizeInstructions: ""
+            }
+        },
+        menu: [],
+        allMenu: [],
+        mixMenu: [],
+        isRows: false,
+        rows: []
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log("nextState")
+        console.log(nextState)
+        console.log("nextProps")
+        console.log(nextProps)
+        return true
+    }
+
+    async componentDidMount() {
+        // await this.getMenuByMenuName("M1");
+        // await this.createMixMenu();
+        // await this.createAllMenus();
     }
 
     showPopUpHandler = () => {
@@ -68,12 +134,15 @@ class Layout extends Component {
     }
 
     onClickLogIn = () => {
-        this.setState(prevState => ({
+        this.setState({
             isLoggedIn: true
-        }))
+        })
     }
 
+
+
     render() {
+        console.log("render")
 
         return (
 
@@ -86,7 +155,8 @@ class Layout extends Component {
                 />
 
                 {/*Main*/}
-                <Main logIn={this.onClickLogIn}
+                <Main
+                      logIn={this.onClickLogIn}
                       isLoggedIn={this.state.isLoggedIn}
                       handleLogin={this.handleLogin.bind(this)}
                       addUsername={this.addUsername.bind(this)}
@@ -115,7 +185,7 @@ class Layout extends Component {
 
 
             </div>
-
+            //
         )
 
     }

@@ -5,6 +5,8 @@ import TopMenuAllImages from "../../Home/Sections/Section4-Menus/TopMenuAllImage
 
 const WeeklyMenuCard = (props) => {
 
+    let mealIngretientTags = props.meal.mealIngredientTag.split(", ");
+
     return (
 
         <div className="card" id={props.id} onClick={props.clicked}>
@@ -13,12 +15,13 @@ const WeeklyMenuCard = (props) => {
 
             <div className="card-body">
 
-                <h4 className="card-title">Card title</h4>
+                <h4 className="card-title">
+                    {props.meal.mealName}
+                </h4>
 
-                <p className="card-text text-color-green">This is a wider card with supporting text
-                    below as a
-                    natural lead-in to additional content. This content is a little bit
-                    longer.</p>
+                <p className="card-text text-color-green">
+                    {props.meal.mealDescription}
+                </p>
 
             </div>
 
@@ -26,22 +29,20 @@ const WeeklyMenuCard = (props) => {
 
                 <ul className="wm-tags">
                     <li className="wm-tags-time">
-                        <small className="text-muted">35-45 Min</small>
+                        <small className="text-muted">
+                            {props.meal.mealTimeTag}
+                        </small>
                     </li>
                 </ul>
 
                 <ul className="wm-tags-ingredients d-flex justify-content-between mr-1">
-                    <li className="">
-                        <small className="text-muted">milk</small>
-                    </li>
 
-                    <li className="">
-                        <small className="text-muted">fish</small>
-                    </li>
-
-                    <li>
-                        <small className="text-muted">wheat</small>
-                    </li>
+                    {mealIngretientTags.map(item => {
+                        return <li key={item} className="">
+                            <small className="text-muted">{item}</small>
+                        </li>
+                    })
+                    }
 
                 </ul>
 

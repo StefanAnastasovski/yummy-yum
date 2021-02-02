@@ -3,23 +3,45 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/ApiTest/User.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/ApiTest/funcAddNewUser.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/ApiTest/funcIsUserExist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/HeaderComponents/HeaderComponent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/HeaderComponents/HeaderUsername.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postLogin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/get/getMealRecipe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/repository/get/getMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,10 +73,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="E:\Coding Programs\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -99,7 +125,12 @@
       <workItem from="1611658516798" duration="29942000" />
       <workItem from="1611762731019" duration="9081000" />
       <workItem from="1611860208574" duration="2215000" />
-      <workItem from="1611945974484" duration="5420000" />
+      <workItem from="1611945974484" duration="24406000" />
+      <workItem from="1612047877759" duration="22700000" />
+      <workItem from="1612117055030" duration="9580000" />
+      <workItem from="1612171561491" duration="32305000" />
+      <workItem from="1612269927099" duration="3900000" />
+      <workItem from="1612297790000" duration="9066000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -122,11 +153,41 @@
       <option name="project" value="LOCAL" />
       <updated>1611693363561</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Login - create Login + Modifications">
+      <created>1611956271144</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611956271144</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="weeklymenu" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -139,6 +200,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Login - create Login + Modifications" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="828" y="412" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1612218577900" />
     <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1610751744650">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -147,6 +212,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1611956269087" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1612305682426">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612305682426" />
     <state x="740" y="262" key="FileChooserDialogImpl" timestamp="1611510606929">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -155,25 +224,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610668047416" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1611696689081">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1612299976856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1611696689081" />
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1612299976856" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1611508610532">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1611508610532" />
-    <state x="667" y="253" width="873" height="534" key="find.popup" timestamp="1611952731891">
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1612193271527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="873" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611952731891" />
-    <state x="615" y="244" key="run.anything.popup" timestamp="1611678655785">
+    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1612193271527" />
+    <state x="615" y="244" key="run.anything.popup" timestamp="1612193282404">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611678655785" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611949144147">
+    <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1612193282404" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611974018113">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611949144147" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611974018113" />
   </component>
 </project>

@@ -12,10 +12,10 @@ const Main = (props) => {
         <div className="main-wrapper">
 
             {/*MainRouter - Routing Main components*/}
-            <MainRouter logIn = {props.logIn}
-                        isLoggedIn = {props.isLoggedIn}
-                        handleLogin = {props.handleLogin}
-                        addUsername = {props.addUsername}
+            <MainRouter logIn={props.logIn}
+                        isLoggedIn={props.isLoggedIn}
+                        handleLogin={props.handleLogin}
+                        addUsername={props.addUsername}
             />
 
         </div>

@@ -67,7 +67,8 @@ class MainRouter extends Component {
 
                         <Route exact path="/weekly-menu">
 
-                            <WeeklyMenu/>
+                            <WeeklyMenu
+                            />
 
                         </Route>
 
@@ -89,10 +90,10 @@ class MainRouter extends Component {
 
                         <Route exact path="/log-in">
 
-                            <Login logIn = {this.props.logIn}
-                                   isLoggedIn = {this.props.isLoggedIn}
-                                   handleLogin = {this.props.handleLogin}
-                                   addUsername = {this.props.addUsername}
+                            <Login logIn={this.props.logIn}
+                                   isLoggedIn={this.props.isLoggedIn}
+                                   handleLogin={this.props.handleLogin}
+                                   addUsername={this.props.addUsername}
                             />
 
                         </Route>

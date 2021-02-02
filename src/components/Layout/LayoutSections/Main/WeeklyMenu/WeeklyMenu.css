@@ -99,6 +99,7 @@
 .main-wrapper .weekly-menu-wrapper ul.wm-tags-ingredients li:not(:last-child)::after {
     content: "\00B7";
     padding: 0 4px;
+    color: #530ea2;
 }
 
 .main-wrapper .weekly-menu-wrapper .wm-icon svg:hover {

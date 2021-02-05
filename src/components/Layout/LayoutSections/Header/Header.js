@@ -27,9 +27,9 @@ const Header = (props) => {
                                 />
                             </a>
                         </li>
-                        <li className="pl-1"><a href="/">Our Plans</a></li>
+                        <li className="pl-1"><a href="/weekly-menu">Our Plans</a></li>
                         <li><a href="/">How It Works</a></li>
-                        <li><a href="/">Pricing</a></li>
+                        {/*<li><a href="/">Pricing</a></li>*/}
                     </ul>
 
                 </div>

@@ -1,1 +1,19 @@
 /*MRHeader*/
+
+.meal-recipe-wrapper .mr-header-wrapper .btn-add-to-cart{
+    border: 1px solid #530ea2;
+    border-radius: 10px;
+    padding: 15px 40px;
+    background-color: #579843;
+    color: #530ea2;
+    font-size: 1.5em;
+}
+
+
+.meal-recipe-wrapper .mr-header-wrapper .btn-add-to-cart:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}

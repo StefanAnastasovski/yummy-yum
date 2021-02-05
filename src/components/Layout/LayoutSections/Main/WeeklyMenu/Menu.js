@@ -50,7 +50,7 @@ class Menu extends Component {
             keyIndex1 = 3;
             keyIndex2 = 33;
         }
-        let row = meals.slice(rowSlice[0], rowSlice[1]).map((item, index) => {
+        return meals.slice(rowSlice[0], rowSlice[1]).map((item, index) => {
             let margin = "";
             if (index === 1) {
                 margin = "mx-3";
@@ -58,11 +58,9 @@ class Menu extends Component {
             return <li key={"CardID" + keyIndex1 + index} className={"col " + margin}><WeeklyMenuCard
                 meal={item.meal}
                 key={"CardID" + keyIndex2 + index}
-                clicked={this.setCardRedirect.bind(this, keyIndex2 + index)}
+                clicked={this.setCardRedirect.bind(this, item.meal.mealName)}
             /></li>
         });
-
-        return row;
     }
 
     setCardRedirect = (mealName) => {
@@ -70,13 +68,12 @@ class Menu extends Component {
         this.setState({
             recipeRedirect: true
         })
-        console.log(mealName)
     }
 
     checkRecipeRedirect = () => {
         if (this.state.recipeRedirect) {
-            // let path = `/weekly-menu/meal-recipe/${mealName}`
-            return <Redirect to={`/meals/2${this.props.mealName}`}/>
+            localStorage.setItem("mealName", this.props.mealName);
+            return <Redirect to={`/meals/${this.props.mealName}`}/>
         }
     }
 
@@ -98,7 +95,7 @@ class Menu extends Component {
     }
 
     render() {
-        console.log(this.state.recipeRedirect)
+
         let row1, row2, row3;
         let menu = [];
         if (this.props.isMix) {

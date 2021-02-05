@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
 
 import TopMenuInfo from "./Section4-Menus/TopMenuInfo";
 
@@ -22,18 +21,10 @@ class Section4 extends Component {
         mealName4: "Korean Fried Chicken",
         mealText4: "with edamame rice",
         //
-        redirect: null,
         chooseMenu: "Adventurous",
         showChooseMenu: false,
         showChooseMenuClass: "",
         showChooseMenuBtnForm: ""
-
-    }
-
-    onSubmit = () => {
-        this.setState({
-            redirect: "/weekly-menu"
-        })
 
     }
 
@@ -44,10 +35,6 @@ class Section4 extends Component {
             showChooseMenuBtnForm: ""
         });
 
-    }
-
-    redirectToAnotherPage = (path) => {
-        return <Redirect to={path} />
     }
 
     onClickShowChooseMenu = () => {
@@ -71,11 +58,6 @@ class Section4 extends Component {
     }
 
     render() {
-
-        if (this.state.redirect) {
-            return this.redirectToAnotherPage(this.state.redirect);
-
-        }
 
         return (
 
@@ -159,9 +141,12 @@ class Section4 extends Component {
                                 {/*See Full Menu*/}
                                 <div className="ms4-full-menu-btn d-flex justify-content-center pt-5">
 
-                                    <input type="submit" onClick={this.onSubmit}
-                                            value="See Full Menu"
-                                            className="ms4-fm-btn font-size-1"/>
+                                    <a href="/weekly-menu"
+                                       className="ms4-fm-btn font-size-1 px-5 py-2
+                                       text-decoration-none d-flex justify-content-center align-items-center">
+                                        See Full Menu
+                                    </a>
+
                                 </div>
 
 

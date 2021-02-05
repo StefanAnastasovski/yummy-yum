@@ -1,26 +1,8 @@
-import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
+import React from "react";
 
 import IMG1 from '../../../../../../images/HomeComponent/ms1-images/ms1-img-1.jpg'
 
-class Section1 extends Component {
-
-    state = {
-        redirect: null
-    }
-
-    onSubmit = () => {
-        this.setState({
-            redirect : "/choices"
-        })
-    }
-
-    render() {
-
-        //Redirect to /choices
-        if(this.state.redirect){
-            return <Redirect to={this.state.redirect}/>
-        }
+const Section1 = () => {
 
         return (
 
@@ -52,8 +34,12 @@ class Section1 extends Component {
 
                         </h2>
 
-                        <input type="submit" onClick={this.onSubmit} value="Pick Your Meal"
-                               className="ms1-pym-btn pick-your-meal w-25"/>
+                        <div className="my-4">
+                            <a href="/choices" className="ms1-pym-btn pick-your-meal px-5 py-3 text-decoration-none ">
+                                Pick Your Meal
+                            </a>
+                        </div>
+
                     </div>
 
                 </div>
@@ -61,8 +47,6 @@ class Section1 extends Component {
             </div>
 
         )
-
-    }
 
 };
 

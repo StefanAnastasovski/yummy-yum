@@ -80,6 +80,10 @@ class Layout extends Component {
         // await this.getMenuByMenuName("M1");
         // await this.createMixMenu();
         // await this.createAllMenus();
+        let urlPath = window.location.pathname;
+        if(!/\/meals/.test(urlPath)){
+            localStorage.setItem("mealName", "")
+        }
     }
 
     showPopUpHandler = () => {

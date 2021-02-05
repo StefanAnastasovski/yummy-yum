@@ -154,7 +154,6 @@ svg:hover {
 .main-wrapper .main-section-4 .ms4-full-menu-btn .ms4-fm-btn {
     width: 50%;
     border: none;
-    padding: 10px 20px;
     border-radius: 10px;
     color: #4a099a;
     background-color: #6b9958;
@@ -182,7 +181,7 @@ svg:hover {
 .main-wrapper .main-section-5 .ms5-mk-btn {
     border: none;
     border-radius: 10px;
-    padding: 0.5em 1em;
+    padding: 1em 1em;
     background-color: #6b9958;
 }
 

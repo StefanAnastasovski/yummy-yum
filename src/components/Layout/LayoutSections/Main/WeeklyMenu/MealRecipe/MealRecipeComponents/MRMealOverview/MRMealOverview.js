@@ -4,8 +4,49 @@ import './MRMealOverview.css';
 
 import Aux from "../../../../../../../../hoc/Auxilliary";
 
-const MRMealOverview = () => {
+const MRMealOverview = (props) => {
 
+    let dfArray = [<li key="dl-1">
+        <span className={"difficulty-lvl-item mr-2 "}/></li>,
+        <li key="d-l2"><span className={"difficulty-lvl-item mr-2 "}/></li>,
+        <li key="dl-3"><span className={"difficulty-lvl-item mr-2 "}/></li>
+    ];
+
+    let slArray = [<li key="sl-1">
+        <span className={"difficulty-lvl-item mr-2 "}/></li>,
+        <li key="sl-2"><span className={"difficulty-lvl-item mr-2 "}/></li>,
+        <li key="sl-3"><span className={"difficulty-lvl-item mr-2 "}/></li>];
+
+    let dfLevel = ["Easy", "Intermediate", "Expert"];
+    let spLevel = ["Not Spicy", "Mild", "Medium", "Spicy"];
+
+    let classNameShowLevel = "d-lvl-true";
+
+    dfArray = dfArray.map((item, index) => {
+
+        let span;
+        if (index < props.mealOverview.difficultyLevel) {
+            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " " + "sdf" + index + " "}>
+            </li>
+        } else {
+            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 " + " " + "sdf" + index + " "}>
+            </li>;
+        }
+        return span;
+    })
+
+    slArray = slArray.map((item, index) => {
+
+        let span;
+        if (index < props.mealOverview.spiceLevel) {
+            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " " + "ssl" + index + " "}>
+            </li>
+        } else {
+            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 " + " " + "ssl" + index + " "}>
+            </li>
+        }
+        return span;
+    })
 
     return (
 
@@ -14,11 +55,11 @@ const MRMealOverview = () => {
             <div className="row">
 
                 <div className="mr-mo-item col">
-                    <p>Prep & Cook Time: 35-45 min.</p>
+                    <p>Prep & Cook Time: {props.mealOverview.prepCookTime}</p>
                 </div>
 
                 <div className="mr-mo-item col">
-                    <p>Cook Within: 7 days</p>
+                    <p>Cook Within: {props.mealOverview.cookWithin} days</p>
                 </div>
 
             </div>
@@ -30,12 +71,12 @@ const MRMealOverview = () => {
                     <p>Difficulty Level:</p>
                     <div className="d-flex ml-5">
 
-                        <p>Intermediate</p>
-                        <div className="meal-indicator ml-3 w-auto h-auto d-flex align-items-center">
-                            <span className="difficulty-lvl-item mr-2 d-lvl-true" />
-                            <span className="difficulty-lvl-item mr-2 d-lvl-true" />
-                            <span className="difficulty-lvl-item " />
-                        </div>
+                        <p>{dfLevel[props.mealOverview.difficultyLevel]}</p>
+
+                        <ul className="list-unstyled meal-indicator ml-3 w-auto h-auto d-flex align-items-center">
+                            {dfArray}
+                        </ul>
+
                     </div>
 
                 </div>
@@ -44,13 +85,14 @@ const MRMealOverview = () => {
                     <p>Spice Level: </p>
                     <div className="d-flex ml-5">
 
-                        <p>Mild</p>
-                        <div className="meal-indicator ml-3 w-auto h-auto d-flex align-items-center">
-                            <span className="difficulty-lvl-item mr-2 d-lvl-true" />
-                            <span className="difficulty-lvl-item mr-2 d-lvl-true" />
-                            <span className="difficulty-lvl-item " />
-                        </div>
+                        <p>{spLevel[props.mealOverview.spiceLevel]}</p>
+
+                        <ul className="list-unstyled meal-indicator ml-3 w-auto h-auto d-flex align-items-center">
+                            {slArray}
+                        </ul>
+
                     </div>
+
                 </div>
 
             </div>

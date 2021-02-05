@@ -1,26 +1,8 @@
-import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
+import React from "react";
 
 import IMG2 from '../../../../../../images/HomeComponent/ms6-images/ms6-img-1.jpg'
 
-class Section6 extends Component {
-
-    state = {
-        redirect: null
-    }
-
-
-    onSubmit = () => {
-        this.setState({
-            redirect: "/why-yummyyum"
-        })
-    }
-
-    render() {
-
-        if (this.state.redirect) {
-            return <Redirect to={this.state.redirect}/>
-        }
+const Section6 = () => {
 
         return (
 
@@ -42,10 +24,11 @@ class Section6 extends Component {
                                 nutrition and taste in mind.
                             </p>
 
-                            <div className="ms6-ls-btn text-center mt-2">
+                            <div className="ms6-ls-btn text-center mt-4">
 
-                                <input type="submit" onClick={this.onSubmit} value="Learn More"
-                                       className="ms6-lr-btn w-50"/>
+                                <a href="/why-yummyyum" className="ms6-lr-btn py-2 px-5 text-decoration-none ">
+                                    Learn More
+                                </a>
 
                             </div>
 
@@ -73,7 +56,6 @@ class Section6 extends Component {
             </div>
 
         )
-    }
 
 }
 

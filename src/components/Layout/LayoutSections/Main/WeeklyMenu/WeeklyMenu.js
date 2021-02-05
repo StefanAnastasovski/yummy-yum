@@ -3,9 +3,6 @@ import {Redirect} from "react-router";
 
 import './WeeklyMenu.css';
 
-import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
-import NextIcon from "./WeekIcons/NextIcon";
-import PreviousIcon from "./WeekIcons/PreviousIcon";
 import Menu from "./Menu";
 import MenuCalls from "../../../../../repository/get/getMenu";
 

@@ -68,18 +68,8 @@ class Layout extends Component {
         rows: []
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log("nextState")
-        console.log(nextState)
-        console.log("nextProps")
-        console.log(nextProps)
-        return true
-    }
-
     async componentDidMount() {
-        // await this.getMenuByMenuName("M1");
-        // await this.createMixMenu();
-        // await this.createAllMenus();
+
         let urlPath = window.location.pathname;
         if(!/\/meals/.test(urlPath)){
             localStorage.setItem("mealName", "")

@@ -88,6 +88,8 @@ const MRRecipeSteps = (props) => {
                 </li>;
             }
 
+            return null;
+
         });
 
 

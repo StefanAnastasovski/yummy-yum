@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 
 import './MRMealBox.css';
 
@@ -51,6 +51,8 @@ const MRMealBox = (props) => {
 
                     </li>;
                 }
+
+                return null;
 
             });
 

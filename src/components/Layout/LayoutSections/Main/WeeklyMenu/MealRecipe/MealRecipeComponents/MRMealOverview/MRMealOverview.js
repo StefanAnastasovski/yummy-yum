@@ -26,10 +26,10 @@ const MRMealOverview = (props) => {
 
         let span;
         if (index < props.mealOverview.difficultyLevel) {
-            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " " + "sdf" + index + " "}>
+            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " sdf-" + index}>
             </li>
         } else {
-            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 " + " " + "sdf" + index + " "}>
+            span = <li key={"dl-" + index} className={"difficulty-lvl-item mr-2 sdf-" + index}>
             </li>;
         }
         return span;
@@ -39,10 +39,10 @@ const MRMealOverview = (props) => {
 
         let span;
         if (index < props.mealOverview.spiceLevel) {
-            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " " + "ssl" + index + " "}>
+            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 " + classNameShowLevel + " ssl" + index}>
             </li>
         } else {
-            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 " + " " + "ssl" + index + " "}>
+            span = <li key={"sl-" + index} className={"difficulty-lvl-item mr-2 ssl" + index}>
             </li>
         }
         return span;

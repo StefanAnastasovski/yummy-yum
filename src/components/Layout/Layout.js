@@ -146,7 +146,6 @@ class Layout extends Component {
 
 
     render() {
-        console.log("render")
 
         return (
 

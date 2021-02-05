@@ -22,28 +22,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="WeeklyMenu">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Home 1.2">
       <change afterPath="$PROJECT_DIR$/src/ApiTest/User.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/ApiTest/funcAddNewUser.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/ApiTest/funcIsUserExist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section5.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section6.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section6.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealBox/MRMealBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealBox/MRMealBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealChef/MRMealChef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealChef/MRMealChef.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealOverview/MRMealOverview.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealOverview/MRMealOverview.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealOverview/MRMealOverview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealOverview/MRMealOverview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +120,7 @@
       <workItem from="1612297790000" duration="9143000" />
       <workItem from="1612360021494" duration="10282000" />
       <workItem from="1612483668863" duration="9612000" />
-      <workItem from="1612548723904" duration="4329000" />
+      <workItem from="1612548723904" duration="4799000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -172,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612307184742</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Home v0.5">
+      <created>1612564644829</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1612564644829</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +175,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="text">
+                    <value>
+                      <list>
+                        <option value="home" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -199,7 +203,8 @@
     <MESSAGE value="Sign Up - create User" />
     <MESSAGE value="Login - create Login + Modifications" />
     <MESSAGE value="WeeklyMenu Cards added" />
-    <option name="LAST_COMMIT_MESSAGE" value="WeeklyMenu Cards added" />
+    <MESSAGE value="Home v0.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home v0.5" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
@@ -214,10 +219,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612401375016" />
-    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1612307182073">
+    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1612564642453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1612307182073" />
+    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1612564642453" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1612305682426">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -22,12 +22,10 @@ class Footer extends Component {
     }
 
     render() {
-        let urlPath = window.location.pathname
-        let showFooterNavMenu = "";
-        let urlShowFooterPaths = ["/log-in", "/join-now", "/forgot-password", "/weekly-menu", "/meals/"];
 
-        if (showFooterNavMenu === "")
-            if (urlShowFooterPaths.includes(urlPath)) {
+        let showFooterNavMenu = "";
+
+            if (window.location.pathname !== "/") {
                 showFooterNavMenu = "d-none";
             }
 

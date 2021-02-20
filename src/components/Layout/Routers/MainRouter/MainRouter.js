@@ -14,8 +14,8 @@ import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
 import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
-import User from "../../../../ApiTest/User";
 import AccountCreated from "../../LayoutSections/Main/SignUp/AccountCreated/AccountCreated";
+import HowItWorks from "../../LayoutSections/Main/HowItWorks/HowItWorks";
 
 class MainRouter extends Component {
 
@@ -48,6 +48,16 @@ class MainRouter extends Component {
                         <Route exact path="/choices">
 
                             <CustomizeMeal/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/how-it-works">
+
+                            <HowItWorks/>
 
                         </Route>
 
@@ -144,7 +154,7 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/admin/dashboard">
+                        <Route exact path="/dashboard/admin">
 
                             <AdminDashboard routeComponent="Dashboard"/>
 
@@ -154,7 +164,7 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/admin/dashboard/create-recipe">
+                        <Route exact path="/dashboard/admin/create-recipe">
 
                             <AdminDashboard routeComponent="Create Recipe"/>
 
@@ -164,7 +174,7 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/admin/dashboard/create-menu">
+                        <Route exact path="/dashboard/admin/create-menu">
 
                             <AdminDashboard routeComponent="Create Menu"/>
 
@@ -174,18 +184,12 @@ class MainRouter extends Component {
 
                     <Switch>
 
-                        <Route exact path="/admin/dashboard/send-email">
+                        <Route exact path="/dashboard/admin/send-email">
 
                             <AdminDashboard routeComponent="Send Email"/>
 
                         </Route>
 
-                    </Switch>
-
-                    <Switch>
-                        <Route exact path="/getusers">
-                            <User/>
-                        </Route>
                     </Switch>
 
                 </Router>

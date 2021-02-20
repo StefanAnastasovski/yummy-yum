@@ -65,15 +65,23 @@ class Layout extends Component {
         allMenu: [],
         mixMenu: [],
         isRows: false,
-        rows: []
+        rows: [],
+        isMixCreated: false
     }
 
     async componentDidMount() {
 
         let urlPath = window.location.pathname;
-        if(!/\/meals/.test(urlPath)){
+        if (!/\/meals/.test(urlPath)) {
             localStorage.setItem("mealName", "")
         }
+
+    }
+
+    changeMixCreated = () => {
+        this.setState({
+            isMixCreated: true
+        })
     }
 
     showPopUpHandler = () => {
@@ -134,7 +142,6 @@ class Layout extends Component {
     }
 
 
-
     render() {
 
         return (
@@ -149,10 +156,10 @@ class Layout extends Component {
 
                 {/*Main*/}
                 <Main
-                      logIn={this.onClickLogIn}
-                      isLoggedIn={this.state.isLoggedIn}
-                      handleLogin={this.handleLogin.bind(this)}
-                      addUsername={this.addUsername.bind(this)}
+                    logIn={this.onClickLogIn}
+                    isLoggedIn={this.state.isLoggedIn}
+                    handleLogin={this.handleLogin.bind(this)}
+                    addUsername={this.addUsername.bind(this)}
                 />
 
                 {/*Subscribe Pop Up*/}

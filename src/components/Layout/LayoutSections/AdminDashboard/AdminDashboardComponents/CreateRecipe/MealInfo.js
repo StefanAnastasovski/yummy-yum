@@ -54,8 +54,10 @@ const MealInfo = (props) => {
 
                     <div className="col-4"><label>Meal Price($):</label></div>
                     <div className="col-8"><input required
-                                                  defaultValue="6.99"
+                                                  id="mealPrice"
                                                   className="w-25 text-center" type="number" min="0"
+                                                  defaultValue="6.99"
+                                                  step="0.01"
                                                   onChange={props.onChangeHandleMealPrice}/>
                     </div>
 

@@ -17,7 +17,7 @@ class WeeklyMenu extends Component {
         weekMonthName: "",
         weekSelect: "",
         weekSelectDate: "",
-        redirect: false,
+        // redirect: false,
         mealRecipes: [],
         objMeals: [],
         obj: {},
@@ -67,6 +67,7 @@ class WeeklyMenu extends Component {
         menu: [],
         mixMenu: [],
         loading: true,
+        isMixMenuCreated: false,
         menuCards: []
 
     }
@@ -144,10 +145,6 @@ class WeeklyMenu extends Component {
         await this.setDate();
         await this.isLoadingDone()
 
-
-        // this.createMixMealMenu();
-
-
     }
 
     setDate = async () => {
@@ -215,7 +212,6 @@ class WeeklyMenu extends Component {
 
         }
 
-
         this.setState({
             mixMenu: mixMenu
         })
@@ -228,7 +224,6 @@ class WeeklyMenu extends Component {
         let allMenu = [];
         let menu;
         let mealsLength = this.state.menu.length;
-        console.log(this.state.menu)
         for (let i = 0; i < mealsLength; i++) {
             menu = this.state.menu[i].meals;
             allMenu.push(menu);
@@ -238,7 +233,6 @@ class WeeklyMenu extends Component {
             menu: allMenu
         })
     }
-
 
     getMondayInWeek = () => {
 
@@ -266,12 +260,13 @@ class WeeklyMenu extends Component {
 
         let mondayDate = date;
         let mondayDateWithSuffix;
+        let dateLength = date.toString().length;
 
-        if (mondayDate === 1) {
+        if (parseInt(date.toString()[dateLength-1]) === 1) {
             mondayDateWithSuffix = mondayDate + "st";
-        } else if (mondayDate === 2) {
+        } else if (parseInt(date.toString()[dateLength-1]) === 2) {
             mondayDateWithSuffix = mondayDate + "nd";
-        } else if (mondayDate === 3) {
+        } else if (parseInt(date.toString()[dateLength-1]) === 3) {
             mondayDateWithSuffix = mondayDate + "rd";
         } else {
             mondayDateWithSuffix = mondayDate + "th";
@@ -328,8 +323,6 @@ class WeeklyMenu extends Component {
     }
 
     setRedirect = (mealName) => {
-        console.log("Set Rediredct")
-        console.log(mealName)
         this.setState({
             redirect: true,
             mealName: mealName
@@ -352,8 +345,7 @@ class WeeklyMenu extends Component {
     }
 
     render() {
-        console.log("redirect: " + this.state.redirect);
-        console.log("redirect: " + this.state.mealName);
+
         return (
 
             <div className="weekly-menu-wrapper">
@@ -366,7 +358,7 @@ class WeeklyMenu extends Component {
                         mealFilter={this.state.mealFilter}
                         showMealFilterBtnForm={this.state.showMealFilterBtnForm}
                         showMealFilterClass={this.state.showMealFilterClass}
-                        redirect={this.renderRedirect}
+                        // redirect={this.renderRedirect}
                         onClickPreviousWeek={this.onClickPreviousWeek.bind(this)}
                         onClickNextWeek={this.onClickNextWeek.bind(this)}
                         onClickMealFilter={this.onClickMealFilter.bind(this)}

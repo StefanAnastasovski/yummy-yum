@@ -10,7 +10,6 @@ import SignUp from "../../LayoutSections/Main/SignUp/SignUp";
 import Login from "../../LayoutSections/Main/Login/Login";
 import Terms from "../../LayoutSections/Main/Terms/Terms";
 import PrivacyPolicy from "../../LayoutSections/Main/PrivacyPolicy/PrivacyPolicy";
-import WhyYummyYum from "../../LayoutSections/Main/WhyYummYum/WhyYummyYum";
 import ForgotPassword from "../../LayoutSections/Main/Login/ForgotPassword/ForgotPassword";
 import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe";
 import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
@@ -65,16 +64,6 @@ class MainRouter extends Component {
                         <Route exact path="/how-it-works">
 
                             <HowItWorks/>
-
-                        </Route>
-
-                    </Switch>
-
-                    <Switch>
-
-                        <Route exact path="/why-yummyyum">
-
-                            <WhyYummyYum/>
 
                         </Route>
 

@@ -4,8 +4,11 @@ class SendEmail extends Component {
 
 
     state = {
-        subscribedUsers: 34,
         subscribeOrderListNumber: [1, 2, 3]
+    }
+
+    componentDidMount() {
+
     }
 
 
@@ -63,7 +66,7 @@ class SendEmail extends Component {
                                 <div className="col-2">
 
                                     <p>Subscribed Users: <span
-                                        className="bg-white text-color-green p-2">{this.state.subscribedUsers}</span>
+                                        className="bg-white text-color-green p-2">{this.props.subscribedUsers}</span>
                                     </p>
 
                                     <div className="subscribers-list py-4">

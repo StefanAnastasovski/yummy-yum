@@ -3,8 +3,6 @@ import React from "react";
 
 const MRRecipeStepsCard = (props) => {
 
-    console.log(props)
-
     return (
 
         <div className={"col card meal-steps-card " + props.margin}>

@@ -6,9 +6,9 @@ const Dashboard = (props) => {
 
         <div className="dashboard-wrapper row py-5">
 
-            <div className="col">
+            <div className="col mb-5 border border-success m-5">
 
-                <div className="col d-flex justify-content-center">
+                <div className="col d-flex justify-content-center mt-5">
                     <a className="w-100 text-center" href={window.location.href +"/create-recipe"}>
                         <button className="w-50 btn-create-recipe" onClick={props.onSubmitRoute}>
                             Create Recipe
@@ -24,6 +24,14 @@ const Dashboard = (props) => {
                     </a>
                 </div>
 
+                <div className="col d-flex justify-content-center my-5">
+                        <a className="w-100 text-center" href={window.location.href +"/send-email"}>
+                            <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
+                                Send Email
+                            </button>
+                        </a>
+                    </div>
+
             </div>
 
             <div className="col d-flex flex-column">
@@ -32,24 +40,13 @@ const Dashboard = (props) => {
 
                     <div className="col">
                         <p>Subscribed Users:
-                            <span className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">32</span>
+                            <span className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
+                                {props.SubscribedUsers}
+                            </span>
                         </p>
                     </div>
 
                 </div>
-
-                <div className="row">
-
-                    <div className="col d-flex justify-content-center my-5">
-                        <a className="w-100 text-center" href={window.location.href +"/send-email"}>
-                            <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
-                                Send Email
-                            </button>
-                        </a>
-                    </div>
-
-                </div>
-
 
             </div>
 

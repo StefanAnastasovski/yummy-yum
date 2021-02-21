@@ -6,17 +6,30 @@ import Dashboard from "./AdminDashboardComponents/Dashboard";
 import CreateMenu from "./AdminDashboardComponents/CreateMenu";
 import SendEmail from "./AdminDashboardComponents/SendEmail";
 
+import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
+
 class AdminDashboard extends Component {
 
     state = {
-        routeComponent: "Dashboard"
+        routeComponent: "Dashboard",
+        SubscribedUsers: "",
+
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+
+        window.scrollTo(0, 0);
+
         this.setState({
             routeComponent: this.props.routeComponent
         })
-        window.scrollTo(0, 0);
+
+        await SubscribeEmailCalls.fetchSubscribeEmails().then((response) => {
+
+            this.setState({
+                SubscribedUsers: response.data.length
+            })
+        })
 
     }
 
@@ -33,25 +46,25 @@ class AdminDashboard extends Component {
             this.setState({
                 routeComponent: route
             })
-            window.history.pushState({}, null, "http://localhost:3000/admin/dashboard/create-recipe");
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-recipe");
         } else if (route === "Create Menu") {
             this.setState({
                 routeComponent: route
             })
-            window.history.pushState({}, null, "http://localhost:3000/admin/dashboard/create-menu");
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-menu");
 
         } else if (route === "Send Email") {
             this.setState({
                 routeComponent: route
             })
-            window.history.pushState({}, null, "http://localhost:3000/admin/dashboard/create-email");
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-email");
 
         } else if (route === "<< Go Back to Dashboard") {
             route = "Dashboard";
             this.setState({
                 routeComponent: route
             })
-            window.history.pushState({}, null, "http://localhost:3000/admin/dashboard");
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin");
 
         }
 
@@ -69,10 +82,17 @@ class AdminDashboard extends Component {
             routeComponent = <CreateMenu route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>
 
         } else if (this.state.routeComponent === "Send Email") {
-            routeComponent = <SendEmail route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>
+            routeComponent = <SendEmail
+                subscribedUsers={this.state.SubscribedUsers}
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
 
         } else {
-            routeComponent = <Dashboard route={this.state.routeComponent} onSubmitRoute={this.onSubmitRoute}/>
+            routeComponent = <Dashboard
+                SubscribedUsers={this.state.SubscribedUsers}
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}
+            />
         }
 
         return (

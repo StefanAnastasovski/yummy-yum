@@ -31,9 +31,9 @@ const MealOverview = (props) => {
 
                     <div className="col-4"><label>Cook Within:</label></div>
                     <div className="col-8"><input type="text"
-                                                  placeholder="6 days"
-                                                  className="w-25 px-1"
-                                                  onChange={props.onChangeCookWithinValue}/></div>
+                                                  placeholder="6"
+                                                  className="w-25 px-1 text-center"
+                                                  onChange={props.onChangeCookWithinValue}/><span className="pl-2">days</span></div>
 
                 </div>
 

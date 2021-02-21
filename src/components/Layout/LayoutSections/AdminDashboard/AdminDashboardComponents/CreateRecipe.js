@@ -8,6 +8,8 @@ import RecipeSteps from "./CreateRecipe/RecipeSteps";
 import CookingSteps from "./CreateRecipe/CookingSteps";
 import MealInstructions from "./CreateRecipe/MealInstructions";
 
+import CreateMealCalls from "../../../../../repository/post/postMeal";
+
 class CreateRecipe extends Component {
 
 
@@ -51,11 +53,15 @@ class CreateRecipe extends Component {
         },
 
         cookingSteps: {
-            cookingStepValues: []
+            cookingStepValues: [],
+            stepTitles: [],
+            stepDescriptions: [],
+            cookingStepIMGURLs: []
+
         },
 
         mealInstructions: {
-            customizeInstructions: [],
+            customizeInstructions: "",
             cookSteps: [],
             guidelines: []
         },
@@ -129,7 +135,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeHandleMealPrice = (event) => {
-        let value = event.target.value;
+        let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealInformation: {                   // object that we want to update
                 ...prevState.mealInformation,    // keep all other key-value pairs
@@ -159,7 +165,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeCookWithinValue(event) {
-        let value = event.target.value;
+        let value = parseInt(event.target.value);
         this.setState(prevState => ({
             mealOverview: {                   // object that we want to update
                 ...prevState.mealOverview,    // keep all other key-value pairs
@@ -199,7 +205,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeCalories(event) {
-        let value = event.target.value;
+        let value = parseFloat(event.target.value);
         this.setState({
             mealNutrition: {                   // object that we want to update
                 ...this.state.mealNutrition,    // keep all other key-value pairs
@@ -209,7 +215,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeCarbohydrates(event) {
-        let value = event.target.value;
+        let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
                 ...prevState.mealNutrition,    // keep all other key-value pairs
@@ -219,7 +225,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeProtein(event) {
-        let value = event.target.value;
+        let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
                 ...prevState.mealNutrition,    // keep all other key-value pairs
@@ -229,7 +235,7 @@ class CreateRecipe extends Component {
     }
 
     onChangeFat(event) {
-        let value = event.target.value;
+        let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
                 ...prevState.mealNutrition,    // keep all other key-value pairs
@@ -853,6 +859,8 @@ class CreateRecipe extends Component {
 
         </li>]
 
+        // const price = parseFloat(document.getElementById('mealPrice').value);
+        let price = 6.99;
         this.setState(prevState => ({
             mealIngredients: mealIngredientsList,
             recipeStepList1: recipeStepsList1,
@@ -863,6 +871,10 @@ class CreateRecipe extends Component {
             cookingStepValues: {
                 ...this.state.cookingSteps,
                 cookingStepValues: cookingStepValues
+            },
+            mealInformation: {
+                ...this.state.mealInformation,
+                mealPrice: price,
             },
             mealInstructionCookSteps: mealInstructionCookSteps,
             mealInstructionGuidelines: mealInstructionGuidelines,
@@ -890,24 +902,97 @@ class CreateRecipe extends Component {
             protein: this.state.mealNutrition.protein,
             fat: this.state.mealNutrition.fat,
             serveQuantity: this.state.mealBox.serveQuantity,
-            mealIngredientValues: this.state.mealBox.mealIngredientValues,
-            mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1,
-            mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2,
+            mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
+            mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
+            mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
             cookingStepValues: this.state.cookingSteps.cookingStepValues,
+            cookingSteps: this.state.cookingSteps,
             customizeInstructions: this.state.mealInstructions.customizeInstructions,
-            mealInstructionCookSteps: this.state.mealInstructions.cookSteps,
-            mealInstructionGuidelines: this.state.mealInstructions.guidelines
+            mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
+            mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
         }
 
-        console.log(meal)
+        console.log(meal);
+
 
     }
 
     //---------------------------------------------------------------------------------------
 
     handleSubmit = (event) => {
-        alert('A meal was created!');
+        let obj;
 
+        let stepTitles = [];
+        let stepDescriptions = [];
+        let urls = [];
+
+        this.state.cookingSteps.cookingStepValues.forEach((item, index) => {
+            stepTitles.push(item.stepTitle);
+            stepDescriptions.push(item.stepDescription);
+            urls.push(item.cookingStepIMGURL);
+        })
+
+        stepTitles = stepTitles.join(" | ");
+        stepDescriptions = stepDescriptions.join(" | ");
+
+
+        urls = urls.join(" | ");
+
+        console.log(urls)
+
+        obj = {
+
+            mealName: this.state.mealInformation.mealName,
+            mealDescription: this.state.mealInformation.mealDescription,
+            mealTimeTag: this.state.mealInformation.mealTimeTag,
+            mealIngredientTag: this.state.mealInformation.mealIngredientTag,
+            price: this.state.mealInformation.mealPrice,
+            mealCategory: {
+                category: "Adventurous"
+            },
+            mealOverview: {
+                difficultyLevel: this.state.mealOverview.difficultyLevel,
+                spiceLevel: this.state.mealOverview.spiceLevel,
+                prepCookTime: this.state.mealOverview.prepCookTime,
+                cookWithin: this.state.mealOverview.cookWithin
+            },
+            mealChef: {
+                fullName: this.state.mealChef.chefFullName,
+                chefMealDescription: this.state.mealChef.mealChefDescription
+            },
+            mealBox: {
+                serveQuantity: this.state.mealBox.serveQuantity,
+                mealIngredients: this.state.mealBox.mealIngredientValues.join(" | ")
+            },
+            mealBoxNutrition: {
+                calories: this.state.mealNutrition.calories,
+                protein: this.state.mealNutrition.protein,
+                carbohydrates: this.state.mealNutrition.carbohydrates,
+                fat: this.state.mealNutrition.fat
+            },
+            cookingSteps: {
+                stepNumber: 1,
+                stepTitle: stepTitles,
+                stepDescription: stepDescriptions
+            },
+            recipeSteps: {
+                mealUtensilsRow1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
+                mealUtensilsRow2: this.state.recipeSteps.mealUtensilsList2.join(" | ")
+            },
+            recipeInstructions: {
+                cookSteps: this.state.mealInstructions.cookSteps.join(" | "),
+                guidelines: this.state.mealInstructions.guidelines.join(" | "),
+                customizeInstructions: this.state.mealInstructions.customizeInstructions
+            }
+
+        }
+
+        console.log(obj);
+        CreateMealCalls.createMeal(obj).then(response => {
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
         event.preventDefault();
 
     }
@@ -999,8 +1084,8 @@ class CreateRecipe extends Component {
                                     mealInstructionCookSteps={this.state.mealInstructionCookSteps}
                                     mealInstructionGuidelines={this.state.mealInstructionGuidelines}
                                     addMealInstruction={() => this.addMealInstruction.bind(this)}
-                                    mealInstructionCustomizeInstructions=
-                                        {this.state.mealInstructionCustomizeInstructions}
+                                    // mealInstructionCustomizeInstructions=
+                                    //     {this.state.mealInstructionCustomizeInstructions}
                                 />
                                 </div>
 

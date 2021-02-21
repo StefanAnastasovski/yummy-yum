@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 
 import './WeeklyMenu.css';
 
@@ -6,21 +6,15 @@ import NextIcon from "./WeekIcons/NextIcon";
 import PreviousIcon from "./WeekIcons/PreviousIcon";
 import Aux from "../../../../../hoc/Auxilliary";
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
-import {Redirect} from "react-router";
+// import {Redirect} from "react-router";
 
-class Menu extends Component {
+const Menu = (props) => {
 
-    state = {
-        recipeRedirect: false
-    }
+    // state = {
+    //     recipeRedirect: false
+    // }
 
-    isMixMenu = () => {
-        this.setState({
-            isMix: false
-        })
-    }
-
-    convertMealToRightFormat = (menuList, categoryName) => {
+    let convertMealToRightFormat = (menuList, categoryName) => {
         let menu = menuList.map(item => {
             let obj = {};
             obj = {
@@ -33,7 +27,7 @@ class Menu extends Component {
         return menu;
     }
 
-    createCardRow = (meals, rowNumber) => {
+    let createCardRow = (meals, rowNumber) => {
         let rowSlice;
         let keyIndex1;
         let keyIndex2;
@@ -55,58 +49,71 @@ class Menu extends Component {
             if (index === 1) {
                 margin = "mx-3";
             }
-            return <li key={"CardID" + keyIndex1 + index} className={"col " + margin}><WeeklyMenuCard
-                meal={item.meal}
-                key={"CardID" + keyIndex2 + index}
-                clicked={this.setCardRedirect.bind(this, item.meal.mealName)}
-            /></li>
+            return <li key={"CardID" + keyIndex1 + index} className={"col " + margin}
+                       onClick={populateLocalStorage.bind(this, item.meal.mealName)}
+            >
+                <a href={"/meals/" + item.meal.mealName}>
+                    <WeeklyMenuCard
+                        meal={item.meal}
+                        key={"CardID" + keyIndex2 + index}
+                        // clicked={setCardRedirect.bind(this, item.meal.mealName)}
+                    />
+                </a>
+            </li>
         });
     }
 
-    setCardRedirect = (mealName) => {
-        this.props.setRedirect(mealName)
-        this.setState({
-            recipeRedirect: true
-        })
+    // setCardRedirect = (mealName) => {
+    //     props.setRedirect(mealName)
+    //     setState({
+    //         recipeRedirect: true
+    //     })
+    // }
+
+    // checkRecipeRedirect = (mealName) => {
+    //     // if (state.recipeRedirect) {
+    //     //     {
+    //             localStorage.setItem("mealName", mealName);
+    //             // localStorage.setItem("mealName", props.mealName);
+    //             // return <Redirect to={`/meals/${props.mealName}`}/>
+    //         // }
+    //     // }
+    // }
+
+    let populateLocalStorage = (mealName) => {
+         localStorage.setItem("mealName", mealName);
     }
 
-    checkRecipeRedirect = () => {
-        if (this.state.recipeRedirect) {
-            localStorage.setItem("mealName", this.props.mealName);
-            return <Redirect to={`/meals/${this.props.mealName}`}/>
-        }
-    }
-
-    checkMenuName = (menuName) => {
+    let checkMenuName = (menuName) => {
         let menu;
         if (menuName === "Adventurous") {
-            menu = this.convertMealToRightFormat(this.props.menu[0], menuName)
+            menu = convertMealToRightFormat(props.menu[0], menuName)
         } else if (menuName === "Quick and Simple") {
-            menu = this.convertMealToRightFormat(this.props.menu[1], menuName)
+            menu = convertMealToRightFormat(props.menu[1], menuName)
         } else if (menuName === "Low-Cal") {
-            menu = this.convertMealToRightFormat(this.props.menu[2], menuName)
+            menu = convertMealToRightFormat(props.menu[2], menuName)
         } else if (menuName === "Carb-Conscious") {
-            menu = this.convertMealToRightFormat(this.props.menu[3], menuName)
+            menu = convertMealToRightFormat(props.menu[3], menuName)
         } else if (menuName === "Vegetarian") {
-            menu = this.convertMealToRightFormat(this.props.menu[4], menuName)
+            menu = convertMealToRightFormat(props.menu[4], menuName)
         }
 
         return menu;
     }
 
-    render() {
+    // render() {
 
         let row1, row2, row3;
         let menu = [];
-        if (this.props.isMix) {
-            row1 = this.createCardRow(this.props.mixRows, 1);
-            row2 = this.createCardRow(this.props.mixRows, 2);
-            row3 = this.createCardRow(this.props.mixRows, 3);
+        if (props.isMix) {
+            row1 = createCardRow(props.mixRows, 1);
+            row2 = createCardRow(props.mixRows, 2);
+            row3 = createCardRow(props.mixRows, 3);
         } else {
-            menu = this.checkMenuName(this.props.mealMenuName);
-            row1 = this.createCardRow(menu, 1);
-            row2 = this.createCardRow(menu, 2);
-            row3 = this.createCardRow(menu, 3);
+            menu = checkMenuName(props.mealMenuName);
+            row1 = createCardRow(menu, 1);
+            row2 = createCardRow(menu, 2);
+            row3 = createCardRow(menu, 3);
         }
 
         return (
@@ -121,50 +128,50 @@ class Menu extends Component {
 
                     <div className="wm-nav-right-menu d-flex align-items-center w-50 justify-content-end">
 
-                        <h4 className="pr-3">Meal Filter: </h4>
+                        <h4 className="pr-3">Meal Category: </h4>
 
                         <div className="wm-nav-ddm-main">
 
                             <ul className="wm-ddm-main">
 
                                 <li>
-                                    <input type="submit" onClick={this.props.onClickShowMealFilter}
-                                           value={this.props.mealFilter}
+                                    <input type="submit" onClick={props.onClickShowMealFilter}
+                                           value={props.mealFilter}
                                            className={"wm-ddm-btn font-size-1 " +
-                                           this.props.showMealFilterBtnForm}/>
+                                           props.showMealFilterBtnForm}/>
                                 </li>
 
                                 <li>
 
-                                    <ul className={"dd-menu " + this.props.showMealFilterClass}>
+                                    <ul className={"dd-menu " + props.showMealFilterClass}>
 
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Mix"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Adventurous"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Quick and Simple"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Low-Cal"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Carb-Conscious"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
                                         <li>
-                                            <input type="submit" onClick={this.props.onClickMealFilter}
+                                            <input type="submit" onClick={props.onClickMealFilter}
                                                    value="Vegetarian"
                                                    className="wm-ddm-btn font-size-1"/>
                                         </li>
@@ -185,7 +192,7 @@ class Menu extends Component {
 
                     <div className="row">
 
-                        {this.checkRecipeRedirect()}
+                        {/*{checkRecipeRedirect()}*/}
 
                         <ul>
                             <div className="row py-4">{row1}</div>
@@ -200,15 +207,15 @@ class Menu extends Component {
 
                 <div className="wm-week-slider d-flex justify-content-center py-5">
 
-                    <div className="wm-icon" onClick={this.props.onClickPreviousWeek}>
+                    <div className="wm-icon" onClick={props.onClickPreviousWeek}>
                         <PreviousIcon/>
                     </div>
 
                     <div>
-                        <h3>{this.props.weekSelect}</h3>
+                        <h3>{props.weekSelect}</h3>
                     </div>
 
-                    <div className="wm-icon" onClick={this.props.onClickNextWeek}>
+                    <div className="wm-icon" onClick={props.onClickNextWeek}>
                         <NextIcon/>
                     </div>
 
@@ -218,7 +225,7 @@ class Menu extends Component {
 
         )
 
-    }
+    // }
 
 }
 

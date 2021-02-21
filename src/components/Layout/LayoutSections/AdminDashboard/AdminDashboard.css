@@ -96,3 +96,7 @@
 input[type="file"]{
     background-color: #530ea2;
 }
+
+.dashboard-wrapper div.border.border-success {
+    border-radius: 2em;
+}

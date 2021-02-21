@@ -28,12 +28,8 @@
       <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HIWIcons/OrderIcon.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/HowItWork_Header.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/Icons/checklist.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/Icons/management.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/Icons/meal-kit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/get/getSubscribeEmail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postMeal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/PopUpMessages/LoggedOutMessage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/PopUpMessages/SubscribedMessage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" afterDir="false" />
@@ -52,13 +48,13 @@
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section6.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section6.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/SignUp/SignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WhyYummYum/WhyYummyYum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WhyYummYum/WhyYummyYum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/PopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/PopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/SubscribePopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/PopUp/SubscribePopUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +159,8 @@
       <workItem from="1613253893089" duration="9972000" />
       <workItem from="1613434591855" duration="6934000" />
       <workItem from="1613615033460" duration="551000" />
-      <workItem from="1613784145932" duration="7549000" />
+      <workItem from="1613784145932" duration="7658000" />
+      <workItem from="1613856897184" duration="6957000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -221,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612567575365</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="SignUp validations">
+      <created>1613792748297</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1613792748297</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,25 +267,26 @@
     <MESSAGE value="Home v0.5" />
     <MESSAGE value="Footer v1.3" />
     <MESSAGE value="Warning fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Warning fixed" />
+    <MESSAGE value="SignUp validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="SignUp validations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="828" y="412" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1612218577900" />
-    <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1610751744650">
+    <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1613792767488">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610751744650" />
+    <state x="639" y="256" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613792767488" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612567643723">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612567643723" />
-    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1612567573684">
+    <state x="505" y="88" key="CommitChangelistDialog2" timestamp="1613792745802">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1612567573684" />
+    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1613792745802" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1612305682426">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -298,21 +303,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1613438552502" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1612567594929">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1613867976947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1612567594929" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1613788987892">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613867976947" />
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1613866038105">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613788987892" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613866038105" />
     <state x="615" y="244" key="run.anything.popup" timestamp="1613435423038">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613435423038" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1613790519992">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1613864820424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613790519992" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613864820424" />
   </component>
 </project>

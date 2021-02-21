@@ -7,6 +7,7 @@ import HeaderComponent from "./HeaderComponents/HeaderComponent";
 import HeaderUsername from "./HeaderComponents/HeaderUsername";
 
 const Header = (props) => {
+
     return (
 
         <div className="header-wrapper">
@@ -28,7 +29,7 @@ const Header = (props) => {
                             </a>
                         </li>
                         <li className="pl-1"><a href="/weekly-menu">Our Plans</a></li>
-                        <li><a href="/">How It Works</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
                         {/*<li><a href="/">Pricing</a></li>*/}
                     </ul>
 

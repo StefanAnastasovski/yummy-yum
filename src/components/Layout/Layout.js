@@ -6,7 +6,9 @@ import Main from "./LayoutSections/Main/Main";
 
 import './Layout.css';
 import SubscribePopUp from "./LayoutSections/PopUp/SubscribePopUp";
-//
+import {Redirect} from 'react-router-dom';
+import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
+import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 // import MenuCalls from "../../repository/get/getMenu";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
 
@@ -17,6 +19,7 @@ class Layout extends Component {
         isSubscribeFieldCorrect: false,
         showBorderDanger: false,
         isLoggedIn: false,
+        isRedirectedToHome: false,
 
         //weekly-menu
         mealRecipe: {
@@ -70,10 +73,13 @@ class Layout extends Component {
     }
 
     async componentDidMount() {
-
         let urlPath = window.location.pathname;
         if (!/\/meals/.test(urlPath)) {
             localStorage.setItem("mealName", "")
+        }
+
+        if (localStorage.getItem("isLoggedIn") === "NO" && this.state.isRedirectedToHome) {
+            console.log("dasd")
         }
 
     }
@@ -84,10 +90,17 @@ class Layout extends Component {
         })
     }
 
-    showPopUpHandler = () => {
-        this.setState({
-            showPopUp: !this.state.showPopUp
-        })
+    showPopUpHandler = (popUpName) => {
+        if (popUpName === "logged-in") {
+            this.setState({
+                isRedirectedToHome: !this.state.isRedirectedToHome
+            })
+        } else {
+            this.setState({
+                showPopUp: !this.state.showPopUp
+            })
+        }
+
     }
 
     isSubscribeFieldCorrectHandler = (event) => {
@@ -131,8 +144,10 @@ class Layout extends Component {
         localStorage.setItem("isLoggedIn", "NO")
         localStorage.setItem("isAdmin", "NO")
         this.setState({
-            isLoggedIn: false
+            isLoggedIn: false,
+            isRedirectedToHome: true
         })
+
     }
 
     onClickLogIn = () => {
@@ -158,15 +173,28 @@ class Layout extends Component {
                 <Main
                     logIn={this.onClickLogIn}
                     isLoggedIn={this.state.isLoggedIn}
+                    isRedirectedToHome={this.state.isRedirectedToHome}
                     handleLogin={this.handleLogin.bind(this)}
                     addUsername={this.addUsername.bind(this)}
                 />
+
+                {
+
+                    this.state.isRedirectedToHome &&
+                    <SubscribePopUp
+                        message={LoggedOutMessage}
+                        showPopUp={this.state.showPopUp}
+                        isRedirectedToHome={this.state.isRedirectedToHome}
+                        clicked={this.showPopUpHandler.bind(this, "logged-in")}/>
+
+                }
 
                 {/*Subscribe Pop Up*/}
                 {
                     this.state.showPopUp &&
 
                     <SubscribePopUp
+                        message={SubscribedMessage}
                         showPopUp={this.state.showPopUp}
                         clicked={this.showPopUpHandler}
                         isSubscribeFieldCorrect={this.state.isSubscribeFieldCorrect}

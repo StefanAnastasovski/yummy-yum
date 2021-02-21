@@ -76,7 +76,7 @@ svg:hover {
 
 }
 
-.ddm-btn-bottom-border-radius{
+.ddm-btn-bottom-border-radius {
     border-radius: 10px 10px 0px 0px !important;
 }
 
@@ -194,6 +194,17 @@ svg:hover {
     z-index: 1000;
 }
 
+.main-wrapper .main-section-5 .ms5-img1,
+.main-wrapper .main-section-5 .ms5-img3 {
+    border: 1px solid;
+    box-shadow: 5px 5px rgba(83, 14, 162, 0.3);
+}
+
+.main-wrapper .main-section-5 .ms5-img2 {
+    border: 1px solid;
+    box-shadow: -5px 5px rgba(83, 14, 162, 0.3);
+}
+
 /*section 6*/
 .main-wrapper .main-section-6 .ms6-left-side .ms6-ls-btn .ms6-lr-btn {
 
@@ -217,6 +228,7 @@ svg:hover {
 .main-wrapper .main-section-6 .ms6-img .ms6-img-2 {
     border-radius: 40%;
     object-fit: cover;
+    border: 1px solid;
 }
 
 .main-wrapper .main-section-6 {
@@ -224,6 +236,6 @@ svg:hover {
 }
 
 /*------------*/
-.main-wrapper .ms1-pym-btn, .ms4-ddm-btn, .ms4-fm-btn, .ms5-mk-btn, .ms6-lr-btn{
+.main-wrapper .ms1-pym-btn, .ms4-ddm-btn, .ms4-fm-btn, .ms5-mk-btn, .ms6-lr-btn {
     height: 2.5em;
 }

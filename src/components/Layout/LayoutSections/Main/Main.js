@@ -14,6 +14,7 @@ const Main = (props) => {
             {/*MainRouter - Routing Main components*/}
             <MainRouter logIn={props.logIn}
                         isLoggedIn={props.isLoggedIn}
+                        isRedirectedToHome={props.isRedirectedToHome}
                         handleLogin={props.handleLogin}
                         addUsername={props.addUsername}
             />

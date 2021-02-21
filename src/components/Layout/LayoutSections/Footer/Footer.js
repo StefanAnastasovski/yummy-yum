@@ -46,40 +46,37 @@ class Footer extends Component {
                                 {/*nav-menu footer left side - information*/}
                                 <div className="col-8 nav-menu-footer-left">
 
-                                    <div className="row">
+                                    <div className="row text-center">
 
                                         <div className="col">
 
                                             <h5 className="text-uppercase text-color-green">Service</h5>
                                             <ul className="nav navbar-nav nav-menu">
 
-                                                <li><a href="/">Our Menu</a></li>
-                                                <li><a href="/">How It Works</a></li>
-                                                <li><a href="/">Gift Cards</a></li>
+                                                <li><a href="/weekly-menu">Our Menu</a></li>
+                                                <li><a href="/how-it-works">How It Works</a></li>
                                                 <li><a href="/log-in">Login</a></li>
                                                 <li><a href="/join-now">Sign Up</a></li>
-                                                <li><a href="/">Students</a></li>
                                                 <li><a href="/terms">Terms of Service</a></li>
                                                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                                                <li><a href="/">Do Not Sell My Info</a></li>
 
                                             </ul>
 
                                         </div>
 
-                                        <div className="col">
+                                        {/*<div className="col">*/}
 
-                                            <h5 className="text-uppercase text-color-green">Resources</h5>
-                                            <ul className="nav navbar-nav  nav-menu">
+                                        {/*    <h5 className="text-uppercase text-color-green">Resources</h5>*/}
+                                        {/*    <ul className="nav navbar-nav  nav-menu">*/}
 
-                                                <li><a href="/">The Table</a></li>
-                                                <li><a href="/">Recipe Categories</a></li>
-                                                <li><a href="/">Kitchenware</a></li>
-                                                <li><a href="/"> FAQs & Support</a></li>
+                                        {/*        <li><a href="/">The Table</a></li>*/}
+                                        {/*        <li><a href="/">Recipe Categories</a></li>*/}
+                                        {/*        <li><a href="/">Kitchenware</a></li>*/}
+                                        {/*        <li><a href="/"> FAQs & Support</a></li>*/}
 
-                                            </ul>
+                                        {/*    </ul>*/}
 
-                                        </div>
+                                        {/*</div>*/}
 
                                         <div className="col">
 

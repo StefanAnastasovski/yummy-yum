@@ -26,7 +26,7 @@ const Section6 = () => {
 
                             <div className="ms6-ls-btn text-center mt-4">
 
-                                <a href="/why-yummyyum" className="ms6-lr-btn py-2 px-5 text-decoration-none ">
+                                <a href="/how-it-works" className="ms6-lr-btn py-3 px-5 text-decoration-none ">
                                     Learn More
                                 </a>
 

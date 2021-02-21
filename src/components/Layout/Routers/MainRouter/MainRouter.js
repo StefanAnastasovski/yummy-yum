@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
 import Aux from "../../../../hoc/Auxilliary";
 
@@ -25,13 +25,20 @@ class MainRouter extends Component {
     //
     // };
 
+    redirectToHome = () => {
+        return <Redirect to="/" />
+    }
+
     render() {
+
 
         return (
 
             <Aux>
 
                 <Router>
+
+                    {this.props.isRedirectedToHome ? this.redirectToHome() : null}
 
                     <Switch>
 

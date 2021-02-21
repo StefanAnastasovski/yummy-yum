@@ -88,7 +88,7 @@ class Login extends Component {
 
         if (this.props.isLoggedIn) {
             if (this.state.isAdmin)
-                return <Redirect to="/admin/dashboard"/>
+                return <Redirect to="/dashboard/admin"/>
             else
                 return <Redirect to="/"/>
         }

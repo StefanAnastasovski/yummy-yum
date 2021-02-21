@@ -1,0 +1,37 @@
+/*HowItWorks.css*/
+
+.main-wrapper .how-it-works-wrapper .hiw .hiw-header {
+    background-image: url(
+    "https://homechef.imgix.net/https%3A%2F%2Fwww.homechef.com%2Fassets%2Fmarketing%2Fhow-it-works%2Fsection-one%2Fhero-desktop-991655196472af4c70b10623921e95340e989dbad5ff2c1c5fc7a2000b537558.jpg?ixlib=rails-1.1.0&s=5d29c9e22937b7e6eee40a6750a05008"
+    );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+}
+
+.main-wrapper .how-it-works-wrapper {
+    max-height: 100%;
+}
+
+.main-wrapper .how-it-works-wrapper .btn-pick-meal {
+    background-color: #579843;
+    color: #4a099a;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.main-wrapper .how-it-works-wrapper .hiw-btn-pick-meal {
+    margin: 10px 0;
+
+}
+
+.main-wrapper .how-it-works-wrapper .hiw-manage-deliveries {
+    background-color: rgba(243, 218, 187, 0.61);
+}
+
+.main-wrapper .how-it-works-wrapper .hiw-manage-deliveries .hiw-md-icon {
+    width: 5em;
+    height: 5em;
+}

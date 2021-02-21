@@ -6,8 +6,10 @@ const SubscribePopUp = (props) => {
     return (
 
         <PopUp
+            message = {props.message}
             clicked={props.clicked}
             isSubscribeFieldCorrect={props.isSubscribeFieldCorrect}
+            isRedirectedToHome = {props.isRedirectedToHome}
         />
 
     )

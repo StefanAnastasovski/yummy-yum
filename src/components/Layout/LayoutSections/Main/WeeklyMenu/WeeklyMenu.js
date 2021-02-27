@@ -68,7 +68,8 @@ class WeeklyMenu extends Component {
         mixMenu: [],
         loading: true,
         isMixMenuCreated: false,
-        menuCards: []
+        menuCards: [],
+        isMenuExist: false
 
     }
 
@@ -78,13 +79,15 @@ class WeeklyMenu extends Component {
             this.setState({
                 mealFilter: event.target.value,
                 showMealFilterClass: "",
-                isMix: true
+                isMix: true,
+                showMealFilterBtnForm: ""
             });
         } else {
             this.setState({
                 mealFilter: event.target.value,
                 showMealFilterClass: "",
                 isMix: false,
+                showMealFilterBtnForm: ""
             });
 
         }
@@ -93,22 +96,11 @@ class WeeklyMenu extends Component {
 
     onClickShowMealFilter = () => {
 
-        let showFilter = this.state.showMealFilterClass;
-        if (showFilter === "") {
-
-            this.setState({
-                showMealFilter: !this.state.showMealFilter,
-                showMealFilterClass: "d-block",
-                showMealFilterBtnForm: "ddm-btn-bottom-border-radius"
-            })
-
-        } else {
-            this.setState({
-                showMealFilter: !this.state.showMealFilter,
-                showMealFilterClass: "",
-                showMealFilterBtnForm: ""
-            })
-        }
+        this.setState({
+            showMealFilter: !this.state.showMealFilter,
+            showMealFilterClass: "d-block",
+            showMealFilterBtnForm: "ddm-btn-bottom-border-radius"
+        })
 
     }
 
@@ -128,7 +120,7 @@ class WeeklyMenu extends Component {
             console.log(error)
         })
         // });
-        return this.state.menu;
+        return this.state.menu.length > 0;
     }
 
     getRndInteger = (min, max) => {
@@ -139,16 +131,33 @@ class WeeklyMenu extends Component {
 
         window.scrollTo(0, 0);
 
-        await this.getMenuByMenuName("M1");
-        await this.createMixMenu();
-        await this.createAllMenus();
+        let [month, mondayDate, year] = this.getMondayInWeek();
         await this.setDate();
-        await this.isLoadingDone()
+
+        month = (month + 1);
+        if (month < 10) {
+            month = "0" + month
+        }
+        if (mondayDate < 10) {
+            mondayDate = "0" + mondayDate
+        }
+        let menuName = "M-" + year + "-" + month + "-" + mondayDate;
+
+
+        let menu = await this.getMenuByMenuName(menuName);
+        if (menu) {
+            await this.createMixMenu();
+            await this.createAllMenus();
+            await this.isMenuExist()
+        }
+
+        this.isLoading();
+
 
     }
 
     setDate = async () => {
-        let [mondayDate, month] = this.getMondayInWeek();
+        let [month, mondayDate] = this.getMondayInWeek();
         let mondayDateWithSuffix = this.addDateSuffix(mondayDate);
         let monthName = this.addMonthName(month);
         let date = [mondayDate, month, mondayDateWithSuffix, monthName];
@@ -239,7 +248,8 @@ class WeeklyMenu extends Component {
         let currentDate = new Date();
         let month = currentDate.getMonth();
         let monthDate = currentDate.getDate();
-        let dayInMonth = new Date(currentDate.getFullYear(), month, monthDate);
+        let year = currentDate.getFullYear();
+        let dayInMonth = new Date(year, month, monthDate);
         let dayInMonthNumber = dayInMonth.getDay();
         let fullDate;
 
@@ -252,7 +262,7 @@ class WeeklyMenu extends Component {
             monthDate = monthDate - mondayInWeek;
         }
 
-        return [monthDate, month];
+        return [month, monthDate, year];
 
     }
 
@@ -262,11 +272,11 @@ class WeeklyMenu extends Component {
         let mondayDateWithSuffix;
         let dateLength = date.toString().length;
 
-        if (parseInt(date.toString()[dateLength-1]) === 1) {
+        if (parseInt(date.toString()[dateLength - 1]) === 1) {
             mondayDateWithSuffix = mondayDate + "st";
-        } else if (parseInt(date.toString()[dateLength-1]) === 2) {
+        } else if (parseInt(date.toString()[dateLength - 1]) === 2) {
             mondayDateWithSuffix = mondayDate + "nd";
-        } else if (parseInt(date.toString()[dateLength-1]) === 3) {
+        } else if (parseInt(date.toString()[dateLength - 1]) === 3) {
             mondayDateWithSuffix = mondayDate + "rd";
         } else {
             mondayDateWithSuffix = mondayDate + "th";
@@ -337,14 +347,22 @@ class WeeklyMenu extends Component {
         }
     }
 
-    isLoadingDone = () => {
-        this.setState({
-            loading: false
-        })
+    isMenuExist = () => {
+        this.setState(prevState => ({
+            isMenuExist: !prevState.isMenuExist
+        }))
+
+    }
+
+    isLoading = () => {
+        this.setState(prevState => ({
+            loading: !prevState.loading
+        }))
 
     }
 
     render() {
+
 
         return (
 
@@ -352,7 +370,8 @@ class WeeklyMenu extends Component {
 
                 {/*{!this.state.loading ?*/}
 
-                <div className="container">
+                {
+                    !this.state.loading ? <div className="container">
 
                     <Menu
                         mealFilter={this.state.mealFilter}
@@ -369,11 +388,13 @@ class WeeklyMenu extends Component {
                         mealName={this.state.mealName}
                         mealMenuName={this.state.mealFilter}
                         isMix={this.state.isMix}
+                        isMenuExist={this.state.isMenuExist}
                         setRedirect={this.setRedirect}
                     />
 
-                </div>
+                </div> : null
 
+                }
             </div>
         )
     }

@@ -125,8 +125,9 @@ const HowItWorks = (props) => {
 
                     <div className="hiw-build-box">
 
-                        <h2 className="text-center text-color-green">Build Your Box &
-                            <span className="d-block">Receive It at Your Door</span>
+                        <h2 className="text-center text-color-green">
+                            Build a Box and
+                            Receive It at Your Door
                         </h2>
 
                         <p className="pt-2 text-center">With a different menu each week, there’s always new recipes to

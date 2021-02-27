@@ -6,7 +6,6 @@ import Main from "./LayoutSections/Main/Main";
 
 import './Layout.css';
 import SubscribePopUp from "./LayoutSections/PopUp/SubscribePopUp";
-import {Redirect} from 'react-router-dom';
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 // import MenuCalls from "../../repository/get/getMenu";

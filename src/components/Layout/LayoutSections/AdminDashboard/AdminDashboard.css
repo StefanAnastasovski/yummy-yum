@@ -12,6 +12,7 @@
     padding: 5px 10px;
     border-radius: 20px;
     background-color: #6b9958;
+    text-shadow: -1px 2px 4px white;
 }
 
 .main-wrapper .admin-dashboard-wrapper .btn-new-utensil,
@@ -62,17 +63,20 @@
     background-color: #c6f6b9;
 }
 
-.react-calendar__navigation__label__labelText, .react-calendar span, .react-calendar abbr{
+.react-calendar__navigation__label__labelText, .react-calendar span, .react-calendar abbr {
     font-weight: bold;
 }
-.react-calendar{
+
+.react-calendar {
     border-radius: 20px 0;
     border: 6px solid #530ea2;
 }
-.react-calendar__viewContainer, .react-calendar__navigation{
+
+.react-calendar__viewContainer, .react-calendar__navigation {
     background-color: #abf192;
     margin: 0 !important;
 }
+
 .react-calendar__viewContainer {
     border-bottom-right-radius: 20px;
 }
@@ -80,20 +84,22 @@
 .react-calendar__navigation {
     border-top-left-radius: 20px;
 }
-.react-calendar__navigation :first-child{
+
+.react-calendar__navigation :first-child {
     border-top-left-radius: 20px;
 }
-.react-calendar__viewContainer :last-child{
+
+.react-calendar__viewContainer :last-child {
     border-bottom-right-radius: 20px;
 }
 
-.btn-email-attach{
+.btn-email-attach {
     background-color: unset !important;
     border: none !important;
     color: #530ea2;
 }
 
-input[type="file"]{
+input[type="file"] {
     background-color: #530ea2;
 }
 

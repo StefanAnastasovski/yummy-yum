@@ -4,49 +4,58 @@ import IMG1 from '../../../../../../images/HomeComponent/ms1-images/ms1-img-1.jp
 
 const Section1 = () => {
 
-        return (
+    return (
 
-            <div className="main-section-1">
+        <div className="main-section-1">
 
-                <div className="ms1-img">
+            <div className="ms1-img">
 
-                    <img className="ms1-img-1"
-                         src={IMG1}
-                         alt="main img"
-                         width="100%"
-                         height="100%"
-                    />
+                <img className="ms1-img-1"
+                     src={IMG1}
+                     alt="main img"
+                     width="100%"
+                     height="100%"
+                />
 
-                </div>
+            </div>
 
-                <div className="ms1-btn">
+            <div className="ms1-btn">
 
-                    <div className="container text-center">
+                <div className="container text-center">
 
-                        <h2>
+                    {/*<h2>*/}
 
-                            Make Your Cooking
-                            <span className="d-block">
-                                    Easier and Faster
-                                </span>
-                            With Our Services
+                    {/*    Make Your Cooking*/}
+                    {/*    <span className="d-block">*/}
+                    {/*                Easier and Faster*/}
+                    {/*            </span>*/}
+                    {/*    With Our Services*/}
 
 
-                        </h2>
+                    {/*</h2>*/}
 
-                        <div className="my-4">
-                            <a href="/choices" className="ms1-pym-btn pick-your-meal px-5 py-3 text-decoration-none ">
-                                Pick Your Meal
-                            </a>
-                        </div>
+                    <h2>
 
+                        Hassle-Free
+                        <span className="d-block">
+                                   Home Cooked Meals
+                        </span>
+
+                    </h2>
+
+                    <div className="my-4">
+                        <a href="/choices" className="ms1-pym-btn pick-your-meal px-5 py-3 text-decoration-none ">
+                            Pick Your Meal
+                        </a>
                     </div>
 
                 </div>
 
             </div>
 
-        )
+        </div>
+
+    )
 
 };
 

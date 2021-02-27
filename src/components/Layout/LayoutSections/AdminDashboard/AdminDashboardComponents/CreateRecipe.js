@@ -987,9 +987,8 @@ class CreateRecipe extends Component {
 
         }
 
-        console.log(obj);
         CreateMealCalls.createMeal(obj).then(response => {
-            console.log(response.data);
+            console.log("Meal is created!");
         }).catch(error => {
             console.log(error);
         })

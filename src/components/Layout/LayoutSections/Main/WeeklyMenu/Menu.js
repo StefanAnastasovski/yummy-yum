@@ -81,7 +81,7 @@ const Menu = (props) => {
     // }
 
     let populateLocalStorage = (mealName) => {
-         localStorage.setItem("mealName", mealName);
+        localStorage.setItem("mealName", mealName);
     }
 
     let checkMenuName = (menuName) => {
@@ -102,8 +102,10 @@ const Menu = (props) => {
     }
 
     // render() {
+    let row1, row2, row3 = null;
 
-        let row1, row2, row3;
+    if (props.isMenuExist) {
+
         let menu = [];
         if (props.isMix) {
             row1 = createCardRow(props.mixRows, 1);
@@ -115,89 +117,72 @@ const Menu = (props) => {
             row2 = createCardRow(menu, 2);
             row3 = createCardRow(menu, 3);
         }
+    }
 
-        return (
 
-            <Aux>
+    return (
 
-                <h1 className="text-center py-5">Weekly Menu</h1>
+        <Aux>
 
-                <div className="wm-nav d-flex justify-content-between">
+            <h1 className="text-center py-5">Weekly Menu</h1>
 
-                    <h3 className="">Meal Kits</h3>
+            <div className="wm-nav d-flex justify-content-between">
 
-                    <div className="wm-nav-right-menu d-flex align-items-center w-50 justify-content-end">
+                <h3 className="">Meal Kits</h3>
 
-                        <h4 className="pr-3">Meal Category: </h4>
+                <div className="wm-nav-right-menu d-flex align-items-center w-50 justify-content-end">
 
-                        <div className="wm-nav-ddm-main">
+                    <h4 className="pr-3">Meal Category: </h4>
 
-                            <ul className="wm-ddm-main">
+                    <div className="wm-nav-ddm-main">
 
-                                <li>
-                                    <input type="submit" onClick={props.onClickShowMealFilter}
-                                           value={props.mealFilter}
-                                           className={"wm-ddm-btn font-size-1 " +
-                                           props.showMealFilterBtnForm}/>
-                                </li>
+                        <ul className="wm-ddm-main">
 
-                                <li>
+                            <li>
+                                <input type="submit" onClick={props.onClickShowMealFilter}
+                                       value={props.mealFilter}
+                                       className={"wm-ddm-btn font-size-1 " +
+                                       props.showMealFilterBtnForm}/>
+                            </li>
 
-                                    <ul className={"dd-menu " + props.showMealFilterClass}>
+                            <li>
 
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Mix"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Adventurous"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Quick and Simple"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Low-Cal"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Carb-Conscious"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
-                                        <li>
-                                            <input type="submit" onClick={props.onClickMealFilter}
-                                                   value="Vegetarian"
-                                                   className="wm-ddm-btn font-size-1"/>
-                                        </li>
+                                <ul className={"dd-menu " + props.showMealFilterClass}>
 
-                                    </ul>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Mix"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Adventurous"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Quick and Simple"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Low-Cal"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Carb-Conscious"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
+                                    <li>
+                                        <input type="submit" onClick={props.onClickMealFilter}
+                                               value="Vegetarian"
+                                               className="wm-ddm-btn font-size-1"/>
+                                    </li>
 
-                                </li>
+                                </ul>
 
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div className="wm-menu-cards">
-
-                    <div className="row">
-
-                        {/*{checkRecipeRedirect()}*/}
-
-                        <ul>
-                            <div className="row py-4">{row1}</div>
-                            <div className="row pb-4">{row2}</div>
-                            <div className="row">{row3}</div>
+                            </li>
 
                         </ul>
 
@@ -205,25 +190,53 @@ const Menu = (props) => {
 
                 </div>
 
-                <div className="wm-week-slider d-flex justify-content-center py-5">
+            </div>
 
-                    <div className="wm-icon" onClick={props.onClickPreviousWeek}>
-                        <PreviousIcon/>
-                    </div>
+            <div className="wm-menu-cards">
 
-                    <div>
-                        <h3>{props.weekSelect}</h3>
-                    </div>
+                <div className="row">
 
-                    <div className="wm-icon" onClick={props.onClickNextWeek}>
-                        <NextIcon/>
-                    </div>
+                    {/*{checkRecipeRedirect()}*/}
+
+                    {props.isMenuExist ? <ul>
+                        <div className="row py-4">{row1}</div>
+                        <div className="row pb-4">{row2}</div>
+                        <div className="row">{row3}</div>
+                    </ul> :
+                        <div className="col py-5 text-center">
+                            <h1 className="text-danger ">
+                                <span className="d-block">
+                                    Sorry!
+                                </span>
+                                <span className="font-size-3">
+                                    The menu is not available at this moment!
+                                </span>
+                            </h1>
+                        </div> }
 
                 </div>
 
-            </Aux>
+            </div>
 
-        )
+            <div className="wm-week-slider d-flex justify-content-center py-5">
+
+                <div className="wm-icon" onClick={props.onClickPreviousWeek}>
+                    <PreviousIcon/>
+                </div>
+
+                <div>
+                    <h3>{props.weekSelect}</h3>
+                </div>
+
+                <div className="wm-icon" onClick={props.onClickNextWeek}>
+                    <NextIcon/>
+                </div>
+
+            </div>
+
+        </Aux>
+
+    )
 
     // }
 

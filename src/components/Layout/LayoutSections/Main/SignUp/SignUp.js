@@ -323,11 +323,17 @@ class SignUp extends Component {
                                 <h2 className="text-center">
 
                                     <span className="d-block">Sign Up</span>
+
+
+                                </h2>
+
+                                <h4 className="text-center">
+
                                     <span className="font-size-3 text-color-mlgreen">
                                     Taste delicious meals from our menu or customize one by yourself!
                                     </span>
 
-                                </h2>
+                                </h4>
 
 
                                 <div>

@@ -21,26 +21,34 @@ class Login extends Component {
     }
 
     handleSubmitLogin = async (event) => {
-
+        console.log(event.target)
         event.preventDefault();
+
         let email = this.state.loginEmail.toLowerCase();
+        let isEmailExist = false;
+        console.log(email)
 
         await UserCalls.fetchUserByEmail(email).then((response) => {
+            console.log(response.data)
             if (response.data) {
+                console.log("lalla")
                 let isAdmin = false;
                 if (response.data.username === "admin") {
                     isAdmin = true;
                 }
+                isEmailExist = true;
+
                 this.setState({
                     dbPassword: response.data.password,
                     username: response.data.username,
-                    isAdmin: isAdmin
+                    isAdmin: isAdmin,
+                    isEmailExist: isEmailExist
                 })
             }
 
         })
-
-        if (passwordHash.verify(this.state.loginPassword, this.state.dbPassword) || this.state.loginPassword === this.state.dbPassword) {
+        if (this.state.isEmailExist && (passwordHash.verify(this.state.loginPassword, this.state.dbPassword)
+            || this.state.loginPassword === this.state.dbPassword)) {
             localStorage.setItem("username", this.state.username)
             localStorage.setItem("isLoggedIn", "YES")
             this.state.isAdmin ? localStorage.setItem("isAdmin", "YES") : localStorage.setItem("isAdmin", "NO");
@@ -66,11 +74,10 @@ class Login extends Component {
             })
         }
 
-
     };
 
     onChangeHandle = (event) => {
-
+        console.log(event.target)
         let value = event.target.name;
         if (value === "login-email") {
             this.setState({

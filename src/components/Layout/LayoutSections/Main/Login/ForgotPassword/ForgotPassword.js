@@ -2,55 +2,96 @@ import React, {Component} from "react";
 
 import './ForgotPassword.css';
 import ForgotPasswordForm from "./ForgotPasswordForm/ForgotPasswordForm";
-import CheckIcon from "./MailSent/CheckIcon/CheckIcon";
-
+import MailSent from "./MailSent/MailSent";
+import EmailCalls from "./../../../../../../repository/get/getEmail"
 
 class ForgotPassword extends Component {
 
     state = {
-        isSent: false
+        isSent: false,
+        isEmailValid: false,
+        emailError: "",
+        email: "",
+        resetCode: "",
+        isCodeCorrect: true,
+        wrongEmailMessage: false
     }
 
-    onSubmit = () => {
+    onSubmit = async (event) => {
+
+        event.preventDefault();
+        await this.validateForm(this.state.email)
+        if (this.state.isEmailValid) {
+            await EmailCalls.fetchIsEmailExist(this.state.email).then((response) => {
+                console.log(response.data.success)
+                if (response.data.success) {
+                    this.setState({
+                        isSent: !this.state.isSent
+                    })
+                } else if (!response.data.success) {
+                    this.setState(prevState => ({
+                        wrongEmailMessage: "The Email is not existing! Please, enter the correct email."
+                    }))
+                }
+            })
+
+        }
+
+    }
+
+    validateForm = (userInfo) => {
+
+        let isEmailValid = true;
+        let errors = "";
+
+        const pattern =
+            new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        let isEmailLengthGraterThanSix = userInfo.split("@")[0].length > 6;
+
+        if (!pattern.test(userInfo) || !isEmailLengthGraterThanSix) {
+            isEmailValid = false;
+            errors = "Please enter valid email address.";
+        }
+
 
         this.setState({
-            isSent: !this.state.isSent
+            emailError: errors,
+            isEmailValid: isEmailValid
+
+        })
+
+
+    }
+
+    onChangeEmail = (event) => {
+
+        this.setState({
+            email: event.target.value
         })
 
     }
 
+    onChangeResetCode = (event) => {
+
+        this.setState({
+            resetCode: event.target.value
+        })
+
+    }
+
+    checkIsCodeCorrect = (code) => {
+
+        this.setState(prevState => ({
+            isCodeCorrect: !prevState.isCodeCorrect
+        }))
+
+    }
+
+    handleResetCode = () => {
+
+    }
 
     render() {
-
-        let mailSent = (
-
-            <div className="d-flex align-items-center flex-column ">
-
-                <div className="fp-mail-sent w-50 p-5 ">
-
-                    <h4 className="my-2">Forgot Password</h4>
-
-                    <div className="fp-ms-section d-flex">
-
-                        <div>
-
-                            <CheckIcon className="fp-ms-check-icon"/>
-
-                        </div>
-
-                        <p className="text-color-green pl-3">
-                            You should soon receive an email allowing you to reset your password.
-                            Please make sure to check your spam and trash if you can't find the email.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        )
 
         return (
 
@@ -60,9 +101,18 @@ class ForgotPassword extends Component {
 
                     <div className="forgot-password">
 
-                        {!this.state.isSent && <ForgotPasswordForm clicked={this.onSubmit}/>}
+                        {!this.state.isSent && <ForgotPasswordForm
+                            onChange={this.onChangeEmail}
+                            errorMessage={this.state.emailError}
+                            wrongEmailMessage={this.state.wrongEmailMessage}
+                            clicked={this.onSubmit}/>}
 
-                        {this.state.isSent && mailSent}
+                        {this.state.isSent &&
+                        <MailSent
+                            onChange={this.onChangeResetCode}
+                            isCodeCorrect={this.state.isCodeCorrect}
+                            handleResetCode={this.handleResetCode}
+                        />}
 
                     </div>
 

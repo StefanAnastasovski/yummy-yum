@@ -4,8 +4,9 @@ import React from "react";
 import CheckIcon from "./CheckIcon/CheckIcon";
 
 
-const MailSent = () => {
+const MailSent = (props) => {
 
+    let wrongCode = "wrong-code";
 
     return (
 
@@ -30,6 +31,27 @@ const MailSent = () => {
 
                 </div>
 
+            </div>
+
+            <div className="d-flex w-50 flex-column mt-2">
+
+                <label className="text-center">Enter 6 digit code: </label>
+
+                <input type="text"
+                       className={"text-center w-25 align-self-center " + wrongCode}
+                       maxLength="6"
+                       minLength="6"
+                />
+                {
+                    !props.isCodeCorrect ? <p className="text-danger text-center">
+                        Wrong code!</p> : null
+                }
+
+                <button type="button"
+                        onClick={props.handleResetCode}
+                        className="w-50 align-self-center mt-2 btn-reset-code">
+                    Submit
+                </button>
 
             </div>
 

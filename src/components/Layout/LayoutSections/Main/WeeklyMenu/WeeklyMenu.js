@@ -74,7 +74,6 @@ class WeeklyMenu extends Component {
     }
 
     onClickMealFilter = (event) => {
-        console.log(event.target)
         if (event.target.value === "Mix") {
             this.setState({
                 mealFilter: event.target.value,

@@ -22,12 +22,9 @@ class CreateMenu extends Component {
     async componentDidMount() {
         let date = new Date();
         let mondayDateArray = await this.getMondayInWeek(new Date(date.getFullYear(), date.getMonth(), date.getDate()));
-        console.log(mondayDateArray)
         await this.isMenuExistByReleaseDate(new Date(mondayDateArray[0], mondayDateArray[1], mondayDateArray[2]), false, true);
         await this.isMenuExistByReleaseDate(new Date(mondayDateArray[0], mondayDateArray[1], mondayDateArray[2] + 7), true);
 
-        console.log(this.state.isMenuForCurrentWeekExist)
-        console.log(this.state.isNextWeekMenuCreated)
     }
 
     //
@@ -113,7 +110,9 @@ class CreateMenu extends Component {
         }
 
         releaseDate = releaseDate.getFullYear() + "-" + month + "-" + day;
-
+        console.log(releaseDate);
+        console.log(month);
+        console.log(day);
         await MenuCalls.fetchMenuByReleaseDate(releaseDate).then((response) => {
             console.log(response.data)
             if (isCurrentWeekExist) {
@@ -151,9 +150,11 @@ class CreateMenu extends Component {
     createMultipleMenus = async (date, dateOfNextMonday, buttonNameValue) => {
 
         let menuNumbers = parseInt(buttonNameValue.toString().split(" ")[1]);
-
+        console.log(date)
+        console.log(dateOfNextMonday)
+        console.log(buttonNameValue)
         for (let i = 0; i < menuNumbers; i++) {
-            await this.createMultipleMenus(date, dateOfNextMonday, i)
+            await this.createMultipleMenus(date, dateOfNextMonday, i);
 
             let menu;
             if (i === 0) {
@@ -172,6 +173,7 @@ class CreateMenu extends Component {
                     releaseDate: dateOfNextMonday
                 }
             }
+            console.log(menu)
             await this.createMenu(menu);
         }
     }

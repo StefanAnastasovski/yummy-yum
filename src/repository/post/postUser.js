@@ -8,7 +8,14 @@ const postUser = {
                 'Content-Type': 'application/json'
             }
         });
-    }
+    },
+    updatePassword: (newPasswordForm) => {
+        return axios.put(`/api/users`, newPasswordForm,{
+               headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    },
 
 };
 

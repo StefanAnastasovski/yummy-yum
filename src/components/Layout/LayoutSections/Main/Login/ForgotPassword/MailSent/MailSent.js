@@ -38,13 +38,17 @@ const MailSent = (props) => {
                 <label className="text-center">Enter 6 digit code: </label>
 
                 <input type="text"
-                       className={"text-center w-25 align-self-center " + wrongCode}
+                       className={"text-center w-25 align-self-center "}
                        maxLength="6"
                        minLength="6"
+                       onChange={props.onChange}
                 />
                 {
-                    !props.isCodeCorrect ? <p className="text-danger text-center">
-                        Wrong code!</p> : null
+                    !props.isCodeCorrect && props.isCodeCorrect !== null ?
+                        <p className="text-danger text-center">
+                            Wrong code!
+                        </p> :
+                        null
                 }
 
                 <button type="button"

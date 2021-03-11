@@ -142,7 +142,6 @@ class WeeklyMenu extends Component {
         }
         let menuName = "M-" + year + "-" + month + "-" + mondayDate;
 
-
         let menu = await this.getMenuByMenuName(menuName);
         if (menu) {
             await this.createMixMenu();

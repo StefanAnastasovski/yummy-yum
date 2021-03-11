@@ -21,17 +21,13 @@ class Login extends Component {
     }
 
     handleSubmitLogin = async (event) => {
-        console.log(event.target)
         event.preventDefault();
 
         let email = this.state.loginEmail.toLowerCase();
         let isEmailExist = false;
-        console.log(email)
 
         await UserCalls.fetchUserByEmail(email).then((response) => {
-            console.log(response.data)
             if (response.data) {
-                console.log("lalla")
                 let isAdmin = false;
                 if (response.data.username === "admin") {
                     isAdmin = true;
@@ -77,7 +73,6 @@ class Login extends Component {
     };
 
     onChangeHandle = (event) => {
-        console.log(event.target)
         let value = event.target.name;
         if (value === "login-email") {
             this.setState({

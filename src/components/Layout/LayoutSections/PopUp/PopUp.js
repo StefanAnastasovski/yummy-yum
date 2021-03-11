@@ -6,7 +6,6 @@ import CloseIcon from "./Icons/CloseIcon";
 
 const PopUp = (props) => {
 
-
     return (
 
         <div className="footer-pop-up">
@@ -14,7 +13,11 @@ const PopUp = (props) => {
             <div className="f-pop-up-center ">
 
                 <div className={
-                    props.isSubscribeFieldCorrect || props.isRedirectedToHome ? "f-pop-up w-25 " : "w-25 f-pop-up-danger"
+                    props.isSubscribeFieldCorrect ||
+                    props.isRedirectedToHome ||
+                    props.isRedirectedFromUpdatePassword ?
+                        "f-pop-up w-25 "
+                        : "w-25 f-pop-up-danger"
                 }>
 
 
@@ -25,10 +28,16 @@ const PopUp = (props) => {
                     </div>
 
 
-                    {props.isSubscribeFieldCorrect ?
-                        props.message[0] : props.message[1] ||
-                        props.isRedirectedToHome ?
-                            props.message[0] : null
+                    {
+                        props.isSubscribeFieldCorrect ? props.message[0] : props.message[1]
+                    }
+
+                    {
+                        props.isRedirectedToHome ? props.message[0] : null
+                    }
+
+                    {
+                        props.isRedirectedFromUpdatePassword ? props.message[0] : null
                     }
 
                 </div>

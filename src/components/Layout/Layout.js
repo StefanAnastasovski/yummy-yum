@@ -5,9 +5,10 @@ import Footer from "./LayoutSections/Footer/Footer";
 import Main from "./LayoutSections/Main/Main";
 
 import './Layout.css';
-import SubscribePopUp from "./LayoutSections/PopUp/SubscribePopUp";
+import PopUpBox from "./LayoutSections/PopUp/PopUpBox";
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
+import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
 // import MenuCalls from "../../repository/get/getMenu";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
 
@@ -19,50 +20,50 @@ class Layout extends Component {
         showBorderDanger: false,
         isLoggedIn: false,
         isRedirectedToHome: false,
-
+        isRedirectedFromUpdatePassword: false,
         //weekly-menu
-        mealRecipe: {
-            mealName: "",
-            mealDescription: "",
-            mealTimeTag: "",
-            mealIngredientTag: "",
-            price: 6.99,
-            mealCategory: "",
-            mealOverview: {
-                difficultyLevel: "",
-                spiceLevel: "",
-                prepCookTime: "",
-                cookWithin: 1
-            },
-            mealChef: {
-                fullName: "",
-                chefMealDescription: ""
-            },
-            mealBox: {
-                serveQuantity: 2,
-                mealIngredients: ""
-            },
-            mealBoxNutrition: {
-                calories: 0,
-                protein: 0,
-                carbohydrates: 0,
-                fat: 0
-            },
-            cookingSteps: {
-                stepNumber: 1,
-                stepTitle: "",
-                stepDescription: ""
-            },
-            recipeSteps: {
-                mealUtensilsRow1: "",
-                mealUtensilsRow2: ""
-            },
-            recipeInstructions: {
-                cookSteps: "",
-                guidelines: "",
-                customizeInstructions: ""
-            }
-        },
+        // mealRecipe: {
+        //     mealName: "",
+        //     mealDescription: "",
+        //     mealTimeTag: "",
+        //     mealIngredientTag: "",
+        //     price: 6.99,
+        //     mealCategory: "",
+        //     mealOverview: {
+        //         difficultyLevel: "",
+        //         spiceLevel: "",
+        //         prepCookTime: "",
+        //         cookWithin: 1
+        //     },
+        //     mealChef: {
+        //         fullName: "",
+        //         chefMealDescription: ""
+        //     },
+        //     mealBox: {
+        //         serveQuantity: 2,
+        //         mealIngredients: ""
+        //     },
+        //     mealBoxNutrition: {
+        //         calories: 0,
+        //         protein: 0,
+        //         carbohydrates: 0,
+        //         fat: 0
+        //     },
+        //     cookingSteps: {
+        //         stepNumber: 1,
+        //         stepTitle: "",
+        //         stepDescription: ""
+        //     },
+        //     recipeSteps: {
+        //         mealUtensilsRow1: "",
+        //         mealUtensilsRow2: ""
+        //     },
+        //     recipeInstructions: {
+        //         cookSteps: "",
+        //         guidelines: "",
+        //         customizeInstructions: ""
+        //     }
+        // },
         menu: [],
         allMenu: [],
         mixMenu: [],
@@ -78,10 +79,12 @@ class Layout extends Component {
         }
 
         if (localStorage.getItem("isLoggedIn") === "NO" && this.state.isRedirectedToHome) {
-            console.log("dasd")
+            // console.log("dasd")
         }
 
     }
+
+
 
     changeMixCreated = () => {
         this.setState({
@@ -90,9 +93,14 @@ class Layout extends Component {
     }
 
     showPopUpHandler = (popUpName) => {
+
         if (popUpName === "logged-in") {
             this.setState({
                 isRedirectedToHome: !this.state.isRedirectedToHome
+            })
+        } else if (popUpName === "password-changed") {
+            this.setState({
+                isRedirectedFromUpdatePassword: !this.state.isRedirectedFromUpdatePassword
             })
         } else {
             this.setState({
@@ -149,6 +157,12 @@ class Layout extends Component {
 
     }
 
+    handleUpdatePassword = () => {
+        this.setState({
+            isRedirectedFromUpdatePassword : true
+        })
+    }
+
     onClickLogIn = () => {
         this.setState({
             isLoggedIn: true
@@ -173,14 +187,26 @@ class Layout extends Component {
                     logIn={this.onClickLogIn}
                     isLoggedIn={this.state.isLoggedIn}
                     isRedirectedToHome={this.state.isRedirectedToHome}
+                    isRedirectedFromUpdatePassword={this.state.isRedirectedFromUpdatePassword}
+                    handleUpdatePassword={this.handleUpdatePassword.bind(this)}
                     handleLogin={this.handleLogin.bind(this)}
                     addUsername={this.addUsername.bind(this)}
                 />
 
                 {
+                    this.state.isRedirectedFromUpdatePassword &&
+                    <PopUpBox
+                        message={UpdatePasswordMessage}
+                        isRedirectedFromUpdatePassword={this.state.isRedirectedFromUpdatePassword}
+                        showPopUp={this.state.showPopUp}
+                        clicked={this.showPopUpHandler.bind(this, "password-changed")}/>
+
+                }
+
+                {
 
                     this.state.isRedirectedToHome &&
-                    <SubscribePopUp
+                    <PopUpBox
                         message={LoggedOutMessage}
                         showPopUp={this.state.showPopUp}
                         isRedirectedToHome={this.state.isRedirectedToHome}
@@ -192,7 +218,7 @@ class Layout extends Component {
                 {
                     this.state.showPopUp &&
 
-                    <SubscribePopUp
+                    <PopUpBox
                         message={SubscribedMessage}
                         showPopUp={this.state.showPopUp}
                         clicked={this.showPopUpHandler}

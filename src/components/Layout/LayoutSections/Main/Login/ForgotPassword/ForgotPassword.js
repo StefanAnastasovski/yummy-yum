@@ -63,7 +63,7 @@ class ForgotPassword extends Component {
                     email: this.state.email.toString()
                 }
                 await postForgotPassword.createResetCode(email).then((response) => {
-                    console.log(response.data.code);
+                    // console.log(response.data.code);
                 })
             } catch (e) {
                 console.log(e);
@@ -154,8 +154,7 @@ class ForgotPassword extends Component {
 
         event.preventDefault();
 
-        console.log(this.state.newPasswordInputField)
-        console.log(this.state.confirmNewPasswordInputField)
+
         let isMatched = this.state.newPasswordInputField === this.state.confirmNewPasswordInputField;
         let isPasswordValid = await this.validatePassword(this.state.newPasswordInputField, isMatched);
 
@@ -165,12 +164,12 @@ class ForgotPassword extends Component {
                 email: this.state.email.toString()
             }
             await UserCalls.updatePassword(newPasswordForm).then((response) => {
-                console.log(response.data)
+                // console.log(response.data)
             })
             this.setState({
                 isPasswordsMatch: true
             })
-
+            this.props.handlePassword();
             this.setRedirect();
 
         } else if (!isMatched) {
@@ -188,7 +187,6 @@ class ForgotPassword extends Component {
             newPasswordInputField: event.target.value
         })
 
-        console.log(this.state.newPasswordInputField)
 
     }
 
@@ -197,7 +195,6 @@ class ForgotPassword extends Component {
         this.setState({
             confirmNewPasswordInputField: event.target.value
         })
-        console.log(this.state.confirmNewPasswordInputField)
 
     }
 
@@ -236,12 +233,13 @@ class ForgotPassword extends Component {
 
     render() {
 
-        if (this.state.redirect)
-            return <Redirect to="/log-in"/>
+        if(this.state.redirect)
+            return <Redirect to="/" />
 
         return (
 
             <div className="forgot-password-wrapper">
+
 
                 <div className="forgot-password-container container">
 

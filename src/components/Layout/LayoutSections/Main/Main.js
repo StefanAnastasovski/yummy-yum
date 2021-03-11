@@ -15,6 +15,8 @@ const Main = (props) => {
             <MainRouter logIn={props.logIn}
                         isLoggedIn={props.isLoggedIn}
                         isRedirectedToHome={props.isRedirectedToHome}
+                        isRedirectedFromUpdatePassword={props.isRedirectedFromUpdatePassword}
+                        handlePassword={props.handleUpdatePassword}
                         handleLogin={props.handleLogin}
                         addUsername={props.addUsername}
             />

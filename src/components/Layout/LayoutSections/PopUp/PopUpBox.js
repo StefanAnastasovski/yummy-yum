@@ -1,7 +1,7 @@
 import React from "react";
 import PopUp from "./PopUp";
 
-const SubscribePopUp = (props) => {
+const PopUpBox = (props) => {
 
     return (
 
@@ -10,10 +10,11 @@ const SubscribePopUp = (props) => {
             clicked={props.clicked}
             isSubscribeFieldCorrect={props.isSubscribeFieldCorrect}
             isRedirectedToHome = {props.isRedirectedToHome}
+            isRedirectedFromUpdatePassword={props.isRedirectedFromUpdatePassword}
         />
 
     )
 
 }
 
-export default SubscribePopUp;
+export default PopUpBox;

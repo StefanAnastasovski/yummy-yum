@@ -25,7 +25,7 @@ class MainRouter extends Component {
     // };
 
     redirectToHome = () => {
-        return <Redirect to="/" />
+        return <Redirect to="/"/>
     }
 
     render() {
@@ -37,7 +37,9 @@ class MainRouter extends Component {
 
                 <Router>
 
-                    {this.props.isRedirectedToHome ? this.redirectToHome() : null}
+                    {
+                        this.props.isRedirectedToHome ? this.redirectToHome() : null
+                    }
 
                     <Switch>
 
@@ -110,7 +112,9 @@ class MainRouter extends Component {
 
                         <Route exact path="/forgot-password">
 
-                            <ForgotPassword/>
+                            <ForgotPassword
+                                handlePassword={this.props.handlePassword}
+                            />
 
                         </Route>
 

@@ -5,6 +5,7 @@ import './WeeklyMenu.css';
 
 import Menu from "./Menu";
 import MenuCalls from "../../../../../repository/get/getMenu";
+import ImageCalls from "../../../../../repository/get/getImage";
 
 
 class WeeklyMenu extends Component {
@@ -14,6 +15,7 @@ class WeeklyMenu extends Component {
         showMealFilterClass: "",
         showMealFilterBtnForm: "",
         weekMonth: "",
+        showMealFilter: false,
         weekMonthName: "",
         weekSelect: "",
         weekSelectDate: "",
@@ -67,10 +69,9 @@ class WeeklyMenu extends Component {
         menu: [],
         mixMenu: [],
         loading: true,
-        isMixMenuCreated: false,
+        // isMixMenuCreated: false,
         menuCards: [],
-        isMenuExist: false
-
+        isMenuExist: false,
     }
 
     onClickMealFilter = (event) => {
@@ -94,23 +95,27 @@ class WeeklyMenu extends Component {
     }
 
     onClickShowMealFilter = () => {
+        if (this.state.showMealFilterClass.length > 0) {
+            this.setState({
+                showMealFilter: !this.state.showMealFilter,
+                showMealFilterClass: "",
+                showMealFilterBtnForm: ""
+            })
+        } else {
+            this.setState({
+                showMealFilter: !this.state.showMealFilter,
+                showMealFilterClass: "d-block",
+                showMealFilterBtnForm: "ddm-btn-bottom-border-radius"
+            })
+        }
 
-        this.setState({
-            showMealFilter: !this.state.showMealFilter,
-            showMealFilterClass: "d-block",
-            showMealFilterBtnForm: "ddm-btn-bottom-border-radius"
-        })
 
     }
-
-    // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    //     return !nextState.loading;
-    // }
 
     getMenuByMenuName = async (menuName) => {
 
         await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
-
+            console.log(response.data)
             this.setState({
                 menu: response.data.mealCategories
             })
@@ -120,10 +125,6 @@ class WeeklyMenu extends Component {
         })
         // });
         return this.state.menu.length > 0;
-    }
-
-    getRndInteger = (min, max) => {
-        return Math.floor(Math.random() * (max - min)) + min;
     }
 
     async componentDidMount() {
@@ -143,14 +144,13 @@ class WeeklyMenu extends Component {
         let menuName = "M-" + year + "-" + month + "-" + mondayDate;
 
         let menu = await this.getMenuByMenuName(menuName);
+
         if (menu) {
-            await this.createMixMenu();
             await this.createAllMenus();
             await this.isMenuExist()
         }
 
         this.isLoading();
-
 
     }
 
@@ -169,69 +169,14 @@ class WeeklyMenu extends Component {
 
     }
 
-    createMixMenu = async () => {
-        let obj = {};
-        let mixMenu = [];
-        let mealCategoryLength;
-        let mealsLength;
-        let isElementExistInArray = false;
-        let isElementExistInArrayNext = false;
-
-        let i = 0;
-
-        while (i < 9) {
-
-            isElementExistInArray = false;
-            isElementExistInArrayNext = false;
-            mealCategoryLength = this.getRndInteger(0, 4);
-            mealsLength = this.getRndInteger(0, 8);
-
-            obj = {
-                category: this.state.menu[mealCategoryLength].category,
-                meal: this.state.menu[mealCategoryLength].meals[mealsLength]
-            }
-
-            if (mixMenu.length === 0) {
-                mixMenu.push(obj);
-                i++;
-            }
-
-            if (mixMenu.length > 0) {
-
-                for (let q = 0; q < mixMenu.length; q++) {
-
-                    if (mixMenu[q].meal.mealName === obj.meal.mealName) {
-                        isElementExistInArrayNext = true;
-                    }
-
-                    if (!isElementExistInArray && isElementExistInArrayNext) {
-                        isElementExistInArray = isElementExistInArrayNext
-                    }
-
-                }
-
-                if (!isElementExistInArray) {
-                    mixMenu.push(obj);
-                    i++;
-                }
-
-            }
-
-        }
-
-        this.setState({
-            mixMenu: mixMenu
-        })
-
-        return mixMenu
-    }
-
     createAllMenus = async () => {
-
         let allMenu = [];
         let menu;
         let mealsLength = this.state.menu.length;
-        for (let i = 0; i < mealsLength; i++) {
+        this.setState({
+            mixMenu: [this.state.menu[0].meals]
+        })
+        for (let i = 1; i < mealsLength; i++) {
             menu = this.state.menu[i].meals;
             allMenu.push(menu);
         }
@@ -371,26 +316,27 @@ class WeeklyMenu extends Component {
                 {
                     !this.state.loading ? <div className="container">
 
-                    <Menu
-                        mealFilter={this.state.mealFilter}
-                        showMealFilterBtnForm={this.state.showMealFilterBtnForm}
-                        showMealFilterClass={this.state.showMealFilterClass}
-                        // redirect={this.renderRedirect}
-                        onClickPreviousWeek={this.onClickPreviousWeek.bind(this)}
-                        onClickNextWeek={this.onClickNextWeek.bind(this)}
-                        onClickMealFilter={this.onClickMealFilter.bind(this)}
-                        onClickShowMealFilter={this.onClickShowMealFilter.bind(this)}
-                        weekSelect={this.state.weekSelect}
-                        mixRows={this.state.mixMenu}
-                        menu={this.state.menu}
-                        mealName={this.state.mealName}
-                        mealMenuName={this.state.mealFilter}
-                        isMix={this.state.isMix}
-                        isMenuExist={this.state.isMenuExist}
-                        setRedirect={this.setRedirect}
-                    />
+                        <Menu
+                            mealFilter={this.state.mealFilter}
+                            showMealFilterBtnForm={this.state.showMealFilterBtnForm}
+                            showMealFilterClass={this.state.showMealFilterClass}
+                            // redirect={this.renderRedirect}
+                            onClickPreviousWeek={this.onClickPreviousWeek.bind(this)}
+                            onClickNextWeek={this.onClickNextWeek.bind(this)}
+                            onClickMealFilter={this.onClickMealFilter.bind(this)}
+                            onClickShowMealFilter={this.onClickShowMealFilter.bind(this)}
+                            weekSelect={this.state.weekSelect}
+                            mixRows={this.state.mixMenu}
+                            menu={this.state.menu}
+                            mealName={this.state.mealName}
+                            mealMenuName={this.state.mealFilter}
+                            isMix={this.state.isMix}
+                            isMenuExist={this.state.isMenuExist}
+                            setRedirect={this.setRedirect}
+                            // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
+                        />
 
-                </div> : null
+                    </div> : null
 
                 }
             </div>

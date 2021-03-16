@@ -11,6 +11,7 @@ import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMess
 import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
 // import MenuCalls from "../../repository/get/getMenu";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
+import MenuCalls from "../../repository/get/getMenu";
 
 class Layout extends Component {
 //
@@ -69,11 +70,30 @@ class Layout extends Component {
         mixMenu: [],
         isRows: false,
         rows: [],
-        isMixCreated: false
+        isMixCreated: false,
+        loading: true,
+        isWeeklyMenu: false
     }
+
+    getMenuByMenuName = async (menuName) => {
+
+        await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
+
+            this.setState({
+                menu: response.data.mealCategories
+            })
+
+        }).catch(function (error) {
+            console.log(error)
+        })
+        // });
+        return this.state.menu.length > 0;
+    }
+
 
     async componentDidMount() {
         let urlPath = window.location.pathname;
+        console.log(urlPath)
         if (!/\/meals/.test(urlPath)) {
             localStorage.setItem("mealName", "")
         }
@@ -82,8 +102,15 @@ class Layout extends Component {
             // console.log("dasd")
         }
 
+        let menuName = "M-" + "2021" + "-" + "03" + "-" + "08";
+        let menu = await this.getMenuByMenuName(menuName)
+        if (menu) {
+            this.setState({
+                loading: false,
+                isWeeklyMenu: true
+            })
+        }
     }
-
 
 
     changeMixCreated = () => {
@@ -159,7 +186,7 @@ class Layout extends Component {
 
     handleUpdatePassword = () => {
         this.setState({
-            isRedirectedFromUpdatePassword : true
+            isRedirectedFromUpdatePassword: true
         })
     }
 
@@ -190,8 +217,7 @@ class Layout extends Component {
                     isRedirectedFromUpdatePassword={this.state.isRedirectedFromUpdatePassword}
                     handleUpdatePassword={this.handleUpdatePassword.bind(this)}
                     handleLogin={this.handleLogin.bind(this)}
-                    addUsername={this.addUsername.bind(this)}
-                />
+                    addUsername={this.addUsername.bind(this)}/>
 
                 {
                     this.state.isRedirectedFromUpdatePassword &&

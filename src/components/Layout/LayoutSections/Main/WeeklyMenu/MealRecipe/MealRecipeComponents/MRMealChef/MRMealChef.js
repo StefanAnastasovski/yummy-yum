@@ -3,7 +3,8 @@ import React from "react";
 import './MRMealChef.css';
 
 import Aux from "../../../../../../../../hoc/Auxilliary";
-
+import Image from "../Images/Image";
+import IMG from "../../../../../../../../images/MealRecipe/Image from iOS.jpg"
 const MRMealChef = (props) => {
 
         return (
@@ -15,11 +16,9 @@ const MRMealChef = (props) => {
                     <div className="mr-ms-chef-info col-2">
 
                         <div className="mr-ms-ci-img">
-                            <img className={""}
-                                 src='https://i.ibb.co/6gZcZ6q/meal1.jpg'
-                                 alt="chef-img"
-                                 width="100%"
-                                 height="100%"
+                            <Image
+                                // img = {props.images}
+                                img={IMG}
                             />
                         </div>
 

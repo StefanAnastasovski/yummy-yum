@@ -6,8 +6,6 @@ import CheckIcon from "./CheckIcon/CheckIcon";
 
 const MailSent = (props) => {
 
-    let wrongCode = "wrong-code";
-
     return (
 
         <div className="d-flex align-items-center flex-column ">

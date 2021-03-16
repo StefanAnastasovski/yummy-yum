@@ -6,7 +6,7 @@ import Aux from "../../../../../../../../hoc/Auxilliary";
 
 import PreviousIcon from "../../../WeekIcons/PreviousIcon";
 import NextIcon from "../../../WeekIcons/NextIcon";
-import MRSliderController from "./MRSliderController/MRSliderController";
+import Image from "../Images/Image";
 
 
 const MRSlider = (props) => {
@@ -19,7 +19,9 @@ const MRSlider = (props) => {
 
                 <div className="mr-icon" onClick={props.previousImg}><PreviousIcon/></div>
 
-                <MRSliderController />
+                <Image
+                    img={props.images}
+                />
 
                 <div className="mr-icon" onClick={props.nextImg}><NextIcon/></div>
 

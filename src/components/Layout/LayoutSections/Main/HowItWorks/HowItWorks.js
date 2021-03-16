@@ -27,8 +27,8 @@ const HowItWorks = (props) => {
 
                         <div className="row w-100">
 
-                            <div className="col bg-dark mr-2">
-                                d
+                            <div className="col bg-info mr-2">
+                                Image 1
                             </div>
 
                             <div className="col ml-2">
@@ -53,16 +53,16 @@ const HowItWorks = (props) => {
 
                             </div>
 
-                            <div className="col bg-dark ml-2">
-                                d
+                            <div className="col bg-info ml-2">
+                                Image 2
                             </div>
 
                         </div>
 
                         <div className="row w-100 pt-5">
 
-                            <div className="col bg-dark mr-2">
-                                d
+                            <div className="col bg-info mr-2">
+                                Image 3
                             </div>
 
 

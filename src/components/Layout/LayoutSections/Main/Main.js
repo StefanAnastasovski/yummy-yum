@@ -19,6 +19,7 @@ const Main = (props) => {
                         handlePassword={props.handleUpdatePassword}
                         handleLogin={props.handleLogin}
                         addUsername={props.addUsername}
+                        menu={props.menu}
             />
 
         </div>

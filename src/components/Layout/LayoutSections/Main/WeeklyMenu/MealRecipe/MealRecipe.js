@@ -24,7 +24,15 @@ class MealRecipe extends Component {
         mealBoxNutrition: {},
         cookingSteps: {},
         recipeSteps: {},
-        recipeInstructions: {}
+        recipeInstructions: {},
+        mealIngredientTags: [],
+        isLoggedIn: false,
+        images: [
+            {chefImg: ""},
+            {mainRecipeImg: ""},
+            {cookingStepImages: ""}
+        ],
+        loading: true
 
     }
 
@@ -32,16 +40,18 @@ class MealRecipe extends Component {
         window.scrollTo(0, 0);
 
         let mealName = localStorage.getItem("mealName");
-
+        let isLoggedIn = localStorage.getItem("isLoggedIn");
+        if (isLoggedIn === "YES") {
+            this.isLoggedInHandler();
+        }
         await this.createMealRecipe(mealName);
-        // console.log(this.state.mealInfo)
-        // console.log(this.state.mealOverview)
-        // console.log(this.state.mealChef)
-        // console.log(this.state.mealBox)
-        // console.log(this.state.mealBoxNutrition)
-        // console.log(this.state.cookingSteps)
-        // console.log(this.state.recipeSteps)
-        // console.log(this.state.recipeInstructions)
+
+    }
+
+    isLoading = () => {
+        this.setState({
+            loading: false
+        })
     }
 
     createMealRecipe = async (mealName) => {
@@ -67,6 +77,12 @@ class MealRecipe extends Component {
                 spiceLevel = 2;
             } else if (spiceLevel === "THREE") {
                 spiceLevel = 3;
+            }
+
+            let obj = {
+                chefImg: response.data.chefImg,
+                mainRecipeImg: response.data.mainRecipeImage,
+                cookingStepImages: response.data.cookingStepsImages
             }
 
             this.setState({
@@ -108,13 +124,23 @@ class MealRecipe extends Component {
                 recipeInstructions: {
                     cookSteps: [data.recipeInstructions.cookSteps.split(" | ")],
                     guidelines: [data.recipeInstructions.guidelines.split(" | ")]
-                }
+                },
+                mealIngredientTags: [data.mealIngredientTag],
+                images: [obj]
             })
 
+            this.isLoading();
         }).catch(function (error) {
             console.log(error)
         });
 
+
+    }
+
+    isLoggedInHandler = () => {
+        this.setState(prevState => ({
+            isLoggedIn: !prevState.isLoggedIn
+        }))
     }
 
 
@@ -136,7 +162,10 @@ class MealRecipe extends Component {
                 <div className="">
 
                     <div className="mr-header-wrapper p-3">
-                        <MRHeader mealInfo={this.state.mealInfo}/>
+                        <MRHeader
+                            mealInfo={this.state.mealInfo}
+                            isLoggedIn={this.state.isLoggedIn}
+                        />
                     </div>
 
                     <div className="mr-meal-overview-wrapper pb-3 px-3 w-75">
@@ -144,20 +173,28 @@ class MealRecipe extends Component {
                     </div>
 
                     <div className="mr-slider-wrapper">
-                        <MRSlider
-                            nextImg={this.sliderNextImg}
-                            previousImg={this.sliderPreviousImg}
-                        />
+                        {
+                            !this.state.loading && <MRSlider
+                                images={this.state.images[0].mainRecipeImg}
+                                nextImg={this.sliderNextImg}
+                                previousImg={this.sliderPreviousImg}
+                            />
+                        }
                     </div>
 
                     <div className="mr-meal-info-wrapper">
                         <MRMealInfo
-                            // mealIngredients = {this.state.mealIngredients}
+                            mealIngredientTags = {this.state.mealIngredientTags}
                         />
                     </div>
 
                     <div className="mr-meal-chef-wrapper">
-                        <MRMealChef mealChef={this.state.mealChef}/>
+                        {
+                            !this.state.loading &&
+                            <MRMealChef mealChef={this.state.mealChef}
+                                        images={this.state.images[0].chefImg}
+                            />
+                        }
                     </div>
 
                     <div className="mr-meal-box-wrapper">
@@ -168,11 +205,14 @@ class MealRecipe extends Component {
                     </div>
 
                     <div className="mr-recipe-steps-wrapper ">
-                        <MRRecipeSteps
-                            mealRecipeSteps={this.state.recipeSteps}
-                            mealCookingSteps={this.state.cookingSteps}
-                            mealRecipeInstructions={this.state.recipeInstructions}
-                        />
+                        {
+                            !this.state.loading && <MRRecipeSteps
+                                images={this.state.images[0].cookingStepImages}
+                                mealRecipeSteps={this.state.recipeSteps}
+                                mealCookingSteps={this.state.cookingSteps}
+                                mealRecipeInstructions={this.state.recipeInstructions}
+                            />
+                        }
                     </div>
 
                     <div className="mr-recipe-footer-wrapper">

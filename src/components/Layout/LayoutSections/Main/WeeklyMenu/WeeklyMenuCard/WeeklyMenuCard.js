@@ -1,17 +1,19 @@
 import React from "react";
 
-import TopMenuAllImages from "../../Home/Sections/Section4-Menus/TopMenuAllImages";
+import Image from "../MealRecipe/MealRecipeComponents/Images/Image";
 
 
 const WeeklyMenuCard = (props) => {
-
-    let mealIngretientTags = props.meal.mealIngredientTag.split(", ");
+    console.log(props)
+    let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     return (
 
         <div className="card" id={props.id} onClick={props.clicked}>
 
-            <TopMenuAllImages menuName="Adventurous" imgNumber="1"/>
+            <Image
+                img={props.img}
+                menuName="Adventurous" imgNumber="1"/>
 
             <div className="card-body">
 
@@ -37,7 +39,7 @@ const WeeklyMenuCard = (props) => {
 
                 <ul className="wm-tags-ingredients d-flex justify-content-between mr-1">
 
-                    {mealIngretientTags.map(item => {
+                    {mealIngredientTags.map(item => {
                         return <li key={item} className="">
                             <small className="text-muted">{item}</small>
                         </li>

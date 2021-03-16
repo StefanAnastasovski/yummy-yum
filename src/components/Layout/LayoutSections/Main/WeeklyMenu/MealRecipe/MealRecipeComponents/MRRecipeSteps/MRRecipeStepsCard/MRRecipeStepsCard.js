@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "../../Images/Image";
 
 
 const MRRecipeStepsCard = (props) => {
@@ -9,11 +10,8 @@ const MRRecipeStepsCard = (props) => {
 
             <div className="card-img">
 
-                <img className={""}
-                     src='https://i.ibb.co/6gZcZ6q/meal1.jpg'
-                     alt="chef-img"
-                     width="100%"
-                     height="100%"
+                <Image
+                    img = {props.img}
                 />
 
             </div>

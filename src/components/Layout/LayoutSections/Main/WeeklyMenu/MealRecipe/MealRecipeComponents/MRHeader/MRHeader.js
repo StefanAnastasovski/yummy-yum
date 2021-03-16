@@ -24,31 +24,35 @@ const MRHeader = (props) => {
 
                 <div className="col d-flex justify-content-between">
 
-                        <div className="col">
+                    <div className="col">
 
-                            <h4 className="">
-                                Category:
-                                <span className="text-color-green ml-5 border-bottom">
+                        <h4 className="">
+                            Category:
+                            <span className="text-color-green ml-5 border-bottom">
                                     {props.mealInfo.mealCategory}
                                 </span>
-                            </h4>
+                        </h4>
 
-                            <h4 className="mt-3">
+                        {
+                            props.isLoggedIn && <h4 className="mt-3">
                                 Price:
                                 <span className="text-color-green ml-5 border-bottom">
                                     {props.mealInfo.price} $
                                 </span>
                             </h4>
+                        }
 
-                        </div>
+                    </div>
 
-                        <div className="col d-flex justify-content-end">
+                    {
+                        props.isLoggedIn && <div className="col d-flex justify-content-end">
                             <button type="button" className="btn-add-to-cart" value="Add to Cart">
                                 Add to Cart
                             </button>
                         </div>
+                    }
 
-                    </div>
+                </div>
 
             </div>
 

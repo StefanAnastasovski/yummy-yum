@@ -26,35 +26,35 @@ import VegImg3 from '../../../../../../../images/HomeComponent/ms4-menu/vegetari
 import VegImg4 from '../../../../../../../images/HomeComponent/ms4-menu/vegetarian/CrispyTeriyakiTofuTacos/4.1.jpg'
 
 const TopMenuAllImages = (props) => {
-
     let img;
     let img1, img2, img3, img4;
-    if (props.menuName === "Adventurous") {
-        img1 = AdvImg1;
-        img2 = AdvImg2;
-        img3 = AdvImg3;
-        img4 = AdvImg4;
-    } else if (props.menuName === "CarbConscious") {
-        img1 = CCImg1;
-        img2 = CCImg2;
-        img3 = CCImg3;
-        img4 = CCImg4;
-    } else if (props.menuName === "LowCal") {
-        img1 = LCImg1;
-        img2 = LCImg2;
-        img3 = LCImg3;
-        img4 = LCImg4;
-    } else if (props.menuName === "QuickAndSimple") {
-        img1 = QASImg1;
-        img2 = QASImg2;
-        img3 = QASImg3;
-        img4 = QASImg4;
-    } else if (props.menuName === "Vegetarian") {
-        img1 = VegImg1;
-        img2 = VegImg2;
-        img3 = VegImg3;
-        img4 = VegImg4;
-    }
+
+        if (props.menuName === "Adventurous") {
+            img1 = AdvImg1;
+            img2 = AdvImg2;
+            img3 = AdvImg3;
+            img4 = AdvImg4;
+        } else if (props.menuName === "CarbConscious") {
+            img1 = CCImg1;
+            img2 = CCImg2;
+            img3 = CCImg3;
+            img4 = CCImg4;
+        } else if (props.menuName === "LowCal") {
+            img1 = LCImg1;
+            img2 = LCImg2;
+            img3 = LCImg3;
+            img4 = LCImg4;
+        } else if (props.menuName === "QuickAndSimple") {
+            img1 = QASImg1;
+            img2 = QASImg2;
+            img3 = QASImg3;
+            img4 = QASImg4;
+        } else if (props.menuName === "Vegetarian") {
+            img1 = VegImg1;
+            img2 = VegImg2;
+            img3 = VegImg3;
+            img4 = VegImg4;
+        }
 
     if (props.imgNumber) {
         if (props.imgNumber === "1") {

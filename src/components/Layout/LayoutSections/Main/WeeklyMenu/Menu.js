@@ -27,8 +27,8 @@ const Menu = (props) => {
         return menu;
     }
 
-    let createCardRow = (meals, rowNumber) => {
-        let rowSlice;
+    let createCardRow =  (meals, rowNumber) => {
+            let rowSlice;
         let keyIndex1;
         let keyIndex2;
         if (rowNumber === 1) {
@@ -54,6 +54,7 @@ const Menu = (props) => {
             >
                 <a href={"/meals/" + item.meal.mealName}>
                     <WeeklyMenuCard
+                        img={item.meal.image}
                         meal={item.meal}
                         key={"CardID" + keyIndex2 + index}
                         // clicked={setCardRedirect.bind(this, item.meal.mealName)}
@@ -62,6 +63,23 @@ const Menu = (props) => {
             </li>
         });
     }
+    //
+    // let getCardImage = async (mealName) => {
+    //     await props.getMainRecipeImage(mealName);
+    // }
+
+
+    // let cardsImages = async (menuName) => {
+    //     // return menuName;
+    //     for(let i=0 ; i < menuName.length; i++){
+    //         // let temp = await getCardImage(menuName[i].meal.mealName)
+    //         console.log(temp)
+    //     }
+    //     // return menuName.map((item, index) =>{
+    //     //     console.log(item.meal.mealName);
+    //     //     getCardImage(item.meal.mealName)
+    //     // })
+    // }
 
     // setCardRedirect = (mealName) => {
     //     props.setRedirect(mealName)
@@ -108,9 +126,10 @@ const Menu = (props) => {
 
         let menu = [];
         if (props.isMix) {
-            row1 = createCardRow(props.mixRows, 1);
-            row2 = createCardRow(props.mixRows, 2);
-            row3 = createCardRow(props.mixRows, 3);
+            let mixMenu = convertMealToRightFormat(props.mixRows[0], "Mix")
+            row1 = createCardRow(mixMenu, 1);
+            row2 = createCardRow(mixMenu, 2);
+            row3 = createCardRow(mixMenu, 3);
         } else {
             menu = checkMenuName(props.mealMenuName);
             row1 = createCardRow(menu, 1);
@@ -118,8 +137,6 @@ const Menu = (props) => {
             row3 = createCardRow(menu, 3);
         }
     }
-
-
     return (
 
         <Aux>
@@ -199,10 +216,10 @@ const Menu = (props) => {
                     {/*{checkRecipeRedirect()}*/}
 
                     {props.isMenuExist ? <ul>
-                        <div className="row py-4">{row1}</div>
-                        <div className="row pb-4">{row2}</div>
-                        <div className="row">{row3}</div>
-                    </ul> :
+                            <div className="row py-4">{row1}</div>
+                            <div className="row pb-4">{row2}</div>
+                            <div className="row">{row3}</div>
+                        </ul> :
                         <div className="col py-5 text-center">
                             <h1 className="text-danger ">
                                 <span className="d-block">
@@ -212,7 +229,7 @@ const Menu = (props) => {
                                     The menu is not available at this moment!
                                 </span>
                             </h1>
-                        </div> }
+                        </div>}
 
                 </div>
 

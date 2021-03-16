@@ -76,6 +76,7 @@ class MainRouter extends Component {
                         <Route exact path="/weekly-menu">
 
                             <WeeklyMenu
+                                menu={this.props.menu}
                             />
 
                         </Route>

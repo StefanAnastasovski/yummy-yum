@@ -1,8 +1,9 @@
 import React from "react";
 
-import TopMenuAllImages from "./TopMenuAllImages";
+
 
 import Aux from "../../../../../../../hoc/Auxilliary";
+import Image from "../../../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
 
 const TopMenu = (props) => {
 
@@ -11,108 +12,50 @@ const TopMenu = (props) => {
         <Aux>
 
             {/*menu card #1*/}
-            <div className="col card card-1 mx-1 py-1">
+            <ul className="top-meals list-unstyled d-flex">
+                {
+                    props.menuInfo.meals.map((item, index) => {
 
-                <div className="card-body">
+                        return <li key={(index + 1)} className={"col mx-1 py-1 cursor-pointer"}
+                                   onClick={props.onClick.bind(this, item.mealName)}
+                        >
 
-                    <div className="card-img-top">
+                            <a href={"/meals/" + item.mealName}>
+                                <div className={"card card-" + (index + 1)}>
 
-                        <TopMenuAllImages menuName={props.menuInfo.menuName} imgNumber="1"
-                                          shortenMenuNameLowercase={props.menuInfo.shortenMenuNameLowercase}
-                                          alt={props.menuInfo.mealName1}/>
+                                    <div className="card-body">
 
-                    </div>
+                                        <div className="card-img-top">
 
-                    <div className="card-text text-left">
+                                            <Image className={"top-meal-" + (index + 1)}
+                                                   img={item.image}
+                                            />
 
-                        <span className="text-center card-title py-2 m-0 text-color-green d-block font-size-1">
-                            {props.menuInfo.mealName1}
-                        </span>
-                        {props.menuInfo.mealText1}
+                                        </div>
 
-                    </div>
-
-                </div>
-
-            </div>
-
-            {/*menu card #2*/}
-            <div className="col card card-2 mx-1 py-1">
-
-                <div className="card-body">
-
-                    <div className="card-img-top">
-
-                        <TopMenuAllImages menuName={props.menuInfo.menuName} imgNumber="2"
-                                          shortenMenuNameLowercase={props.menuInfo.shortenMenuNameLowercase}
-                                          alt={props.menuInfo.mealName2}/>
-
-                    </div>
-
-                    <div className="card-text text-left">
+                                        <div className="card-text text-left">
 
                         <span className="text-center card-title py-2 m-0 text-color-green d-block font-size-1">
-                            {props.menuInfo.mealName2}
+                            {item.mealName}
                         </span>
-                        {props.menuInfo.mealText2}
 
-                    </div>
+                                            {item.mealDescription}
 
-                </div>
+                                        </div>
 
-            </div>
+                                    </div>
 
-            {/*menu card #3*/}
-            <div className="col card card-3 mx-1 py-1">
+                                </div>
+                            </a>
 
-                <div className="card-body">
+                        </li>
 
-                    <div className="card-img-top">
+                    })
 
-                        <TopMenuAllImages menuName={props.menuInfo.menuName} imgNumber="3"
-                                          shortenMenuNameLowercase={props.menuInfo.shortenMenuNameLowercase}
-                                          alt={props.menuInfo.mealName3}/>
+                }
 
-                    </div>
+            </ul>
 
-                    <div className="card-text text-left">
-
-                        <span className="text-center card-title py-2 m-0 text-color-green d-block font-size-1">
-                            {props.menuInfo.mealName3}
-                        </span>
-                        {props.menuInfo.mealText3}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            {/*menu card #4*/}
-            <div className="col card card-4 mx-1 py-1">
-
-                <div className="card-body">
-
-                    <div className="card-img-top">
-
-                        <TopMenuAllImages menuName={props.menuInfo.menuName} imgNumber="4"
-                                          shortenMenuNameLowercase={props.menuInfo.shortenMenuNameLowercase}
-                                          alt={props.menuInfo.mealName4}/>
-
-                    </div>
-
-                    <div className="card-text text-left">
-
-                        <span className="text-center card-title py-2 m-0 text-color-green d-block font-size-1">
-                            {props.menuInfo.mealName4}
-                        </span>
-                        {props.menuInfo.mealText4}
-
-                    </div>
-
-                </div>
-
-            </div>
 
         </Aux>
     )

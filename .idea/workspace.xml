@@ -28,30 +28,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="PopUpBox for UpdatePassword added">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/MealRecipe/Image from iOS.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/get/getImage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postImage.js" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="03/16/2021">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenuAllImages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenuAllImages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/ForgotPassword/MailSent/MailSent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/ForgotPassword/MailSent/MailSent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealChef/MRMealChef.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealChef/MRMealChef.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenuAllImages.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenuInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4-Menus/TopMenuInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealInfo/MRMealInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRMealInfo/MRMealInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeStepsCard/MRRecipeStepsCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRSlider/MRSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRSlider/MRSlider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRSlider/MRSliderController/MRSliderController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRSlider/MRSliderController/MealImages/MealOneImages.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +158,8 @@
       <workItem from="1615506532946" duration="207000" />
       <workItem from="1615550119644" duration="11137000" />
       <workItem from="1615726782437" duration="9962000" />
-      <workItem from="1615832968655" duration="12018000" />
+      <workItem from="1615832968655" duration="12619000" />
+      <workItem from="1615934317317" duration="7816000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -279,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615506506621</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="03/16/2021">
+      <created>1615861875218</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1615861875218</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +322,8 @@
     <MESSAGE value="03-08-21" />
     <MESSAGE value="ForgotPassword + UpdatePassword" />
     <MESSAGE value="PopUpBox for UpdatePassword added" />
-    <option name="LAST_COMMIT_MESSAGE" value="PopUpBox for UpdatePassword added" />
+    <MESSAGE value="03/16/2021" />
+    <option name="LAST_COMMIT_MESSAGE" value="03/16/2021" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
@@ -343,12 +338,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612567643723" />
-    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1615760152677">
+    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1615936491058">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-796" y="-252" key="CommitChangelistDialog2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160801510" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615506504839" />
-    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615760152677" />
+    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615936491058" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1612305682426">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -362,31 +357,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610668047416" />
-    <state x="681" y="261" width="955" height="525" key="StructurePopup" timestamp="1615505856826">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1615941546130">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-697" y="132" width="537" height="948" key="StructurePopup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614462152092" />
     <state x="-697" y="61" width="537" height="948" key="StructurePopup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615063250377" />
     <state x="-697" y="472" width="537" height="948" key="StructurePopup/0.0.1920.1040/-1080.0.1080.1880@-1080.0.1080.1880" timestamp="1614455719782" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615505856826" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1613871006390" />
-    <state x="469" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615506694389">
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1615941546130" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1615861946324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-816" y="46" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160805649" />
     <state x="469" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615506694389" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614468986729" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615861946324" />
     <state x="92" y="92" width="1736" height="856" key="dock-window-1" timestamp="1615851537360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1615851537360" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1615861760902">
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1615943226825">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-713" y="117" width="713" height="1020" key="find.popup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614463544819" />
     <state x="-761" y="46" width="761" height="1020" key="find.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615070600283" />
     <state x="567" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1615506735279" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615861760902" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615943226825" />
     <state x="615" y="244" key="run.anything.popup" timestamp="1615837018982">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

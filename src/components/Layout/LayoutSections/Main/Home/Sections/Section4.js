@@ -2,30 +2,93 @@ import React, {Component} from "react";
 
 import TopMenuInfo from "./Section4-Menus/TopMenuInfo";
 
+import MenuCalls from "../../../../../../repository/get/getMenu";
+
 class Section4 extends Component {
 
     state = {
         menuName: "Adventurous",
-        shortenMenuNameUppercase: "Adv",
-        shortenMenuNameLowercase: "adv",
-
-        mealName1: "Japanese BBQ Burger",
-        mealText1: "with smoky potato wedges",
-
-        mealName2: "Huli-Huli Chicken Rice Bowl",
-        mealText2: "with charred pineapple",
-
-        mealName3: "Garlic-Parmesan Crusted Filet Mignon",
-        mealText3: "with red wine sauce, roasted red potatoes and parsnips",
-
-        mealName4: "Korean Fried Chicken",
-        mealText4: "with edamame rice",
-        //
         chooseMenu: "Adventurous",
         showChooseMenu: false,
         showChooseMenuClass: "",
-        showChooseMenuBtnForm: ""
+        showChooseMenuBtnForm: "",
+        menu: [],
+        loading: true
 
+    }
+
+    isLoading = () => {
+        this.setState({
+            loading: false
+        })
+    }
+
+    async componentDidMount() {
+        let [month, mondayDate, year] = this.getMondayInWeek();
+
+        month = (month + 1);
+        if (month < 10) {
+            month = "0" + month
+        }
+        if (mondayDate < 10) {
+            mondayDate = "0" + mondayDate
+        }
+        let menuName = "M-" + year + "-" + month + "-" + mondayDate;
+
+        await this.getMenuByMenuName(menuName);
+        this.isLoading();
+        // console.log(this.state.menu.shift())
+    }
+
+    getMondayInWeek = () => {
+
+        let currentDate = new Date();
+        let month = currentDate.getMonth();
+        let monthDate = currentDate.getDate();
+        let year = currentDate.getFullYear();
+        let dayInMonth = new Date(year, month, monthDate);
+        let dayInMonthNumber = dayInMonth.getDay();
+        let fullDate;
+
+        if (dayInMonthNumber === 0) {
+            fullDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 6);
+            monthDate = fullDate.getDate();
+            month = fullDate.getMonth();
+        } else {
+            let mondayInWeek = (dayInMonthNumber - 1);
+            monthDate = monthDate - mondayInWeek;
+        }
+
+        return [month, monthDate, year];
+
+    }
+
+    getMenuByMenuName = async (menuName) => {
+
+        await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
+            response.data.mealCategories.shift();
+            let filter = [];
+            let obj = {}
+            let meals;
+            response.data.mealCategories.forEach((item, index) => {
+                meals = [];
+                for (let i = 0; i < 4; i++) {
+                    meals.push(item.meals[i]);
+                }
+                obj = {
+                    meals: meals
+                }
+                filter.push(obj)
+            })
+            this.setState({
+                menu: filter
+            })
+
+        }).catch(function (error) {
+            console.log(error)
+        })
+        // });
+        return this.state.menu.length > 0;
     }
 
     onClickChooseMenu = (event) => {
@@ -55,6 +118,10 @@ class Section4 extends Component {
             })
         }
 
+    }
+
+    onClickHandler = (mealName) => {
+        localStorage.setItem("mealName", mealName);
     }
 
     render() {
@@ -134,7 +201,12 @@ class Section4 extends Component {
                                 {/*Choose one of our menus*/}
                                 <div className="row ms4-ms text-center">
 
-                                    <TopMenuInfo MenuName={this.state.chooseMenu}/>
+                                    {
+                                        !this.state.loading && <TopMenuInfo MenuName={this.state.chooseMenu}
+                                                                            menu={this.state.menu}
+                                                                            onClick={this.onClickHandler.bind(this)}
+                                        />
+                                    }
 
                                 </div>
 

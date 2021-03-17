@@ -4,7 +4,6 @@ import Image from "../MealRecipe/MealRecipeComponents/Images/Image";
 
 
 const WeeklyMenuCard = (props) => {
-    console.log(props)
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     return (

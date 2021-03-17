@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 
 import './MRMealInfo.css';
 import Aux from "../../../../../../../../hoc/Auxilliary";

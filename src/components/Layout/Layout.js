@@ -9,9 +9,8 @@ import PopUpBox from "./LayoutSections/PopUp/PopUpBox";
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
-// import MenuCalls from "../../repository/get/getMenu";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
-import MenuCalls from "../../repository/get/getMenu";
+// import MenuCalls from "../../repository/get/getMenu";
 
 class Layout extends Component {
 //
@@ -75,22 +74,6 @@ class Layout extends Component {
         isWeeklyMenu: false
     }
 
-    getMenuByMenuName = async (menuName) => {
-
-        await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
-
-            this.setState({
-                menu: response.data.mealCategories
-            })
-
-        }).catch(function (error) {
-            console.log(error)
-        })
-        // });
-        return this.state.menu.length > 0;
-    }
-
-
     async componentDidMount() {
         let urlPath = window.location.pathname;
         console.log(urlPath)
@@ -102,14 +85,6 @@ class Layout extends Component {
             // console.log("dasd")
         }
 
-        let menuName = "M-" + "2021" + "-" + "03" + "-" + "08";
-        let menu = await this.getMenuByMenuName(menuName)
-        if (menu) {
-            this.setState({
-                loading: false,
-                isWeeklyMenu: true
-            })
-        }
     }
 
 

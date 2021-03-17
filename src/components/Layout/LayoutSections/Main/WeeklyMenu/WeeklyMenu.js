@@ -5,7 +5,6 @@ import './WeeklyMenu.css';
 
 import Menu from "./Menu";
 import MenuCalls from "../../../../../repository/get/getMenu";
-import ImageCalls from "../../../../../repository/get/getImage";
 
 
 class WeeklyMenu extends Component {
@@ -71,7 +70,8 @@ class WeeklyMenu extends Component {
         loading: true,
         // isMixMenuCreated: false,
         menuCards: [],
-        isMenuExist: false,
+        isMenuExist: true,
+        menuName: ""
     }
 
     onClickMealFilter = (event) => {
@@ -113,18 +113,26 @@ class WeeklyMenu extends Component {
     }
 
     getMenuByMenuName = async (menuName) => {
+        let err = false;
 
         await MenuCalls.fetchMenuByMenuName(menuName).then((response) => {
-            console.log(response.data)
             this.setState({
-                menu: response.data.mealCategories
+                menu: response.data.mealCategories,
+                isMenuExist: true
             })
 
         }).catch(function (error) {
+            console.log("catch error")
             console.log(error)
+            err = true;
         })
-        // });
-        return this.state.menu.length > 0;
+
+        if (err)
+            this.setState({
+                isMenuExist: false
+            })
+
+        return !err;
     }
 
     async componentDidMount() {
@@ -134,24 +142,32 @@ class WeeklyMenu extends Component {
         let [month, mondayDate, year] = this.getMondayInWeek();
         await this.setDate();
 
-        month = (month + 1);
-        if (month < 10) {
-            month = "0" + month
-        }
-        if (mondayDate < 10) {
-            mondayDate = "0" + mondayDate
-        }
-        let menuName = "M-" + year + "-" + month + "-" + mondayDate;
-
-        let menu = await this.getMenuByMenuName(menuName);
+        let menu = await this.populateMenuName(year, month, mondayDate);
 
         if (menu) {
             await this.createAllMenus();
-            await this.isMenuExist()
+            // await this.isMenuExist()
         }
 
         this.isLoading();
 
+    }
+
+
+    populateMenuName = async (year, month, day) => {
+        month = (month + 1);
+        if (month < 10) {
+            month = "0" + month
+        }
+        if (day < 10) {
+            day = "0" + day
+        }
+        let menuName = "M-" + year + "-" + month + "-" + day;
+        this.setState({
+            menuName: menuName
+        })
+
+        return await this.getMenuByMenuName(menuName);
     }
 
     setDate = async () => {
@@ -248,14 +264,20 @@ class WeeklyMenu extends Component {
         let weekSelectDateState = this.state.weekSelectDate;
         let weekMonth = this.state.weekMonth;
         let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
-        let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState + 7);
+        let nextWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState + 7);
+        this.populateSliderDate(nextWeekDate);
 
+    }
+
+    populateSliderDate = (date) => {
+        this.populateMenuName(date.getFullYear(), date.getMonth(), date.getDate()).then(r => null)
         this.setState({
-            weekSelectDate: previousWeekDate.getDate(),
-            weekSelect: "Week Of Monday, " + this.addMonthName(previousWeekDate.getMonth()) + " " + this.addDateSuffix(previousWeekDate.getDate()),
-            weekMonth: previousWeekDate.getMonth()
+            weekSelectDate: date.getDate(),
+            weekSelect: "Week Of Monday, " +
+                this.addMonthName(date.getMonth()) +
+                " " + this.addDateSuffix(date.getDate()),
+            weekMonth: date.getMonth()
         })
-
     }
 
     onClickPreviousWeek = () => {
@@ -264,15 +286,7 @@ class WeeklyMenu extends Component {
         let weekMonth = this.state.weekMonth;
         let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
         let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState - 7);
-
-        this.setState({
-            weekSelectDate: previousWeekDate.getDate(),
-            weekSelect: "Week Of Monday, " +
-                this.addMonthName(previousWeekDate.getMonth()) +
-                " " + this.addDateSuffix(previousWeekDate.getDate()),
-            weekMonth: previousWeekDate.getMonth()
-        })
-
+        this.populateSliderDate(previousWeekDate);
     }
 
     setRedirect = (mealName) => {

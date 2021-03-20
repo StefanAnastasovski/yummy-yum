@@ -100,7 +100,7 @@ class ForgotPassword extends Component {
     onChangeEmail = (event) => {
 
         this.setState({
-            email: event.target.value
+            email: event.target.value.toLowerCase()
         })
 
     }

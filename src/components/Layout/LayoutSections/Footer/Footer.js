@@ -176,11 +176,11 @@ class Footer extends Component {
                                 </a></li>
 
                                 <li><a href="http://www.twitter.com/">
-                                    <FontAwesomeIcon icon={faTwitter} className="fa-2x">facebook</FontAwesomeIcon>
+                                    <FontAwesomeIcon icon={faTwitter} className="fa-2x">twitter</FontAwesomeIcon>
                                 </a></li>
 
-                                <li><a href="https://www.gmail.com/">
-                                    <FontAwesomeIcon icon={faMailBulk} className="fa-2x">facebook</FontAwesomeIcon>
+                                <li><a href="https://gmail.com">
+                                    <FontAwesomeIcon icon={faMailBulk} className="fa-2x">email</FontAwesomeIcon>
                                 </a></li>
 
                             </ul>

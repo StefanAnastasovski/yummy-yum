@@ -1,7 +1,6 @@
 import React from "react";
 
 
-
 import Aux from "../../../../../../../hoc/Auxilliary";
 import Image from "../../../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
 
@@ -35,11 +34,11 @@ const TopMenu = (props) => {
 
                                         <div className="card-text text-left">
 
-                        <span className="text-center card-title py-2 m-0 text-color-green d-block font-size-1">
-                            {item.mealName}
-                        </span>
+                                            <h3 className="text-center card-title py-2 m-0 d-block font-size-1">
+                                                {item.mealName}
+                                            </h3>
 
-                                            {item.mealDescription}
+                                            <p className="text-color-green"> {item.mealDescription} </p>
 
                                         </div>
 

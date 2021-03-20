@@ -9,9 +9,9 @@ import CookingSteps from "./CreateRecipe/CookingSteps";
 import MealInstructions from "./CreateRecipe/MealInstructions";
 
 import CreateMealCalls from "../../../../../repository/post/postMeal";
+import PostImage from "../../../../../repository/post/postImage";
 
 class CreateRecipe extends Component {
-
 
     state = {
 
@@ -20,7 +20,12 @@ class CreateRecipe extends Component {
             mealDescription: "",
             mealIngredientTag: "",
             mealTimeTag: "",
-            mealPrice: 0
+            mealPrice: 0,
+            mainRecipeImages: []
+        },
+
+        mealCategory: {
+            category: ""
         },
 
         mealOverview: {
@@ -32,7 +37,8 @@ class CreateRecipe extends Component {
 
         mealChef: {
             mealChefDescription: "",
-            chefFullName: ""
+            chefFullName: "",
+            chefImage: ""
         },
 
         mealNutrition: {
@@ -53,11 +59,10 @@ class CreateRecipe extends Component {
         },
 
         cookingSteps: {
-            cookingStepValues: [],
+            // cookingStepValues: [],
             stepTitles: [],
             stepDescriptions: [],
-            cookingStepIMGURLs: []
-
+            cookingStepsImages: []
         },
 
         mealInstructions: {
@@ -66,6 +71,9 @@ class CreateRecipe extends Component {
             guidelines: []
         },
 
+        //Meal Information
+        mainRecipeImageCounter: 1,
+        mainRecipeImageElements: [],
         //meal box
         mealIngredients: [],
         ingredientNumber: 1,
@@ -144,7 +152,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeDifficultyLevelValue(event) {
+    onChangeDifficultyLevelValue = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
             mealOverview: {                   // object that we want to update
@@ -154,7 +162,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeSpiceLevelValue(event) {
+    onChangeSpiceLevelValue = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
             mealOverview: {                   // object that we want to update
@@ -164,7 +172,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeCookWithinValue(event) {
+    onChangeCookWithinValue = (event) => {
         let value = parseInt(event.target.value);
         this.setState(prevState => ({
             mealOverview: {                   // object that we want to update
@@ -174,7 +182,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangePrepCookTimeValue(event) {
+    onChangePrepCookTimeValue = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
             mealOverview: {                   // object that we want to update
@@ -184,7 +192,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeChefDescription(event) {
+    onChangeChefDescription = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
             mealChef: {                   // object that we want to update
@@ -194,7 +202,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeChefFullName(event) {
+    onChangeChefFullName = (event) => {
         let value = event.target.value;
         this.setState(prevState => ({
             mealChef: {                   // object that we want to update
@@ -204,7 +212,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeCalories(event) {
+    onChangeCalories = (event) => {
         let value = parseFloat(event.target.value);
         this.setState({
             mealNutrition: {                   // object that we want to update
@@ -214,7 +222,7 @@ class CreateRecipe extends Component {
         })
     }
 
-    onChangeCarbohydrates(event) {
+    onChangeCarbohydrates = (event) => {
         let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
@@ -224,7 +232,7 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeProtein(event) {
+    onChangeProtein = (event) => {
         let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
@@ -234,12 +242,95 @@ class CreateRecipe extends Component {
         }))
     }
 
-    onChangeFat(event) {
+    onChangeFat = (event) => {
         let value = parseFloat(event.target.value);
         this.setState(prevState => ({
             mealNutrition: {                   // object that we want to update
                 ...prevState.mealNutrition,    // keep all other key-value pairs
                 fat: value   // update the value of specific key
+            }
+        }))
+    }
+
+    onChangeMealCategory = (event) => {
+
+        this.setState(prevState => ({
+            mealCategory: {                   // object that we want to update
+                ...prevState.mealCategory,    // keep all other key-value pairs
+                category: event.target.value   // update the value of specific key
+            }
+        }))
+
+    }
+
+    //-----------------------------------------------------------------------------
+    //-----------------------------------Meal Information----------------------------------
+
+    addMainRecipeImageField = () => {
+
+        let mainRecipeImg = <li key={this.state.mainRecipeImageCounter + 1}>
+
+            <div className="col d-flex flex-row">
+
+                <div className="col-4"><label>Main Recipe Image's URL
+                    #{(this.state.mainRecipeImageCounter + 1)}:</label>
+                </div>
+                <div className="col-8"><input type="text"
+                                              required
+                                              className="w-75 px-1"
+                                              id={"main-recipe-img-" + (this.state.mainRecipeImageCounter + 1)}
+                                              placeholder="https://example.com/example/"
+                                              onChange={this.onChangeAddMainRecipeImage.bind(this)}
+                />
+                </div>
+
+            </div>
+
+        </li>;
+
+        let mainRecipeImages = [...this.state.mainRecipeImageElements];
+        mainRecipeImages.push(mainRecipeImg);
+
+        this.setState(prevState => ({
+            mainRecipeImageCounter: (prevState.mainRecipeImageCounter + 1),
+            mainRecipeImageElements: mainRecipeImages
+        }))
+
+    }
+
+    onChangeAddMainRecipeImage = (event) => {
+
+        let value = event.target.value;
+        let index = event.target.id;
+        index = parseInt(index.split("-")[3]) - 1;
+
+        let mainRecipeImages = {...this.state.mealInformation}.mainRecipeImages;
+
+        this.addMainRecipeImage(index, value, mainRecipeImages);
+
+    }
+
+    addMainRecipeImage = (index, value, mainRecipeObj) => {
+
+        mainRecipeObj[index] = value;
+
+        this.setState(prevState => ({
+            mealInformation: {
+                ...prevState.mealInformation,
+                mainRecipeImages: mainRecipeObj
+            }
+        }))
+
+    }
+
+    //-----------------------------------------------------------------------------
+    //-----------------------------------Meal Chef----------------------------------
+
+    onChangeChefImageHandler = (event) => {
+        this.setState(prevState => ({
+            mealChef: {
+                ...prevState.mealChef,
+                chefImage: event.target.value
             }
         }))
     }
@@ -423,11 +514,11 @@ class CreateRecipe extends Component {
                 <div className="col d-flex flex-row">
 
                     <div className="col-4"><label>Step Description #{this.state.cookingStepNumber + 1}:</label></div>
-                    <div className="col-8"><input type="text"
-                                                  required
-                                                  className="w-75 px-1"
-                                                  id={"cooking-step-description-" + (this.state.cookingStepNumber + 1)}
-                                                  onChange={this.onChangeAddElementInCookingStep}/></div>
+                    <div className="col-8"><textarea required
+                                                     rows="5"
+                                                     className="w-75 px-1"
+                                                     id={"cooking-step-description-" + (this.state.cookingStepNumber + 1)}
+                                                     onChange={this.onChangeAddElementInCookingStep}/></div>
 
                 </div>
 
@@ -440,6 +531,7 @@ class CreateRecipe extends Component {
                                                   required
                                                   className="w-75 px-1"
                                                   id={"cooking-step-imgurl-" + (this.state.cookingStepNumber + 1)}
+                                                  placeholder="https://example.com/example/"
                                                   onChange={this.onChangeAddElementInCookingStep}/></div>
 
                 </div>
@@ -450,13 +542,14 @@ class CreateRecipe extends Component {
 
         let cookingStepValue = {
             stepNumber: (this.state.cookingStepNumber + 1),
-            stepTitle: "",
-            stepDescription: "",
-            cookingStepIMGURL: ""
+            stepTitles: "",
+            stepDescriptions: "",
+            cookingStepsImages: ""
         }
-
-        let cookingStepValues = this.state.cookingSteps.cookingStepValues;
-        cookingStepValues.push(cookingStepValue);
+        let cookingStepValues = {...this.state.cookingSteps};
+        cookingStepValues.stepTitles.push(cookingStepValue.stepTitles);
+        cookingStepValues.stepDescriptions.push(cookingStepValue.stepDescriptions);
+        cookingStepValues.cookingStepsImages.push(cookingStepValue.cookingStepsImages);
 
         let stateList = [...this.state.cookingStepBlocks];
         stateList.push(cookingStep);
@@ -464,11 +557,14 @@ class CreateRecipe extends Component {
         this.setState(prevState => ({
             cookingStepBlocks: stateList,
             cookingStepNumber: (prevState.cookingStepNumber + 1),
-            cookingStepValues: {
-                ...this.state.cookingSteps,
-                cookingStepValues: cookingStepValues
+            cookingSteps: {
+                ...prevState.cookingSteps,
+                stepTitles: cookingStepValues.stepTitles,
+                stepDescriptions: cookingStepValues.stepDescriptions,
+                cookingStepsImages: cookingStepValues.cookingStepsImages
             }
         }))
+
 
     }
 
@@ -476,31 +572,39 @@ class CreateRecipe extends Component {
     addElementInCookingStep = (index, value, cookingStepObj, element) => {
 
         if (element.includes("step-title")) {
-            cookingStepObj[index] = {
-                stepNumber: cookingStepObj[index].stepNumber,
-                stepTitle: value,
-                stepDescription: cookingStepObj[index].stepDescription,
-                cookingStepIMGURL: cookingStepObj[index].cookingStepIMGURL
+            let stepTitles = [...cookingStepObj.stepTitles];
+            stepTitles[index] = value;
+            cookingStepObj = {
+                stepTitles: stepTitles,
+                stepDescriptions: cookingStepObj.stepDescriptions,
+                cookingStepsImages: cookingStepObj.cookingStepsImages
             }
         } else if (element.includes("step-description")) {
-            cookingStepObj[index] = {
-                stepNumber: cookingStepObj[index].stepNumber,
-                stepTitle: cookingStepObj[index].stepTitle,
-                stepDescription: value,
-                cookingStepIMGURL: cookingStepObj[index].cookingStepIMGURL
+            let stepDescriptions = [...cookingStepObj.stepDescriptions];
+            stepDescriptions[index] = value;
+            cookingStepObj = {
+                stepTitles: cookingStepObj.stepTitles,
+                stepDescriptions: stepDescriptions,
+                cookingStepsImages: cookingStepObj.cookingStepsImages
             }
         } else if (element.includes("step-imgurl")) {
-            cookingStepObj[index] = {
-                stepNumber: cookingStepObj[index].stepNumber,
-                stepTitle: cookingStepObj[index].stepTitle,
-                stepDescription: cookingStepObj[index].stepDescription,
-                cookingStepIMGURL: value
+            let cookingStepsImages = [...cookingStepObj.cookingStepsImages];
+            cookingStepsImages[index] = value;
+            cookingStepObj = {
+                stepTitles: cookingStepObj.stepTitles,
+                stepDescriptions: cookingStepObj.stepDescriptions,
+                cookingStepsImages: cookingStepsImages
             }
         }
 
         this.setState(prevState => ({
-            ...prevState.cookingSteps.cookingStepValues,
-            cookingStepValues: cookingStepObj
+            // cookingStepNumber: cookingStepObj.stepNumber,
+            cookingSteps: {
+                ...prevState.cookingSteps,
+                stepTitles: cookingStepObj.stepTitles,
+                stepDescriptions: cookingStepObj.stepDescriptions,
+                cookingStepsImages: cookingStepObj.cookingStepsImages
+            }
         }))
 
     }
@@ -513,7 +617,7 @@ class CreateRecipe extends Component {
         let index = event.target.id;
         index = parseInt(index.split("-")[3]) - 1;
 
-        let cookingStepObj = {...this.state.cookingSteps}.cookingStepValues;
+        let cookingStepObj = {...this.state.cookingSteps};
 
         if (element.includes("step-title")) {
             this.addElementInCookingStep(index, value, cookingStepObj, "step-title");
@@ -532,7 +636,6 @@ class CreateRecipe extends Component {
 
         let newElement;
         let newList;
-        console.log(event.target.id)
         if (event.target.id === "btn-new-cook-step") {
 
             newElement = <li key={this.state.mealInstructionCookStepNumber + 1}>
@@ -644,10 +747,8 @@ class CreateRecipe extends Component {
         let index = event.target.id;
         index = this.getMealInstructionIndex(index);
         let addElement;
-        console.log(index)
         if (element.includes("customize-instruction")) {
             addElement = {...this.state.mealInstructions}
-            console.log(addElement)
 
             addElement.customizeInstructions[index] = value;
             this.setState(prevState => ({
@@ -656,7 +757,6 @@ class CreateRecipe extends Component {
             }))
         } else if (element.includes("guideline")) {
             addElement = {...this.state.mealInstructions}
-            console.log(addElement)
 
             addElement.guidelines[index] = value;
             this.setState(prevState => ({
@@ -666,7 +766,6 @@ class CreateRecipe extends Component {
 
         } else if (element.includes("cook-step")) {
             addElement = {...this.state.mealInstructions}
-            console.log(addElement)
 
             addElement.cookSteps[index] = value;
             this.setState(prevState => ({
@@ -791,12 +890,16 @@ class CreateRecipe extends Component {
 
         let cookingStepValue = {
             stepNumber: this.state.cookingStepNumber,
-            stepTitle: "",
-            stepDescription: "",
-            cookingStepIMGURL: ""
+            stepTitles: "",
+            stepDescriptions: "",
+            cookingStepsImages: ""
         }
-        let cookingStepValues = this.state.cookingSteps.cookingStepValues;
-        cookingStepValues.push(cookingStepValue);
+
+        let cookingStepValues = {...this.state.cookingSteps};
+
+        cookingStepValues.stepTitles.push(cookingStepValue.stepTitles);
+        cookingStepValues.stepDescriptions.push(cookingStepValue.stepDescriptions);
+        cookingStepValues.cookingStepsImages.push(cookingStepValue.cookingStepsImages);
 
         let mealInstructionCookSteps = [...this.state.mealInstructionCookSteps,
             <li key={this.state.mealInstructionCookStepNumber}>
@@ -846,21 +949,42 @@ class CreateRecipe extends Component {
                                                  id={"instruction-customize-instruction-" +
                                                  this.state.mealInstructionCustomizeInstructionNumber}
                                                  placeholder="If using chicken breasts, pat dry and season both
-                                                      sides with a pinch of salt and pepper.
-                                                      Follow same instructions as salmon in Step #,
-                                                      cooking until chicken reaches minimum internal temperature,
-                                                      8-10 minutes per side."
+                                                 sides with a pinch of salt and pepper.
+                                                 Follow same instructions as salmon in Step #,
+                                                 cooking until chicken reaches minimum internal temperature,
+                                                 8-10 minutes per side."
                                                  rows="5" className="w-100 px-1"
-                                                 onChange={this.onChangeAddElementInMealInstruction}
-                />
+                                                 onChange={this.onChangeAddElementInMealInstruction}/>
                 </div>
 
             </div>
 
         </li>]
 
+        let mainRecipeImg = [...this.state.mainRecipeImageElements,
+            <li key={this.state.mainRecipeImageCounter}>
+
+                <div className="col d-flex flex-row">
+
+                    <div className="col-4"><label>Main Recipe Image's URL
+                        #{(this.state.mainRecipeImageCounter)}:</label>
+                    </div>
+                    <div className="col-8"><input type="text"
+                                                  required
+                                                  className="w-75 px-1"
+                                                  id={"main-recipe-img-" + (this.state.mainRecipeImageCounter)}
+                                                  placeholder="https://example.com/example/"
+                                                  onChange={this.onChangeAddMainRecipeImage}
+                    />
+                    </div>
+
+                </div>
+
+            </li>]
+
         // const price = parseFloat(document.getElementById('mealPrice').value);
         let price = 6.99;
+
         this.setState(prevState => ({
             mealIngredients: mealIngredientsList,
             recipeStepList1: recipeStepsList1,
@@ -868,13 +992,15 @@ class CreateRecipe extends Component {
             recipeStepNumber1: prevState.recipeStepNumber1 + 1,
             recipeStepNumber2: prevState.recipeStepNumber2 + 1,
             cookingStepBlocks: cookingStepBlocks,
-            cookingStepValues: {
-                ...this.state.cookingSteps,
-                cookingStepValues: cookingStepValues
+            mainRecipeImageElements: mainRecipeImg,
+            cookingSteps: {
+                stepTitles: cookingStepValues.stepTitles,
+                stepDescriptions: cookingStepValues.stepDescriptions,
+                cookingStepsImages: cookingStepValues.cookingStepsImages
             },
             mealInformation: {
                 ...this.state.mealInformation,
-                mealPrice: price,
+                mealPrice: price
             },
             mealInstructionCookSteps: mealInstructionCookSteps,
             mealInstructionGuidelines: mealInstructionGuidelines,
@@ -885,60 +1011,61 @@ class CreateRecipe extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
 
-        let meal = {
-            mealName: this.state.mealInformation.mealName,
-            mealDescription: this.state.mealInformation.mealDescription,
-            mealIngredientTag: this.state.mealInformation.mealIngredientTag,
-            mealTimeTag: this.state.mealInformation.mealTimeTag,
-            mealPrice: this.state.mealInformation.mealPrice,
-            cookWithin: this.state.mealOverview.cookWithin,
-            difficultyLevel: this.state.mealOverview.difficultyLevel,
-            prepCookTime: this.state.mealOverview.prepCookTime,
-            spiceLevel: this.state.mealOverview.spiceLevel,
-            mealChefDescription: this.state.mealChef.mealChefDescription,
-            chefFullName: this.state.mealChef.chefFullName,
-            calories: this.state.mealNutrition.calories,
-            carbohydrates: this.state.mealNutrition.carbohydrates,
-            protein: this.state.mealNutrition.protein,
-            fat: this.state.mealNutrition.fat,
-            serveQuantity: this.state.mealBox.serveQuantity,
-            mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
-            mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
-            mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
-            cookingStepValues: this.state.cookingSteps.cookingStepValues,
-            cookingSteps: this.state.cookingSteps,
-            customizeInstructions: this.state.mealInstructions.customizeInstructions,
-            mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
-            mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
+        // let mealImages;
+        //
+        // mealImages = {
+        //     mainRecipeImages: this.state.mealInformation.mainRecipeImages,
+        //     chefImage: this.state.mealChef.chefImage,
+        //     cookingStepImages: this.state.cookingSteps.cookingStepsImages
+        // }
+
+        let mealCategory = {
+            mealCategory: this.state.mealCategory
         }
+        console.log(mealCategory)
 
-        console.log(meal);
-
-
+    //     let meal = {
+    //         mealName: this.state.mealInformation.mealName,
+    //         mealDescription: this.state.mealInformation.mealDescription,
+    //         mealIngredientTag: this.state.mealInformation.mealIngredientTag,
+    //         mealTimeTag: this.state.mealInformation.mealTimeTag,
+    //         mealPrice: this.state.mealInformation.mealPrice,
+    //         cookWithin: this.state.mealOverview.cookWithin,
+    //         difficultyLevel: this.state.mealOverview.difficultyLevel,
+    //         prepCookTime: this.state.mealOverview.prepCookTime,
+    //         spiceLevel: this.state.mealOverview.spiceLevel,
+    //         mealChefDescription: this.state.mealChef.mealChefDescription,
+    //         chefFullName: this.state.mealChef.chefFullName,
+    //         calories: this.state.mealNutrition.calories,
+    //         carbohydrates: this.state.mealNutrition.carbohydrates,
+    //         protein: this.state.mealNutrition.protein,
+    //         fat: this.state.mealNutrition.fat,
+    //         serveQuantity: this.state.mealBox.serveQuantity,
+    //         mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
+    //         mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
+    //         mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
+    //         cookingStepValues: this.state.cookingSteps.cookingStepValues,
+    //         cookingSteps: this.state.cookingSteps,
+    //         customizeInstructions: this.state.mealInstructions.customizeInstructions,
+    //         mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
+    //         mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
+    //     }
+    //
+    //
+    //
+    //
     }
 
     //---------------------------------------------------------------------------------------
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
+
+        event.preventDefault();
+
         let obj;
 
-        let stepTitles = [];
-        let stepDescriptions = [];
-        let urls = [];
-
-        this.state.cookingSteps.cookingStepValues.forEach((item, index) => {
-            stepTitles.push(item.stepTitle);
-            stepDescriptions.push(item.stepDescription);
-            urls.push(item.cookingStepIMGURL);
-        })
-
-        stepTitles = stepTitles.join(" | ");
-        stepDescriptions = stepDescriptions.join(" | ");
-
-
-        urls = urls.join(" | ");
-
-        console.log(urls)
+        let stepTitles = this.state.cookingSteps.stepTitles.join(" | ");
+        let stepDescriptions = this.state.cookingSteps.stepDescriptions.join(" | ");
 
         obj = {
 
@@ -987,12 +1114,73 @@ class CreateRecipe extends Component {
 
         }
 
-        CreateMealCalls.createMeal(obj).then(response => {
+        await CreateMealCalls.createMeal(obj).then(response => {
             console.log("Meal is created!");
         }).catch(error => {
             console.log(error);
         })
-        event.preventDefault();
+
+        let images = [
+            {mainRecipeImages: this.state.mealInformation.mainRecipeImages},
+            {chefImage: this.state.mealChef.chefImage},
+            {cookingStepsImages: this.state.cookingSteps.cookingStepsImages}
+        ]
+
+        images.forEach((item, index) => {
+            if (index === 0) {
+                let image;
+                for (let counter = 0; counter < item.mainRecipeImages.length; counter++) {
+                    image = {
+                        url: item.mainRecipeImages[counter],
+                        alt: this.state.mealInformation.mealName,
+                        isChefImg: false,
+                        isMainRecipeImg: true,
+                        cookingStep: 9999,
+                        meal: {
+                            mealName: this.state.mealInformation.mealName
+                        }
+                    }
+                    PostImage.addMealImage(image).then(response => {
+                    }).catch(error => {
+                        console.log(error)
+                    })
+                }
+            } else if (index === 2) {
+                let image;
+                for (let counter = 0; counter < item.cookingStepsImages.length; counter++) {
+                    image = {
+                        url: item.cookingStepsImages[counter],
+                        alt: this.state.mealInformation.mealName,
+                        isChefImg: false,
+                        isMainRecipeImg: false,
+                        cookingStep: (counter + 1),
+                        meal: {
+                            mealName: this.state.mealInformation.mealName
+                        }
+                    }
+                    PostImage.addMealImage(image).then(response => {
+                    }).catch(error => {
+                        console.log(error)
+                    })
+                }
+            } else {
+                let image = {
+                    url: item.chefImage.toString(),
+                    alt: this.state.mealInformation.mealName.toString(),
+                    isChefImg: true,
+                    isMainRecipeImg: false,
+                    cookingStep: 9999,
+                    meal: {
+                        mealName: this.state.mealInformation.mealName.toString()
+                    }
+                }
+                PostImage.addMealImage(image).then(response => {
+                }).catch(error => {
+                    console.log(error)
+                })
+            }
+        })
+
 
     }
 
@@ -1016,17 +1204,21 @@ class CreateRecipe extends Component {
                             <div className="col left-row d-flex flex-column">
 
                                 <div className="col"><MealInfo
+                                    addMainRecipeImageField={this.addMainRecipeImageField}
+                                    mainRecipeImageElements={this.state.mainRecipeImageElements}
                                     mealInformation={this.state.mealInformation}
                                     onChangeHandleMealName={this.onChangeHandleMealName}
                                     onChangeHandleMealDescription={this.onChangeHandleMealDescription}
                                     onChangeHandleMealIngredientTag={this.onChangeHandleMealIngredientTag}
                                     onChangeHandleMealTimeTag={this.onChangeHandleMealTimeTag}
                                     onChangeHandleMealPrice={this.onChangeHandleMealPrice}
+                                    onChangeMealCategory={this.onChangeMealCategory}
                                 /></div>
 
                                 <div className="col"><MealChef
                                     onChangeChefDescription={this.onChangeChefDescription.bind(this)}
                                     onChangeChefFullName={this.onChangeChefFullName.bind(this)}
+                                    onChangeChefImageHandler={this.onChangeChefImageHandler.bind(this)}
                                 /></div>
 
                                 <div className="col"><MealNutrition

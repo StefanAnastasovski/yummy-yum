@@ -18,7 +18,7 @@
 .main-wrapper .admin-dashboard-wrapper .btn-new-utensil,
 .btn-new-cook-step, #btn-new-guideline, #btn-new-ingredient,
 #btn-new-customize-instruction, .btn-create-recipe,
-.btn-create-menu, .btn-send-email {
+.btn-create-menu, .btn-send-email, .btn-new-main-recipe-img {
     border: none;
     border-radius: 10px;
     background-color: #6b9958;
@@ -32,7 +32,7 @@
 .btn-new-cook-step:hover, #btn-new-guideline:hover, #btn-new-ingredient:hover,
 #btn-new-customize-instruction:hover, .btn-go-back-to-dashboard:hover,
 .btn-create-recipe:hover, .btn-create-menu:hover,
-.btn-send-email:hover, .btn-create-next-menu:hover {
+.btn-send-email:hover, .btn-create-next-menu:hover, .btn-new-main-recipe-img:hover {
     border: 1px solid #4a099a;
     background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
     z-index: 1000;

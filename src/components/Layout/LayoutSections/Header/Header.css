@@ -33,9 +33,8 @@
     border: none !important;
 }
 
-.header-wrapper .btn-log-out{
+.header-wrapper .btn-log-out {
     background-color: #579843;
-    border:none;
     border: 1px solid #530ea2;
     border-radius: 10px;
     padding: 0 10px;
@@ -50,4 +49,67 @@
     rgb(168, 214, 98) 60%,
     rgb(112, 188, 95) 85%);
     z-index: 1000;
+}
+
+.header-wrapper .nav-menu-right {
+    display: flex;
+
+}
+
+.header-wrapper .nav-menu-right .nav-menu-right-dd {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.header-wrapper .nav-menu-right .nav-menu-right-dd li:first-child {
+    align-self: flex-end;
+    height: 100%;
+}
+.header-wrapper .nav-menu-right .nav-menu-right-dd li ul {
+    width:200px;
+    right:0;
+}
+
+.header-wrapper .header-cart-icon, .header-down-icon {
+    width: 55px;
+    height: 55px;
+}
+
+.header-wrapper .header-down-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.header-wrapper .header-down-icon svg {
+    height: 100%;
+    width: 100%;
+}
+
+.header-wrapper .header-cart-icon:hover {
+    background-color: white;
+    border-radius: 40%;
+    padding: 5px;
+    background-color: rgba(243, 218, 187, 0.61);
+
+}
+
+.header-wrapper .header-down-icon {
+
+}
+
+.header-wrapper .user-dd-menu {
+    list-style: none;
+    position: absolute;
+    width: 100%;
+    padding: 1.5em 10px;
+    background-color: rgba(250, 161, 32, 0.3);
+    border-radius: 0 0 20px 20px;
+    display: none;
+}
+
+.header-wrapper .nav-menu-right-dd:hover ul.user-dd-menu {
+    display: block !important;
 }

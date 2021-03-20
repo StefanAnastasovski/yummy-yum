@@ -33,7 +33,8 @@ const MealOverview = (props) => {
                     <div className="col-8"><input type="text"
                                                   placeholder="6"
                                                   className="w-25 px-1 text-center"
-                                                  onChange={props.onChangeCookWithinValue}/><span className="pl-2">days</span></div>
+                                                  onChange={props.onChangeCookWithinValue}/><span
+                        className="pl-2">days</span></div>
 
                 </div>
 
@@ -53,6 +54,7 @@ const MealOverview = (props) => {
                                                                           name="difficulty-level"/>
                                         <span className="pl-1">{option.label}</span>
                                     </li>
+
                                 ))}
 
                             </ul>

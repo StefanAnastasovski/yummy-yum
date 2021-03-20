@@ -28,7 +28,20 @@ const MealChef = (props) => {
                                   placeholder="The perfect sauce to enrobe this delicate flakey salmon."
                                   className="w-75 px-1"
                                   rows="4"
-                                  type="text" onChange={props.onChangeChefDescription}/></div>
+                                  onChange={props.onChangeChefDescription}/></div>
+
+                </div>
+
+                <div className="col d-flex flex-row">
+
+                    <div className="col-4"><label>Chef's Image URL</label>
+                    </div>
+                    <div className="col-8"><input type="text"
+                                                  required
+                                                  className="w-75 px-1"
+                                                  onChange={props.onChangeChefImageHandler}
+                                                  placeholder="https://example.com/example/"
+                    /></div>
 
                 </div>
 

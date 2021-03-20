@@ -8,45 +8,69 @@ import HeaderUsername from "./HeaderComponents/HeaderUsername";
 
 const Header = (props) => {
 
-    return (
+    // state = {
+    //     showDDMenu: "d-none",
+    //     isShowDDMenu: false
+    // }
 
-        <div className="header-wrapper">
+    // showDDMenuHandler = () => {
+    //     if (this.state.isShowDDMenu) {
+    //         this.setState({
+    //             showDDMenu: "d-none",
+    //             isShowDDMenu: false
+    //         })
+    //     } else {
+    //         this.setState({
+    //             showDDMenu: "d-block",
+    //             isShowDDMenu: true
+    //         })
+    //     }
+    // }
 
-            <div className="h-menu d-flex px-5 justify-content-between">
+        return (
 
-                {/*nav-menu left side*/}
-                <div className="nav-menu-left">
+            <div className="header-wrapper">
 
-                    <ul className="nav navbar-nav flex-row nav-menu align-items-center font-weight-bold">
-                        <li className="px-2">
-                            <a href="/" className="no-border">
-                                <img className="yylogo-menu"
-                                     src={YYLogo1}
-                                     alt="Yummy Yum"
-                                     width="100%"
-                                     height="100%"
-                                />
-                            </a>
-                        </li>
-                        <li className="pl-1"><a href="/weekly-menu">Our Plans</a></li>
-                        <li><a href="/how-it-works">How It Works</a></li>
-                        {/*<li><a href="/">Pricing</a></li>*/}
-                    </ul>
+                <div className="h-menu d-flex px-5 justify-content-between">
+
+                    {/*nav-menu left side*/}
+                    <div className="nav-menu-left">
+
+                        <ul className="nav navbar-nav flex-row nav-menu align-items-center font-weight-bold">
+                            <li className="px-2">
+                                <a href="/" className="no-border">
+                                    <img className="yylogo-menu"
+                                         src={YYLogo1}
+                                         alt="Yummy Yum"
+                                         width="100%"
+                                         height="100%"
+                                    />
+                                </a>
+                            </li>
+                            <li className="pl-1"><a href="/weekly-menu">Our Plans</a></li>
+                            <li><a href="/how-it-works">How It Works</a></li>
+                            {/*<li><a href="/">Pricing</a></li>*/}
+                        </ul>
+
+                    </div>
+
+                    {
+                        localStorage.getItem("isLoggedIn") === "YES"
+                            ?
+                            <HeaderUsername
+                                logOut={props.logOut}
+                                // showDDMenu={this.state.showDDMenu}
+                                // showDDMenuHandler={this.showDDMenuHandler}
+                            /> :
+                            <HeaderComponent/>
+                    }
 
                 </div>
 
-                {
-                    localStorage.getItem("isLoggedIn") === "YES"
-                    ?
-                    <HeaderUsername logOut={props.logOut} /> :
-                    <HeaderComponent/>
-                }
-
             </div>
+        )
 
-        </div>
-    )
 
-};
+}
 
 export default Header;

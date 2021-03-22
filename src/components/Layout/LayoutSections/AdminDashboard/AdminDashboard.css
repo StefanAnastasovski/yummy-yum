@@ -106,3 +106,42 @@ input[type="file"] {
 .dashboard-wrapper div.border.border-success {
     border-radius: 2em;
 }
+
+.create-menu-wrapper .btn-add-to-recipients {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #579843;
+    height: 50px;
+}
+
+.create-menu-wrapper .add-email-on-plus, .create-menu-wrapper .remove-email-on-minus {
+    border: none;
+    border-radius: 50%;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.add-email-on-plus {
+    background-color: #579843;
+}
+
+.remove-email-on-minus {
+    background-color: red;
+}
+
+.create-menu-wrapper .remove-email-on-minus:hover {
+    background: rgb(248, 149, 149);
+    z-index: 1000;
+}
+
+.create-menu-wrapper .btn-add-to-recipients:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.create-menu-wrapper .add-email-on-plus:hover {
+    background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}

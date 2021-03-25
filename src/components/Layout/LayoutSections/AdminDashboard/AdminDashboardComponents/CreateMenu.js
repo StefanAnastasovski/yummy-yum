@@ -203,11 +203,11 @@ class CreateMenu extends Component {
 
     }
 
-    handleChange() {
-        this.setState(prevState => ({
-            checked: !prevState.checked
-        }));
-    }
+    // handleChange() {
+    //     this.setState(prevState => ({
+    //         checked: !prevState.checked
+    //     }));
+    // }
 
     render() {
 
@@ -222,14 +222,14 @@ class CreateMenu extends Component {
 
                 <div className="cr-menu py-3 ">
 
-                    <div className="row">
+                    {/*<div className="row">*/}
 
-                        <div className="col text-right d-flex align-baseline justify-content-end">
-                            <p className="pr-2">Generate Menu Automatically</p>
-                            <Switch onChange={this.handleChange.bind(this)} checked={this.state.checked}/>
-                        </div>
+                    {/*    <div className="col text-right d-flex align-baseline justify-content-end">*/}
+                    {/*        <p className="pr-2">Generate Menu Automatically</p>*/}
+                    {/*        <Switch onChange={this.handleChange.bind(this)} checked={this.state.checked}/>*/}
+                    {/*    </div>*/}
 
-                    </div>
+                    {/*</div>*/}
 
                     <div className="row py-3">
 

@@ -1,15 +1,16 @@
 import React, {Component} from "react";
 
 import SubscribeEmailCalls from "../../../../../repository/get/getSubscribeEmail";
+import postEmailToSubscribers from "../../../../../repository/post/postEmailToSubscribers";
 
 class SendEmail extends Component {
 
 
     state = {
         subscribeEmails: [],
-        sendToList: [],
-        CCList: [],
-        recipients: "",
+        recipients: [],
+        emailSubject: "",
+        emailText: "",
         isUnchecked: true
     }
 
@@ -21,7 +22,7 @@ class SendEmail extends Component {
 
     recipientsHandler = (list) => {
         this.setState({
-            recipients: list.join(", ")
+            recipients: list
         })
     }
 
@@ -35,7 +36,7 @@ class SendEmail extends Component {
         })
 
         this.setState({
-            sendToList: [],
+            recipients: [],
             subscribeEmails: arrayOfObjects,
             isUnchecked: true
         })
@@ -43,7 +44,7 @@ class SendEmail extends Component {
         this.recipientsHandler([]);
     }
 
-    //add all emails to sendToList
+    //add all emails to recipients
     getSubscribeEmails = async () => {
         await SubscribeEmailCalls.fetchSubscribeEmails().then(response => {
             let emails = response.data.map(item => {
@@ -72,7 +73,7 @@ class SendEmail extends Component {
         })
 
         this.setState({
-            sendToList: list,
+            recipients: list,
             subscribeEmails: arrayOfObjects,
             isUnchecked: false
         })
@@ -95,7 +96,7 @@ class SendEmail extends Component {
             }
         })
 
-        let list = [...this.state.sendToList];
+        let list = [...this.state.recipients];
 
         if (list.includes(event.target.value)) {
             list.splice(list.indexOf(event.target.value), 1)
@@ -104,18 +105,65 @@ class SendEmail extends Component {
         }
 
         this.setState({
-            sendToList: list,
+            recipients: list,
             subscribeEmails: arrayOfObjects
         })
         this.recipientsHandler(list);
 
     }
 
+    subjectHandler = (event) => {
+        this.setState({
+            emailSubject: event.target.value
+        })
+    }
 
-    handleSubmit = (event) => {
+
+    textHandler = (event) => {
+        this.setState({
+            emailText: event.target.value
+        })
+    }
+
+    toHandler = (event) => {
+        console.log(event.target)
+        // console.log(event.target.value)
+        // let rec = this.state.recipients;
+        // let arr = event.target.value.split(", ");
+        // console.log(rec)
+        // for (let i = 0; i < arr.length; i++) {
+        //     console.log(arr[i]);
+        //     console.log(arr[i].length);
+        //     for (let j = 0; j < rec.length; j++) {
+        //         console.log(rec[j])
+        //         console.log(rec[j].length)
+        //     }
+        // }
+        // this.setState({
+        //     emailText: event.target.value
+        // })
+    }
+
+
+    handleSubmit = async (event) => {
         alert('Email is sent!');
-
+        console.log(this.state)
         event.preventDefault();
+        let emailBody = {
+            subject: this.state.emailSubject,
+            text: this.state.emailText,
+            recipients: this.state.recipients
+        }
+        console.log(emailBody)
+        try {
+            await postEmailToSubscribers.sendEmail(emailBody).then(response => {
+                console.log(response)
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
 
     }
 
@@ -150,32 +198,32 @@ class SendEmail extends Component {
                                             <label className="align-self-start">To:</label>
                                             <input
                                                 type="text" placeholder="recipients" className="w-50 mb-2"
-                                                defaultValue={this.state.recipients}
+                                                defaultValue={this.state.recipients.join(", ")}
+                                                onChange={this.toHandler}
                                             />
                                         </div>
 
                                         <div className="col d-flex flex-column">
                                             <label className="align-self-start">Subject:</label>
-                                            <input type="text" className="w-50 mb-2"/>
-                                        </div>
-
-                                        <div className="col d-flex flex-column">
-                                            <label className="align-self-start">CC:</label>
-                                            <input type="text" className="w-50 mb-2"/>
+                                            <input type="text" className="w-50 mb-2"
+                                                   onChange={this.subjectHandler}
+                                            />
                                         </div>
 
                                         <div className="col d-flex flex-column mb-2">
                                             <label className="align-self-start">Text:</label>
-                                            <textarea className="w-75" rows="8"/>
+                                            <textarea className="w-75" rows="8"
+                                                      onChange={this.textHandler}
+                                            />
                                         </div>
+
+                                        {/*<div className="col d-flex flex-column">*/}
+                                        {/*    <input type="file" className="w-50 mb-2 btn-email-attach"/>*/}
+                                        {/*</div>*/}
 
                                         <div className="col d-flex flex-column">
-                                            <input type="file" className="w-50 mb-2 btn-email-attach"/>
-                                        </div>
-
-                                        <div className="col d-flex flex-column ">
                                             <input type="submit" value="Send Email!"
-                                                   className="w-50 align-self-center"/>
+                                                   className="w-75 align-self-center"/>
                                         </div>
 
                                     </div>

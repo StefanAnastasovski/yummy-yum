@@ -8,8 +8,8 @@ const postSubscribeEmail = {
   //           "email" : "subscribe@mail.com"
   //       }
   //   }
-    createMenu: (email) => {
-        return axios.post(`/api/subscribes`, email,{
+    createSubscribeEmail: (email) => {
+        return axios.post(`/api/subscribe`, email,{
                headers: {
                 'Content-Type': 'application/json'
             }

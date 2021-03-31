@@ -6,6 +6,7 @@ import NextIcon from "./WeekIcons/NextIcon";
 import PreviousIcon from "./WeekIcons/PreviousIcon";
 import Aux from "../../../../../hoc/Auxilliary";
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
+import CustomizeItCard from "./CustomizeItCard/CustomizeItCard";
 // import {Redirect} from "react-router";
 
 const Menu = (props) => {
@@ -52,14 +53,14 @@ const Menu = (props) => {
             return <li key={"CardID" + keyIndex1 + index} className={"col " + margin}
                        onClick={populateLocalStorage.bind(this, item.meal.mealName)}
             >
-                <a href={"/meals/" + item.meal.mealName}>
+                {/*<a href={"/meals/" + item.meal.mealName} className="text-decoration-none">*/}
                     <WeeklyMenuCard
                         img={item.meal.image}
                         meal={item.meal}
                         key={"CardID" + keyIndex2 + index}
                         // clicked={setCardRedirect.bind(this, item.meal.mealName)}
                     />
-                </a>
+                {/*</a>*/}
             </li>
         });
     }
@@ -234,6 +235,7 @@ const Menu = (props) => {
                 </div>
 
             </div>
+            <CustomizeItCard/>
 
             <div className="wm-week-slider d-flex justify-content-center py-5">
 

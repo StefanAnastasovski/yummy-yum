@@ -86,12 +86,12 @@
     z-index: 1000;
 }
 
-.weekly-menu-wrapper .wm-icon{
-    width:40px;
-    height:40px;
+.weekly-menu-wrapper .wm-icon {
+    width: 40px;
+    height: 40px;
 }
 
-.main-wrapper .weekly-menu-wrapper ul.wm-tags li:after {
+.main-wrapper .weekly-menu-wrapper ul.wm-tags li::after {
     content: "|";
     padding: 0 4px;
 }
@@ -99,7 +99,6 @@
 .main-wrapper .weekly-menu-wrapper ul.wm-tags-ingredients li:not(:last-child)::after {
     content: "\00B7";
     padding: 0 4px;
-    color: #530ea2;
 }
 
 .main-wrapper .weekly-menu-wrapper .wm-icon svg:hover {
@@ -107,6 +106,45 @@
     cursor: pointer;
 }
 
-.main-wrapper .weekly-menu-wrapper .wm-menu-cards .card:hover{
-    cursor:pointer;
+.main-wrapper .weekly-menu-wrapper .wm-menu-cards .card:hover {
+    cursor: pointer;
+}
+
+.main-wrapper .wm-menu-cards .btn-add-meal-to-cart, .main-wrapper .wm-menu-cards .btn-go-to-cart {
+    background-color: #6b9958;
+    border: none;
+    padding: 10px 0;
+}
+
+.main-wrapper .wm-menu-cards button.btn-customize-it {
+    background-color: transparent;
+    border: none;
+    padding: 10px 0;
+}
+
+.main-wrapper .wm-menu-cards .card-customize-it-btn {
+    background-color: rgba(38, 37, 37, 0.03);
+}
+
+.main-wrapper .wm-menu-cards .card-customize-it-btn:hover {
+    background-color: rgba(38, 37, 37, 0.18);
+}
+
+.main-wrapper .btn-close-customize-it {
+    background-color: #6b9958;
+    border: none;
+    padding: 10px 0;
+}
+.main-wrapper .btn-close-customize-it-card{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.main-wrapper .wm-menu-cards .btn-add-meal-to-cart:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
 }

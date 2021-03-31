@@ -11,55 +11,70 @@ const TopMenu = (props) => {
         <Aux>
 
             {/*menu card #1*/}
-            <ul className="top-meals list-unstyled d-flex">
-                {
-                    props.menuInfo.meals.map((item, index) => {
+            {
+                props.menuInfo !== undefined ?
+                    <div className="col">
 
-                        return <li key={(index + 1)} className={"col mx-1 py-1 cursor-pointer"}
-                                   onClick={props.onClick.bind(this, item.mealName)}
-                        >
+                        <ul className="top-meals list-unstyled d-flex">
+                            {
+                                props.menuInfo.meals.map((item, index) => {
 
-                            <a href={"/meals/" + item.mealName}>
-                                <div className={"card card-" + (index + 1)}>
+                                    return <li key={(index + 1)} className={"col mx-1 py-1 cursor-pointer"}
+                                               onClick={props.onClick.bind(this, item.mealName)}
+                                    >
 
-                                    <div className="card-body">
+                                        <a href={"/meals/" + item.mealName}>
+                                            <div className={"card card-" + (index + 1)}>
 
-                                        <div className="card-img-top">
+                                                <div className="card-body">
 
-                                            <Image className={"top-meal-" + (index + 1)}
-                                                   img={item.image}
-                                            />
+                                                    <div className="card-img-top">
 
-                                        </div>
+                                                        <Image className={"top-meal-" + (index + 1)}
+                                                               img={item.image}
+                                                        />
 
-                                        <div className="card-text text-left">
+                                                    </div>
 
-                                            <h3 className="text-center card-title py-2 m-0 d-block font-size-1">
-                                                {item.mealName}
-                                            </h3>
+                                                    <div className="card-text text-left">
 
-                                            <p className="text-color-green"> {item.mealDescription} </p>
+                                                        <h3 className="text-center card-title py-2 m-0 d-block font-size-1">
+                                                            {item.mealName}
+                                                        </h3>
 
-                                        </div>
+                                                        <p className="text-color-green"> {item.mealDescription} </p>
 
-                                    </div>
+                                                    </div>
 
-                                </div>
-                            </a>
+                                                </div>
 
-                        </li>
+                                            </div>
+                                        </a>
 
-                    })
+                                    </li>
 
-                }
+                                })
 
-            </ul>
+                            }
+
+                        </ul>
+                    </div>
+                        :
+                        <div className="col">
+                            <p className="text-danger font-size-1">Sorry!</p>
+                            <p className="text-danger">
+                                The menu is not available at
+                                this moment.
+                            </p>
+                        </div>
+
+                        }
 
 
-        </Aux>
-    )
+                    </Aux>
+                )
 
-};
+            };
 
-export default TopMenu;
+            export default TopMenu;
 

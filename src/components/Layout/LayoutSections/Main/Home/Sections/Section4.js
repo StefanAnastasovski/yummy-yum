@@ -199,7 +199,7 @@ class Section4 extends Component {
                             <div className="ms4-menu-section">
 
                                 {/*Choose one of our menus*/}
-                                <div className="row ms4-ms text-center">
+                                <div className="row ms4-ms text-center align-self-center">
 
                                     {
                                         !this.state.loading && <TopMenuInfo MenuName={this.state.chooseMenu}

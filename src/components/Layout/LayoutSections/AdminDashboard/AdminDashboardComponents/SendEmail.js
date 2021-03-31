@@ -198,6 +198,7 @@ class SendEmail extends Component {
                                             <label className="align-self-start">To:</label>
                                             <input
                                                 type="text" placeholder="recipients" className="w-50 mb-2"
+                                                readOnly
                                                 defaultValue={this.state.recipients.join(", ")}
                                                 onChange={this.toHandler}
                                             />

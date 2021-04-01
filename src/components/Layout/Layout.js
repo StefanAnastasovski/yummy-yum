@@ -16,11 +16,10 @@ class Layout extends Component {
 //
     state = {
         showPopUp: false,
-        isSubscribeFieldCorrect: false,
-        showBorderDanger: false,
         isLoggedIn: false,
         isRedirectedToHome: false,
         isRedirectedFromUpdatePassword: false,
+        isSubscribeFieldCorrect: false,
         //weekly-menu
         // mealRecipe: {
         //     mealName: "",
@@ -87,6 +86,12 @@ class Layout extends Component {
 
     }
 
+    isSubscribeFieldIsCorrectPopUpBoxHandler = (value) => {
+        this.setState({
+            isSubscribeFieldCorrect: value
+        })
+    }
+
 
     changeMixCreated = () => {
         this.setState({
@@ -110,30 +115,6 @@ class Layout extends Component {
             })
         }
 
-    }
-
-    isSubscribeFieldCorrectHandler = (event) => {
-
-        let fieldValue = event.target.value;
-
-        let emailRegex =
-            new RegExp(
-                /[a-zA-Z][\w.][\w.][\w.][\w.][\w.]+@[a-zA-Z][a-zA-Z][a-zA-Z]+\.[a-zA-Z][a-zAZ]+/, "gi"
-            );
-
-        if (fieldValue.match(emailRegex)) {
-            if (!this.state.isSubscribeFieldCorrect) {
-                this.setState({
-                    isSubscribeFieldCorrect: !this.state.isSubscribeFieldCorrect,
-                    showBorderDanger: true
-                })
-            }
-        } else {
-            this.setState({
-                isSubscribeFieldCorrect: false,
-                showBorderDanger: false,
-            })
-        }
     }
 
     handleLogin = () => {
@@ -232,9 +213,7 @@ class Layout extends Component {
                 <Footer
                     showPopUp={this.state.showPopUp}
                     clicked={this.showPopUpHandler}
-                    isFieldCorrect={this.state.isSubscribeFieldCorrect}
-                    showBorderDanger={this.state.showBorderDanger}
-                    isFieldCorrectHandler={this.isSubscribeFieldCorrectHandler}
+                    subscribeFieldHandler={this.isSubscribeFieldIsCorrectPopUpBoxHandler.bind(this)}
                 />
 
 

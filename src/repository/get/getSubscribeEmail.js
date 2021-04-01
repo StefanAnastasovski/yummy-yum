@@ -4,7 +4,11 @@ const getSubscribeEmail = {
 
     fetchSubscribeEmails: () => {
         return axios.get(`/api/subscribe`)
+    }, fetchSubscribeEmailByEmail: (email) => {
+        return axios.get(`/api/subscribe/email/${email}`)
     }
+
+
 
 
 };

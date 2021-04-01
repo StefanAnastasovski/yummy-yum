@@ -12,22 +12,124 @@ import {faMailBulk} from "@fortawesome/free-solid-svg-icons";
 import SubscribePic from '../../../../images/Footer/Subscribe/subscribe-pic.jpg'
 import Aux from "../../../../hoc/Auxilliary";
 
+import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
+import postSubscribeEmail from '../../../../repository/post/postSubscribeEmail';
 
 class Footer extends Component {
 
-    handleSubmit(event) {
+
+    state = {
+        subscribeEmail: "",
+        isSubscribeEmailExist: false,
+        showBorderDanger: false,
+        isSubscribeEmailFormatCorrect: false
+    }
+
+
+    isSubscribeFieldCorrectHandler = async (event) => {
+
+        let fieldValue = event.target.value;
+
+        let emailRegex =
+            new RegExp(
+                /[a-zA-Z][\w.][\w.][\w.][\w.][\w.]+@[a-zA-Z][a-zA-Z][a-zA-Z]+\.[a-zA-Z][a-zAZ]+/, "gi"
+            );
+        let value = false;
+        if (fieldValue.match(emailRegex)) {
+            if (!value) {
+                value = true;
+                this.setState({
+                    showBorderDanger: true,
+                    isSubscribeEmailFormatCorrect: value
+                })
+
+            }
+        } else {
+            value = false;
+            this.setState({
+                showBorderDanger: false,
+                isSubscribeEmailFormatCorrect: value
+            })
+        }
+
+        this.emailFieldHandler(fieldValue);
+    }
+
+    emailFieldHandler = (emailValue) => {
+        this.setState({
+            subscribeEmail: emailValue
+        })
+    }
+
+    getSubscribeEmail = async () => {
+
+        await SubscribeEmailCalls.fetchSubscribeEmailByEmail(this.state.subscribeEmail).then(response => {
+            if (response.data) {
+                this.setState({
+                    isSubscribeEmailExist: true
+                })
+            } else {
+                this.setState({
+                    isSubscribeEmailExist: false
+                })
+            }
+
+        }).catch(e => {
+            // console.log(e)
+        })
+    }
+
+    postSubscribeEmailHandler = (subscribeEmail) => {
+        let obj = {
+            email: {
+                email: subscribeEmail
+            }
+        }
+        postSubscribeEmail.createSubscribeEmail(obj).then(response => {
+            // console.log(response)
+        }).catch(e => {
+            // console.log(e)
+        })
+    }
+
+    isSubscribedEmailExist = (isEmailExist) => {
+        let value;
+        if (isEmailExist) {
+            this.setState({
+                showBorderDanger: false,
+            })
+            value = false;
+        } else {
+            this.setState({
+                showBorderDanger: true,
+            })
+            value = true;
+        }
+        this.props.subscribeFieldHandler(value);
+
+    }
+
+    handleSubmit = async (event) => {
         event.preventDefault();
-        if(!(!this.props.showBorderDanger && this.props.showPopUp))
-            event.target.reset()
+
+        await this.getSubscribeEmail();
+        await this.isSubscribedEmailExist(this.state.isSubscribeEmailExist)
+        if (!this.state.isSubscribeEmailExist) {
+            this.postSubscribeEmailHandler(this.state.subscribeEmail);
+            document.getElementById("subscribe-email-field").value = "";
+        }
+        // if (!(!this.props.showBorderDanger && this.props.showPopUp))
+        //     event.target.reset()
+
     }
 
     render() {
 
         let showFooterNavMenu = "";
 
-            if (window.location.pathname !== "/") {
-                showFooterNavMenu = "d-none";
-            }
+        if (window.location.pathname !== "/") {
+            showFooterNavMenu = "d-none";
+        }
 
 
         return (
@@ -122,12 +224,13 @@ class Footer extends Component {
 
                                                 <input
                                                     className={"subscribe-email-btn px-2     w-100 no-border" +
-                                                    ((!this.props.showBorderDanger && this.props.showPopUp)
+                                                    ((!this.state.showBorderDanger && this.props.showPopUp)
                                                         ? " border-danger border" : "")
                                                     }
+                                                    id="subscribe-email-field"
                                                     placeholder="Email"
                                                     type="email"
-                                                    onChange={this.props.isFieldCorrectHandler}
+                                                    onChange={this.isSubscribeFieldCorrectHandler}
                                                 />
 
                                             </div>

@@ -57,6 +57,11 @@ class Section4 extends Component {
         } else {
             let mondayInWeek = (dayInMonthNumber - 1);
             monthDate = monthDate - mondayInWeek;
+            if (monthDate < 0) {
+                let newDate = new Date(year, month, 0)
+                monthDate = newDate.getDate() - (Math.abs(monthDate));
+                month = month - 1;
+            }
         }
 
         return [month, monthDate, year];

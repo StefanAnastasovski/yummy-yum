@@ -29,13 +29,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Summary/OrderSummary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CustomizeItCard/CustomizeItCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CustomizeItCard/CustomizeItCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +174,7 @@
       <workItem from="1617221416648" duration="8422000" />
       <workItem from="1617283316377" duration="1319000" />
       <workItem from="1617303469146" duration="5575000" />
-      <workItem from="1617378912082" duration="10803000" />
+      <workItem from="1617378912082" duration="21527000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -343,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617382805487</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="WeeklyMenu Card -&gt; Customize It">
+      <created>1617395335451</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1617395335451</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,7 +409,8 @@
     <MESSAGE value="04/02/2021 - post subscribe email - Footer" />
     <MESSAGE value="WeeklyMenu Slider - v1.0" />
     <MESSAGE value="fixup! WeeklyMenu Slider - v1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixup! WeeklyMenu Slider - v1.0" />
+    <MESSAGE value="WeeklyMenu Card -&gt; Customize It" />
+    <option name="LAST_COMMIT_MESSAGE" value="WeeklyMenu Card -&gt; Customize It" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
@@ -416,11 +425,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612567643723" />
-    <state x="-1415" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1617382804413">
+    <state x="-1415" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1617395334127">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-796" y="-252" key="CommitChangelistDialog2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160801510" />
-    <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617382804413" />
+    <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617395334127" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
     <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943310571" />
     <state x="-1828" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1616284404069">
@@ -458,26 +467,27 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1615851537360" />
-    <state x="-1353" y="253" width="1353" height="565" key="find.popup" timestamp="1617387996029">
+    <state x="-1353" y="253" width="1353" height="565" key="find.popup" timestamp="1617404666152">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-713" y="117" width="713" height="1020" key="find.popup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614463544819" />
     <state x="-761" y="46" width="761" height="1020" key="find.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615070600283" />
-    <state x="-1353" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617387996029" />
+    <state x="-1353" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617404666152" />
     <state x="567" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617228512706" />
     <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616088923265" />
-    <state x="615" y="244" key="run.anything.popup" timestamp="1616367290993">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1305" y="244" key="run.anything.popup" timestamp="1617404222524">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-734" y="101" key="run.anything.popup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614462978500" />
     <state x="-734" y="30" key="run.anything.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615065606889" />
     <state x="-734" y="441" key="run.anything.popup/0.0.1920.1040/-1080.0.1080.1880@-1080.0.1080.1880" timestamp="1614456094261" />
+    <state x="-1305" y="244" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617404222524" />
     <state x="615" y="244" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616367290993" />
     <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615837018982" />
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617387295145">
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617404512994">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617387295145" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617404512994" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616253485477" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613864820424" />
   </component>

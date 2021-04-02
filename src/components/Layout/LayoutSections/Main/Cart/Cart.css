@@ -1,0 +1,70 @@
+.main-wrapper .cart-wrapper {
+    flex: auto;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-title {
+    padding: 40px;
+    background-color: rgba(245, 195, 122, 0.65);
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-cards {
+    padding: 10px 10px 10px 0;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-cards div.card {
+    flex-direction: row !important;
+    justify-content: space-between;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-checkout{
+    padding: 10px 0;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-checkout div.card {
+    padding: 5px;
+}
+
+
+.main-wrapper .cart-wrapper .shopping-cart-cards .shopping-cart-card-img {
+    width: 25%;
+}
+
+.btn-shopping-cart-serving{
+    background-color: #6b9958;
+    padding:0 5px;
+    width:30px;
+    margin:0 5px;
+    border:none;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-serving-value{
+    width:75px;
+}
+
+.main-wrapper .cart-wrapper input.shopping-cart-serving-value::-webkit-outer-spin-button,
+.main-wrapper .cart-wrapper input.shopping-cart-serving-value::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-serving:hover {
+    border: 1px #4a099a solid;
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-serving-price {
+    display: flex;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-mealname{
+    display: flex;
+    justify-content: space-between;
+}
+/*shopping-cart-card-body*/
+/*shopping-cart-card-info*/

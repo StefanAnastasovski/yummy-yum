@@ -15,6 +15,7 @@ import MealRecipe from "../../LayoutSections/Main/WeeklyMenu/MealRecipe/MealReci
 import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
 import AccountCreated from "../../LayoutSections/Main/SignUp/AccountCreated/AccountCreated";
 import HowItWorks from "../../LayoutSections/Main/HowItWorks/HowItWorks";
+import Cart from "../../LayoutSections/Main/Cart/Cart";
 
 class MainRouter extends Component {
 
@@ -188,6 +189,16 @@ class MainRouter extends Component {
                         <Route exact path="/dashboard/admin/send-email">
 
                             <AdminDashboard routeComponent="Send Email"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/cart">
+
+                            <Cart/>
 
                         </Route>
 

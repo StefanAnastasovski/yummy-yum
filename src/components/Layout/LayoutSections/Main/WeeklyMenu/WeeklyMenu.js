@@ -71,7 +71,9 @@ class WeeklyMenu extends Component {
         // isMixMenuCreated: false,
         menuCards: [],
         isMenuExist: true,
-        menuName: ""
+        menuName: "",
+        isCustomizeCard: false,
+        customizeCardIndex: ""
     }
 
     onClickMealFilter = (event) => {
@@ -152,7 +154,6 @@ class WeeklyMenu extends Component {
         this.isLoading();
 
     }
-
 
     populateMenuName = async (year, month, day) => {
         month = (month + 1);
@@ -293,6 +294,13 @@ class WeeklyMenu extends Component {
         this.populateSliderDate(previousWeekDate);
     }
 
+    switchToCustomize = (event) => {
+        console.log(event)
+        this.setState({
+            customizeCardIndex: event
+        })
+    }
+
     setRedirect = (mealName) => {
         this.setState({
             redirect: true,
@@ -351,6 +359,8 @@ class WeeklyMenu extends Component {
                             isMix={this.state.isMix}
                             isMenuExist={this.state.isMenuExist}
                             setRedirect={this.setRedirect}
+                            customizeCardClicked={this.switchToCustomize.bind(this)}
+                            customizeCardIndex={this.state.customizeCardIndex}
                             // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
                         />
 

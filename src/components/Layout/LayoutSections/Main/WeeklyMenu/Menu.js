@@ -14,7 +14,6 @@ const Menu = (props) => {
     // state = {
     //     recipeRedirect: false
     // }
-
     let convertMealToRightFormat = (menuList, categoryName) => {
         let menu = menuList.map(item => {
             let obj = {};
@@ -28,8 +27,8 @@ const Menu = (props) => {
         return menu;
     }
 
-    let createCardRow =  (meals, rowNumber) => {
-            let rowSlice;
+    let createCardRow = (meals, rowNumber) => {
+        let rowSlice;
         let keyIndex1;
         let keyIndex2;
         if (rowNumber === 1) {
@@ -45,59 +44,31 @@ const Menu = (props) => {
             keyIndex1 = 3;
             keyIndex2 = 33;
         }
+        let showCard;
+
+
         return meals.slice(rowSlice[0], rowSlice[1]).map((item, index) => {
             let margin = "";
             if (index === 1) {
                 margin = "mx-3";
             }
-            return <li key={"CardID" + keyIndex1 + index} className={"col " + margin}
+            showCard = props.customizeCardIndex !== keyIndex1.toString() + index.toString();
+
+            return <li key={"CardID" + keyIndex1.toString() + index.toString()} className={"col " + margin}
                        onClick={populateLocalStorage.bind(this, item.meal.mealName)}
             >
-                {/*<a href={"/meals/" + item.meal.mealName} className="text-decoration-none">*/}
-                    <WeeklyMenuCard
-                        img={item.meal.image}
-                        meal={item.meal}
-                        key={"CardID" + keyIndex2 + index}
-                        // clicked={setCardRedirect.bind(this, item.meal.mealName)}
-                    />
-                {/*</a>*/}
+                <WeeklyMenuCard
+                    showCard={showCard}
+                    cardIdNumber={(keyIndex1.toString() + index.toString())}
+                    img={item.meal.image}
+                    meal={item.meal}
+                    key={"CardID" + keyIndex2.toString() + index.toString()}
+                    customizeCardClicked={props.customizeCardClicked}
+
+                />
             </li>
         });
     }
-    //
-    // let getCardImage = async (mealName) => {
-    //     await props.getMainRecipeImage(mealName);
-    // }
-
-
-    // let cardsImages = async (menuName) => {
-    //     // return menuName;
-    //     for(let i=0 ; i < menuName.length; i++){
-    //         // let temp = await getCardImage(menuName[i].meal.mealName)
-    //         console.log(temp)
-    //     }
-    //     // return menuName.map((item, index) =>{
-    //     //     console.log(item.meal.mealName);
-    //     //     getCardImage(item.meal.mealName)
-    //     // })
-    // }
-
-    // setCardRedirect = (mealName) => {
-    //     props.setRedirect(mealName)
-    //     setState({
-    //         recipeRedirect: true
-    //     })
-    // }
-
-    // checkRecipeRedirect = (mealName) => {
-    //     // if (state.recipeRedirect) {
-    //     //     {
-    //             localStorage.setItem("mealName", mealName);
-    //             // localStorage.setItem("mealName", props.mealName);
-    //             // return <Redirect to={`/meals/${props.mealName}`}/>
-    //         // }
-    //     // }
-    // }
 
     let populateLocalStorage = (mealName) => {
         localStorage.setItem("mealName", mealName);
@@ -235,6 +206,7 @@ const Menu = (props) => {
                 </div>
 
             </div>
+
             <CustomizeItCard/>
 
             <div className="wm-week-slider d-flex justify-content-center py-5">

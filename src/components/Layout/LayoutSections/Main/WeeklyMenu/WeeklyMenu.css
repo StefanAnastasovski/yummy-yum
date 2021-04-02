@@ -135,13 +135,22 @@
     border: none;
     padding: 10px 0;
 }
-.main-wrapper .btn-close-customize-it-card{
+
+.main-wrapper .btn-close-customize-it-card {
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
 .main-wrapper .wm-menu-cards .btn-add-meal-to-cart:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.main-wrapper .wm-menu-cards .btn-close-customize-it:hover {
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
     rgb(168, 214, 98) 60%,

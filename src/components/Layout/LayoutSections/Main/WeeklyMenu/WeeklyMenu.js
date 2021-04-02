@@ -203,7 +203,6 @@ class WeeklyMenu extends Component {
     }
 
     getMondayInWeek = () => {
-
         let currentDate = new Date();
         let month = currentDate.getMonth();
         let monthDate = currentDate.getDate();
@@ -219,6 +218,11 @@ class WeeklyMenu extends Component {
         } else {
             let mondayInWeek = (dayInMonthNumber - 1);
             monthDate = monthDate - mondayInWeek;
+            if (monthDate < 0) {
+                let newDate = new Date(year, month, 0)
+                monthDate = newDate.getDate() - (Math.abs(monthDate));
+                month = month - 1;
+            }
         }
 
         return [month, monthDate, year];

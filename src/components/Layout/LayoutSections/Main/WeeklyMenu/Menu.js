@@ -58,6 +58,7 @@ const Menu = (props) => {
                        onClick={populateLocalStorage.bind(this, item.meal.mealName)}
             >
                 <WeeklyMenuCard
+                    addToCartHandler={props.addToCartHandler}
                     showCard={showCard}
                     cardIdNumber={(keyIndex1.toString() + index.toString())}
                     img={item.meal.image}
@@ -206,8 +207,6 @@ const Menu = (props) => {
                 </div>
 
             </div>
-
-            <CustomizeItCard/>
 
             <div className="wm-week-slider d-flex justify-content-center py-5">
 

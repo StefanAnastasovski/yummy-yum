@@ -79,6 +79,9 @@ class Layout extends Component {
         if (!/\/meals/.test(urlPath)) {
             localStorage.setItem("mealName", "")
         }
+        if(localStorage.getItem("shoppingCartItems")===null){
+            localStorage.setItem("shoppingCartItems",JSON.stringify([]))
+        }
 
         if (localStorage.getItem("isLoggedIn") === "NO" && this.state.isRedirectedToHome) {
             // console.log("dasd")

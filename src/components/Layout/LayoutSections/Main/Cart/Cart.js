@@ -10,29 +10,116 @@ import {parse} from "@fortawesome/fontawesome-svg-core";
 class Cart extends Component {
 
     state = {
-        items: [
-            {
-                cardIndex: 1,
-                img: "https://homechef.imgix.net/https%3A%2F%2Fasset.homechef.com" +
-                    "%2Fuploads%2Fmeal%2Fplated%2F5152%2F5152BBQTeriyakiandWasabiSlawBurgersReshoot" +
-                    "__1_of_1_-c3e05e47403944539aa528a1579db1db-c3e05e47403944539aa528a1579db1db.jpg?" +
-                    "ixlib=rails-1.1.0&w=850&auto=format&s=882bb21ade9f5fce4e3996f3dfe761f8",
-                mealName: "Full Meal Name Here",
-                servings: 1,
-                pricePerUnit: 6.99,
-                price: 6.99
-            }
-        ],
+        items: [],
+        orderSummary: {},
+        loading: true,
+        loadingReceipt: true,
+        isSomethingChanged: false,
+    }
 
+    async componentDidMount() {
+        await this.populateItems();
+
+        if (this.state.items.length !== 0)
+            await this.populateReceipt();
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        console.log("nextProps")
+        console.log(nextProps)
+        console.log("nextState")
+        console.log(nextState)
+        return true;
+    }
+
+    calculateShipping = (meals, servings) => {
+        if (servings > 0 && servings <= 2) {
+            return 5.99;
+        } else if (servings > 2 && servings < 10) {
+            return servings * 3.99;
+        } else if (servings > 10) {
+            return servings * 2.55;
+        }
+    }
+
+    populateReceipt = () => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let meals = 0;
+        let servings = 0;
+        let deliveryDays = [];
+        let subtotal = 0;
+
+        array.forEach((item) => {
+            meals++;
+            servings += parseInt(item.servings);
+            deliveryDays.push(item.deliveryDate + " / " + item.deliveryTime)
+            subtotal += item.price;
+        });
+
+        let shipping = this.calculateShipping(meals, servings);
+
+        let obj = {
+            "meals": meals,
+            "servings": servings,
+            "deliveryDays": deliveryDays,
+            "subtotal": parseFloat(subtotal.toFixed(2)),
+            "shipping": parseFloat(shipping.toFixed(2)),
+            "total": parseFloat((subtotal + shipping).toFixed(2)),
+            "items": array
+
+        }
+
+        localStorage.setItem("orderSummary", JSON.stringify(obj))
+
+        this.setState({
+            isSomethingChanged: false,
+            orderSummary: obj,
+            loadingReceipt: false
+        })
+    }
+
+    populateItems = () => {
+        let items = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        items = items.map((item, index) => {
+            // let el = document.getElementById("delivery-date-0");
+            // console.log(el)
+            let mealMenuDate = item.mealMenuDate;
+            return {
+                "img": {
+                    "url": item.img.url,
+                    "alt": item.img.alt,
+                    "cookingStep": item.img.cookingStep,
+                    "isChefImg": item.img.isChefImg,
+                    "isMainRecipeImg": item.img.isMainRecipeImg
+                },
+                "mealName": item.mealName,
+                "price": parseFloat(item.price),
+                "mealMenuDate": mealMenuDate,
+                "pricePerUnit": parseFloat(item.pricePerUnit),
+                "cardIndex": index,
+                "menuCardIndex": item.menuCardIndex,
+                "servings": parseInt(item.servings),
+                "deliveryDate": item.deliveryDate,
+                "deliveryTime": item.deliveryTime
+            }
+        })
+        this.setState({
+            items: items,
+            loading: false,
+        })
+        this.populateReceipt();
     }
 
     increaseServingHandler = (index) => {
         let array = [...this.state.items];
+        console.log(array)
         array[index].servings = array[index].servings + 1;
         array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
         this.setState({
-            items: array
+            items: array,
         })
+        this.populateReceipt();
     }
 
     decreaseServingHandler = (index) => {
@@ -40,11 +127,12 @@ class Cart extends Component {
         if (array[index].servings > 1) {
             array[index].servings = array[index].servings - 1;
             array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
-            this.setState({
-                items: array
-            })
         }
-
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+        this.setState({
+            items: array,
+        })
+        this.populateReceipt();
     }
 
     servingOnChangeHandler = (event) => {
@@ -54,8 +142,10 @@ class Cart extends Component {
         array[index].servings = parseInt(event.target.value);
         array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
         this.setState({
-            items: array
+            items: array,
         })
+
+        this.populateReceipt();
     }
 
     cardHandler = (event) => {
@@ -63,7 +153,7 @@ class Cart extends Component {
         let patternDecrease = new RegExp("decrease-serving");
 
         let splitName = event.target.name.split("-");
-        let index = parseInt(splitName[2]) - 1;
+        let index = parseInt(splitName[2]);
 
         if (patternIncrease.test(event.target.name)) {
             this.increaseServingHandler(index)
@@ -71,6 +161,36 @@ class Cart extends Component {
             this.decreaseServingHandler(index)
         }
 
+    }
+
+    removeHandler = async (index) => {
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        shoppingCartItems.splice(index, 1)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
+        this.setState({
+            isSomethingChanged: true
+        })
+        await this.populateItems();
+    }
+
+    deliveryDateOnChangeHandler = async (event, index) => {
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        shoppingCartItems[index].deliveryDate = event.target.value;
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+        this.setState({
+            isSomethingChanged: true
+        })
+        await this.populateItems();
+    }
+
+    deliveryTimeOnChangeHandler = async (event, index) => {
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        shoppingCartItems[index].deliveryTime = event.target.value;
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+        this.setState({
+            isSomethingChanged: true
+        })
+        await this.populateItems();
     }
 
     render() {
@@ -93,18 +213,44 @@ class Cart extends Component {
 
                             <div className="col-9 shopping-cart-cards">
 
-                                <OrderCart
-                                    img={this.state.items[0].img}
-                                    cardInfo={this.state.items[0]}
-                                    cardHandler={this.cardHandler}
-                                    servingOnChangeHandler={this.servingOnChangeHandler.bind(this)}
-                                />
+                                <ul className="list-unstyled">
+
+                                    {
+
+                                        !this.state.loading && this.state.items.length > 0 ? this.state.items.map((item, index) => {
+                                                return <li key={index}>
+                                                    <OrderCart
+                                                        img={item.img}
+                                                        cardInfo={item}
+                                                        cardHandler={this.cardHandler}
+                                                        servingOnChangeHandler={this.servingOnChangeHandler.bind(this)}
+                                                        removeHandler={this.removeHandler.bind(this)}
+                                                        deliveryDateOnChangeHandler={(e) => {
+                                                            this.deliveryTimeOnChangeHandler(e, index).then(r => null)
+                                                        }}
+                                                        deliveryTimeOnChangeHandler={(e) => {
+                                                            this.deliveryTimeOnChangeHandler(e, index).then(r => null)
+                                                        }}
+                                                        deliveryDateValue={item.deliveryDate}
+                                                        deliveryTimeValue={item.deliveryTime}
+                                                    />
+                                                </li>
+                                            }) :
+                                            <li><h2 className="text-center text-danger">Your Cart is empty</h2></li>
+
+                                    }
+
+
+                                </ul>
 
                             </div>
 
                             <div className="col-3 shopping-cart-checkout">
 
-                                <OrderSummary/>
+                                {!this.state.loadingReceipt && <OrderSummary
+                                    orderSummary={this.state.orderSummary}
+                                />
+                                }
 
                             </div>
 

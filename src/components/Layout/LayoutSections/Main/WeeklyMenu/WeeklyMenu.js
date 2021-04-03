@@ -330,8 +330,41 @@ class WeeklyMenu extends Component {
 
     }
 
-    render() {
+    addToCartHandler = (cardId, mealInfo, mealImg) => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let mealMenuDate = this.state.menuName.split("-");
+        mealMenuDate = mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1];
+        let deliveryDate;
+        if (new Date().getDay() === 0) {
+            deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate()) + ", " + new Date().getFullYear();
 
+        } else {
+            deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
+
+        }
+        let obj = {
+            menuCardIndex: cardId,
+            img: {
+                alt: mealImg.alt,
+                cookingStep: mealImg.cookingStep,
+                isChefImg: mealImg.isChefImg,
+                isMainRecipeImg: mealImg.isMainRecipeImg,
+                url: mealImg.url
+            },
+            mealName: mealInfo.mealName,
+            pricePerUnit: mealInfo.price,
+            price: mealInfo.price,
+            mealMenuDate: mealMenuDate,
+            cardIndex: array.length,
+            servings: "1",
+            deliveryDate: deliveryDate,
+            deliveryTime: "08:00 AM - 08:30 AM"
+        }
+        array.push(obj)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+    }
+
+    render() {
 
         return (
 
@@ -343,6 +376,7 @@ class WeeklyMenu extends Component {
                     !this.state.loading ? <div className="container">
 
                         <Menu
+                            addToCartHandler={this.addToCartHandler.bind(this)}
                             mealFilter={this.state.mealFilter}
                             showMealFilterBtnForm={this.state.showMealFilterBtnForm}
                             showMealFilterClass={this.state.showMealFilterClass}

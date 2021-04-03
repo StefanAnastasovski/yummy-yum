@@ -18,7 +18,7 @@
     margin-bottom: 10px;
 }
 
-.main-wrapper .cart-wrapper .shopping-cart-checkout{
+.main-wrapper .cart-wrapper .shopping-cart-checkout {
     padding: 10px 0;
 }
 
@@ -31,21 +31,21 @@
     width: 25%;
 }
 
-.btn-shopping-cart-serving{
+.btn-shopping-cart-serving {
     background-color: #6b9958;
-    padding:0 5px;
-    width:30px;
-    margin:0 5px;
-    border:none;
+    padding: 0 5px;
+    width: 30px;
+    margin: 0 5px;
+    border: none;
 }
 
-.main-wrapper .cart-wrapper .shopping-cart-serving-value{
-    width:75px;
+.main-wrapper .cart-wrapper .shopping-cart-serving-value {
+    width: 75px;
 }
 
 .main-wrapper .cart-wrapper input.shopping-cart-serving-value::-webkit-outer-spin-button,
 .main-wrapper .cart-wrapper input.shopping-cart-serving-value::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 
@@ -58,13 +58,42 @@
     z-index: 1000;
 }
 
-.main-wrapper .cart-wrapper .shopping-cart-serving-price {
-    display: flex;
-}
 
-.main-wrapper .cart-wrapper .shopping-cart-mealname{
+.main-wrapper .cart-wrapper .shopping-cart-serving-price,
+.main-wrapper .cart-wrapper .shopping-cart-meal-week,
+.main-wrapper .cart-wrapper .shopping-cart-mealname,
+.main-wrapper .cart-wrapper .shopping-cart-delivery-date,
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time,
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time {
     display: flex;
     justify-content: space-between;
 }
-/*shopping-cart-card-body*/
-/*shopping-cart-card-info*/
+
+
+.main-wrapper .cart-wrapper .shopping-cart-delivery-date select,
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time select,
+.main-wrapper .cart-wrapper .shopping-cart-serving-price p:nth-child(2) {
+    flex: 1;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-remove {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-wrapper .cart-wrapper .btn-remove-item {
+    border: none;
+    padding: 5px 15px;
+    background-color: #dc3545;
+}
+
+.order-summary-meals,
+.order-summary-servings,
+.order-summary-delivery-days,
+.order-summary-subtotal,
+.order-summary-shipping,
+.order-summary-total {
+    display: flex;
+    justify-content: space-between;
+}

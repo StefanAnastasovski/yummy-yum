@@ -7,10 +7,13 @@ import Aux from "../../../../../../hoc/Auxilliary";
 
 const WeeklyMenuCard = (props) => {
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
-    // let showCard = true;
 
     let clicked = () => {
         props.customizeCardClicked(props.cardIdNumber)
+    }
+
+    let addToCart = () => {
+        props.addToCartHandler(props.cardIdNumber, props.meal, props.img)
     }
 
     return (
@@ -77,7 +80,12 @@ const WeeklyMenuCard = (props) => {
                         </div>
 
                         <div className="">
-                            <button type="button" className="btn-add-meal-to-cart w-100 ">Add to Cart</button>
+                            <button
+                                type="button" className="btn-add-meal-to-cart w-100 "
+                                onClick={addToCart}
+                            >
+                                Add to Cart
+                            </button>
                             {/*<button type="button" className="btn-go-to-cart w-100 ">Go to Cart</button>*/}
                         </div>
                     </Aux>

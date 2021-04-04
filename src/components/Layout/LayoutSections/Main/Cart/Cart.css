@@ -60,8 +60,6 @@
 
 
 .main-wrapper .cart-wrapper .shopping-cart-serving-price,
-.main-wrapper .cart-wrapper .shopping-cart-meal-week,
-.main-wrapper .cart-wrapper .shopping-cart-mealname,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-date,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-time,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-time {
@@ -88,12 +86,12 @@
     background-color: #dc3545;
 }
 
-.order-summary-meals,
-.order-summary-servings,
-.order-summary-delivery-days,
-.order-summary-subtotal,
-.order-summary-shipping,
-.order-summary-total {
+.main-wrapper .cart-wrapper .order-summary-meals,
+.main-wrapper .cart-wrapper .order-summary-servings,
+.main-wrapper .cart-wrapper .order-summary-delivery-days,
+.main-wrapper .cart-wrapper .order-summary-subtotal,
+.main-wrapper .cart-wrapper .order-summary-shipping,
+.main-wrapper .cart-wrapper .order-summary-total {
     display: flex;
     justify-content: space-between;
 }

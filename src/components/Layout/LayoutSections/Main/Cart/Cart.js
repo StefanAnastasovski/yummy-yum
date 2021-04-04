@@ -30,19 +30,18 @@ class Cart extends Component {
             await this.populateReceipt();
     }
 
-    calculateShipping = (meals, servings) => {
+    calculateShipping = (servings) => {
         if (servings > 0 && servings <= 2) {
             return 5.99;
-        } else if (servings > 2 && servings < 10) {
+        } else if (servings > 2 && servings <= 10) {
             return servings * 3.99;
         } else if (servings > 10) {
             return servings * 2.55;
         }
     }
 
-    populateReceipt = () => {
+    populateReceipt = async () => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        console.log(array)
         let orderSummary
         if (array.length > 0) {
             let meals = 0;
@@ -57,7 +56,7 @@ class Cart extends Component {
                 subtotal += item.price;
             });
 
-            let shipping = this.calculateShipping(meals, servings);
+            let shipping = await this.calculateShipping(servings);
 
             orderSummary = {
                 "meals": meals,
@@ -93,7 +92,6 @@ class Cart extends Component {
     populateItems = () => {
         let items = JSON.parse(localStorage.getItem("shoppingCartItems"));
         items = items.map((item, index) => {
-            console.log(item)
             let mealMenuDate = item.mealMenuDate;
             return {
                 "img": {
@@ -123,7 +121,6 @@ class Cart extends Component {
 
     increaseServingHandler = (index) => {
         let array = [...this.state.items];
-        console.log(array)
         array[index].servings = array[index].servings + 1;
         array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
@@ -185,7 +182,6 @@ class Cart extends Component {
     }
 
     deliveryDateOnChangeHandler = async (event, index) => {
-        console.log(event, index)
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         shoppingCartItems[index].deliveryDate = event.target.value;
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
@@ -196,7 +192,6 @@ class Cart extends Component {
     }
 
     deliveryTimeOnChangeHandler = async (event, index) => {
-        console.log(event, index)
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         shoppingCartItems[index].deliveryTime = event.target.value;
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));

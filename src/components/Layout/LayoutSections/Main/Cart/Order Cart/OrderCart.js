@@ -5,6 +5,7 @@ import OrderCartDeliveryDate from "./OrderCartComponents/OrderCartDeliveryDate";
 
 
 const OrderCart = (props) => {
+
     let removeItem = () => {
         props.removeHandler(props.cardInfo.cardIndex);
     }

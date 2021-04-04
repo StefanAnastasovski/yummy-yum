@@ -97,3 +97,19 @@
     display: flex;
     justify-content: space-between;
 }
+
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-checkout {
+    border: none;
+    background-color: #6b9958;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-checkout:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}

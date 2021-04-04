@@ -1,17 +1,23 @@
 import React, {Component} from "react";
 
 import "./Cart.css";
-import Image from "../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
 import OrderCart from "./Order Cart/OrderCart";
 import OrderSummary from "./Order Summary/OrderSummary";
-import {parse} from "@fortawesome/fontawesome-svg-core";
 
 
 class Cart extends Component {
 
     state = {
         items: [],
-        orderSummary: {},
+        orderSummary: {
+            "meals": 0,
+            "servings": 0,
+            "deliveryDays": ["/"],
+            "subtotal": 0.00,
+            "shipping": 0.00,
+            "total": 0.00,
+            "items": []
+        },
         loading: true,
         loadingReceipt: true,
         isSomethingChanged: false,
@@ -22,14 +28,6 @@ class Cart extends Component {
 
         if (this.state.items.length !== 0)
             await this.populateReceipt();
-    }
-
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log("nextProps")
-        console.log(nextProps)
-        console.log("nextState")
-        console.log(nextState)
-        return true;
     }
 
     calculateShipping = (meals, servings) => {
@@ -44,45 +42,58 @@ class Cart extends Component {
 
     populateReceipt = () => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        let meals = 0;
-        let servings = 0;
-        let deliveryDays = [];
-        let subtotal = 0;
+        console.log(array)
+        let orderSummary
+        if (array.length > 0) {
+            let meals = 0;
+            let servings = 0;
+            let deliveryDays = [];
+            let subtotal = 0;
 
-        array.forEach((item) => {
-            meals++;
-            servings += parseInt(item.servings);
-            deliveryDays.push(item.deliveryDate + " / " + item.deliveryTime)
-            subtotal += item.price;
-        });
+            array.forEach((item) => {
+                meals++;
+                servings += parseInt(item.servings);
+                deliveryDays.push(item.deliveryDate + " / " + item.deliveryTime)
+                subtotal += item.price;
+            });
 
-        let shipping = this.calculateShipping(meals, servings);
+            let shipping = this.calculateShipping(meals, servings);
 
-        let obj = {
-            "meals": meals,
-            "servings": servings,
-            "deliveryDays": deliveryDays,
-            "subtotal": parseFloat(subtotal.toFixed(2)),
-            "shipping": parseFloat(shipping.toFixed(2)),
-            "total": parseFloat((subtotal + shipping).toFixed(2)),
-            "items": array
+            orderSummary = {
+                "meals": meals,
+                "servings": servings,
+                "deliveryDays": deliveryDays,
+                "subtotal": parseFloat(subtotal.toFixed(2)),
+                "shipping": parseFloat(shipping.toFixed(2)),
+                "total": parseFloat((subtotal + shipping).toFixed(2)),
+                "items": array
 
+            }
+
+        } else {
+            orderSummary = {
+                "meals": 0,
+                "servings": 0,
+                "deliveryDays": ["/"],
+                "subtotal": 0.00,
+                "shipping": 0.00,
+                "total": 0.00,
+                "items": []
+            }
         }
-
-        localStorage.setItem("orderSummary", JSON.stringify(obj))
-
+        localStorage.setItem("orderSummary", JSON.stringify(orderSummary))
         this.setState({
             isSomethingChanged: false,
-            orderSummary: obj,
+            orderSummary: orderSummary,
             loadingReceipt: false
         })
+
     }
 
     populateItems = () => {
         let items = JSON.parse(localStorage.getItem("shoppingCartItems"));
         items = items.map((item, index) => {
-            // let el = document.getElementById("delivery-date-0");
-            // console.log(el)
+            console.log(item)
             let mealMenuDate = item.mealMenuDate;
             return {
                 "img": {
@@ -174,6 +185,7 @@ class Cart extends Component {
     }
 
     deliveryDateOnChangeHandler = async (event, index) => {
+        console.log(event, index)
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         shoppingCartItems[index].deliveryDate = event.target.value;
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
@@ -184,6 +196,7 @@ class Cart extends Component {
     }
 
     deliveryTimeOnChangeHandler = async (event, index) => {
+        console.log(event, index)
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         shoppingCartItems[index].deliveryTime = event.target.value;
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
@@ -226,7 +239,7 @@ class Cart extends Component {
                                                         servingOnChangeHandler={this.servingOnChangeHandler.bind(this)}
                                                         removeHandler={this.removeHandler.bind(this)}
                                                         deliveryDateOnChangeHandler={(e) => {
-                                                            this.deliveryTimeOnChangeHandler(e, index).then(r => null)
+                                                            this.deliveryDateOnChangeHandler(e, index).then(r => null)
                                                         }}
                                                         deliveryTimeOnChangeHandler={(e) => {
                                                             this.deliveryTimeOnChangeHandler(e, index).then(r => null)

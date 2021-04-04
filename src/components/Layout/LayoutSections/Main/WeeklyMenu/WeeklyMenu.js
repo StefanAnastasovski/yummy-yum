@@ -333,14 +333,21 @@ class WeeklyMenu extends Component {
     addToCartHandler = (cardId, mealInfo, mealImg) => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let mealMenuDate = this.state.menuName.split("-");
-        mealMenuDate = mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1];
+        let newMenuDate = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+
+        let currentDate = new Date();
+
         let deliveryDate;
-        if (new Date().getDay() === 0) {
-            deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate()) + ", " + new Date().getFullYear();
+        if (!newMenuDate.getTime() > currentDate.getTime()) {
+            if (new Date().getDay() === 0) {
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate()) + ", " + new Date().getFullYear();
 
+            } else {
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
+            }
         } else {
-            deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
-
+            let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+            deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
         }
         let obj = {
             menuCardIndex: cardId,
@@ -354,7 +361,7 @@ class WeeklyMenu extends Component {
             mealName: mealInfo.mealName,
             pricePerUnit: mealInfo.price,
             price: mealInfo.price,
-            mealMenuDate: mealMenuDate,
+            mealMenuDate: mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1],
             cardIndex: array.length,
             servings: "1",
             deliveryDate: deliveryDate,

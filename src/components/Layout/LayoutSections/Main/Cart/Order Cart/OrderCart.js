@@ -112,6 +112,7 @@ const OrderCart = (props) => {
                         <label>Delivery Time:</label>
 
                         <OrderCartDeliveryTime
+                            mealMenuDate={props.cardInfo.mealMenuDate}
                             deliveryTimeName="delivery-time"
                             deliveryTimeId={"delivery-time-" + props.cardInfo.cardIndex}
                             deliveryTimeOnChangeHandler={deliveryTimeHandler}

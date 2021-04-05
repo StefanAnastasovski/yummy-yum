@@ -22,48 +22,6 @@ class WeeklyMenu extends Component {
         mealRecipes: [],
         objMeals: [],
         obj: {},
-        mealRecipe: {
-            mealName: "",
-            mealDescription: "",
-            mealTimeTag: "",
-            mealIngredientTag: "",
-            price: 6.99,
-            mealCategory: "",
-            mealOverview: {
-                difficultyLevel: "",
-                spiceLevel: "",
-                prepCookTime: "",
-                cookWithin: 1
-            },
-            mealChef: {
-                fullName: "",
-                chefMealDescription: ""
-            },
-            mealBox: {
-                serveQuantity: 2,
-                mealIngredients: ""
-            },
-            mealBoxNutrition: {
-                calories: 0,
-                protein: 0,
-                carbohydrates: 0,
-                fat: 0
-            },
-            cookingSteps: {
-                stepNumber: 1,
-                stepTitle: "",
-                stepDescription: ""
-            },
-            recipeSteps: {
-                mealUtensilsRow1: "",
-                mealUtensilsRow2: ""
-            },
-            recipeInstructions: {
-                cookSteps: "",
-                guidelines: "",
-                customizeInstructions: ""
-            }
-        },
         isMix: true,
         menu: [],
         mixMenu: [],
@@ -73,7 +31,7 @@ class WeeklyMenu extends Component {
         isMenuExist: true,
         menuName: "",
         isCustomizeCard: false,
-        customizeCardIndex: ""
+        customizeCardIndex: "",
     }
 
     onClickMealFilter = (event) => {
@@ -152,6 +110,7 @@ class WeeklyMenu extends Component {
         }
 
         this.isLoading();
+
 
     }
 
@@ -295,7 +254,6 @@ class WeeklyMenu extends Component {
     }
 
     switchToCustomize = (event) => {
-        console.log(event)
         this.setState({
             customizeCardIndex: event
         })
@@ -330,25 +288,47 @@ class WeeklyMenu extends Component {
 
     }
 
+    customizeItCardOnClickHandler = (event, cardIdNumber) => {
+        let temp = JSON.parse(localStorage.getItem("mealRecipe"));
+        let isElementExist = false;
+        let id = null;
+        temp.forEach((item, index) => {
+            if (item.cardIdNumber === cardIdNumber) {
+                isElementExist = true;
+                id = index
+            }
+        })
+        let obj = temp[id];
+        obj.customizeItOption = event.target.value;
+        localStorage.setItem("mealRecipe", JSON.stringify(temp))
+
+    }
+
     addToCartHandler = (cardId, mealInfo, mealImg) => {
+
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let mealMenuDate = this.state.menuName.split("-");
-        let newMenuDate = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+        let newMenuDate = new Date(parseInt(mealMenuDate[1]),
+            parseInt(mealMenuDate[2]) - 1,
+            parseInt(mealMenuDate[3]))
 
         let currentDate = new Date();
 
         let deliveryDate;
         if (!newMenuDate.getTime() > currentDate.getTime()) {
             if (new Date().getDay() === 0) {
-                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate()) + ", " + new Date().getFullYear();
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " "
+                    + (new Date().getDate()) + ", " + new Date().getFullYear();
 
             } else {
-                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " "
+                    + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
             }
         } else {
             let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
             deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
         }
+
         let obj = {
             menuCardIndex: cardId,
             img: {
@@ -365,7 +345,8 @@ class WeeklyMenu extends Component {
             cardIndex: array.length,
             servings: "1",
             deliveryDate: deliveryDate,
-            deliveryTime: "08:00 AM - 08:30 AM"
+            deliveryTime: "08:00 AM - 08:30 AM",
+            customizeIt: "none"
         }
         array.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
@@ -383,6 +364,7 @@ class WeeklyMenu extends Component {
                     !this.state.loading ? <div className="container">
 
                         <Menu
+                            customizeItCardOnClickHandler={this.customizeItCardOnClickHandler.bind(this)}
                             addToCartHandler={this.addToCartHandler.bind(this)}
                             mealFilter={this.state.mealFilter}
                             showMealFilterBtnForm={this.state.showMealFilterBtnForm}
@@ -395,8 +377,9 @@ class WeeklyMenu extends Component {
                             weekSelect={this.state.weekSelect}
                             mixRows={this.state.mixMenu}
                             menu={this.state.menu}
+                            mealMenuName={this.state.menuName}
                             mealName={this.state.mealName}
-                            mealMenuName={this.state.mealFilter}
+                            mealMenuFilter={this.state.mealFilter}
                             isMix={this.state.isMix}
                             isMenuExist={this.state.isMenuExist}
                             setRedirect={this.setRedirect}

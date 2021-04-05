@@ -11,14 +11,17 @@ const OrderCartDeliveryTime = (props) => {
         "07:30 PM - 08:00 PM",
     ]
 
+    let dateValues=props.mealMenuDate.split("-");
+    let cartDate = new Date(dateValues[2], dateValues[0]-1, dateValues[1]);
+
     return (
 
 
         <Aux>
             {
 
-                new Date().getDay() !== 0 ||
-                new Date().getDay() === 0 && new Date().getHours() < 6
+                new Date().getDay() !== 0 || ((new Date().getTime() < cartDate.getTime()) ||
+                    (new Date().getDay() === 0 && new Date().getHours() < 6))
                     ? <select
                         onChange={props.deliveryTimeOnChangeHandler}
                         value={props.deliveryTimeValue}

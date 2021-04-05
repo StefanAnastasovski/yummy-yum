@@ -39,12 +39,15 @@ class MealRecipe extends Component {
     async componentDidMount() {
         window.scrollTo(0, 0);
 
-        let mealName = localStorage.getItem("mealName");
+        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+        console.log(mealRecipe)
         let isLoggedIn = localStorage.getItem("isLoggedIn");
         if (isLoggedIn === "YES") {
             this.isLoggedInHandler();
         }
-        await this.createMealRecipe(mealName);
+        await this.createMealRecipe(mealRecipe.mealName);
+
+        console.log(this.state)
 
     }
 
@@ -152,6 +155,52 @@ class MealRecipe extends Component {
         console.log("Previous IMG")
     }
 
+    addToCartHandler = (event) => {
+
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+
+        let mealMenuDate = mealRecipe.menuName.split("-");
+
+        let newMenuDate = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+
+        let currentDate = new Date();
+
+        let deliveryDate;
+        if (!newMenuDate.getTime() > currentDate.getTime()) {
+            if (new Date().getDay() === 0) {
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate()) + ", " + new Date().getFullYear();
+
+            } else {
+                deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
+            }
+        } else {
+            let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+            deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
+        }
+
+        let obj = {
+            menuCardIndex: mealRecipe.cardIdNumber,
+            img: {
+                alt: this.state.images[0].mainRecipeImg.alt,
+                cookingStep: 9999,
+                isChefImg: this.state.images[0].mainRecipeImg.isChefImg,
+                isMainRecipeImg: this.state.images[0].mainRecipeImg.isMainRecipeImg,
+                url: this.state.images[0].mainRecipeImg.url
+            },
+            mealName: mealRecipe.mealName,
+            pricePerUnit: this.state.mealInfo.price,
+            price: this.state.mealInfo.price,
+            mealMenuDate: mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1],
+            cardIndex: array.length,
+            servings: "1",
+            deliveryDate: deliveryDate,
+            deliveryTime: "08:00 AM - 08:30 AM"
+        }
+        array.push(obj)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+    }
+
     render() {
 
 
@@ -163,6 +212,7 @@ class MealRecipe extends Component {
 
                     <div className="mr-header-wrapper p-3">
                         <MRHeader
+                            addToCartHandler={this.addToCartHandler.bind(this)}
                             mealInfo={this.state.mealInfo}
                             isLoggedIn={this.state.isLoggedIn}
                         />
@@ -184,7 +234,7 @@ class MealRecipe extends Component {
 
                     <div className="mr-meal-info-wrapper">
                         <MRMealInfo
-                            mealIngredientTags = {this.state.mealIngredientTags}
+                            mealIngredientTags={this.state.mealIngredientTags}
                         />
                     </div>
 

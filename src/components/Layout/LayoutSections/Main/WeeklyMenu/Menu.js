@@ -52,15 +52,24 @@ const Menu = (props) => {
             if (index === 1) {
                 margin = "mx-3";
             }
-            showCard = props.customizeCardIndex !== keyIndex1.toString() + index.toString();
+            let id = props.mealMenuName.split("-").splice(1,).join("");
+            showCard = props.customizeCardIndex !== id + keyIndex1.toString() + index.toString();
 
-            return <li key={"CardID" + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                       onClick={populateLocalStorage.bind(this, item.meal.mealName)}
+            return <li key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
+                       onClick=
+                           {
+                               populateLocalStorage.bind(this, item.meal.mealName,
+                                   (id + keyIndex1.toString() + index.toString()))
+                           }
             >
+
+
                 <WeeklyMenuCard
+                    customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
                     addToCartHandler={props.addToCartHandler}
                     showCard={showCard}
-                    cardIdNumber={(keyIndex1.toString() + index.toString())}
+                    mealMenuName={props.mealMenuName}
+                    cardIdNumber={(id + keyIndex1.toString() + index.toString())}
                     img={item.meal.image}
                     meal={item.meal}
                     key={"CardID" + keyIndex2.toString() + index.toString()}
@@ -71,9 +80,40 @@ const Menu = (props) => {
         });
     }
 
-    let populateLocalStorage = (mealName) => {
-        localStorage.setItem("mealName", mealName);
+    let populateLocalStorage = (mealName, cardIdNumber) => {
+        let temp = JSON.parse(localStorage.getItem("mealRecipe"));
+
+        let obj = {}
+        if (!temp) {
+            obj = {
+                "mealName": mealName,
+                "menuName": props.mealMenuName,
+                "cardIdNumber": cardIdNumber,
+                "customizeItOption": "none"
+            }
+            localStorage.setItem("mealRecipe", JSON.stringify([obj]));
+        } else {
+            let isExist = false;
+            temp.forEach(item => {
+                if (item.cardIdNumber === cardIdNumber) {
+                    isExist = true;
+                }
+            })
+            if (!isExist) {
+                obj = {
+                    "mealName": mealName,
+                    "menuName": props.mealMenuName,
+                    "cardIdNumber": cardIdNumber,
+                    "customizeItOption": "none"
+                }
+                temp.push(obj);
+                localStorage.setItem("mealRecipe", JSON.stringify(temp));
+            }
+        }
+
+
     }
+
 
     let checkMenuName = (menuName) => {
         let menu;
@@ -92,7 +132,7 @@ const Menu = (props) => {
         return menu;
     }
 
-    // render() {
+// render() {
     let row1, row2, row3 = null;
 
     if (props.isMenuExist) {
@@ -104,12 +144,13 @@ const Menu = (props) => {
             row2 = createCardRow(mixMenu, 2);
             row3 = createCardRow(mixMenu, 3);
         } else {
-            menu = checkMenuName(props.mealMenuName);
+            menu = checkMenuName(props.mealMenuFilter);
             row1 = createCardRow(menu, 1);
             row2 = createCardRow(menu, 2);
             row3 = createCardRow(menu, 3);
         }
     }
+
     return (
 
         <Aux>
@@ -228,7 +269,7 @@ const Menu = (props) => {
 
     )
 
-    // }
+// }
 
 }
 

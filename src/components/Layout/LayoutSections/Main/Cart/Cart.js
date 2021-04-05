@@ -34,9 +34,9 @@ class Cart extends Component {
         if (servings > 0 && servings <= 2) {
             return 5.99;
         } else if (servings > 2 && servings <= 10) {
-            return servings * 3.99;
+            return servings * 1.99;
         } else if (servings > 10) {
-            return servings * 2.55;
+            return servings * 1.22;
         }
     }
 
@@ -109,7 +109,7 @@ class Cart extends Component {
                 "menuCardIndex": item.menuCardIndex,
                 "servings": parseInt(item.servings),
                 "deliveryDate": item.deliveryDate,
-                "deliveryTime": item.deliveryTime
+                "deliveryTime": item.deliveryTime,
             }
         })
         this.setState({

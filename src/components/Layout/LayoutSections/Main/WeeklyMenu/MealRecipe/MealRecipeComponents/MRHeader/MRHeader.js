@@ -46,7 +46,10 @@ const MRHeader = (props) => {
 
                     {
                         props.isLoggedIn && <div className="col d-flex justify-content-end">
-                            <button type="button" className="btn-add-to-cart" value="Add to Cart">
+                            <button
+                                onClick={props.addToCartHandler}
+                                type="button" className="btn-add-to-cart" value="Add to Cart"
+                            >
                                 Add to Cart
                             </button>
                         </div>

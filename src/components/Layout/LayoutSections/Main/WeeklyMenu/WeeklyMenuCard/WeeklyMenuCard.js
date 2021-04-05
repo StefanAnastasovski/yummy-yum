@@ -6,6 +6,7 @@ import Aux from "../../../../../../hoc/Auxilliary";
 
 
 const WeeklyMenuCard = (props) => {
+
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     let clicked = () => {
@@ -15,6 +16,9 @@ const WeeklyMenuCard = (props) => {
     let addToCart = () => {
         props.addToCartHandler(props.cardIdNumber, props.meal, props.img)
     }
+
+    let dateValues = props.mealMenuName.split("-");
+    let cartDate = new Date(dateValues[1], dateValues[2] - 1, dateValues[3]);
 
     return (
 
@@ -66,10 +70,9 @@ const WeeklyMenuCard = (props) => {
                             </div>
                         </a>
                         <div className="card-customize-it-btn row border-top">
-                            <div className="col-10">
+                            <div className="col-10" onClick={clicked}>
                                 <button type="button"
                                         className="btn-customize-it w-100 text-left pl-1"
-                                        onClick={clicked}
                                 >
                                     Customize It
                                 </button>
@@ -79,18 +82,31 @@ const WeeklyMenuCard = (props) => {
                             </div>
                         </div>
 
-                        <div className="">
-                            <button
-                                type="button" className="btn-add-meal-to-cart w-100 "
-                                onClick={addToCart}
-                            >
-                                Add to Cart
-                            </button>
-                            {/*<button type="button" className="btn-go-to-cart w-100 ">Go to Cart</button>*/}
-                        </div>
+                        {
+                            ((new Date().getTime() > cartDate.getTime()) &&
+                                !(new Date().getDay() === 0 && new Date().getHours() > 6)) ||
+                            ((new Date().getTime() < cartDate.getTime()) &&
+                                !(new Date().getDay() === 0 && new Date().getHours() > 6))
+                                ?
+                                <div className="">
+                                    <button
+
+                                        type="button" className="btn-add-meal-to-cart w-100 "
+                                        onClick={addToCart}
+                                    >
+                                        Add to Cart
+                                    </button>
+                                    {/*<button type="button" className="btn-go-to-cart w-100 ">Go to Cart</button>*/}
+                                </div> :
+                                <div>
+                                    <p className="text-center bg-danger py-1 text-white">Sorry! You can't order this
+                                        meal!</p>
+                                </div>}
                     </Aux>
                     :
                     <CustomizeItCard
+                        cardIdNumber={props.cardIdNumber}
+                        customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
                         closeCustomizeCard={props.customizeCardClicked}
                     />
 

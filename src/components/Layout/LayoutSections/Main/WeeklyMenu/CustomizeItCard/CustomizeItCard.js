@@ -41,7 +41,7 @@ const CustomizeItCard = (props) => {
             checked: true
         },
     ];
-    let flag = false;
+
     if (customizeArray) {
         customizeArray.forEach(item => {
             if (item.cardIdNumber === props.cardIdNumber) {

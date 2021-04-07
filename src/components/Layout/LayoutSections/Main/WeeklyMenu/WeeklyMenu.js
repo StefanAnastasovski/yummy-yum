@@ -82,7 +82,6 @@ class WeeklyMenu extends Component {
             })
 
         }).catch(function (error) {
-            console.log("catch error")
             console.log(error)
             err = true;
         })
@@ -289,9 +288,7 @@ class WeeklyMenu extends Component {
     }
 
     customizeItCardOnClickHandler = (event, cardIdNumber) => {
-        console.log(event, cardIdNumber)
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
-        console.log(temp)
         let isElementExist = false;
         let id = null;
         temp.forEach((item, index) => {
@@ -309,6 +306,15 @@ class WeeklyMenu extends Component {
     addToCartHandler = (cardId, mealInfo, mealImg) => {
 
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+        console.log(mealRecipe)
+        console.log(cardId)
+        let customizeItOption = "Default";
+        mealRecipe.forEach(item => {
+            if (item.cardIdNumber === cardId) {
+                customizeItOption = item.customizeItOption
+            }
+        })
         let mealMenuDate = this.state.menuName.split("-");
         let newMenuDate = new Date(parseInt(mealMenuDate[1]),
             parseInt(mealMenuDate[2]) - 1,
@@ -348,7 +354,7 @@ class WeeklyMenu extends Component {
             servings: "1",
             deliveryDate: deliveryDate,
             deliveryTime: "08:00 AM - 08:30 AM",
-            customizeIt: "Default"
+            customizeIt: customizeItOption
         }
         array.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))

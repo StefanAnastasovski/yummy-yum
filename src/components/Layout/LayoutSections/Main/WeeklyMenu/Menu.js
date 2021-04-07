@@ -83,7 +83,6 @@ const Menu = (props) => {
     }
 
     let populateLocalStorage = (mealName, cardIdNumber) => {
-        console.log(mealName, cardIdNumber)
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
 
         let obj = {}

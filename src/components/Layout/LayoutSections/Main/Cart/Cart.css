@@ -62,7 +62,8 @@
 .main-wrapper .cart-wrapper .shopping-cart-serving-price,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-date,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-time,
-.main-wrapper .cart-wrapper .shopping-cart-delivery-time {
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time,
+.main-wrapper .cart-wrapper .shopping-cart-customize-it{
     display: flex;
     justify-content: space-between;
 }

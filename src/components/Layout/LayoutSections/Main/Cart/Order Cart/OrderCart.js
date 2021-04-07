@@ -2,6 +2,7 @@ import React from "react";
 import Image from "../../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
 import OrderCartDeliveryTime from "./OrderCartComponents/OrderCartDeliveryTime";
 import OrderCartDeliveryDate from "./OrderCartComponents/OrderCartDeliveryDate";
+import OrderCartCustomizeIt from "./OrderCartComponents/OrderCartCustomizeIt";
 
 
 const OrderCart = (props) => {
@@ -54,6 +55,16 @@ const OrderCart = (props) => {
                     <p>Meal From the Week of:</p>
                     <p className="text-color-green pl-2 text-center">{weekDates[0]} - {weekDates[1]}</p>
                 </div>
+                <div className="shopping-cart-customize-it mt-1">
+
+                    <label>Customize It:</label>
+
+                    <OrderCartCustomizeIt
+                        customizeItValue={props.customizeItOption}
+                    />
+
+                </div>
+
             </div>
 
 

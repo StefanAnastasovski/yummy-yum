@@ -110,6 +110,7 @@ class Cart extends Component {
                 "servings": parseInt(item.servings),
                 "deliveryDate": item.deliveryDate,
                 "deliveryTime": item.deliveryTime,
+                "customizeItOption": item.customizeIt
             }
         })
         this.setState({
@@ -241,6 +242,7 @@ class Cart extends Component {
                                                         }}
                                                         deliveryDateValue={item.deliveryDate}
                                                         deliveryTimeValue={item.deliveryTime}
+                                                        customizeItOption={item.customizeItOption}
                                                     />
                                                 </li>
                                             }) :

@@ -259,20 +259,20 @@ class WeeklyMenu extends Component {
         })
     }
 
-    setRedirect = (mealName) => {
-        this.setState({
-            redirect: true,
-            mealName: mealName
-
-        })
-    }
-
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            // let path = `/weekly-menu/meal-recipe/${mealName}`
-            return <Redirect to={`/meals/2${this.state.mealName}`}/>
-        }
-    }
+    // setRedirect = (mealName) => {
+    //     this.setState({
+    //         redirect: true,
+    //         mealName: mealName
+    //
+    //     })
+    // }
+    //
+    // renderRedirect = () => {
+    //     if (this.state.redirect) {
+    //         // let path = `/weekly-menu/meal-recipe/${mealName}`
+    //         return <Redirect to={`/meals/2${this.state.mealName}`}/>
+    //     }
+    // }
 
     isMenuExist = () => {
         this.setState(prevState => ({
@@ -289,7 +289,9 @@ class WeeklyMenu extends Component {
     }
 
     customizeItCardOnClickHandler = (event, cardIdNumber) => {
+        console.log(event, cardIdNumber)
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
+        console.log(temp)
         let isElementExist = false;
         let id = null;
         temp.forEach((item, index) => {
@@ -346,7 +348,7 @@ class WeeklyMenu extends Component {
             servings: "1",
             deliveryDate: deliveryDate,
             deliveryTime: "08:00 AM - 08:30 AM",
-            customizeIt: "none"
+            customizeIt: "Default"
         }
         array.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))

@@ -10,6 +10,7 @@ const WeeklyMenuCard = (props) => {
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     let clicked = () => {
+        props.populateLocalStorageOnCustomizeIt()
         props.customizeCardClicked(props.cardIdNumber)
     }
 
@@ -69,8 +70,8 @@ const WeeklyMenuCard = (props) => {
                                 </div>
                             </div>
                         </a>
-                        <div className="card-customize-it-btn row border-top">
-                            <div className="col-10" onClick={clicked}>
+                        <div className="card-customize-it-btn row border-top" onClick={clicked}>
+                            <div className="col-10">
                                 <button type="button"
                                         className="btn-customize-it w-100 text-left pl-1"
                                 >

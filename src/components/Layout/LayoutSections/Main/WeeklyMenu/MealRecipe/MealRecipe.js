@@ -39,15 +39,13 @@ class MealRecipe extends Component {
     async componentDidMount() {
         window.scrollTo(0, 0);
 
-        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
-        console.log(mealRecipe)
+        let mealName = localStorage.getItem("mealName");
         let isLoggedIn = localStorage.getItem("isLoggedIn");
         if (isLoggedIn === "YES") {
             this.isLoggedInHandler();
         }
-        await this.createMealRecipe(mealRecipe.mealName);
+        await this.createMealRecipe(mealName);
 
-        console.log(this.state)
 
     }
 

@@ -53,14 +53,10 @@ const Menu = (props) => {
                 margin = "mx-3";
             }
             let id = props.mealMenuName.split("-").splice(1,).join("");
-            showCard = props.customizeCardIndex !== id + keyIndex1.toString() + index.toString();
+            showCard = props.customizeCardIndex !== props.mealFilter[0] + id + keyIndex1.toString() + index.toString();
 
             return <li key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                       onClick=
-                           {
-                               populateLocalStorage.bind(this, item.meal.mealName,
-                                   (id + keyIndex1.toString() + index.toString()))
-                           }
+                       onClick={populateMealNameLocalStorage(item.meal.mealName)}
             >
 
 
@@ -69,18 +65,25 @@ const Menu = (props) => {
                     addToCartHandler={props.addToCartHandler}
                     showCard={showCard}
                     mealMenuName={props.mealMenuName}
-                    cardIdNumber={(id + keyIndex1.toString() + index.toString())}
+                    cardIdNumber={(props.mealFilter[0] + id + keyIndex1.toString() + index.toString())}
                     img={item.meal.image}
                     meal={item.meal}
                     key={"CardID" + keyIndex2.toString() + index.toString()}
                     customizeCardClicked={props.customizeCardClicked}
+                    populateLocalStorageOnCustomizeIt={() => populateLocalStorage(item.meal.mealName,
+                        (props.mealFilter[0] + id + keyIndex1.toString() + index.toString()))}
 
                 />
             </li>
         });
     }
 
+    let populateMealNameLocalStorage = (mealName) => {
+        localStorage.setItem("mealName", mealName);
+    }
+
     let populateLocalStorage = (mealName, cardIdNumber) => {
+        console.log(mealName, cardIdNumber)
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
 
         let obj = {}
@@ -89,7 +92,7 @@ const Menu = (props) => {
                 "mealName": mealName,
                 "menuName": props.mealMenuName,
                 "cardIdNumber": cardIdNumber,
-                "customizeItOption": "none"
+                "customizeItOption": "Default"
             }
             localStorage.setItem("mealRecipe", JSON.stringify([obj]));
         } else {
@@ -104,7 +107,7 @@ const Menu = (props) => {
                     "mealName": mealName,
                     "menuName": props.mealMenuName,
                     "cardIdNumber": cardIdNumber,
-                    "customizeItOption": "none"
+                    "customizeItOption": "Default"
                 }
                 temp.push(obj);
                 localStorage.setItem("mealRecipe", JSON.stringify(temp));

@@ -1,16 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 const CustomizeItCard = (props) => {
 
     let customizeArray = JSON.parse(localStorage.getItem("mealRecipe"));
-    let value = "";
-    if (customizeArray) {
-        customizeArray.forEach(item => {
-            if (item.cardIdNumber === props.cardIdNumber)
-                value = item.customizeItOption;
-        })
-    }
+    let value = "Default";
+
     const options = [
         {
             label: "Smoked Almond and Herbed Goat Cheese Stuffed Chicken Breast",
@@ -41,35 +36,50 @@ const CustomizeItCard = (props) => {
             checked: false
         },
         {
-            label: "Suggested",
-            value: "Suggested",
+            label: "Default",
+            value: "Default",
             checked: true
         },
     ];
+    let flag = false;
+    if (customizeArray) {
+        customizeArray.forEach(item => {
+            if (item.cardIdNumber === props.cardIdNumber) {
+                value = item.customizeItOption;
+                options.forEach((customizeOption, index) => {
+                    customizeOption.checked = customizeOption.value === item.customizeItOption;
+                })
+            }
+        })
+    }
 
-    options.forEach(item => {
-        if (item.value === value)
-            item.checked = true;
-    })
+
+
+    const [customizeOptions, setOptions] = useState([]);
+
+    if (customizeOptions.length === 0)
+        setOptions(() => {
+            return options
+        })
 
     let clicked = () => {
         props.closeCustomizeCard("");
     }
 
 
-    let customizeItClicked = (event) => {
+    let useForceUpdate = (event) => {
+        // console.log(event.target.value)
         options.forEach(item => {
-            if (item.value === value) {
-                item.checked = true;
-            }
+            item.checked = event.target.value === item.value;
+        })
+        setOptions(() => {
+            return options;
         })
         props.customizeItCardOnClickHandler(event, props.cardIdNumber)
     }
 
-    console.log(props)
 
     return (
-
 
         <div className="d-flex flex-column justify-content-between p-3 h-100">
 
@@ -91,18 +101,19 @@ const CustomizeItCard = (props) => {
 
             <ul className="list-unstyled">
 
-                {options.map((item, index) => {
-                    console.log(item)
+                {customizeOptions.map((item, index) => {
                     return <li className="text-color-green" key={(index + 1)}>
-                        {localStorage.getItem("isLoggedIn") === "YES"
-                        && <input
-                            checked={options[index].checked}
-                            onChange={customizeItClicked}
-                            type="radio"
-                            value={options[index].value}
-                            className="cursor-pointer mr-1"
-                            name="customize-it-option"/>}
-                        {options[index].label}
+                        {
+                            localStorage.getItem("isLoggedIn") === "YES"
+                            && <input
+                                checked={customizeOptions[index].checked}
+                                onChange={useForceUpdate}
+                                type="radio"
+                                value={customizeOptions[index].value}
+                                className="cursor-pointer mr-1"
+                                name="customize-it-option"/>
+                        }
+                        {customizeOptions[index].label}
                     </li>
                 })}
 

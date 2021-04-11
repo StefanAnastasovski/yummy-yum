@@ -87,8 +87,7 @@ const WeeklyMenuCard = (props) => {
                         {
                             ((new Date().getTime() > cartDate.getTime()) &&
                                 !(new Date().getDay() === 0 && new Date().getHours() > 6)) ||
-                            ((new Date().getTime() < cartDate.getTime()) &&
-                                !(new Date().getDay() === 0 && new Date().getHours() > 6))
+                            ((new Date().getTime() < cartDate.getTime()))
                                 ?
                                 <div className="">
                                     <button

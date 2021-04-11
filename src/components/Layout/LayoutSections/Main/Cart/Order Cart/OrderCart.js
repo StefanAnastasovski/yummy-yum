@@ -3,7 +3,7 @@ import Image from "../../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image
 import OrderCartDeliveryTime from "./OrderCartComponents/OrderCartDeliveryTime";
 import OrderCartDeliveryDate from "./OrderCartComponents/OrderCartDeliveryDate";
 import OrderCartCustomizeIt from "./OrderCartComponents/OrderCartCustomizeIt";
-
+import {useHistory} from 'react-router-dom';
 
 const OrderCart = (props) => {
 
@@ -33,6 +33,24 @@ const OrderCart = (props) => {
         props.deliveryTimeOnChangeHandler(event, props.cardInfo.cardIndex);
     }
 
+    const populateMealNameInLocalStorage = (mealName, mealMenuDate) => {
+        let obj = {
+            mealName: mealName,
+            mealMenuDate: mealMenuDate
+        }
+        localStorage.setItem("mealInfo", JSON.stringify(obj));
+    }
+
+    let history = useHistory();
+
+    let redirectToURL = () => {
+        let mealName = props.cardInfo.mealName;
+        let mealMenuDate = props.cardInfo.mealMenuDate;
+        populateMealNameInLocalStorage(mealName, mealMenuDate)
+        history.push("/meals/" + props.cardInfo.mealName);
+        // window.open("/meals/" + props.cardInfo.mealName, "_blank").focus();
+    }
+
     return (
 
         <div className="card">
@@ -47,21 +65,39 @@ const OrderCart = (props) => {
 
 
             <div className="shopping-cart-card-body mx-1">
+
                 <div className="shopping-cart-mealname">
                     <p>Meal Name:</p>
-                    <p className="text-color-green pl-2">{props.cardInfo.mealName}</p>
+                    <p className="text-color-green pl-2 text-center">{props.cardInfo.mealName}</p>
                 </div>
+
                 <div className="shopping-cart-meal-week">
                     <p>Meal From the Week of:</p>
                     <p className="text-color-green pl-2 text-center">{weekDates[0]} - {weekDates[1]}</p>
                 </div>
+
                 <div className="shopping-cart-customize-it mt-1">
 
-                    <label>Customize It:</label>
+                    <p>Customize It:</p>
 
                     <OrderCartCustomizeIt
                         customizeItValue={props.customizeItOption}
                     />
+
+                </div>
+
+                <div className="shopping-cart-customize-it-recipe d-flex mt-1">
+
+                    <label>View the recipe:</label>
+
+                    <div className="text-center">
+
+                        <button type="button" className="btn-shopping-cart-view-recipe "
+                                onClick={redirectToURL}>
+                            Click Here
+                        </button>
+
+                    </div>
 
                 </div>
 

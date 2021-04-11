@@ -26,12 +26,15 @@
     padding: 5px;
 }
 
-
 .main-wrapper .cart-wrapper .shopping-cart-cards .shopping-cart-card-img {
     width: 25%;
 }
 
-.btn-shopping-cart-serving {
+.main-wrapper .cart-wrapper .shopping-cart-card-body{
+    width: 50%;
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-serving {
     background-color: #6b9958;
     padding: 0 5px;
     width: 30px;
@@ -48,7 +51,6 @@
     -webkit-appearance: none;
 }
 
-
 .main-wrapper .cart-wrapper .btn-shopping-cart-serving:hover {
     border: 1px #4a099a solid;
     background: linear-gradient(330deg,
@@ -58,16 +60,12 @@
     z-index: 1000;
 }
 
-
 .main-wrapper .cart-wrapper .shopping-cart-serving-price,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-date,
-.main-wrapper .cart-wrapper .shopping-cart-delivery-time,
-.main-wrapper .cart-wrapper .shopping-cart-delivery-time,
-.main-wrapper .cart-wrapper .shopping-cart-customize-it{
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time{
     display: flex;
     justify-content: space-between;
 }
-
 
 .main-wrapper .cart-wrapper .shopping-cart-delivery-date select,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-time select,
@@ -84,7 +82,16 @@
 .main-wrapper .cart-wrapper .btn-remove-item {
     border: none;
     padding: 5px 15px;
+    height: 2.5em;
     background-color: #dc3545;
+    color: white !important;
+}
+
+.main-wrapper .cart-wrapper .btn-remove-item:hover {
+    padding: 5px 15px;
+    color: #dc3545 !important;
+    background-color: transparent;
+    border: 1px solid #dc3545;
 }
 
 .main-wrapper .cart-wrapper .order-summary-meals,
@@ -96,7 +103,6 @@
     display: flex;
     justify-content: space-between;
 }
-
 
 .main-wrapper .cart-wrapper .btn-shopping-cart-checkout {
     border: none;
@@ -111,4 +117,18 @@
     rgb(168, 214, 98) 60%,
     rgb(112, 188, 95) 85%);
     z-index: 1000;
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-view-recipe {
+    border: none;
+    background-color: transparent;
+    color: #6b9958 !important;
+    margin-left: 5px;
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-view-recipe:hover {
+    text-decoration: underline;
+}
+
+.main-wrapper .cart-wrapper .shopping-cart-customize-it-recipe{
 }

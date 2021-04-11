@@ -4,7 +4,6 @@ import React, {useState} from "react";
 const CustomizeItCard = (props) => {
 
     let customizeArray = JSON.parse(localStorage.getItem("mealRecipe"));
-    let value = "Default";
 
     const options = [
         {
@@ -45,14 +44,12 @@ const CustomizeItCard = (props) => {
     if (customizeArray) {
         customizeArray.forEach(item => {
             if (item.cardIdNumber === props.cardIdNumber) {
-                value = item.customizeItOption;
                 options.forEach((customizeOption, index) => {
                     customizeOption.checked = customizeOption.value === item.customizeItOption;
                 })
             }
         })
     }
-
 
 
     const [customizeOptions, setOptions] = useState([]);

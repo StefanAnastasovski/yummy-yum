@@ -84,7 +84,6 @@ class SendEmail extends Component {
     addEmailToRecipients = (event) => {
 
         let arrayOfObjects = [...this.state.subscribeEmails];
-        let isAdded;
 
         arrayOfObjects.forEach((item, index) => {
             if (item.email === event.target.value) {
@@ -92,7 +91,6 @@ class SendEmail extends Component {
                     email: item.email,
                     isIncludedToRecipients: !arrayOfObjects[index].isIncludedToRecipients
                 }
-                isAdded = arrayOfObjects[index].isIncludedToRecipients;
             }
         })
 

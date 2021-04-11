@@ -29,15 +29,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartCustomizeIt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/CreateMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/CreateMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/SendEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/SendEmail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartCustomizeIt.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartCustomizeIt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartDeliveryDate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartDeliveryDate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Sections/Section4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CustomizeItCard/CustomizeItCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CustomizeItCard/CustomizeItCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,17 +87,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Projects\src\images\Header\Icons" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\PopUp\PopUpMessages" />
-      <recent name="E:\Projects\src\images\HowItWorks" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Projects\src\images\MealRecipe" />
       <recent name="E:\Projects\src\images" />
       <recent name="E:\Projects\src\images\HowItWorks\Icons" />
       <recent name="E:\Projects\src\images\HowItWorks" />
       <recent name="E:\Projects\src\repository\get" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\images\Header\Icons" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\PopUp\PopUpMessages" />
+      <recent name="E:\Projects\src\images\HowItWorks" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -183,7 +190,8 @@
       <workItem from="1617649074601" duration="12832000" />
       <workItem from="1617666454264" duration="457000" />
       <workItem from="1617715409040" duration="981000" />
-      <workItem from="1617742532722" duration="7709000" />
+      <workItem from="1617742532722" duration="7733000" />
+      <workItem from="1618055273396" duration="21154000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -402,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617753740325</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Cart Component v0.6.1">
+      <created>1617754828357</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1617754828357</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +451,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Footer v1.3" />
     <MESSAGE value="Warning fixed" />
     <MESSAGE value="SignUp validations" />
     <MESSAGE value="LogOut PopUp created + How It Works added" />
@@ -461,7 +475,8 @@
     <MESSAGE value="Cart Component v0.4" />
     <MESSAGE value="Cart Component v0.5 unfinished" />
     <MESSAGE value="Cart Component v0.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cart Component v0.6" />
+    <MESSAGE value="Cart Component v0.6.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart Component v0.6.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="828" y="412" key="#ESLint" timestamp="1612218577900">
@@ -476,14 +491,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612567643723" />
-    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1617753738333">
+    <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2" timestamp="1617754826907">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-796" y="-252" key="CommitChangelistDialog2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160801510" />
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
     <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943310571" />
-    <state x="505" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617753738333" />
+    <state x="505" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617754826907" />
     <state x="-1828" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1616284404069">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -499,8 +514,8 @@
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616281813149" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610668047416" />
-    <state x="681" y="261" width="955" height="525" key="StructurePopup" timestamp="1617746787531">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2601" y="261" width="955" height="525" key="StructurePopup" timestamp="1618099414550">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-697" y="132" width="537" height="948" key="StructurePopup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614462152092" />
     <state x="-697" y="61" width="537" height="948" key="StructurePopup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615063250377" />
@@ -509,20 +524,21 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617221981580" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1615941546130" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617746787531" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1617666911285">
+    <state x="2601" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618099414550" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1617754832437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-816" y="46" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160805649" />
     <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495509909" />
     <state x="469" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320312452" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943316107" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617666911285" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617754832437" />
     <state x="92" y="92" width="1736" height="856" key="dock-window-1" timestamp="1615851537360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1615851537360" />
-    <state x="567" y="252" width="1353" height="565" key="find.popup" timestamp="1617753810328">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2487" y="252" width="1353" height="565" key="find.popup" timestamp="1618100912741">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-713" y="117" width="713" height="1020" key="find.popup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614463544819" />
     <state x="-761" y="46" width="761" height="1020" key="find.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615070600283" />
@@ -530,8 +546,9 @@
     <state x="567" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617228512706" />
     <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616088923265" />
     <state x="567" y="252" width="1353" height="565" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1617753810328" />
-    <state x="-1305" y="244" width="672" height="677" key="run.anything.popup" timestamp="1617567089922">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="2487" y="252" width="1353" height="565" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618100912741" />
+    <state x="2535" y="244" width="672" height="677" key="run.anything.popup" timestamp="1618101018575">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-734" y="101" key="run.anything.popup/0.0.1920.1040/-1080.-340.1080.1880@-1080.-340.1080.1880" timestamp="1614462978500" />
     <state x="-734" y="30" key="run.anything.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615065606889" />
@@ -539,6 +556,7 @@
     <state x="-1305" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617567089922" />
     <state x="615" y="244" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1616367290993" />
     <state x="615" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615837018982" />
+    <state x="2535" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618101018575" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1617751019658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

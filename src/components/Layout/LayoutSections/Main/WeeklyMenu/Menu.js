@@ -6,16 +6,11 @@ import NextIcon from "./WeekIcons/NextIcon";
 import PreviousIcon from "./WeekIcons/PreviousIcon";
 import Aux from "../../../../../hoc/Auxilliary";
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
-import CustomizeItCard from "./CustomizeItCard/CustomizeItCard";
-// import {Redirect} from "react-router";
 
 const Menu = (props) => {
 
-    // state = {
-    //     recipeRedirect: false
-    // }
     let convertMealToRightFormat = (menuList, categoryName) => {
-        let menu = menuList.map(item => {
+        return menuList.map(item => {
             let obj = {};
             obj = {
                 category: categoryName,
@@ -23,8 +18,6 @@ const Menu = (props) => {
             }
             return obj;
         });
-
-        return menu;
     }
 
     let createCardRow = (meals, rowNumber) => {
@@ -46,19 +39,21 @@ const Menu = (props) => {
         }
         let showCard;
 
-
         return meals.slice(rowSlice[0], rowSlice[1]).map((item, index) => {
             let margin = "";
             if (index === 1) {
                 margin = "mx-3";
             }
-            let id = props.mealMenuName.split("-").splice(1,).join("");
+
+            let menuName = props.mealMenuName.split("-");
+            let id = [...menuName].splice(1,).join("");
             showCard = props.customizeCardIndex !== props.mealFilter[0] + id + keyIndex1.toString() + index.toString();
 
-            return <li key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                       onClick={populateMealNameLocalStorage(item.meal.mealName)}
+            return <li
+                key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
+                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName)}
+                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName)}
             >
-
 
                 <WeeklyMenuCard
                     customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
@@ -74,13 +69,11 @@ const Menu = (props) => {
                         (props.mealFilter[0] + id + keyIndex1.toString() + index.toString()))}
 
                 />
+
             </li>
         });
     }
 
-    let populateMealNameLocalStorage = (mealName) => {
-        localStorage.setItem("mealName", mealName);
-    }
 
     let populateLocalStorage = (mealName, cardIdNumber) => {
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
@@ -120,15 +113,15 @@ const Menu = (props) => {
     let checkMenuName = (menuName) => {
         let menu;
         if (menuName === "Adventurous") {
-            menu = convertMealToRightFormat(props.menu[0], menuName)
+            menu = convertMealToRightFormat(props.menu[1].meals, menuName)
         } else if (menuName === "Quick and Simple") {
-            menu = convertMealToRightFormat(props.menu[1], menuName)
+            menu = convertMealToRightFormat(props.menu[2].meals, menuName)
         } else if (menuName === "Low-Cal") {
-            menu = convertMealToRightFormat(props.menu[2], menuName)
+            menu = convertMealToRightFormat(props.menu[3].meals, menuName)
         } else if (menuName === "Carb-Conscious") {
-            menu = convertMealToRightFormat(props.menu[3], menuName)
+            menu = convertMealToRightFormat(props.menu[4].meals, menuName)
         } else if (menuName === "Vegetarian") {
-            menu = convertMealToRightFormat(props.menu[4], menuName)
+            menu = convertMealToRightFormat(props.menu[5].meals, menuName)
         }
 
         return menu;

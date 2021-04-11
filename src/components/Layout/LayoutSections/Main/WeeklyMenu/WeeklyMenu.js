@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Redirect} from "react-router";
 
 import './WeeklyMenu.css';
 
@@ -289,11 +288,9 @@ class WeeklyMenu extends Component {
 
     customizeItCardOnClickHandler = (event, cardIdNumber) => {
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
-        let isElementExist = false;
         let id = null;
         temp.forEach((item, index) => {
             if (item.cardIdNumber === cardIdNumber) {
-                isElementExist = true;
                 id = index
             }
         })
@@ -360,6 +357,19 @@ class WeeklyMenu extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
     }
 
+    populateMealNameLocalStorage = (mealName) => {
+        console.log(mealName)
+        console.log("populateLocalStorage")
+        let menuName = this.state.menuName.split("-");
+        let mealMenuDate = menuName[2] + "-" + menuName[3] + "-" + menuName[1];
+        let obj = {
+            mealName: mealName,
+            mealMenuDate: mealMenuDate
+        }
+        console.log(obj)
+        localStorage.setItem("mealInfo", JSON.stringify(obj));
+    }
+
     render() {
 
         return (
@@ -382,11 +392,11 @@ class WeeklyMenu extends Component {
                             onClickNextWeek={this.onClickNextWeek.bind(this)}
                             onClickMealFilter={this.onClickMealFilter.bind(this)}
                             onClickShowMealFilter={this.onClickShowMealFilter.bind(this)}
+                            populateMealInfoOnClick={this.populateMealNameLocalStorage.bind(this)}
                             weekSelect={this.state.weekSelect}
                             mixRows={this.state.mixMenu}
                             menu={this.state.menu}
                             mealMenuName={this.state.menuName}
-                            mealName={this.state.mealName}
                             mealMenuFilter={this.state.mealFilter}
                             isMix={this.state.isMix}
                             isMenuExist={this.state.isMenuExist}

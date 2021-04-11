@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css'
 
-import Switch from "react-switch";
 
 import CreateMenuCalls from "../../../../../repository/post/postMenu";
 import MenuCalls from "../../../../../repository/get/getMenu"

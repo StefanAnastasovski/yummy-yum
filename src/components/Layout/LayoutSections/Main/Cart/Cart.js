@@ -146,7 +146,7 @@ class Cart extends Component {
 
     servingOnChangeHandler = (event) => {
         let splitName = event.target.name.split("-");
-        let index = parseInt(splitName[2]) - 1;
+        let index = parseInt(splitName[2]);
         let array = [...this.state.items];
         array[index].servings = parseInt(event.target.value);
         array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
@@ -246,7 +246,16 @@ class Cart extends Component {
                                                     />
                                                 </li>
                                             }) :
-                                            <li><h2 className="text-center text-danger">Your Cart is empty</h2></li>
+                                            <li>
+                                                <h2 className="text-center text-danger">Your Cart is empty</h2>
+                                                <h4 className="text-center pt-2">Go to
+                                                    <a href="/weekly-menu"
+                                                       className="text-color-green text-decoration-none">
+                                                        &nbsp;Our Plans&nbsp;
+                                                    </a>
+                                                     and taste one of our delicious meals!</h4>
+
+                                            </li>
 
                                     }
 

@@ -77,7 +77,7 @@ class Layout extends Component {
         let urlPath = window.location.pathname;
         console.log(urlPath)
         if (!/\/meals/.test(urlPath)) {
-            localStorage.setItem("mealName", "")
+            localStorage.setItem("mealInfo", JSON.stringify({mealName: "", mealNameDate: ""}))
         }
         if(localStorage.getItem("shoppingCartItems")===null){
             localStorage.setItem("shoppingCartItems",JSON.stringify([]))

@@ -37,15 +37,15 @@ class MealRecipe extends Component {
     }
 
     async componentDidMount() {
+
         window.scrollTo(0, 0);
 
-        let mealName = localStorage.getItem("mealName");
+        let mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
         let isLoggedIn = localStorage.getItem("isLoggedIn");
         if (isLoggedIn === "YES") {
             this.isLoggedInHandler();
         }
-        await this.createMealRecipe(mealName);
-
+        await this.createMealRecipe(mealInfo.mealName);
 
     }
 
@@ -154,16 +154,20 @@ class MealRecipe extends Component {
     }
 
     addToCartHandler = (event) => {
-
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
-
-        let mealMenuDate = mealRecipe.menuName.split("-");
-
-        let newMenuDate = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+        let mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
+        console.log(array)
+        console.log(this.state)
+        console.log(mealRecipe)
+        let mealMenuDate = mealInfo.mealMenuDate.split("-");
+        console.log(mealInfo.mealMenuDate)
+        let newMenuDate = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]))
 
         let currentDate = new Date();
-
+        console.log(currentDate)
+        console.log(newMenuDate)
+        console.log(mealMenuDate)
         let deliveryDate;
         if (!newMenuDate.getTime() > currentDate.getTime()) {
             if (new Date().getDay() === 0) {
@@ -173,12 +177,13 @@ class MealRecipe extends Component {
                 deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " " + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
             }
         } else {
-            let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+            let date = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]));
             deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
         }
+        console.log(deliveryDate)
 
         let obj = {
-            menuCardIndex: mealRecipe.cardIdNumber,
+            menuCardIndex: this.state.cardIdNumber,
             img: {
                 alt: this.state.images[0].mainRecipeImg.alt,
                 cookingStep: 9999,
@@ -186,10 +191,10 @@ class MealRecipe extends Component {
                 isMainRecipeImg: this.state.images[0].mainRecipeImg.isMainRecipeImg,
                 url: this.state.images[0].mainRecipeImg.url
             },
-            mealName: mealRecipe.mealName,
+            mealName: this.state.mealInfo.mealName,
             pricePerUnit: this.state.mealInfo.price,
             price: this.state.mealInfo.price,
-            mealMenuDate: mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1],
+            mealMenuDate: mealInfo.mealMenuDate,
             cardIndex: array.length,
             servings: "1",
             deliveryDate: deliveryDate,

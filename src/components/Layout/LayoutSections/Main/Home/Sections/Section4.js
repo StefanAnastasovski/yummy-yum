@@ -126,7 +126,9 @@ class Section4 extends Component {
     }
 
     onClickHandler = (mealName) => {
-        localStorage.setItem("mealName", mealName);
+        console.log(this.props)
+        console.log(this.state)
+        localStorage.setItem("mealInfo", mealName);
     }
 
     render() {

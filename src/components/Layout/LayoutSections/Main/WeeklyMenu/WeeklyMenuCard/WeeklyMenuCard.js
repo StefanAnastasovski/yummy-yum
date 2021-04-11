@@ -28,7 +28,8 @@ const WeeklyMenuCard = (props) => {
             {
                 props.showCard ?
                     <Aux>
-                        <a href={"/meals/" + props.meal.mealName} className="text-decoration-none ">
+                        <a href={"/meals/" + props.meal.mealName} className="text-decoration-none "
+                        >
                             <div onClick={props.clicked}>
                                 <Image
                                     img={props.img}

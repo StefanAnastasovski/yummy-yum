@@ -304,8 +304,10 @@ class WeeklyMenu extends Component {
 
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
-        console.log(mealRecipe)
-        console.log(cardId)
+        if (!mealRecipe) {
+            localStorage.setItem("mealRecipe", JSON.stringify([]))
+            mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+        }
         let customizeItOption = "Default";
         mealRecipe.forEach(item => {
             if (item.cardIdNumber === cardId) {

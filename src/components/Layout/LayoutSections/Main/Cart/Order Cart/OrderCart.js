@@ -6,7 +6,7 @@ import OrderCartCustomizeIt from "./OrderCartComponents/OrderCartCustomizeIt";
 import {useHistory} from 'react-router-dom';
 
 const OrderCart = (props) => {
-
+    console.log(props.cardInfo.menuCardIndex)
     let removeItem = () => {
         props.removeHandler(props.cardInfo.cardIndex);
     }
@@ -36,7 +36,8 @@ const OrderCart = (props) => {
     const populateMealNameInLocalStorage = (mealName, mealMenuDate) => {
         let obj = {
             mealName: mealName,
-            mealMenuDate: mealMenuDate
+            mealMenuDate: mealMenuDate,
+            cardIdNumber: props.cardInfo.menuCardIndex
         }
         localStorage.setItem("mealInfo", JSON.stringify(obj));
     }

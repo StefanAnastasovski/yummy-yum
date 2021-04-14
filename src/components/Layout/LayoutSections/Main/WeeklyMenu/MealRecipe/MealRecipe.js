@@ -27,6 +27,10 @@ class MealRecipe extends Component {
         recipeInstructions: {},
         mealIngredientTags: [],
         isLoggedIn: false,
+        mealInformation: {
+            cardIdNumber: "",
+            customizeItValue: "",
+        },
         images: [
             {chefImg: ""},
             {mainRecipeImg: ""},
@@ -46,7 +50,23 @@ class MealRecipe extends Component {
             this.isLoggedInHandler();
         }
         await this.createMealRecipe(mealInfo.mealName);
+        this.populateStateWithMealInfo(mealInfo);
 
+    }
+
+    populateStateWithMealInfo = (mealInfo) => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let customizeItValue = "Default";
+        array.forEach(item => {
+            if(item.menuCardIndex === mealInfo.cardIdNumber){
+                customizeItValue = item.customizeIt;
+            }
+        })
+        this.setState({
+            mealInformation: {
+                cardIdNumber: mealInfo.cardIdNumber,
+            },
+        })
     }
 
     isLoading = () => {
@@ -144,7 +164,6 @@ class MealRecipe extends Component {
         }))
     }
 
-
     sliderNextImg = () => {
         console.log("Next IMG")
     }
@@ -155,19 +174,14 @@ class MealRecipe extends Component {
 
     addToCartHandler = (event) => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+        // let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         let mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
-        console.log(array)
-        console.log(this.state)
-        console.log(mealRecipe)
+
         let mealMenuDate = mealInfo.mealMenuDate.split("-");
-        console.log(mealInfo.mealMenuDate)
         let newMenuDate = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]))
 
         let currentDate = new Date();
-        console.log(currentDate)
-        console.log(newMenuDate)
-        console.log(mealMenuDate)
+
         let deliveryDate;
         if (!newMenuDate.getTime() > currentDate.getTime()) {
             if (new Date().getDay() === 0) {
@@ -180,10 +194,9 @@ class MealRecipe extends Component {
             let date = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]));
             deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
         }
-        console.log(deliveryDate)
 
         let obj = {
-            menuCardIndex: this.state.cardIdNumber,
+            menuCardIndex: this.state.mealInformation.cardIdNumber,
             img: {
                 alt: this.state.images[0].mainRecipeImg.alt,
                 cookingStep: 9999,
@@ -198,10 +211,49 @@ class MealRecipe extends Component {
             cardIndex: array.length,
             servings: "1",
             deliveryDate: deliveryDate,
-            deliveryTime: "08:00 AM - 08:30 AM"
+            deliveryTime: "08:00 AM - 08:30 AM",
+            customizeIt: this.state.mealInformation.customizeItValue
         }
         array.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+        this.forceUpdate();
+    }
+
+    removeItemFromShoppingCartItems = () => {
+        let cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let cardId = this.state.mealInformation.cardIdNumber;
+
+        cartItems.forEach((item, index) => {
+            if (item.menuCardIndex === cardId) {
+                console.log(item)
+                console.log(index)
+                cartItems.splice(index, 1);
+            }
+        })
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(cartItems));
+        this.forceUpdate();
+    }
+
+    onChangeCustomizeItHandler = (event) => {
+        console.log(event.target)
+        this.setState({
+            mealInformation: {
+                cardIdNumber: this.state.mealInformation.cardIdNumber,
+                customizeItValue: event.target.value
+            },
+        })
+        let cardItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
+        cardItems.forEach((item, index) => {
+            console.log(item)
+            if (item.menuCardIndex === this.state.mealInformation.cardIdNumber) {
+                cardItems[index].customizeIt = event.target.value
+            }
+        })
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(cardItems));
+        this.forceUpdate();
+
     }
 
     render() {
@@ -218,6 +270,9 @@ class MealRecipe extends Component {
                             addToCartHandler={this.addToCartHandler.bind(this)}
                             mealInfo={this.state.mealInfo}
                             isLoggedIn={this.state.isLoggedIn}
+                            mealInformation={this.state.mealInformation}
+                            removeItem={this.removeItemFromShoppingCartItems.bind(this)}
+                            onChangeCustomizeItHandler={this.onChangeCustomizeItHandler.bind(this)}
                         />
                     </div>
 

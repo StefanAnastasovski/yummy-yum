@@ -11,12 +11,10 @@ const Menu = (props) => {
 
     let convertMealToRightFormat = (menuList, categoryName) => {
         return menuList.map(item => {
-            let obj = {};
-            obj = {
+            return {
                 category: categoryName,
                 meal: item
-            }
-            return obj;
+            };
         });
     }
 
@@ -48,11 +46,10 @@ const Menu = (props) => {
             let menuName = props.mealMenuName.split("-");
             let id = [...menuName].splice(1,).join("");
             showCard = props.customizeCardIndex !== props.mealFilter[0] + id + keyIndex1.toString() + index.toString();
-
             return <li
                 key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName)}
-                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName)}
+                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.category)}
+                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.category)}
             >
 
                 <WeeklyMenuCard
@@ -111,19 +108,20 @@ const Menu = (props) => {
 
 
     let checkMenuName = (menuName) => {
-        let menu;
-        if (menuName === "Adventurous") {
-            menu = convertMealToRightFormat(props.menu[1].meals, menuName)
-        } else if (menuName === "Quick and Simple") {
-            menu = convertMealToRightFormat(props.menu[2].meals, menuName)
-        } else if (menuName === "Low-Cal") {
-            menu = convertMealToRightFormat(props.menu[3].meals, menuName)
-        } else if (menuName === "Carb-Conscious") {
-            menu = convertMealToRightFormat(props.menu[4].meals, menuName)
-        } else if (menuName === "Vegetarian") {
-            menu = convertMealToRightFormat(props.menu[5].meals, menuName)
-        }
+        let menu = props.menu;
 
+        if (menuName === "Adventurous") {
+            menu = convertMealToRightFormat(menu[0], menuName)
+        } else if (menuName === "Quick and Simple") {
+            menu = convertMealToRightFormat(menu[1], menuName)
+        } else if (menuName === "Low-Cal") {
+            menu = convertMealToRightFormat(menu[2], menuName)
+        } else if (menuName === "Carb-Conscious") {
+            menu = convertMealToRightFormat(menu[3], menuName)
+        } else if (menuName === "Vegetarian") {
+            menu = convertMealToRightFormat(menu[4], menuName)
+        }
+        // console.log(menu)
         return menu;
     }
 
@@ -131,7 +129,6 @@ const Menu = (props) => {
     let row1, row2, row3 = null;
 
     if (props.isMenuExist) {
-
         let menu = [];
         if (props.isMix) {
             let mixMenu = convertMealToRightFormat(props.mixRows[0], "Mix")

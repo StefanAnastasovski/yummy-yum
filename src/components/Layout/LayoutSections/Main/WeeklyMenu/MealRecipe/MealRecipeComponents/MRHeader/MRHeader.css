@@ -1,9 +1,10 @@
 /*MRHeader*/
 
-.meal-recipe-wrapper .mr-header-wrapper .btn-add-to-cart{
+.meal-recipe-wrapper .mr-header-wrapper .btn-add-to-cart {
     border: 1px solid #530ea2;
     border-radius: 10px;
-    padding: 15px 40px;
+    width: 175px;
+    height: 70px;
     background-color: #579843;
     color: #530ea2;
     font-size: 1.5em;
@@ -16,4 +17,37 @@
     rgb(168, 214, 98) 60%,
     rgb(112, 188, 95) 85%);
     z-index: 1000;
+}
+
+.meal-recipe-wrapper .meal-recipe-customize-it {
+    padding: 10px 5px;
+    color: #6b9958;
+    font-weight: bold;
+    border: 1px solid #530ea2;
+    border-radius: 10px;
+    background-color: rgba(245, 195, 122, 0.15);
+}
+
+
+.meal-recipe-wrapper .meal-recipe-add-to-cart {
+    display: flex;
+    justify-content: flex-end;
+    height: 50%;
+    align-self: center;
+}
+
+.meal-recipe-wrapper .btn-remove-item {
+    border: none;
+    background-color: #dc3545;
+    color: white !important;
+    width: 175px;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+.meal-recipe-wrapper .btn-remove-item:hover {
+    color: #dc3545 !important;
+    background-color: transparent;
+    border: 1px solid #dc3545;
 }

@@ -30,7 +30,7 @@ class WeeklyMenu extends Component {
         isMenuExist: true,
         menuName: "",
         isCustomizeCard: false,
-        customizeCardIndex: "",
+        customizeCardIndex: ""
     }
 
     onClickMealFilter = (event) => {
@@ -124,9 +124,9 @@ class WeeklyMenu extends Component {
         this.setState({
             menuName: menuName
         })
-
         return await this.getMenuByMenuName(menuName);
     }
+
 
     setDate = async () => {
         let [month, mondayDate] = this.getMondayInWeek();
@@ -154,7 +154,6 @@ class WeeklyMenu extends Component {
             menu = this.state.menu[i].meals;
             allMenu.push(menu);
         }
-
         this.setState({
             menu: allMenu
         })
@@ -221,18 +220,22 @@ class WeeklyMenu extends Component {
 
     }
 
-    onClickNextWeek = () => {
-
+    onClickNextWeek = async () => {
+        this.setState({
+            loading: true
+        })
         let weekSelectDateState = this.state.weekSelectDate;
         let weekMonth = this.state.weekMonth;
         let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
         let nextWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState + 7);
-        this.populateSliderDate(nextWeekDate);
+        await this.populateSliderDate(nextWeekDate);
+        await this.createAllMenus()
+        this.isLoading();
 
     }
 
-    populateSliderDate = (date) => {
-        this.populateMenuName(date.getFullYear(), date.getMonth(), date.getDate()).then(r => null)
+    populateSliderDate = async (date) => {
+        await this.populateMenuName(date.getFullYear(), date.getMonth(), date.getDate()).then(r => null)
         this.setState({
             weekSelectDate: date.getDate(),
             weekSelect: "Week Of Monday, " +
@@ -242,13 +245,18 @@ class WeeklyMenu extends Component {
         })
     }
 
-    onClickPreviousWeek = () => {
-
+    onClickPreviousWeek = async () => {
+        this.setState({
+            loading: true
+        })
         let weekSelectDateState = this.state.weekSelectDate;
         let weekMonth = this.state.weekMonth;
         let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
         let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState - 7);
-        this.populateSliderDate(previousWeekDate);
+        await this.populateSliderDate(previousWeekDate);
+        await this.createAllMenus()
+        this.isLoading();
+
     }
 
     switchToCustomize = (event) => {
@@ -359,16 +367,14 @@ class WeeklyMenu extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
     }
 
-    populateMealNameLocalStorage = (mealName) => {
-        console.log(mealName)
-        console.log("populateLocalStorage")
+    populateMealNameLocalStorage = (mealName, cardIDNumber, mealCategory) => {
         let menuName = this.state.menuName.split("-");
         let mealMenuDate = menuName[2] + "-" + menuName[3] + "-" + menuName[1];
         let obj = {
             mealName: mealName,
-            mealMenuDate: mealMenuDate
+            mealMenuDate: mealMenuDate,
+            cardIdNumber: mealCategory[0] + cardIDNumber
         }
-        console.log(obj)
         localStorage.setItem("mealInfo", JSON.stringify(obj));
     }
 

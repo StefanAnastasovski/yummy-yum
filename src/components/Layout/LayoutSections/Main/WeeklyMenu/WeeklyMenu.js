@@ -376,6 +376,50 @@ class WeeklyMenu extends Component {
             cardIdNumber: mealCategory[0] + cardIDNumber
         }
         localStorage.setItem("mealInfo", JSON.stringify(obj));
+        this.forceUpdate();
+    }
+
+    removeItemFromCart = (cardID) => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
+        array.forEach((item, index) => {
+            if (cardID === item.menuCardIndex) {
+                array.splice(index, 1);
+            }
+        })
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array));
+        this.forceUpdate();
+    }
+
+    decreaseServings = (cardID) => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
+        array.forEach((item) => {
+            if (cardID === item.menuCardIndex) {
+                if (parseInt(item.servings) > 1) {
+                    item.servings--;
+                }
+            }
+        })
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array));
+        this.forceUpdate();
+    }
+
+    increaseServings = (cardId) => {
+        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
+        array.forEach((item) => {
+            if (cardId === item.menuCardIndex) {
+                if (parseInt(item.servings) > 1 || parseInt(item.servings) === 1) {
+                    item.servings = parseInt(item.servings) + 1;
+                }
+            }
+        })
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(array));
+        this.forceUpdate();
     }
 
     render() {
@@ -411,6 +455,9 @@ class WeeklyMenu extends Component {
                             setRedirect={this.setRedirect}
                             customizeCardClicked={this.switchToCustomize.bind(this)}
                             customizeCardIndex={this.state.customizeCardIndex}
+                            removeItemFromCart={this.removeItemFromCart.bind(this)}
+                            increaseServings={this.increaseServings.bind(this)}
+                            decreaseServings={this.decreaseServings.bind(this)}
                             // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
                         />
 

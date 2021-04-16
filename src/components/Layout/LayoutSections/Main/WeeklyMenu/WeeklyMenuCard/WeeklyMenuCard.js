@@ -3,6 +3,9 @@ import React from "react";
 import Image from "../MealRecipe/MealRecipeComponents/Images/Image";
 import CustomizeItCard from "../CustomizeItCard/CustomizeItCard";
 import Aux from "../../../../../../hoc/Auxilliary";
+import RemoveIcon from "./Icons/RemoveIcon/RemoveIcon";
+import MinusIcon from "./Icons/MinusIcon/MinusIcon";
+import PlusIcon from "./Icons/PlusIcon/PlusIcon";
 
 
 const WeeklyMenuCard = (props) => {
@@ -20,6 +23,29 @@ const WeeklyMenuCard = (props) => {
 
     let dateValues = props.mealMenuName.split("-");
     let cartDate = new Date(dateValues[1], dateValues[2] - 1, dateValues[3]);
+
+    let cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
+    let showAddToCartBtn = true;
+    let numberOfServings = 0;
+    cartItems.forEach(item => {
+        if (props.cardIdNumber === item.menuCardIndex) {
+            showAddToCartBtn = false;
+            numberOfServings = item.servings
+        }
+    })
+
+    const removeItem = () => {
+        props.removeItemFromCart(props.cardIdNumber);
+    }
+
+    const increaseServings = () => {
+        props.increaseServings(props.cardIdNumber);
+    }
+
+    const decreaseServings = () => {
+        props.decreaseServings(props.cardIdNumber);
+    }
 
     return (
 
@@ -88,23 +114,63 @@ const WeeklyMenuCard = (props) => {
                             ((new Date().getTime() > cartDate.getTime()) &&
                                 !(new Date().getDay() === 0 && new Date().getHours() > 6)) ||
                             ((new Date().getTime() < cartDate.getTime()))
-                                ?
-                                <div className="">
-                                    <button
 
-                                        type="button" className="btn-add-meal-to-cart w-100 "
-                                        onClick={addToCart}
-                                    >
-                                        Add to Cart
-                                    </button>
-                                    {/*<button type="button" className="btn-go-to-cart w-100 ">Go to Cart</button>*/}
+                                ?
+
+                                <div className="">
+                                    {
+                                        showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
+
+                                                <button
+                                                    type="button" className="btn-add-meal-to-cart w-100 "
+                                                    onClick={addToCart}
+                                                >
+                                                    Add to Cart
+                                                </button>
+
+                                            </div> :
+
+                                            <div className="wm-amtc-wrapper">
+
+                                                <div className="wm-amtc-remove-item"
+                                                     onClick={removeItem}>
+                                                    <RemoveIcon/>
+                                                </div>
+
+                                                <div className="wm-amtc-servings">
+
+                                                    <div className="wm-amtc-reduce-servings"
+                                                         onClick={decreaseServings}>
+                                                        <MinusIcon/>
+                                                    </div>
+
+                                                    <div className="wm-amtc-servings-text font-size-1">
+                                                        {numberOfServings} Servings
+                                                    </div>
+
+                                                    <div className="wm-amtc-increase-servings"
+                                                         onClick={increaseServings}><
+                                                        PlusIcon/>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                    }
+
                                 </div> :
+
                                 <div>
                                     <p className="text-center bg-danger py-1 text-white">Sorry! You can't order this
                                         meal!</p>
-                                </div>}
+                                </div>
+
+                        }
+
                     </Aux>
+
                     :
+
                     <CustomizeItCard
                         cardIdNumber={props.cardIdNumber}
                         customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}

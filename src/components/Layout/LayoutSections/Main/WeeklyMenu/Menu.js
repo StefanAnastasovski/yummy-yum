@@ -64,7 +64,9 @@ const Menu = (props) => {
                     customizeCardClicked={props.customizeCardClicked}
                     populateLocalStorageOnCustomizeIt={() => populateLocalStorage(item.meal.mealName,
                         (props.mealFilter[0] + id + keyIndex1.toString() + index.toString()))}
-
+                    removeItemFromCart={props.removeItemFromCart}
+                    increaseServings={props.increaseServings}
+                    decreaseServings={props.decreaseServings}
                 />
 
             </li>

@@ -65,6 +65,7 @@ class MealRecipe extends Component {
         this.setState({
             mealInformation: {
                 cardIdNumber: mealInfo.cardIdNumber,
+                customizeItValue: customizeItValue
             },
         })
     }
@@ -176,7 +177,8 @@ class MealRecipe extends Component {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         // let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         let mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
-
+        console.log(array)
+        console.log(mealInfo)
         let mealMenuDate = mealInfo.mealMenuDate.split("-");
         let newMenuDate = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]))
 

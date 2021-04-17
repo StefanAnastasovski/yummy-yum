@@ -13,7 +13,8 @@ class Section4 extends Component {
         showChooseMenuClass: "",
         showChooseMenuBtnForm: "",
         menu: [],
-        loading: true
+        loading: true,
+        menuNameDate: ""
 
     }
 
@@ -24,6 +25,16 @@ class Section4 extends Component {
     }
 
     async componentDidMount() {
+
+        await this.getMenuNameDate();
+
+        await this.getMenuByMenuName(this.state.menuNameDate);
+
+        this.isLoading();
+
+    }
+
+    getMenuNameDate = () => {
         let [month, mondayDate, year] = this.getMondayInWeek();
 
         month = (month + 1);
@@ -33,11 +44,13 @@ class Section4 extends Component {
         if (mondayDate < 10) {
             mondayDate = "0" + mondayDate
         }
+
         let menuName = "M-" + year + "-" + month + "-" + mondayDate;
 
-        await this.getMenuByMenuName(menuName);
-        this.isLoading();
-        // console.log(this.state.menu.shift())
+        this.setState({
+            menuNameDate: menuName
+        })
+
     }
 
     getMondayInWeek = () => {
@@ -125,10 +138,16 @@ class Section4 extends Component {
 
     }
 
-    onClickHandler = (mealName) => {
-        console.log(this.props)
-        console.log(this.state)
-        localStorage.setItem("mealInfo", mealName);
+    onClickHandler = (mealName, cardNumber) => {
+        let mealMenuDate = this.state.menuNameDate.split("-");
+        mealMenuDate = mealMenuDate[2] + "-" + mealMenuDate[3] + "-"  + mealMenuDate[1];
+        let obj = {
+            mealName: mealName,
+            mealMenuDate: mealMenuDate,
+            cardIdNumber: cardNumber
+        }
+        localStorage.setItem("mealInfo", JSON.stringify(obj));
+        this.forceUpdate();
     }
 
     render() {
@@ -209,9 +228,10 @@ class Section4 extends Component {
                                 <div className="row ms4-ms text-center align-self-center">
 
                                     {
-                                        !this.state.loading && <TopMenuInfo MenuName={this.state.chooseMenu}
+                                        !this.state.loading && <TopMenuInfo menuName={this.state.chooseMenu}
                                                                             menu={this.state.menu}
                                                                             onClick={this.onClickHandler.bind(this)}
+                                                                            menuDate={this.state.menuNameDate}
                                         />
                                     }
 

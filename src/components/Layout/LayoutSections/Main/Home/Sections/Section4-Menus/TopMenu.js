@@ -18,9 +18,16 @@ const TopMenu = (props) => {
                         <ul className="top-meals list-unstyled d-flex">
                             {
                                 props.menuInfo.meals.map((item, index) => {
+                                    let keyIndex = "0";
 
-                                    return <li key={(index + 1)} className={"col mx-1 py-1 cursor-pointer"}
-                                               onClick={props.onClick.bind(this, item.mealName)}
+                                    let menuDate = props.menuDate.split("-");
+                                    menuDate = [...menuDate].splice(1,).join("")
+                                    let id = keyIndex + index.toString();
+                                    menuDate = props.menuName[0] + menuDate + id;
+                                    return <li key={props.menuName[0] + id.toString()}
+                                               className={"col mx-1 py-1 cursor-pointer"}
+                                               onClick={props.onClick.bind(this, item.mealName, menuDate)}
+                                               onContextMenu={props.onClick.bind(this, item.mealName, menuDate)}
                                     >
 
                                         <a href={"/meals/" + item.mealName}>
@@ -59,22 +66,22 @@ const TopMenu = (props) => {
 
                         </ul>
                     </div>
-                        :
-                        <div className="col">
-                            <p className="text-danger font-size-1">Sorry!</p>
-                            <p className="text-danger">
-                                The menu is not available at
-                                this moment.
-                            </p>
-                        </div>
+                    :
+                    <div className="col">
+                        <p className="text-danger font-size-1">Sorry!</p>
+                        <p className="text-danger">
+                            The menu is not available at
+                            this moment.
+                        </p>
+                    </div>
 
-                        }
+            }
 
 
-                    </Aux>
-                )
+        </Aux>
+    )
 
-            };
+};
 
-            export default TopMenu;
+export default TopMenu;
 

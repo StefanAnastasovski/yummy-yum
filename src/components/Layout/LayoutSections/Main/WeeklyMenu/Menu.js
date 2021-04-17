@@ -45,11 +45,12 @@ const Menu = (props) => {
 
             let menuName = props.mealMenuName.split("-");
             let id = [...menuName].splice(1,).join("");
-            showCard = props.customizeCardIndex !== props.mealFilter[0] + id + keyIndex1.toString() + index.toString();
+            showCard = props.customizeCardIndex !== item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString();
+
             return <li
                 key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.category)}
-                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.category)}
+                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
+                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
             >
 
                 <WeeklyMenuCard
@@ -57,7 +58,7 @@ const Menu = (props) => {
                     addToCartHandler={props.addToCartHandler}
                     showCard={showCard}
                     mealMenuName={props.mealMenuName}
-                    cardIdNumber={(props.mealFilter[0] + id + keyIndex1.toString() + index.toString())}
+                    cardIdNumber={(item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString())}
                     img={item.meal.image}
                     meal={item.meal}
                     key={"CardID" + keyIndex2.toString() + index.toString()}
@@ -76,7 +77,6 @@ const Menu = (props) => {
 
     let populateLocalStorage = (mealName, cardIdNumber) => {
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
-
         let obj = {}
         if (!temp) {
             obj = {

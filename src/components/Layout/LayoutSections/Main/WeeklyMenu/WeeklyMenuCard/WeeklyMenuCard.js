@@ -9,7 +9,6 @@ import PlusIcon from "./Icons/PlusIcon/PlusIcon";
 
 
 const WeeklyMenuCard = (props) => {
-
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     let clicked = () => {

@@ -80,7 +80,7 @@ class WeeklyMenu extends Component {
                 isMenuExist: true
             })
 
-        }).catch(function (error) {
+        }).catch((error) => {
             console.log(error)
             err = true;
         })
@@ -147,16 +147,20 @@ class WeeklyMenu extends Component {
         let allMenu = [];
         let menu;
         let mealsLength = this.state.menu.length;
-        this.setState({
-            mixMenu: [this.state.menu[0].meals]
-        })
-        for (let i = 1; i < mealsLength; i++) {
-            menu = this.state.menu[i].meals;
-            allMenu.push(menu);
+
+        if (mealsLength === 6) {
+            this.setState({
+                mixMenu: [this.state.menu[0].meals]
+            })
+            for (let i = 1; i < mealsLength; i++) {
+                menu = this.state.menu[i].meals;
+                allMenu.push(menu);
+            }
+            this.setState({
+                menu: allMenu
+            })
         }
-        this.setState({
-            menu: allMenu
-        })
+
     }
 
     getMondayInWeek = () => {
@@ -265,21 +269,6 @@ class WeeklyMenu extends Component {
         })
     }
 
-    // setRedirect = (mealName) => {
-    //     this.setState({
-    //         redirect: true,
-    //         mealName: mealName
-    //
-    //     })
-    // }
-    //
-    // renderRedirect = () => {
-    //     if (this.state.redirect) {
-    //         // let path = `/weekly-menu/meal-recipe/${mealName}`
-    //         return <Redirect to={`/meals/2${this.state.mealName}`}/>
-    //     }
-    // }
-
     isMenuExist = () => {
         this.setState(prevState => ({
             isMenuExist: !prevState.isMenuExist
@@ -305,7 +294,14 @@ class WeeklyMenu extends Component {
         let obj = temp[id];
         obj.customizeItOption = event.target.value;
         localStorage.setItem("mealRecipe", JSON.stringify(temp))
-
+        let shopItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
+        shopItems.forEach((item, index) => {
+            if (cardIdNumber === item.menuCardIndex) {
+                item.customizeIt = event.target.value;
+            }
+        })
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shopItems));
+        this.forceUpdate();
     }
 
     addToCartHandler = (cardId, mealInfo, mealImg) => {
@@ -369,6 +365,7 @@ class WeeklyMenu extends Component {
 
     populateMealNameLocalStorage = (mealName, cardIDNumber, mealCategory) => {
         let menuName = this.state.menuName.split("-");
+
         let mealMenuDate = menuName[2] + "-" + menuName[3] + "-" + menuName[1];
         let obj = {
             mealName: mealName,

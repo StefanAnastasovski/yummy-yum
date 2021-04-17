@@ -58,7 +58,7 @@ class MealRecipe extends Component {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let customizeItValue = "Default";
         array.forEach(item => {
-            if(item.menuCardIndex === mealInfo.cardIdNumber){
+            if (item.menuCardIndex === mealInfo.cardIdNumber) {
                 customizeItValue = item.customizeIt;
             }
         })
@@ -177,8 +177,7 @@ class MealRecipe extends Component {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         // let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         let mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
-        console.log(array)
-        console.log(mealInfo)
+
         let mealMenuDate = mealInfo.mealMenuDate.split("-");
         let newMenuDate = new Date(parseInt(mealMenuDate[2]), parseInt(mealMenuDate[0]) - 1, parseInt(mealMenuDate[1]))
 
@@ -216,6 +215,7 @@ class MealRecipe extends Component {
             deliveryTime: "08:00 AM - 08:30 AM",
             customizeIt: this.state.mealInformation.customizeItValue
         }
+
         array.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(array))
         this.forceUpdate();
@@ -227,8 +227,6 @@ class MealRecipe extends Component {
 
         cartItems.forEach((item, index) => {
             if (item.menuCardIndex === cardId) {
-                console.log(item)
-                console.log(index)
                 cartItems.splice(index, 1);
             }
         })
@@ -238,7 +236,6 @@ class MealRecipe extends Component {
     }
 
     onChangeCustomizeItHandler = (event) => {
-        console.log(event.target)
         this.setState({
             mealInformation: {
                 cardIdNumber: this.state.mealInformation.cardIdNumber,
@@ -247,7 +244,6 @@ class MealRecipe extends Component {
         })
         let cardItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
         cardItems.forEach((item, index) => {
-            console.log(item)
             if (item.menuCardIndex === this.state.mealInformation.cardIdNumber) {
                 cardItems[index].customizeIt = event.target.value
             }
@@ -259,7 +255,6 @@ class MealRecipe extends Component {
     }
 
     render() {
-
 
         return (
 

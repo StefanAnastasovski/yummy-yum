@@ -6,7 +6,7 @@ import OrderCartCustomizeIt from "./OrderCartComponents/OrderCartCustomizeIt";
 import {useHistory} from 'react-router-dom';
 
 const OrderCart = (props) => {
-    console.log(props.cardInfo.menuCardIndex)
+
     let removeItem = () => {
         props.removeHandler(props.cardInfo.cardIndex);
     }

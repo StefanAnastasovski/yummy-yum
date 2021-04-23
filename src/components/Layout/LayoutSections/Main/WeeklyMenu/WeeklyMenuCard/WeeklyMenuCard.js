@@ -9,7 +9,13 @@ import PlusIcon from "./Icons/PlusIcon/PlusIcon";
 
 
 const WeeklyMenuCard = (props) => {
+
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
+
+    let isLoggedIn = false;
+    if (localStorage.getItem("isLoggedIn") === "YES") {
+        isLoggedIn = true;
+    }
 
     let clicked = () => {
         props.populateLocalStorageOnCustomizeIt()
@@ -116,7 +122,7 @@ const WeeklyMenuCard = (props) => {
 
                                 ?
 
-                                <div className="">
+                                isLoggedIn && <div className="">
                                     {
                                         showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
 
@@ -174,6 +180,9 @@ const WeeklyMenuCard = (props) => {
                         cardIdNumber={props.cardIdNumber}
                         customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
                         closeCustomizeCard={props.customizeCardClicked}
+                        mealCustomizeOptions={props.mealCustomizeOptions}
+                        mealName={props.meal.mealName}
+                        mealMenuName={props.mealMenuName}
                     />
 
             }

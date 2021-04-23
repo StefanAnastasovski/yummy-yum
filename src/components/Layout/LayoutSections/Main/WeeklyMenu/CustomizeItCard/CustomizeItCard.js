@@ -5,41 +5,19 @@ const CustomizeItCard = (props) => {
 
     let customizeArray = JSON.parse(localStorage.getItem("mealRecipe"));
 
-    const options = [
-        {
-            label: "Smoked Almond and Herbed Goat Cheese Stuffed Chicken Breast",
-            value: "Smoked Almond and Herbed Goat Cheese Stuffed Chicken Breast",
+    let options = props.mealCustomizeOptions.map(item => {
+        return {
+            label: item.mealCustomizeOption,
+            value: item.mealCustomizeOption,
             checked: false
-        },
-        {
-            label: "Organic Boneless Skinless Chicken Breasts",
-            value: "Organic Boneless Skinless Chicken Breasts",
-            checked: false
+        }
+    })
 
-        },
-        {
-            label: "Duroc Boneless Pork Chops",
-            value: "Duroc Boneless Pork Chops",
-            checked: false
-
-        },
-        {
-            label: "Boneless Skinless Chicken Breasts",
-            value: "Boneless Skinless Chicken Breasts",
-            checked: false
-
-        },
-        {
-            label: "Antibiotic-Free Boneless Skinless Chicken Breasts",
-            value: "Antibiotic-Free Boneless Skinless Chicken Breasts",
-            checked: false
-        },
-        {
-            label: "Default",
-            value: "Default",
-            checked: true
-        },
-    ];
+    options.push({
+        label: "Default",
+        value: "Default",
+        checked: true
+    });
 
     if (customizeArray) {
         customizeArray.forEach(item => {
@@ -72,8 +50,9 @@ const CustomizeItCard = (props) => {
         setOptions(() => {
             return options;
         })
-        props.customizeItCardOnClickHandler(event, props.cardIdNumber)
+        props.customizeItCardOnClickHandler(event, props.cardIdNumber, props.mealName, props.mealMenuName)
     }
+    console.log(props)
 
 
     return (

@@ -6,41 +6,19 @@ import Aux from "../../../../../../../../hoc/Auxilliary";
 
 const MRHeader = (props) => {
 
-    const options = [
-        {
-            label: "Smoked Almond and Herbed Goat Cheese Stuffed Chicken Breast",
-            value: "Smoked Almond and Herbed Goat Cheese Stuffed Chicken Breast",
+    let options = props.mealCustomizeOptions.map(item => {
+        return {
+            label: item.mealCustomizeOption,
+            value: item.mealCustomizeOption,
             checked: false
-        },
-        {
-            label: "Organic Boneless Skinless Chicken Breasts",
-            value: "Organic Boneless Skinless Chicken Breasts",
-            checked: false
+        }
+    })
 
-        },
-        {
-            label: "Duroc Boneless Pork Chops",
-            value: "Duroc Boneless Pork Chops",
-            checked: false
-
-        },
-        {
-            label: "Boneless Skinless Chicken Breasts",
-            value: "Boneless Skinless Chicken Breasts",
-            checked: false
-
-        },
-        {
-            label: "Antibiotic-Free Boneless Skinless Chicken Breasts",
-            value: "Antibiotic-Free Boneless Skinless Chicken Breasts",
-            checked: false
-        },
-        {
-            label: "Default",
-            value: "Default",
-            checked: true
-        },
-    ];
+    options.push({
+        label: "Default",
+        value: "Default",
+        checked: true
+    });
 
 
     const cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
@@ -71,7 +49,7 @@ const MRHeader = (props) => {
 
                 <div className="col d-flex justify-content-between">
 
-                    <div className="col">
+                    <div className="col-8">
 
                         <h4 className="mb-3">
                             Category:
@@ -80,7 +58,7 @@ const MRHeader = (props) => {
                             </span>
                         </h4>
 
-                        <div>
+                        <div className="mc-options">
                             <select
                                 value={props.mealInformation.customizeItValue}
                                 name={props.mealInformation.customizeItValue}
@@ -114,7 +92,7 @@ const MRHeader = (props) => {
                     </div>
 
                     {
-                        props.isLoggedIn && <div className="meal-recipe-add-to-cart col">
+                        props.isLoggedIn && <div className="meal-recipe-add-to-cart col-4">
                             {
                                 isElementExist ? <button
                                     onClick={props.addToCartHandler}

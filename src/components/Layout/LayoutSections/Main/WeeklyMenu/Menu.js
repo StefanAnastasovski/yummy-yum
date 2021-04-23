@@ -64,10 +64,11 @@ const Menu = (props) => {
                     key={"CardID" + keyIndex2.toString() + index.toString()}
                     customizeCardClicked={props.customizeCardClicked}
                     populateLocalStorageOnCustomizeIt={() => populateLocalStorage(item.meal.mealName,
-                        (props.mealFilter[0] + id + keyIndex1.toString() + index.toString()))}
+                        (item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString()))}
                     removeItemFromCart={props.removeItemFromCart}
                     increaseServings={props.increaseServings}
                     decreaseServings={props.decreaseServings}
+                    mealCustomizeOptions={item.meal.mealCustomizeOptions}
                 />
 
             </li>

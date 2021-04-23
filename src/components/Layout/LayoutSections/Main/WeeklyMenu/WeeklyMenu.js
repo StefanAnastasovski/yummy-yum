@@ -30,7 +30,6 @@ class WeeklyMenu extends Component {
         isMenuExist: true,
         menuName: "",
         isCustomizeCard: false,
-        customizeCardIndex: ""
     }
 
     onClickMealFilter = (event) => {
@@ -283,7 +282,7 @@ class WeeklyMenu extends Component {
 
     }
 
-    customizeItCardOnClickHandler = (event, cardIdNumber) => {
+    customizeItCardOnClickHandler = (event, cardIdNumber, mealName, mealMenuName) => {
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
         let id = null;
         temp.forEach((item, index) => {
@@ -291,8 +290,19 @@ class WeeklyMenu extends Component {
                 id = index
             }
         })
-        let obj = temp[id];
-        obj.customizeItOption = event.target.value;
+        let obj;
+        if (id !== null) {
+            obj = temp[id];
+            obj.customizeItOption = event.target.value;
+        } else {
+            obj = {
+                "mealName": mealName,
+                "menuName": mealMenuName,
+                "cardIdNumber": cardIdNumber,
+                "customizeItOption": "Default"
+            }
+            temp.push(obj);
+        }
         localStorage.setItem("mealRecipe", JSON.stringify(temp))
         let shopItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
         shopItems.forEach((item, index) => {

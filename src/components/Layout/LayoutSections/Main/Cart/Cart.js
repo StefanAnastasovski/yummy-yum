@@ -247,7 +247,7 @@ class Cart extends Component {
                                                 </li>
                                             }) :
                                             <li>
-                                                <h2 className="text-center text-danger">Your Cart is empty</h2>
+                                                <h2 className="text-center text-danger">Your Cart Is Empty</h2>
                                                 <h4 className="text-center pt-2">Go to
                                                     <a href="/weekly-menu"
                                                        className="text-color-green text-decoration-none">

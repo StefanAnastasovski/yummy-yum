@@ -36,6 +36,7 @@ class MealRecipe extends Component {
             {mainRecipeImg: ""},
             {cookingStepImages: ""}
         ],
+        mealCustomizeOptions: [],
         loading: true
 
     }
@@ -51,7 +52,6 @@ class MealRecipe extends Component {
         }
         await this.createMealRecipe(mealInfo.mealName);
         this.populateStateWithMealInfo(mealInfo);
-
     }
 
     populateStateWithMealInfo = (mealInfo) => {
@@ -81,7 +81,6 @@ class MealRecipe extends Component {
         return await RecipeCalls.fetchRecipeByMealName(mealName).then((response) => {
 
             let data = response.data;
-
             let difficultyLevel = data.mealOverview.difficultyLevel;
             let spiceLevel = data.mealOverview.spiceLevel;
 
@@ -148,7 +147,8 @@ class MealRecipe extends Component {
                     guidelines: [data.recipeInstructions.guidelines.split(" | ")]
                 },
                 mealIngredientTags: [data.mealIngredientTag],
-                images: [obj]
+                images: [obj],
+                mealCustomizeOptions: data.mealCustomizeOptions
             })
 
             this.isLoading();
@@ -270,6 +270,7 @@ class MealRecipe extends Component {
                             mealInformation={this.state.mealInformation}
                             removeItem={this.removeItemFromShoppingCartItems.bind(this)}
                             onChangeCustomizeItHandler={this.onChangeCustomizeItHandler.bind(this)}
+                            mealCustomizeOptions={this.state.mealCustomizeOptions}
                         />
                     </div>
 

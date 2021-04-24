@@ -16,6 +16,9 @@ import AdminDashboard from "../../LayoutSections/AdminDashboard/AdminDashboard";
 import AccountCreated from "../../LayoutSections/Main/SignUp/AccountCreated/AccountCreated";
 import HowItWorks from "../../LayoutSections/Main/HowItWorks/HowItWorks";
 import Cart from "../../LayoutSections/Main/Cart/Cart";
+import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
+import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
+import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
 
 class MainRouter extends Component {
 
@@ -199,6 +202,36 @@ class MainRouter extends Component {
                         <Route exact path="/cart">
 
                             <Cart/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/cart/checkout">
+
+                            <Checkout/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/cart/pay-now">
+
+                            <Payment/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/cart/payment-successful">
+
+                            <PaymentSuccessful />
 
                         </Route>
 

@@ -1,0 +1,93 @@
+/*Checkout & Checkout*/
+
+.payment-name-of-card-field,
+.payment-card-number-field,
+.payment-card-expiration-date-field,
+.payment-card-security-code-field,
+.payment-zip-code-field,
+.payment-delivery-address-field {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.payment-wrapper .btn-pay-now-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #6b9958;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.payment-wrapper .btn-pay-now-submit:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+input.payment-zip-code-field::-webkit-outer-spin-button,
+input.payment-zip-code-field::-webkit-inner-spin-button,
+input.payment-card-number-field::-webkit-outer-spin-button,
+input.payment-card-number-field::-webkit-inner-spin-button,
+input.payment-card-security-code-field::-webkit-outer-spin-button,
+input.payment-card-security-code-field::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.pnb-fields .row {
+    align-items: flex-end;
+}
+
+.payment-successful-wrapper .payment-successful-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    background-color: #abf192;
+    padding: 50px 0;
+    border-radius: 10px;
+
+}
+
+.ps-icon {
+    width: 150px;
+    height: 150px;
+    justify-self: center;
+    align-self: center;
+}
+
+.ps-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.ps-info hr {
+    width: 100%;
+    height: 1px;
+    background-color: #abf192;
+}
+
+.ps-info p{
+    font-size: 1.7em;
+}
+
+.ps-dashboard {
+    text-align: center;
+}
+
+.ps-go-to-dashboard {
+    text-decoration: none !important;
+    background-color: #579843;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.ps-go-to-dashboard:hover {
+    background-color: #245b0a;
+    color: white !important;
+}
+

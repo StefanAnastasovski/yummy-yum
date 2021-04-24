@@ -1,0 +1,59 @@
+/*Checkout & Checkout*/
+
+.checkout-wrapper .checkout-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+}
+
+.checkout-wrapper .checkout {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkout h3 {
+    padding-bottom: 15px;
+}
+
+.checkout-meals, .checkout-delivery-time, .checkout-payment, .checkout-bill {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-meals div.col, .checkout-delivery-time div.col, .checkout-bill div.col {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.checkout-wrapper .checkout-container hr {
+    width: 75%;
+}
+
+.checkout-delivery-time, .checkout-meals, .checkout-payment, .checkout-bill {
+    padding: 0 20px;
+    width: 75%;
+}
+
+div.col a.btn-checkout-payment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    border: none;
+    background-color: #6b9958;
+    height: 45px !important;
+    text-decoration: none;
+}
+
+.btn-checkout-payment:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}

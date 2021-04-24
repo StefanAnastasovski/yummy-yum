@@ -50,10 +50,8 @@ const OrderSummary = (props) => {
             </div>
 
 
-            <a href="/cart/checkout" >
-                <button type="button" className="btn-shopping-cart-checkout">
+            <a href="/cart/checkout" className="btn-shopping-cart-checkout">
                     Checkout
-                </button>
             </a>
 
         </div>

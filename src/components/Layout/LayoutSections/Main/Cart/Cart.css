@@ -30,7 +30,7 @@
     width: 25%;
 }
 
-.main-wrapper .cart-wrapper .shopping-cart-card-body{
+.main-wrapper .cart-wrapper .shopping-cart-card-body {
     width: 50%;
 }
 
@@ -62,7 +62,7 @@
 
 .main-wrapper .cart-wrapper .shopping-cart-serving-price,
 .main-wrapper .cart-wrapper .shopping-cart-delivery-date,
-.main-wrapper .cart-wrapper .shopping-cart-delivery-time{
+.main-wrapper .cart-wrapper .shopping-cart-delivery-time {
     display: flex;
     justify-content: space-between;
 }
@@ -105,10 +105,15 @@
 }
 
 .main-wrapper .cart-wrapper .btn-shopping-cart-checkout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
     border: none;
     background-color: #6b9958;
-    padding: 10px 0;
-    width: 100%;
+    height: 45px !important;
+    text-decoration: none;
 }
 
 .main-wrapper .cart-wrapper .btn-shopping-cart-checkout:hover {
@@ -130,5 +135,5 @@
     text-decoration: underline;
 }
 
-.main-wrapper .cart-wrapper .shopping-cart-customize-it-recipe{
+.main-wrapper .cart-wrapper .shopping-cart-customize-it-recipe {
 }

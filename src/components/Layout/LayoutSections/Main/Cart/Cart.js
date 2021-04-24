@@ -42,6 +42,7 @@ class Cart extends Component {
 
     populateReceipt = async () => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        console.log(array)
         let orderSummary
         if (array.length > 0) {
             let meals = 0;
@@ -50,6 +51,7 @@ class Cart extends Component {
             let subtotal = 0;
 
             array.forEach((item) => {
+                console.log(item)
                 meals++;
                 servings += parseInt(item.servings);
                 deliveryDays.push(item.deliveryDate + " / " + item.deliveryTime)
@@ -253,7 +255,7 @@ class Cart extends Component {
                                                        className="text-color-green text-decoration-none">
                                                         &nbsp;Our Plans&nbsp;
                                                     </a>
-                                                     and taste one of our delicious meals!</h4>
+                                                    and taste one of our delicious meals!</h4>
 
                                             </li>
 

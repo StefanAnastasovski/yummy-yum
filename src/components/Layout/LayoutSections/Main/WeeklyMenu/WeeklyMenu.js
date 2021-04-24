@@ -364,7 +364,7 @@ class WeeklyMenu extends Component {
             price: mealInfo.price,
             mealMenuDate: mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1],
             cardIndex: array.length,
-            servings: "1",
+            servings: 1,
             deliveryDate: deliveryDate,
             deliveryTime: "08:00 AM - 08:30 AM",
             customizeIt: customizeItOption
@@ -406,6 +406,7 @@ class WeeklyMenu extends Component {
             if (cardID === item.menuCardIndex) {
                 if (parseInt(item.servings) > 1) {
                     item.servings--;
+                    item.price = item.pricePerUnit*item.servings;
                 }
             }
         })
@@ -421,6 +422,7 @@ class WeeklyMenu extends Component {
             if (cardId === item.menuCardIndex) {
                 if (parseInt(item.servings) > 1 || parseInt(item.servings) === 1) {
                     item.servings = parseInt(item.servings) + 1;
+                    item.price = item.pricePerUnit*item.servings;
                 }
             }
         })

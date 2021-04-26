@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {Redirect} from 'react-router-dom';
 
 import './Checkout.css';
 
@@ -8,8 +7,7 @@ class Checkout extends Component {
     state = {
         orderSummary: [],
         orderItems: [],
-        loading: true,
-        redirect: false
+        loading: true
     };
 
 
@@ -39,18 +37,7 @@ class Checkout extends Component {
 
     }
 
-    onClickRedirect = () => {
-        this.setState({
-            redirect: true
-        })
-    }
-
-
     render() {
-
-        // if (this.state.redirect) {
-        //     return <Redirect from="/cart/checkout" to="/cart/pay-now"/>
-        // }
 
         return (
 
@@ -83,8 +70,13 @@ class Checkout extends Component {
                             <ul className="list-unstyled">
 
                                 {!this.state.loading && this.state.orderItems.map((item, index) => {
-                                    console.log(item)
-                                    return <li key={"co-info-" + index + 1}>
+                                    let mealBorder = "";
+
+                                    if (this.state.orderItems.length > 1 && index < this.state.orderItems.length - 1) {
+                                        mealBorder = "cdt-border"
+                                    }
+
+                                    return <li key={"co-info-" + index + 1} className={mealBorder}>
 
                                         <div className="col mt-2">
                                             <p>{item.mealName[0]} #{index + 1}</p>

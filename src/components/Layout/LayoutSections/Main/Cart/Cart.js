@@ -21,6 +21,8 @@ class Cart extends Component {
         loading: true,
         loadingReceipt: true,
         isSomethingChanged: false,
+        allowToContinueCheckout: true,
+        redirectToCheckoutError: ""
     }
 
     async componentDidMount() {
@@ -28,6 +30,47 @@ class Cart extends Component {
 
         if (this.state.items.length !== 0)
             await this.populateReceipt();
+
+
+        this.allowToContinueCheckout();
+        console.log(this.state.allowToContinueCheckout)
+    }
+
+    allowToContinueCheckout = () => {
+
+        let cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let flag = false;
+
+        cartItems.forEach(item => {
+
+            if (!flag) {
+
+                let dateValues = item.mealMenuDate.split("-");
+                let cartDate = new Date(dateValues[2], dateValues[0] - 1, dateValues[1]);
+                let temp = new Date().getDay() !== 0 || ((new Date().getTime() < cartDate.getTime()) ||
+                    (new Date().getDay() === 0 && new Date().getHours() < 6));
+
+                if (!temp) {
+                    flag = true;
+                    this.setState({
+                        allowToContinueCheckout: false
+                    })
+                }
+
+            }
+
+        })
+    }
+
+    redirectToCheckout = () => {
+        if (this.state.allowToContinueCheckout) {
+            window.location.href = "/cart/checkout"
+        } else{
+            this.setState({
+                redirectToCheckoutError: "Remove meals that you can't order, please!"
+            })
+        }
+
     }
 
     calculateShipping = (servings) => {
@@ -42,7 +85,6 @@ class Cart extends Component {
 
     populateReceipt = async () => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        console.log(array)
         let orderSummary
         if (array.length > 0) {
             let meals = 0;
@@ -51,7 +93,6 @@ class Cart extends Component {
             let subtotal = 0;
 
             array.forEach((item) => {
-                console.log(item)
                 meals++;
                 servings += parseInt(item.servings);
                 deliveryDays.push(item.deliveryDate + " / " + item.deliveryTime)
@@ -269,6 +310,9 @@ class Cart extends Component {
                             <div className="col-3 shopping-cart-checkout">
 
                                 {!this.state.loadingReceipt && <OrderSummary
+                                    redirectToCheckout={this.redirectToCheckout}
+                                    redirectToCheckoutError={this.state.redirectToCheckoutError}
+                                    allowCheckout={this.state.allowToContinueCheckout}
                                     orderSummary={this.state.orderSummary}
                                 />
                                 }

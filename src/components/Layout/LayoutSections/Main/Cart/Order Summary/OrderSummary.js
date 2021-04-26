@@ -49,10 +49,21 @@ const OrderSummary = (props) => {
                 </div>
             </div>
 
+            <div className="shopping-cart-checkout-field">
 
-            <a href="/cart/checkout" className="btn-shopping-cart-checkout">
+                <button type="button"
+                        className="btn-shopping-cart-checkout"
+                        onClick={props.redirectToCheckout}
+                >
                     Checkout
-            </a>
+                </button>
+
+                {
+                    props.redirectToCheckoutError.length > 0 ?
+                        <p className="text-danger text-center font-size-1">{props.redirectToCheckoutError} </p>: null
+                }
+
+            </div>
 
         </div>
 

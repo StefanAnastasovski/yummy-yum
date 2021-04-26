@@ -57,3 +57,9 @@ div.col a.btn-checkout-payment {
     rgb(112, 188, 95) 85%);
     z-index: 1000;
 }
+
+.checkout-delivery-time .cdt-border{
+    border-bottom-color: #6b9958;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}

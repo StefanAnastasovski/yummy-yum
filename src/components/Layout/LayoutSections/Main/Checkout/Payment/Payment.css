@@ -10,6 +10,10 @@
     padding: 10px 5px;
 }
 
+.pay-now-submit-field{
+    width: 100%;
+}
+
 .payment-wrapper .btn-pay-now-submit {
     width: 100%;
     padding: 10px;
@@ -38,7 +42,7 @@ input.payment-card-security-code-field::-webkit-inner-spin-button {
 }
 
 .pnb-fields .row {
-    align-items: flex-end;
+    align-items: baseline;
 }
 
 .payment-successful-wrapper .payment-successful-container {

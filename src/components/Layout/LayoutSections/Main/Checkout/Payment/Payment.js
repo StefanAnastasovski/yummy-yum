@@ -6,6 +6,8 @@ import isAlpha from "validator/es/lib/isAlpha";
 import isInt from "validator/es/lib/isInt";
 
 import postPaymentCalls from '../../../../../../repository/post/postPayment';
+import postOrderInfo from '../../../../../../repository/post/postOrderInfo';
+import postOrderMeals from "../../../../../../repository/post/postOrderMeals";
 
 // import passwordHash from 'password-hash';
 
@@ -105,7 +107,6 @@ class Payment extends Component {
         }
 
     }
-
 
     securityCodeValidator = (value, length, isDigit, field) => {
 
@@ -565,7 +566,79 @@ class Payment extends Component {
         window.location.href = '/cart/payment-successful'
     }
 
+    generateOrderID = () => {
+        let dateToday = new Date();
+        let randNumber = Math.floor(100000 + Math.random() * 900000);
+        return dateToday.getFullYear().toString() +
+            (dateToday.getMonth() + 1).toString() +
+            dateToday.getDate().toString() + randNumber;
+    }
+
+    createOrderInfo = async () => {
+
+        let orderInfo = JSON.parse(localStorage.getItem("orderSummary"));
+        let orderId = this.generateOrderID();
+        let obj = {
+            "mealNumber": parseInt(orderInfo.meals),
+            "servingNumber": parseInt(orderInfo.servings),
+            "subtotal": parseFloat(orderInfo.subtotal),
+            "shippingCost": parseFloat(orderInfo.shipping),
+            "total": parseFloat(orderInfo.total),
+            "orderId": orderId,
+            "user": {
+                "username": localStorage.getItem("username")
+            }
+        }
+
+        await postOrderInfo.createOrderInfo(obj).then(response => {
+            // console.log({message: "The Payment is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+        
+        return orderId;
+
+    }
+
+    orderMealObject = (orderMeal) => {
+        let mealMenuDate = orderMeal.mealMenuDate.split("-");
+        let menuName = "M-" + mealMenuDate[2] + "-" + mealMenuDate[1] + "-" + mealMenuDate[0];
+
+        return {
+            mealName: orderMeal.mealName,
+            menuName: menuName,
+            servings: parseInt(orderMeal.servings),
+            customizeIt: orderMeal.customizeIt,
+            price: parseFloat(orderMeal.price),
+            deliveryTime: orderMeal.deliveryTime,
+            deliveryDate: orderMeal.deliveryDate
+        };
+    }
+
+    createOrderMeals = async (orderId) => {
+
+        let orderMealItems = JSON.parse(localStorage.getItem("orderSummary")).items;
+        console.log(orderMealItems)
+        let orderMeals = [];
+        orderMealItems.map(item => {
+            orderMeals.push(this.orderMealObject(item));
+        })
+
+        let obj = {
+            orderMeals: orderMeals
+        }
+        console.log(obj)
+
+        await postOrderMeals.createOrderMeals(obj, orderId).then(response => {
+            // console.log({message: "The Payment is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
     handleSubmit = async (event) => {
+
         event.preventDefault();
 
         const isShippingAddressValid = await this.shippingAddressValidator();
@@ -575,13 +648,15 @@ class Payment extends Component {
 
         if (isFormValid) {
             await this.createPayment();
+            let orderId = await this.createOrderInfo();
+            await this.createOrderMeals(orderId);
             localStorage.setItem("shoppingCartItems", JSON.stringify([]));
             localStorage.setItem("mealRecipe", JSON.stringify([]));
             localStorage.setItem("mealInfo", JSON.stringify([]));
-            this.redirectToPaymentCompleted()
+            // this.redirectToPaymentCompleted()
         }
 
-    };
+    }
 
 
     render() {

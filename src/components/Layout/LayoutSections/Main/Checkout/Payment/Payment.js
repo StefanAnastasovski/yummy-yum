@@ -5,9 +5,13 @@ import validator from "validator/es";
 import isAlpha from "validator/es/lib/isAlpha";
 import isInt from "validator/es/lib/isInt";
 
-import postPaymentCalls from '../../../../../../repository/post/postPayment';
+import postCreditCardCalls from '../../../../../../repository/post/postCreditCard';
+import getCreditCardCalls from '../../../../../../repository/get/getCreditCard';
+import getShippingAddressCalls from '../../../../../../repository/get/getShippingAddress';
+import postShippingAddress from '../../../../../../repository/post/postShippingAddress';
 import postOrderInfo from '../../../../../../repository/post/postOrderInfo';
 import postOrderMeals from "../../../../../../repository/post/postOrderMeals";
+import postPayment from "../../../../../../repository/post/postPayment";
 
 // import passwordHash from 'password-hash';
 
@@ -54,8 +58,60 @@ class Payment extends Component {
             securityCodeValue: "",
             cardNumberValue: "",
         },
-        cardCounter: 0
+        shouldSaveCreditCard: false,
+        shouldSaveShippingAddress: false,
+        cardCounter: 0,
+        paymentId: "",
+        username: ""
     };
+
+    async componentDidMount() {
+        await this.getUsernameFromLocalStorage();
+        await this.getShippingAddressByUsername();
+        await this.getCreditCardByUsername();
+    }
+
+    getUsernameFromLocalStorage = () => {
+        this.setState({
+            username: localStorage.getItem("username")
+        })
+    }
+
+    getShippingAddressByUsername = async () => {
+        await getShippingAddressCalls.fetchShippingAddressByUsername(this.state.username).then(response => {
+            if (response.data) {
+                this.setState(prevState => ({
+                    formValues: {
+                        ...prevState.formValues,
+                        shippingAddressValue: response.data.address,
+                        zipCodeValue: response.data.zipCode,
+                    },
+                }))
+            }
+
+        }).catch(e => {
+// console.log(e)
+        })
+    }
+
+    getCreditCardByUsername = async () => {
+        await getCreditCardCalls.fetchCreditCardByUsername(this.state.username).then(response => {
+            if (response.data) {
+                this.setState(prevState => ({
+                    formValues: {
+                        ...prevState.formValues,
+                        nameOnCardValue: response.data.nameOnCard,
+                        cardNumberValue: response.data.cardNumber,
+                        expirationDateMonthValue: response.data.expirationDateMonth,
+                        expirationDateYearValue: response.data.expirationDateYear
+                    }
+                }))
+            }
+
+        }).catch(e => {
+// console.log(e)
+        })
+    }
 
     validateCreditCard = (value) => {
 
@@ -225,7 +281,11 @@ class Payment extends Component {
 
     shippingAddressValidation = (value) => {
         if ((value.length < 100 && value.length) || value === "") {
-            let obj = {...this.state.formValues, shippingAddressValue: value}
+            let array = value.split(" ");
+            array.forEach((item, index) => {
+                array[index] = item.toString().charAt(0).toUpperCase() + item.toString().slice(1,);
+            })
+            let obj = {...this.state.formValues, shippingAddressValue: array.join(" ")}
             this.setState({
                 formValues: obj
             })
@@ -547,16 +607,24 @@ class Payment extends Component {
 
     }
 
-    createPayment = async () => {
-        let payment = {
-            nameOnCard: this.state.formValues.nameOnCardValue,
+    createCreditCard = async () => {
+        let fullName = this.state.formValues.nameOnCardValue;
+        let fullNameArray = fullName.split(" ");
+        fullNameArray[0] = fullNameArray[0].charAt(0).toUpperCase() + fullNameArray[0].slice(1,);
+        fullNameArray[1] = fullNameArray[1].charAt(0).toUpperCase() + fullNameArray[1].slice(1,);
+        fullName = fullNameArray.join(" ")
+
+        let creditCardInfo = {
+            nameOnCard: fullName,
             cardNumber: this.state.formValues.cardNumberValue,
             expirationDateMonth: this.state.formValues.expirationDateMonthValue,
             expirationDateYear: this.state.formValues.expirationDateYearValue,
-            securityCode: this.state.formValues.securityCodeValue
+            securityCode: this.state.formValues.securityCodeValue,
+            isActive: true
         }
-        await postPaymentCalls.createPayment(payment).then(response => {
-            // console.log({message: "The Payment is successfully created!"})
+        let username = localStorage.getItem("username");
+        await postCreditCardCalls.createCreditCard(creditCardInfo, username).then(response => {
+            // console.log({message: "The Credit Card is successfully created!"})
         }).catch(error => {
             console.log(error);
         })
@@ -579,23 +647,23 @@ class Payment extends Component {
         let orderInfo = JSON.parse(localStorage.getItem("orderSummary"));
         let orderId = this.generateOrderID();
         let obj = {
-            "mealNumber": parseInt(orderInfo.meals),
-            "servingNumber": parseInt(orderInfo.servings),
-            "subtotal": parseFloat(orderInfo.subtotal),
-            "shippingCost": parseFloat(orderInfo.shipping),
-            "total": parseFloat(orderInfo.total),
-            "orderId": orderId,
-            "user": {
-                "username": localStorage.getItem("username")
+            mealNumber: parseInt(orderInfo.meals),
+            servingNumber: parseInt(orderInfo.servings),
+            subtotal: parseFloat(orderInfo.subtotal),
+            shippingCost: parseFloat(orderInfo.shipping),
+            total: parseFloat(orderInfo.total),
+            orderId: orderId,
+            user: {
+                username: localStorage.getItem("username")
             }
         }
 
         await postOrderInfo.createOrderInfo(obj).then(response => {
-            // console.log({message: "The Payment is successfully created!"})
+// console.log({message: "The Payment is successfully created!"})
         }).catch(error => {
             console.log(error);
         })
-        
+
         return orderId;
 
     }
@@ -618,7 +686,6 @@ class Payment extends Component {
     createOrderMeals = async (orderId) => {
 
         let orderMealItems = JSON.parse(localStorage.getItem("orderSummary")).items;
-        console.log(orderMealItems)
         let orderMeals = [];
         orderMealItems.map(item => {
             orderMeals.push(this.orderMealObject(item));
@@ -627,10 +694,58 @@ class Payment extends Component {
         let obj = {
             orderMeals: orderMeals
         }
-        console.log(obj)
 
         await postOrderMeals.createOrderMeals(obj, orderId).then(response => {
-            // console.log({message: "The Payment is successfully created!"})
+// console.log({message: "The Payment is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    createShippingAddress = async () => {
+        let shippingAddressInfo = {
+            address: this.state.formValues.shippingAddressValue,
+            zipCode: this.state.formValues.zipCodeValue
+        }
+        let username = localStorage.getItem("username")
+        await postShippingAddress.createShippingAddress(shippingAddressInfo, username).then(response => {
+// console.log({message: "The Shipping address is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    onClickSaveCreditCard = () => {
+        this.setState(prevState => ({
+            shouldSaveCreditCard: !prevState.shouldSaveCreditCard
+        }))
+    }
+
+    onClickShippingAddress = () => {
+        this.setState(prevState => ({
+            shouldSaveShippingAddress: !prevState.shouldSaveShippingAddress
+        }))
+    }
+
+    createPayment = async (orderId) => {
+        let orderInfo = JSON.parse(localStorage.getItem("orderSummary"));
+
+        let object = {
+            cardNumber: this.state.formValues.cardNumberValue,
+            totalAmount: parseFloat(orderInfo.total),
+            address: this.state.formValues.shippingAddressValue,
+            zipCode: this.state.formValues.zipCodeValue,
+            username: this.state.username,
+            orderInfoId: orderId,
+            paymentNumberId: ""
+        }
+
+        await postPayment.createPayment(object).then(response => {
+            this.setState({
+                paymentId: response.data.paymentNumberId
+            })
         }).catch(error => {
             console.log(error);
         })
@@ -647,17 +762,29 @@ class Payment extends Component {
         const isFormValid = isShippingAddressValid && isCardValid;
 
         if (isFormValid) {
-            await this.createPayment();
+            if (this.state.shouldSaveCreditCard) {
+                await this.createCreditCard();
+            }
+            if (this.state.shouldSaveShippingAddress) {
+                await this.createShippingAddress();
+            }
             let orderId = await this.createOrderInfo();
             await this.createOrderMeals(orderId);
+            await this.createPayment(orderId);
+            let orderInvoiceInfo = {
+                orderId: orderId,
+                paymentId: this.state.paymentId
+            };
+
             localStorage.setItem("shoppingCartItems", JSON.stringify([]));
             localStorage.setItem("mealRecipe", JSON.stringify([]));
             localStorage.setItem("mealInfo", JSON.stringify([]));
-            // this.redirectToPaymentCompleted()
+            localStorage.setItem("paymentInfo", JSON.stringify(orderInvoiceInfo));
         }
 
-    }
+        this.redirectToPaymentCompleted();
 
+    }
 
     render() {
 
@@ -691,12 +818,22 @@ class Payment extends Component {
                                                            name="pnb-shipping-address"
                                                            className="payment-delivery-address-field"
                                                            placeholder="Shipping Address"/>
+
+                                                    <input type="checkbox" className="mr-1"
+                                                           name="save-shipping-address"
+                                                           onChange={this.onClickSaveCreditCard}
+                                                           checked={this.state.shouldSaveCreditCard}
+                                                    />
+                                                    <label className="font-size-2 m-0">Save Shipping Address for later
+                                                        reuse</label>
+
                                                     {
                                                         this.state.paymentError.shippingAddressError.isError ?
                                                             <p className="text-danger font-size-2">
                                                                 {this.state.paymentError.shippingAddressError.message}
                                                             </p> : null
                                                     }
+
                                                 </div>
 
                                                 <div className="col-3 pl-1">
@@ -754,7 +891,7 @@ class Payment extends Component {
 
                                             </div>
 
-                                            <div className="row mb-3">
+                                            <div className="row">
 
                                                 <div className="col pr-1 d-flex">
                                                     <div className="w-50 pr-1">
@@ -806,6 +943,17 @@ class Payment extends Component {
                                                             </p> : null
                                                     }
                                                 </div>
+
+                                            </div>
+
+                                            <div className="row mb-3">
+
+                                                <input type="checkbox" className="mr-1" name="save-credit-card"
+                                                       onChange={this.onClickShippingAddress}
+                                                       checked={this.state.shouldSaveShippingAddress}
+                                                />
+                                                <label className="font-size-2 m-0">Save Credit Card for later
+                                                    reuse</label>
 
                                             </div>
 

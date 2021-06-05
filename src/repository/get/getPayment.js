@@ -2,16 +2,16 @@ import axios from '../../custom-axios/axios';
 
 const getPayment = {
 
-    fetchPayments: () => {
-        return axios.get(`/api/payment`)
+    fetchPaymentByPaymentId: (paymentId) => {
+        return axios.get(`/api/payments/paymentId=${paymentId}`)
     },
-    fetchPaymentsByName: (name) => {
-        return axios.get(`/api/payment/name=${name}`)
+    fetchPaymentByPaymentDate: (paymentDate) => {
+        return axios.get(`/api/payments/date=${paymentDate}`)
     },
-    fetchPaymentsByDate: (date) => {
-        return axios.get(`/api/payment/date/${date}`)
+    fetchPaymentByUsername: (username) => {
+        return axios.get(`/api/payments/username=${username}`)
     }
-
+    
 };
 
 export default getPayment;

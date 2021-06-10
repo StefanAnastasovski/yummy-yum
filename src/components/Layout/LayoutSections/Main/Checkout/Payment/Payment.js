@@ -687,7 +687,7 @@ class Payment extends Component {
 
         let orderMealItems = JSON.parse(localStorage.getItem("orderSummary")).items;
         let orderMeals = [];
-        orderMealItems.map(item => {
+        orderMealItems.forEach(item => {
             orderMeals.push(this.orderMealObject(item));
         })
 
@@ -730,16 +730,18 @@ class Payment extends Component {
     }
 
     createPayment = async (orderId) => {
-        let orderInfo = JSON.parse(localStorage.getItem("orderSummary"));
-
+        let checkoutPrice = JSON.parse(localStorage.getItem("checkoutPrice"));
+        let coupon = JSON.parse(localStorage.getItem("coupon"));
+        console.log(coupon.couponName)
         let object = {
             cardNumber: this.state.formValues.cardNumberValue,
-            totalAmount: parseFloat(orderInfo.total),
+            totalAmount: parseFloat(checkoutPrice.total),
             address: this.state.formValues.shippingAddressValue,
             zipCode: this.state.formValues.zipCodeValue,
             username: this.state.username,
             orderInfoId: orderId,
-            paymentNumberId: ""
+            paymentNumberId: "",
+            couponName: coupon.couponName
         }
 
         await postPayment.createPayment(object).then(response => {
@@ -750,6 +752,17 @@ class Payment extends Component {
             console.log(error);
         })
 
+    }
+
+    setLocalStorages = () => {
+          localStorage.setItem("shoppingCartItems", JSON.stringify([]));
+            localStorage.setItem("mealRecipe", JSON.stringify([]));
+            localStorage.setItem("mealInfo", JSON.stringify([]));
+            localStorage.setItem("checkoutPrice", JSON.stringify([]));
+            localStorage.setItem("coupon", JSON.stringify([]));
+            //orderInvoiceInfo - parameter
+            // localStorage.setItem("paymentInfo", JSON.stringify(orderInvoiceInfo));
+            localStorage.setItem("paymentInfo", JSON.stringify([]));
     }
 
     handleSubmit = async (event) => {
@@ -771,15 +784,12 @@ class Payment extends Component {
             let orderId = await this.createOrderInfo();
             await this.createOrderMeals(orderId);
             await this.createPayment(orderId);
-            let orderInvoiceInfo = {
-                orderId: orderId,
-                paymentId: this.state.paymentId
-            };
-
-            localStorage.setItem("shoppingCartItems", JSON.stringify([]));
-            localStorage.setItem("mealRecipe", JSON.stringify([]));
-            localStorage.setItem("mealInfo", JSON.stringify([]));
-            localStorage.setItem("paymentInfo", JSON.stringify(orderInvoiceInfo));
+            // let orderInvoiceInfo = {
+            //     orderId: orderId,
+            //     paymentId: this.state.paymentId
+            // };
+            // await this.setLocalStorages(orderInvoiceInfo)
+            await this.setLocalStorages()
         }
 
         this.redirectToPaymentCompleted();

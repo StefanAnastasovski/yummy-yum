@@ -58,8 +58,44 @@ div.col a.btn-checkout-payment {
     z-index: 1000;
 }
 
-.checkout-delivery-time .cdt-border{
+.checkout-delivery-time .cdt-border {
     border-bottom-color: #6b9958;
     border-bottom-style: dotted;
     border-bottom-width: 1px;
+}
+
+.coupon-field {
+    height: 2.5em;
+    padding: 5px;
+}
+
+.btn-coupon {
+    height: 2.5em;
+    border: 0;
+    background-color: #6b9958;
+}
+
+.btn-coupon:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+
+.coupon-mt {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-coupon-mt-close {
+    border: none;
+    background: transparent;
+    margin-right: 5px;
 }

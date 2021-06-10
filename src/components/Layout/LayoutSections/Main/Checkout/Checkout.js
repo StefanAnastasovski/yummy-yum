@@ -2,17 +2,49 @@ import React, {Component} from "react";
 
 import './Checkout.css';
 
+import getCouponCalls from '../../../../../repository/get/getCoupon';
+
 class Checkout extends Component {
 
     state = {
         orderSummary: [],
         orderItems: [],
-        loading: true
+        loading: true,
+        couponName: "",
+        couponObj: {},
+        isCouponSet: false,
+        couponError: "",
+        isOldTotalExist: false
     };
 
 
     async componentDidMount() {
         await this.populateBillInfo();
+        await this.populateTotalCost();
+    }
+
+    getCoupon = async () => {
+        await getCouponCalls.fetchCouponByCouponName(this.state.couponName).then((response) => {
+
+            response.data ? this.setState({
+                    couponObj: response.data
+                })
+                :
+                this.setState({
+                    couponError: "Coupon is not valid!"
+                })
+
+            response.data.isActive ? this.setState({
+                    isCouponSet: true
+                }) :
+                this.setState({
+                    couponError: "Coupon is not valid!"
+                })
+        }).catch(
+            function (error) {
+                console.log(error)
+            }
+        )
     }
 
     populateBillInfo = async () => {
@@ -35,6 +67,75 @@ class Checkout extends Component {
             loading: false
         })
 
+    }
+
+    populateTotalCost = async () => {
+        let orderSummary = JSON.parse(localStorage.getItem('orderSummary'));
+        let checkoutPrice = JSON.parse(localStorage.getItem('checkoutPrice'));
+        if (checkoutPrice === null || Object.keys(checkoutPrice).length < 2)
+            localStorage.setItem('checkoutPrice', JSON.stringify({"total": orderSummary.total}));
+        else {
+            this.setState({
+                isOldTotalExist: true,
+                isCouponSet: true
+            })
+        }
+    }
+
+    onChangeCouponHandler = (event) => {
+        this.setState({
+            couponName: event.target.value
+        })
+    }
+
+    onClickCouponHandler = async (event) => {
+        await this.getCoupon();
+        localStorage.setItem("coupon", JSON.stringify(this.state.couponObj))
+        await this.couponHandler();
+    }
+
+    includeDiscount = (isPercentage, isFixedAmount, discountValue) => {
+        let checkoutPrice = JSON.parse(localStorage.getItem('checkoutPrice'));
+        checkoutPrice = {
+            ...checkoutPrice,
+            "oldTotal": checkoutPrice.total
+        }
+        if (isPercentage) {
+            checkoutPrice.total = parseFloat((checkoutPrice.total - checkoutPrice.total * (discountValue / 100)).toFixed(2));
+        } else if (isFixedAmount) {
+            checkoutPrice.total = parseFloat((checkoutPrice.total - discountValue).toFixed(2));
+        }
+
+        localStorage.setItem('checkoutPrice', JSON.stringify(checkoutPrice));
+        this.setState({
+            isOldTotalExist: true
+        })
+    }
+
+    couponHandler = () => {
+        let isPercentage = false;
+        let isFixedAmount = false;
+        let discountValue = 0;
+        if (this.state.couponObj.percentageDiscount !== null) {
+            isPercentage = true;
+            discountValue = this.state.couponObj.percentageDiscount;
+        } else if (this.state.couponObj.fixedAmountDiscount !== null) {
+            isFixedAmount = true;
+            discountValue = this.state.couponObj.fixedAmountDiscount;
+        }
+
+        if (this.state.couponObj.isActive) {
+            this.includeDiscount(isPercentage, isFixedAmount, discountValue,)
+        }
+
+    }
+
+    onClickCouponCloseHandler = () => {
+        this.setState({
+            isOldTotalExist: false,
+            isCouponSet: false
+        })
+        localStorage.setItem('checkoutPrice', JSON.stringify({"total": this.state.orderSummary.total}));
     }
 
     render() {
@@ -110,6 +211,33 @@ class Checkout extends Component {
 
                         <div className="row checkout-bill">
 
+                            {
+                                !this.state.isCouponSet ? <div className="col py-1">
+                                        <div className="col-8 pr-2 coupon-mf">
+                                            <input type="text" className="w-100 pr-2 coupon-field" placeholder="Coupon"
+                                                   onChange={this.onChangeCouponHandler}
+                                            />
+                                            {
+                                                this.state.couponError.length > 0 &&
+                                                <p className="text-danger font-size-2">{this.state.couponError}</p>
+                                            }
+                                        </div>
+                                        <div className="col-4">
+                                            <button type="button" className="w-100 btn-coupon"
+                                                    onClick={this.onClickCouponHandler}>Apply
+                                            </button>
+                                        </div>
+                                    </div> :
+                                    <div className="coupon-mt">
+                                        <p>{JSON.parse(localStorage.getItem('coupon')).couponName}</p>
+                                        <button type="button" className="btn-coupon-mt-close"
+                                                onClick={this.onClickCouponCloseHandler}
+                                        >X
+                                        </button>
+                                    </div>
+
+                            }
+
                             <div className="col">
                                 <p>Subtotal</p>
                                 <p className="text-color-green">${this.state.orderSummary.subtotal}</p>
@@ -122,7 +250,16 @@ class Checkout extends Component {
 
                             <div className="col mt-1">
                                 <h4>Total</h4>
-                                <p className="text-color-green font-size-1">${this.state.orderSummary.total}</p>
+                                {
+                                    !this.state.isOldTotalExist ? <p className="text-color-green font-size-1">
+                                            ${this.state.orderSummary.total}
+                                        </p> :
+                                        <p className="text-color-green font-size-1">
+                                            {/*old total*/}
+                                            <del className="text-danger pr-2">${this.state.orderSummary.total}</del>
+                                            ${JSON.parse(localStorage.getItem("checkoutPrice")).total}
+                                        </p>
+                                }
                             </div>
 
                         </div>

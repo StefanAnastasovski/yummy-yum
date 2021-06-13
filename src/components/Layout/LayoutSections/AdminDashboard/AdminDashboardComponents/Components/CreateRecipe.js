@@ -8,8 +8,9 @@ import RecipeSteps from "./CreateRecipe/RecipeSteps";
 import CookingSteps from "./CreateRecipe/CookingSteps";
 import MealInstructions from "./CreateRecipe/MealInstructions";
 
-import CreateMealCalls from "../../../../../repository/post/postMeal";
-import PostImage from "../../../../../repository/post/postImage";
+import CreateMealCalls from "../../../../../../repository/post/postMeal";
+import PostImage from "../../../../../../repository/post/postImage";
+import CustomizeItOptions from "./CreateRecipe/CustomizeItOptions";
 
 class CreateRecipe extends Component {
 
@@ -70,6 +71,7 @@ class CreateRecipe extends Component {
             cookSteps: [],
             guidelines: []
         },
+        mealCustomizeOptions: [],
 
         //Meal Information
         mainRecipeImageCounter: 1,
@@ -96,9 +98,11 @@ class CreateRecipe extends Component {
         mealInstructionCookStepNumber: 1,
         mealInstructionGuidelineNumber: 1,
         mealInstructionCustomizeInstructionNumber: 1,
+        mealCustomizeOptionsNumber: 1,
         mealInstructionCookSteps: [],
         mealInstructionGuidelines: [],
-        mealInstructionCustomizeInstructions: []
+        // mealInstructionCustomizeInstructions: [],
+        mealCustomizeOptionsBlocks: []
 
     }
 
@@ -260,6 +264,38 @@ class CreateRecipe extends Component {
                 category: event.target.value   // update the value of specific key
             }
         }))
+
+    }
+
+    onChangeHandleMealCustomizeOptions = (event) => {
+
+        let value = event.target.value;
+        let index = event.target.id;
+
+        index = this.getMealInstructionIndex(index);
+
+
+        let addElement;
+
+        addElement = [...this.state.mealCustomizeOptions]
+
+        let obj = {
+            mealCustomizeOption: value
+        }
+
+        if (!addElement[index]) {
+            addElement.push(obj)
+            this.setState(prevState => ({
+                ...prevState.mealCustomizeOptions,
+                mealCustomizeOptions: addElement
+            }))
+        } else if (addElement[index]) {
+            addElement[index] = {mealCustomizeOption: value};
+            this.setState(prevState => ({
+                ...prevState.mealCustomizeOptions,
+                mealCustomizeOptions: addElement
+            }))
+        }
 
     }
 
@@ -692,34 +728,6 @@ class CreateRecipe extends Component {
                 mealInstructionGuidelineNumber: this.state.mealInstructionGuidelineNumber + 1
             }))
 
-        } else if (event.target.id === "btn-new-customize-instruction") {
-            newElement = <li
-                key={this.state.mealInstructionCustomizeInstructionNumber + 1}>
-
-                <div className="col d-flex flex-row align-items-center justify-content-center">
-
-                    <div className="col-2">
-                        <label>Customize Instruction #{this.state.mealInstructionCustomizeInstructionNumber + 1}</label>
-                    </div>
-                    <div className="col-7"><textarea required
-                                                     id={"instruction-customize-instruction-" +
-                                                     (this.state.mealInstructionCustomizeInstructionNumber + 1)}
-                                                     onChange={this.onChangeAddElementInMealInstruction}
-                                                     rows="5" className="w-100 px-1"/>
-                    </div>
-
-                </div>
-
-            </li>
-
-            newList = [...this.state.mealInstructionCustomizeInstructions];
-            newList.push(newElement);
-
-            this.setState(prevState => ({
-                ...prevState.mealInstructionCustomizeInstructions,
-                mealInstructionCustomizeInstructions: newList,
-                mealInstructionCustomizeInstructionNumber: this.state.mealInstructionCustomizeInstructionNumber + 1
-            }))
         }
 
     }
@@ -740,22 +748,15 @@ class CreateRecipe extends Component {
     }
 
     onChangeAddElementInMealInstruction = (event) => {
-
         let element = event.target.id.toString();
 
         let value = event.target.value;
         let index = event.target.id;
-        index = this.getMealInstructionIndex(index);
-        let addElement;
-        if (element.includes("customize-instruction")) {
-            addElement = {...this.state.mealInstructions}
 
-            addElement.customizeInstructions[index] = value;
-            this.setState(prevState => ({
-                ...prevState.mealInstructions.customizeInstructions,
-                customizeInstructions: addElement
-            }))
-        } else if (element.includes("guideline")) {
+        index = this.getMealInstructionIndex(index);
+
+        let addElement;
+        if (element.includes("guideline")) {
             addElement = {...this.state.mealInstructions}
 
             addElement.guidelines[index] = value;
@@ -778,10 +779,50 @@ class CreateRecipe extends Component {
 
     }
 
+    //--------------------------------------------------------------------------------------
+    //------------------------------Customize Options-------------------------------------------
+
+    addCustomizeOptions = (event) => {
+        let newElement;
+        let newList;
+        if (event.target.id === "btn-new-customize-instruction") {
+            newElement = <li
+                key={(this.state.mealCustomizeOptionsNumber+1)}>
+
+                <div className="col d-flex flex-row align-items-center justify-content-center">
+
+                    <div className="col-4">
+                        <label>Customize Option #{(this.state.mealCustomizeOptionsNumber+1)}</label>
+                    </div>
+                    <div className="col-8"><input required
+                                                  id={"customize-option-" +
+                                                  (this.state.mealCustomizeOptionsNumber+1)}
+                                                  placeholder="Chicken breast"
+                                                  className="w-75 px-1"
+                                                  onChange={this.onChangeHandleMealCustomizeOptions}/>
+                    </div>
+
+                </div>
+
+            </li>
+
+            newList = [...this.state.mealCustomizeOptionsBlocks];
+            newList.push(newElement);
+
+            this.setState(prevState => ({
+                ...prevState.mealCustomizeOptionsBlocks,
+                mealCustomizeOptionsBlocks: newList,
+                mealCustomizeOptionsNumber: this.state.mealCustomizeOptionsNumber + 1
+            }))
+        }
+
+    }
+
+
     //---------------------------------------------------------------------------------------
 
     componentDidMount() {
-
+        console.log(this.state)
         let mealIngredientsList = [...this.state.mealIngredients, <li key={this.state.ingredientNumber}>
 
             <div className="col d-flex ">
@@ -937,24 +978,20 @@ class CreateRecipe extends Component {
 
         </li>]
 
-        let mealInstructionCustomizeInstructions = [...this.state.mealInstructionCustomizeInstructions, <li
-            key={this.state.mealInstructionCustomizeInstructionNumber}>
+        let mealCustomizeOptionsBlocks = [...this.state.mealCustomizeOptionsBlocks, <li
+            key={this.state.mealCustomizeOptionsNumber}>
 
             <div className="col d-flex flex-row align-items-center justify-content-center">
 
-                <div className="col-2">
-                    <label>Customize Instruction #{this.state.mealInstructionCustomizeInstructionNumber}</label>
+                <div className="col-4">
+                    <label>Customize Option #{this.state.mealCustomizeOptionsNumber}</label>
                 </div>
-                <div className="col-7"><textarea required
-                                                 id={"instruction-customize-instruction-" +
-                                                 this.state.mealInstructionCustomizeInstructionNumber}
-                                                 placeholder="If using chicken breasts, pat dry and season both
-                                                 sides with a pinch of salt and pepper.
-                                                 Follow same instructions as salmon in Step #,
-                                                 cooking until chicken reaches minimum internal temperature,
-                                                 8-10 minutes per side."
-                                                 rows="5" className="w-100 px-1"
-                                                 onChange={this.onChangeAddElementInMealInstruction}/>
+                <div className="col-8"><input required
+                                              id={"customize-option-" +
+                                              this.state.mealCustomizeOptionsNumber}
+                                              placeholder="Chicken breast"
+                                              className="w-75 px-1"
+                                              onChange={this.onChangeHandleMealCustomizeOptions}/>
                 </div>
 
             </div>
@@ -1004,13 +1041,14 @@ class CreateRecipe extends Component {
             },
             mealInstructionCookSteps: mealInstructionCookSteps,
             mealInstructionGuidelines: mealInstructionGuidelines,
-            mealInstructionCustomizeInstructions: mealInstructionCustomizeInstructions
+            mealCustomizeOptionsBlocks: mealCustomizeOptionsBlocks
         }))
 
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-
+        console.log(this.state.mealCustomizeOptions)
+        console.log(this.state)
         // let mealImages;
         //
         // mealImages = {
@@ -1019,41 +1057,40 @@ class CreateRecipe extends Component {
         //     cookingStepImages: this.state.cookingSteps.cookingStepsImages
         // }
 
-        let mealCategory = {
-            mealCategory: this.state.mealCategory
-        }
-        console.log(mealCategory)
+        // let mealCategory = {
+        //     mealCategory: this.state.mealCategory
+        // }
 
-    //     let meal = {
-    //         mealName: this.state.mealInformation.mealName,
-    //         mealDescription: this.state.mealInformation.mealDescription,
-    //         mealIngredientTag: this.state.mealInformation.mealIngredientTag,
-    //         mealTimeTag: this.state.mealInformation.mealTimeTag,
-    //         mealPrice: this.state.mealInformation.mealPrice,
-    //         cookWithin: this.state.mealOverview.cookWithin,
-    //         difficultyLevel: this.state.mealOverview.difficultyLevel,
-    //         prepCookTime: this.state.mealOverview.prepCookTime,
-    //         spiceLevel: this.state.mealOverview.spiceLevel,
-    //         mealChefDescription: this.state.mealChef.mealChefDescription,
-    //         chefFullName: this.state.mealChef.chefFullName,
-    //         calories: this.state.mealNutrition.calories,
-    //         carbohydrates: this.state.mealNutrition.carbohydrates,
-    //         protein: this.state.mealNutrition.protein,
-    //         fat: this.state.mealNutrition.fat,
-    //         serveQuantity: this.state.mealBox.serveQuantity,
-    //         mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
-    //         mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
-    //         mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
-    //         cookingStepValues: this.state.cookingSteps.cookingStepValues,
-    //         cookingSteps: this.state.cookingSteps,
-    //         customizeInstructions: this.state.mealInstructions.customizeInstructions,
-    //         mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
-    //         mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
-    //     }
-    //
-    //
-    //
-    //
+        //     let meal = {
+        //         mealName: this.state.mealInformation.mealName,
+        //         mealDescription: this.state.mealInformation.mealDescription,
+        //         mealIngredientTag: this.state.mealInformation.mealIngredientTag,
+        //         mealTimeTag: this.state.mealInformation.mealTimeTag,
+        //         mealPrice: this.state.mealInformation.mealPrice,
+        //         cookWithin: this.state.mealOverview.cookWithin,
+        //         difficultyLevel: this.state.mealOverview.difficultyLevel,
+        //         prepCookTime: this.state.mealOverview.prepCookTime,
+        //         spiceLevel: this.state.mealOverview.spiceLevel,
+        //         mealChefDescription: this.state.mealChef.mealChefDescription,
+        //         chefFullName: this.state.mealChef.chefFullName,
+        //         calories: this.state.mealNutrition.calories,
+        //         carbohydrates: this.state.mealNutrition.carbohydrates,
+        //         protein: this.state.mealNutrition.protein,
+        //         fat: this.state.mealNutrition.fat,
+        //         serveQuantity: this.state.mealBox.serveQuantity,
+        //         mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
+        //         mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
+        //         mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
+        //         cookingStepValues: this.state.cookingSteps.cookingStepValues,
+        //         cookingSteps: this.state.cookingSteps,
+        //         customizeInstructions: this.state.mealInstructions.customizeInstructions,
+        //         mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
+        //         mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
+        //     }
+        //
+        //
+        //
+        //
     }
 
     //---------------------------------------------------------------------------------------
@@ -1108,9 +1145,9 @@ class CreateRecipe extends Component {
             },
             recipeInstructions: {
                 cookSteps: this.state.mealInstructions.cookSteps.join(" | "),
-                guidelines: this.state.mealInstructions.guidelines.join(" | "),
-                customizeInstructions: this.state.mealInstructions.customizeInstructions
-            }
+                guidelines: this.state.mealInstructions.guidelines.join(" | ")
+            },
+            mealCustomizeOptions: this.state.mealCustomizeOptions
 
         }
 
@@ -1261,6 +1298,15 @@ class CreateRecipe extends Component {
                                     cookingStepBlocks={this.state.cookingStepBlocks}
                                     addCookingStep={this.addCookingStep.bind(this)}
                                 /></div>
+
+                                <div className="col">
+                                    <CustomizeItOptions
+                                        mealCustomizeOptionsBlocks=
+                                            {this.state.mealCustomizeOptionsBlocks}
+                                        addCustomizeOptions={() => this.addCustomizeOptions.bind(this)}
+                                    />
+
+                                </div>
 
                             </div>
 

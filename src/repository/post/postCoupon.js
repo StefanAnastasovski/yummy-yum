@@ -1,6 +1,6 @@
 import axios from '../../custom-axios/axios';
 
-const posCoupon = {
+const postCoupon = {
 
     createCoupon: (couponInfo) => {
         return axios.post(`/api/coupon`, couponInfo, {
@@ -19,4 +19,4 @@ const posCoupon = {
 
 };
 
-export default posCoupon;
+export default postCoupon;

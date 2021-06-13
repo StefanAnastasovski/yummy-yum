@@ -16,25 +16,6 @@ const MealInstructions = (props) => {
 
             </div>
 
-            <div className="col d-flex flex-column">
-
-                {/*<ul className="list-unstyled">*/}
-                {/*    {props.mealInstructionCustomizeInstructions}*/}
-                {/*</ul>*/}
-
-                {/*<div className="d-flex py-2 align-items-baseline">*/}
-
-                {/*    <p className="font-size-2 pr-2">Add Customize Instruction</p>*/}
-                {/*    <button type="button" id="btn-new-customize-instruction" className="btn-new-customize-instruction"*/}
-                {/*            onClick={props.addMealInstruction()}*/}
-                {/*            value="new-customize-instruction">*/}
-                {/*        +*/}
-                {/*    </button>*/}
-                {/**/}
-                {/*</div>*/}
-
-            </div>
-
             <div className="col d-flex flex-row align-items-center pt-2">
 
                 <div className="col d-flex flex-column">
@@ -77,6 +58,26 @@ const MealInstructions = (props) => {
                 </div>
 
             </div>
+
+            {/*<div className="col d-flex flex-column">*/}
+
+            {/*    <h4 className="text-center p-4">Customize It Options</h4>*/}
+            {/*    <ul className="list-unstyled">*/}
+            {/*        {props.mealInstructionCustomizeInstructions}*/}
+            {/*    </ul>*/}
+
+            {/*    <div className="d-flex py-2 align-items-baseline">*/}
+
+            {/*        <p className="font-size-2 pr-2">Add Customize Instruction</p>*/}
+            {/*        <button type="button" id="btn-new-customize-instruction" className="btn-new-customize-instruction"*/}
+            {/*                onClick={props.addMealInstruction()}*/}
+            {/*                value="new-customize-instruction">*/}
+            {/*            +*/}
+            {/*        </button>*/}
+
+            {/*    </div>*/}
+
+            {/*</div>*/}
 
         </div>
 

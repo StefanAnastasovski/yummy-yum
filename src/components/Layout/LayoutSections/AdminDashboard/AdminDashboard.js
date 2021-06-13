@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 
 import "./AdminDashboard.css";
-import CreateRecipe from "./AdminDashboardComponents/CreateRecipe";
+import CreateRecipe from "./AdminDashboardComponents/Components/CreateRecipe";
 import Dashboard from "./AdminDashboardComponents/Dashboard";
-import CreateMenu from "./AdminDashboardComponents/CreateMenu";
-import SendEmail from "./AdminDashboardComponents/SendEmail";
+import CreateMenu from "./AdminDashboardComponents/Components/CreateMenu";
+import SendEmail from "./AdminDashboardComponents/Components/SendEmail";
 
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
+import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon";
 
 class AdminDashboard extends Component {
 
@@ -34,7 +35,7 @@ class AdminDashboard extends Component {
     }
 
     onSubmitRoute = (event) => {
-
+        console.log(event.target)
         let route;
         if (event.target.value) {
             route = event.target.value;
@@ -47,6 +48,12 @@ class AdminDashboard extends Component {
                 routeComponent: route
             })
             window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-recipe");
+        } else if (route === "Create Coupon") {
+            this.setState({
+                routeComponent: route
+            })
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-coupon");
+
         } else if (route === "Create Menu") {
             this.setState({
                 routeComponent: route
@@ -57,7 +64,7 @@ class AdminDashboard extends Component {
             this.setState({
                 routeComponent: route
             })
-            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-email");
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/send-email");
 
         } else if (route === "<< Go Back to Dashboard") {
             route = "Dashboard";
@@ -73,7 +80,6 @@ class AdminDashboard extends Component {
     render() {
 
         let routeComponent;
-
         if (this.state.routeComponent === "Create Recipe") {
             routeComponent = <CreateRecipe route={this.state.routeComponent}
                                            onSubmitRoute={this.onSubmitRoute}
@@ -87,6 +93,11 @@ class AdminDashboard extends Component {
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}/>
 
+        } else if (this.state.routeComponent === "Create Coupon") {
+            routeComponent = <CreateCoupon
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
+
         } else {
             routeComponent = <Dashboard
                 SubscribedUsers={this.state.SubscribedUsers}
@@ -94,6 +105,7 @@ class AdminDashboard extends Component {
                 onSubmitRoute={this.onSubmitRoute}
             />
         }
+
 
         return (
 

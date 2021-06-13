@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import SubscribeEmailCalls from "../../../../../repository/get/getSubscribeEmail";
-import postEmailToSubscribers from "../../../../../repository/post/postEmailToSubscribers";
+import SubscribeEmailCalls from "../../../../../../repository/get/getSubscribeEmail";
+import postEmailToSubscribers from "../../../../../../repository/post/postEmailToSubscribers";
 
 class SendEmail extends Component {
 
@@ -144,8 +144,8 @@ class SendEmail extends Component {
 
 
     handleSubmit = async (event) => {
-        alert('Email is sent!');
-        console.log(this.state)
+        // alert('Email is sent!');
+        // console.log(this.state)
         event.preventDefault();
         let emailBody = {
             subject: this.state.emailSubject,

@@ -210,6 +210,16 @@ class MainRouter extends Component {
 
                     <Switch>
 
+                        <Route exact path="/dashboard/admin/create-subscription-plan">
+
+                            <AdminDashboard routeComponent="Create Subscription Plan"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
                         <Route exact path="/cart">
 
                             <Cart/>

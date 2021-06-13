@@ -8,6 +8,7 @@ import SendEmail from "./AdminDashboardComponents/Components/SendEmail";
 
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
 import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon";
+import CreateSubscriptionPlan from "./AdminDashboardComponents/Components/CreateSubscriptionPlan";
 
 class AdminDashboard extends Component {
 
@@ -66,6 +67,12 @@ class AdminDashboard extends Component {
             })
             window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/send-email");
 
+        } else if (route === "Create Subscription Plan") {
+            this.setState({
+                routeComponent: route
+            })
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-subscription-plan");
+
         } else if (route === "<< Go Back to Dashboard") {
             route = "Dashboard";
             this.setState({
@@ -95,6 +102,11 @@ class AdminDashboard extends Component {
 
         } else if (this.state.routeComponent === "Create Coupon") {
             routeComponent = <CreateCoupon
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
+
+        } else if (this.state.routeComponent === "Create Subscription Plan") {
+            routeComponent = <CreateSubscriptionPlan
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}/>
 

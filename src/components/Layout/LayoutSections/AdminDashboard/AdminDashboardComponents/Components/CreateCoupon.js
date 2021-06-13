@@ -183,6 +183,8 @@ class CreateCoupon extends Component {
 
                             <div className="row flex-column">
 
+                                <h3 className="text-center">Create Coupon</h3>
+
                                 <div className="col">
                                     <p className="text-danger">You Can Set Only One Of Discounts!</p>
 

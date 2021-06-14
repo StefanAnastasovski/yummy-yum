@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 import postSubscriptionPlan from "../../../../../../repository/post/postSubscriptionPlan";
-
+import {Redirect} from "react-router";
 class CreateSubscriptionPlan extends Component {
 
     state = {
@@ -13,8 +13,15 @@ class CreateSubscriptionPlan extends Component {
         isSubscriptionPlanActive: true,
         subscriptionPlanError: "",
         isCreated: false,
-        isCreatedMessage: "The Subscription Plan Was Successfully Created!"
+        isCreatedMessage: "The Subscription Plan Was Successfully Created!",
+        redirect: false
 
+    }
+
+    redirectToManageSubscriptionPlans = () => {
+        this.setState({
+            redirect: true
+        })
     }
 
     isCratedFalse = () => {
@@ -119,6 +126,8 @@ class CreateSubscriptionPlan extends Component {
     }
 
     render() {
+        if (this.state.redirect)
+            return <Redirect to="/dashboard/admin/manage-subscription-plan"/>;
 
         return (
 
@@ -147,7 +156,7 @@ class CreateSubscriptionPlan extends Component {
                                                 <label>Subscription Plan:</label>
                                             </div>
 
-                                            <div className="col-8"><input type="text"
+                                            <div className="col-4"><input type="text"
                                                                           required
                                                                           className="w-75 px-1"
                                                                           placeholder="Yummy Yum Plan"
@@ -253,7 +262,9 @@ class CreateSubscriptionPlan extends Component {
                                 }
 
                                 <div className="row d-flex justify-content-center pt-4">
-                                    <button className="w-50 btn-create-subscription-plan" type="submit">Create Subscription Plan!</button>
+                                    <button className="w-50 btn-create-subscription-plan" type="submit">Create Subscription
+                                        Plan!
+                                    </button>
                                 </div>
 
                             </div>
@@ -268,6 +279,12 @@ class CreateSubscriptionPlan extends Component {
                                 <button className="w-25 btn-create-subscription-plan" type="button"
                                         onClick={this.isCratedFalse}>
                                     Create New Subscription Plan
+                                </button>
+                            </div>
+                            <div className="row d-flex justify-content-center pt-4">
+                                <button className="w-25 btn-coupon" type="button"
+                                        onClick={this.redirectToManageSubscriptionPlans}>
+                                    Manage Subscription Plans
                                 </button>
                             </div>
                         </div>

@@ -38,10 +38,27 @@ const Dashboard = (props) => {
                         </button>
                     </a>
                 </div>
+
+                <div className="col d-flex justify-content-center my-5">
+                    <a className="w-100 text-center" href={window.location.href + "/manage-coupon"}>
+                        <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
+                            Manage Coupons
+                        </button>
+                    </a>
+                </div>
+
                 <div className="col d-flex justify-content-center my-5">
                     <a className="w-100 text-center" href={window.location.href + "/create-subscription-plan"}>
                         <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
                             Create Subscription Plan
+                        </button>
+                    </a>
+                </div>
+
+                <div className="col d-flex justify-content-center my-5">
+                    <a className="w-100 text-center" href={window.location.href + "/manage-subscription-plan"}>
+                        <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
+                            Manage Subscription Plan
                         </button>
                     </a>
                 </div>

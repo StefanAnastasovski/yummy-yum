@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 
 import postCoupon from "../../../../../../repository/post/postCoupon";
+import {Redirect} from "react-router";
 
 class CreateCoupon extends Component {
 
@@ -17,7 +18,8 @@ class CreateCoupon extends Component {
         datesError: "",
         couponNameError: "",
         isCreated: false,
-        isCreatedMessage: "The Coupon Was Successfully Created!"
+        isCreatedMessage: "The Coupon Was Successfully Created!",
+        redirect: false
 
     }
 
@@ -27,6 +29,12 @@ class CreateCoupon extends Component {
                 isCreated: false
             })
         }
+    }
+
+    redirectToManageCoupons = () => {
+        this.setState({
+            redirect: true
+        })
     }
 
     onChangeCouponNameHandler = (event) => {
@@ -167,6 +175,9 @@ class CreateCoupon extends Component {
     }
 
     render() {
+
+        if (this.state.redirect)
+            return <Redirect to="/dashboard/admin/manage-coupon"/>;
 
         return (
 
@@ -352,6 +363,12 @@ class CreateCoupon extends Component {
                                 <button className="w-25 btn-coupon" type="button"
                                         onClick={this.isCratedFalse}>
                                     Create New Coupon
+                                </button>
+                            </div>
+                            <div className="row d-flex justify-content-center pt-4">
+                                <button className="w-25 btn-coupon" type="button"
+                                        onClick={this.redirectToManageCoupons}>
+                                    Manage Coupons
                                 </button>
                             </div>
                         </div>

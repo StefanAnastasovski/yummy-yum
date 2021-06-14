@@ -9,6 +9,9 @@ import SendEmail from "./AdminDashboardComponents/Components/SendEmail";
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
 import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon";
 import CreateSubscriptionPlan from "./AdminDashboardComponents/Components/CreateSubscriptionPlan";
+import ManageCoupon from "./AdminDashboardComponents/Components/ManageCoupon/ManageCoupon";
+import ManageSubscriptionPlan
+    from "./AdminDashboardComponents/Components/ManageSubscriptionPlan/ManageSubscriptionPlan";
 
 class AdminDashboard extends Component {
 
@@ -73,6 +76,18 @@ class AdminDashboard extends Component {
             })
             window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/create-subscription-plan");
 
+        } else if (route === "Manage Coupon") {
+            this.setState({
+                routeComponent: route
+            })
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/manage-coupon");
+
+        } else if (route === "Manage Subscription Plan") {
+            this.setState({
+                routeComponent: route
+            })
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/manage-subscription-plan");
+
         } else if (route === "<< Go Back to Dashboard") {
             route = "Dashboard";
             this.setState({
@@ -107,6 +122,16 @@ class AdminDashboard extends Component {
 
         } else if (this.state.routeComponent === "Create Subscription Plan") {
             routeComponent = <CreateSubscriptionPlan
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
+
+        } else if (this.state.routeComponent === "Manage Coupon") {
+            routeComponent = <ManageCoupon
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
+
+        } else if (this.state.routeComponent === "Manage Subscription Plan") {
+            routeComponent = <ManageSubscriptionPlan
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}/>
 

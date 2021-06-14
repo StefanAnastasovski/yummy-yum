@@ -29,16 +29,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateSubscriptionPlan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/get/getSubscriptionPlan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postSubscriptionPlan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/ManageCoupon/CouponInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/ManageCoupon/ManageCoupon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/ManageCoupon/ManageCoupon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/ManageSubscriptionPlan/ManageSubscriptionPlan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/ManageSubscriptionPlan/SubscriptionPlanInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateCoupon.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateCoupon.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateSubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateSubscriptionPlan.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/post/postSubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/post/postSubscriptionPlan.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,19 +84,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\ManageCoupon" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\Main\Checkout\Payment" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\Main\WeeklyMenu\WeeklyMenuCard\Icons" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\src\images\Checkout" />
       <recent name="E:\Projects\src\images\MealRecipe\Icons" />
       <recent name="E:\Projects\src\images\Header\Icons" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\PopUp\PopUpMessages" />
       <recent name="E:\Projects\src\images\HowItWorks" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\Main\Checkout\Payment" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\Main\WeeklyMenu\WeeklyMenuCard\Icons" />
-      <recent name="E:\Projects\src\images\MealRecipe" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -217,7 +220,7 @@
       <workItem from="1623362418031" duration="591000" />
       <workItem from="1623515294344" duration="3776000" />
       <workItem from="1623520725304" duration="19504000" />
-      <workItem from="1623587254854" duration="3756000" />
+      <workItem from="1623587254854" duration="22807000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -534,7 +537,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623546971056</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Create Subscription Plan Component v1.0">
+      <created>1623591124604</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1623591124604</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +578,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="03/31/2021 - WeeklyMenu Cards on Home Section 4" />
     <MESSAGE value="04/02/2021 - post subscribe email - Footer" />
     <MESSAGE value="WeeklyMenu Slider - v1.0" />
     <MESSAGE value="fixup! WeeklyMenu Slider - v1.0" />
@@ -593,21 +602,22 @@
     <MESSAGE value="Payment Component v1.0" />
     <MESSAGE value="Payment Component v1.1 + Coupon" />
     <MESSAGE value="CreateCoupon Component v1.0 + CustomizeItOptions Component v1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="CreateCoupon Component v1.0 + CustomizeItOptions Component v1.0" />
+    <MESSAGE value="Create Subscription Plan Component v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Subscription Plan Component v1.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619230509800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1623546968049">
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1623591122370">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-796" y="-252" key="CommitChangelistDialog2/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615160801510" />
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
     <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943310571" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623546968049" />
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623591122370" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="-1828" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1616284404069">
       <screen x="-1920" y="0" width="1920" height="1040" />
@@ -642,7 +652,7 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1615851537360" />
-    <state x="435" y="23" width="1353" height="952" key="find.popup" timestamp="1623545728313">
+    <state x="435" y="23" width="1353" height="952" key="find.popup" timestamp="1623631033885">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-761" y="46" width="761" height="1020" key="find.popup/0.0.1920.1040/-1080.-411.1080.1880@-1080.-411.1080.1880" timestamp="1615070600283" />
@@ -650,7 +660,7 @@
     <state x="567" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617228512706" />
     <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1616088923265" />
     <state x="264" y="454" width="762" height="1022" key="find.popup/1080.0.1920.1040/0.0.1080.1880@0.0.1080.1880" timestamp="1619132395511" />
-    <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623545728313" />
+    <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623631033885" />
     <state x="2487" y="252" width="1353" height="565" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618100912741" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1623588579201">
       <screen x="0" y="0" width="1920" height="1040" />

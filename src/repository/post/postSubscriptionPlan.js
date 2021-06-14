@@ -9,7 +9,7 @@ const postSubscriptionPlan = {
             }
         });
     }, updateSubscriptionPlan: (subscriptionPlanInfo, planName) => {
-        return axios.post(`/api/subscription-plan/name=${planName}`, subscriptionPlanInfo, {
+        return axios.put(`/api/subscription-plan/name=${planName}`, subscriptionPlanInfo, {
             headers: {
                 'Content-Type': 'application/json'
             }

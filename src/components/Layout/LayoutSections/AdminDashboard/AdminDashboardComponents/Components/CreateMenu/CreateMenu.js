@@ -3,8 +3,8 @@ import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css'
 
 
-import CreateMenuCalls from "../../../../../../repository/post/postMenu";
-import MenuCalls from "../../../../../../repository/get/getMenu"
+import CreateMenuCalls from "../../../../../../../repository/post/postMenu";
+import MenuCalls from "../../../../../../../repository/get/getMenu"
 
 class CreateMenu extends Component {
 

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import postCoupon from "../../../../../../repository/post/postCoupon";
+import postCoupon from "../../../../../../../repository/post/postCoupon";
 import {Redirect} from "react-router";
 
 class CreateCoupon extends Component {

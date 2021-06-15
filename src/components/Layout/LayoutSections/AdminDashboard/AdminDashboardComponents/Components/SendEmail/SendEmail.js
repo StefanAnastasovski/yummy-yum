@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
-import SubscribeEmailCalls from "../../../../../../repository/get/getSubscribeEmail";
-import postEmailToSubscribers from "../../../../../../repository/post/postEmailToSubscribers";
+import SubscribeEmailCalls from "../../../../../../../repository/get/getSubscribeEmail";
+import postEmailToSubscribers from "../../../../../../../repository/post/postEmailToSubscribers";
 
 class SendEmail extends Component {
 

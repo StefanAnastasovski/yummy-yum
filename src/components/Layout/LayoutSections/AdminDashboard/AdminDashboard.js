@@ -1,17 +1,18 @@
 import React, {Component} from "react";
 
 import "./AdminDashboard.css";
-import CreateRecipe from "./AdminDashboardComponents/Components/CreateRecipe";
+import CreateRecipe from "./AdminDashboardComponents/Components/CreateRecipe/CreateRecipe";
 import Dashboard from "./AdminDashboardComponents/Dashboard";
-import CreateMenu from "./AdminDashboardComponents/Components/CreateMenu";
-import SendEmail from "./AdminDashboardComponents/Components/SendEmail";
+import CreateMenu from "./AdminDashboardComponents/Components/CreateMenu/CreateMenu";
+import SendEmail from "./AdminDashboardComponents/Components/SendEmail/SendEmail";
 
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
-import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon";
-import CreateSubscriptionPlan from "./AdminDashboardComponents/Components/CreateSubscriptionPlan";
+import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon/CreateCoupon";
+import CreateSubscriptionPlan from "./AdminDashboardComponents/Components/CreateSubscriptionPlan/CreateSubscriptionPlan";
 import ManageCoupon from "./AdminDashboardComponents/Components/ManageCoupon/ManageCoupon";
 import ManageSubscriptionPlan
     from "./AdminDashboardComponents/Components/ManageSubscriptionPlan/ManageSubscriptionPlan";
+import Orders from "./AdminDashboardComponents/Components/Orders/Orders";
 
 class AdminDashboard extends Component {
 
@@ -132,6 +133,11 @@ class AdminDashboard extends Component {
 
         } else if (this.state.routeComponent === "Manage Subscription Plan") {
             routeComponent = <ManageSubscriptionPlan
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}/>
+
+        } else if (this.state.routeComponent === "Orders") {
+            routeComponent = <Orders
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}/>
 

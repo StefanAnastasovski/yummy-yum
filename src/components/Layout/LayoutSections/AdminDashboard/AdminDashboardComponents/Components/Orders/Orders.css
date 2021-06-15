@@ -1,0 +1,23 @@
+.orders-title{
+    width: 100%
+}
+
+.orders-info{
+    width: 100%
+}
+
+.orders-info > ul{
+    width: 100%
+}
+
+.orders-info-col{
+    border: 1px solid #530ea2;;
+}
+
+.orders-info-col > p {
+    text-align: center;
+}
+
+.orders-info-page-bg{
+
+}

@@ -1,16 +1,16 @@
 import React, {Component} from "react";
-import MealInfo from "./CreateRecipe/MealInfo";
-import MealOverview from "./CreateRecipe/MealOverview";
-import MealChef from "./CreateRecipe/MealChef";
-import MealBox from "./CreateRecipe/MealBox";
-import MealNutrition from "./CreateRecipe/MealNutrition";
-import RecipeSteps from "./CreateRecipe/RecipeSteps";
-import CookingSteps from "./CreateRecipe/CookingSteps";
-import MealInstructions from "./CreateRecipe/MealInstructions";
+import MealInfo from "./RecipeComponents/MealInfo";
+import MealOverview from "./RecipeComponents/MealOverview";
+import MealChef from "./RecipeComponents/MealChef";
+import MealBox from "./RecipeComponents/MealBox";
+import MealNutrition from "./RecipeComponents/MealNutrition";
+import RecipeSteps from "./RecipeComponents/RecipeSteps";
+import CookingSteps from "./RecipeComponents/CookingSteps";
+import MealInstructions from "./RecipeComponents/MealInstructions";
 
-import CreateMealCalls from "../../../../../../repository/post/postMeal";
-import PostImage from "../../../../../../repository/post/postImage";
-import CustomizeItOptions from "./CreateRecipe/CustomizeItOptions";
+import CreateMealCalls from "../../../../../../../repository/post/postMeal";
+import PostImage from "../../../../../../../repository/post/postImage";
+import CustomizeItOptions from "./RecipeComponents/CustomizeItOptions";
 
 class CreateRecipe extends Component {
 

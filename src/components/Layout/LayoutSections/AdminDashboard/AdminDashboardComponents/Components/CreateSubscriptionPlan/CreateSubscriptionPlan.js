@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import postSubscriptionPlan from "../../../../../../repository/post/postSubscriptionPlan";
+import postSubscriptionPlan from "../../../../../../../repository/post/postSubscriptionPlan";
 import {Redirect} from "react-router";
 class CreateSubscriptionPlan extends Component {
 

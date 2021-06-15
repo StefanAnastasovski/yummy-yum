@@ -19,7 +19,6 @@ import Cart from "../../LayoutSections/Main/Cart/Cart";
 import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
 import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
-import CreateCoupon from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateCoupon";
 
 class MainRouter extends Component {
 
@@ -233,6 +232,16 @@ class MainRouter extends Component {
                         <Route exact path="/dashboard/admin/manage-subscription-plan">
 
                             <AdminDashboard routeComponent="Manage Subscription Plan"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/admin/orders">
+
+                            <AdminDashboard routeComponent="Orders"/>
 
                         </Route>
 

@@ -19,6 +19,7 @@ import Cart from "../../LayoutSections/Main/Cart/Cart";
 import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
 import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
+import OrderDetails from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails";
 
 class MainRouter extends Component {
 
@@ -246,6 +247,12 @@ class MainRouter extends Component {
                         </Route>
 
                     </Switch>
+
+                    <Route exact path='/dashboard/admin/orders/order-details/order-id=:orderId'>
+
+                        <OrderDetails/>
+
+                    </Route>
 
                     <Switch>
 

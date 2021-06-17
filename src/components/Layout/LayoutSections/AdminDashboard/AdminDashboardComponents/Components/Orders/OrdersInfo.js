@@ -1,10 +1,6 @@
 import React from "react";
 
 const OrdersInfo = (props) => {
-    // let oldName = props.orderN-infoame;
-    // let edit = () => {
-    //     props.editCoupon(props, oldName);
-    // }
 
     return (
 
@@ -44,13 +40,19 @@ const OrdersInfo = (props) => {
                     {props.total}
                 </p>
             </div>
-
             <div className="col orders-info-col d-flex justify-content-center align-items-center">
-                <p className="py-2 text-danger cursor-pointer"
-                    // onClick={edit}
-                >
-                    Order Details
+                <p className="py-2 text-color-green">
+                    {props.orderDate}
                 </p>
+            </div>
+            <div className="col orders-info-col d-flex justify-content-center align-items-center">
+                <a href={"/dashboard/admin/orders/order-details/order-id=" + props.orderId}
+                   className="text-decoration-none "
+                >
+                    <p className="py-2 text-danger cursor-pointer">
+                        Order Details
+                    </p>
+                </a>
             </div>
         </div>
 

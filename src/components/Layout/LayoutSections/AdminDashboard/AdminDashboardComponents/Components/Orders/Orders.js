@@ -9,22 +9,22 @@ class Orders extends Component {
 
 
     state = {
-        orderInfoStartDate: "",
         allOrderInfoByDate: [],
         pagination: [],
         showPages: [],
         orderInfoByPage: [],
         pageSelected: 0,
         numberOfItemsPerPage: 2,
-        allowedNumberOfPages: 2
+        allowedNumberOfPages: 5,
+        filterFromDate: "",
+        filterToDate: ""
     }
 
     async componentDidMount() {
-
-        this.setCurrentDate();
-        await this.gerOrderInfo()
-        await this.pagination()
-
+        console.log("componentDidMount")
+        if (this.state.filterFromDate === "" || this.state.filterToDate === "")
+            await this.setDateFilter();
+        await this.gerOrderInfo();
     }
 
     createRange = (start, end, step = 1) => {
@@ -32,25 +32,13 @@ class Orders extends Component {
         return Array(len).fill().map((_, idx) => start + (idx * step))
     }
 
-    setCurrentDate = () => {
-        let currentDate = new Date();
-        let month = (currentDate.getMonth() + 1);
-        let day = (currentDate.getDate());
-        if (month.toString().length < 2) {
-            month = "0".concat(month.toString())
-        }
-        if (day.toString().length < 2) {
-            day = "0".concat(day.toString())
-        }
-        currentDate = `${currentDate.getFullYear()}-${month}-${day}`;
-        this.setState({
-            orderInfoStartDate: currentDate
-        })
-    }
-
     gerOrderInfo = async () => {
+        console.log(this.state.filterFromDate)
+        console.log(this.state.filterToDate)
+
         try {
-            await OrderInfoCalls.fetchOrderInfoByOrderDate(this.state.orderInfoStartDate).then(response => {
+            await OrderInfoCalls.fetchOrderInfoBetweenStartAndEndDates(this.state.filterFromDate, this.state.filterToDate).then(response => {
+                console.log(response.data)
                 this.setState({
                     allOrderInfoByDate: response.data,
                 })
@@ -60,6 +48,9 @@ class Orders extends Component {
         } catch (e) {
             console.log(e);
         }
+
+        await this.pagination();
+
     }
 
     getPages = () => {
@@ -68,31 +59,36 @@ class Orders extends Component {
 
     pagination = async () => {
         let pages = this.getPages();
-
-        this.setState({
-            pagination: this.createRange(1, pages, 1)
-        })
-
-        if (this.state.pageSelected === 0) {
-            if (pages > this.state.allowedNumberOfPages) {
-                this.setState(prevState => ({
-                    showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages), ">"],
-                    orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
-                }))
-            } else if (pages < this.state.allowedNumberOfPages) {
-                this.setState(prevState => ({
-                    showPages: [...this.createRange(1, pages, 1).slice(0, pages)],
-                    orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
-                }))
-            } else if (pages === this.state.allowedNumberOfPages) {
-                this.setState(prevState => ({
-                    showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages)],
-                    orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
-                }))
-            }
+        if (pages === 0) {
+            this.setState({
+                showPages: [1],
+                pagination: [1]
+            })
         } else {
+            this.setState({
+                pagination: this.createRange(1, pages, 1)
+            })
 
+            if (this.state.pageSelected === 0) {
+                if (pages > this.state.allowedNumberOfPages) {
+                    this.setState(prevState => ({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages), ">"],
+                        orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
+                    }))
+                } else if (pages < this.state.allowedNumberOfPages) {
+                    this.setState(prevState => ({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, pages)],
+                        orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
+                    }))
+                } else if (pages === this.state.allowedNumberOfPages) {
+                    this.setState(prevState => ({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages)],
+                        orderInfoByPage: [...prevState.allOrderInfoByDate.slice(this.state.pageSelected, this.state.numberOfItemsPerPage)]
+                    }))
+                }
+            }
         }
+
 
     }
 
@@ -136,46 +132,91 @@ class Orders extends Component {
     }
 
     onClickPagePerClick = async (event) => {
+        if (!(this.state.pagination.length === 1)) {
 
-        if (event.target.innerHTML === "&gt;") {
-            this.setState({
-                pageSelected: (this.getPages() - 1)
-            })
-            await this.setPageRange(this.getPages() - 1);
-        } else if (event.target.innerHTML === "&lt;") {
-            this.setState({
-                pageSelected: 0
-            })
-            await this.setPageRange(0);
-        } else if (event.target.ariaLabel === "Previous" || event.target.innerHTML === "«") {
-            if (this.state.pageSelected > 0) {
-                await this.setPageRange(this.state.pageSelected - 1);
-                this.setState(prevState => ({
-                    pageSelected: (prevState.pageSelected - 1)
-                }))
+            if (event.target.innerHTML === "&gt;") {
+                this.setState({
+                    pageSelected: (this.getPages() - 1)
+                })
+                await this.setPageRange(this.getPages() - 1);
+            } else if (event.target.innerHTML === "&lt;") {
+                this.setState({
+                    pageSelected: 0
+                })
+                await this.setPageRange(0);
+            } else if (event.target.ariaLabel === "Previous" || event.target.innerHTML === "«") {
+                if (this.state.pageSelected > 0) {
+                    await this.setPageRange(this.state.pageSelected - 1);
+                    this.setState(prevState => ({
+                        pageSelected: (prevState.pageSelected - 1)
+                    }))
+                }
+            } else if (event.target.ariaLabel === "Next" || event.target.innerHTML === "»") {
+                if (this.state.pageSelected < this.getPages() - 1) {
+                    await this.setPageRange(this.state.pageSelected + 1);
+                    this.setState(prevState => ({
+                        pageSelected: (prevState.pageSelected + 1)
+                    }))
+                }
+            } else {
+                this.setState({
+                    pageSelected: (event.target.innerHTML - 1)
+                })
+                await this.setPageRange(event.target.innerHTML - 1);
             }
-        } else if (event.target.ariaLabel === "Next" || event.target.innerHTML === "»") {
-            if (this.state.pageSelected < this.getPages() - 1) {
-                await this.setPageRange(this.state.pageSelected + 1);
-                this.setState(prevState => ({
-                    pageSelected: (prevState.pageSelected + 1)
-                }))
-            }
-        } else {
-            this.setState({
-                pageSelected: (event.target.innerHTML - 1)
-            })
-            await this.setPageRange(event.target.innerHTML - 1);
+
         }
 
 
+        //condition
+        // console.log((this.state.showPages[0] === "<") && this.state.showPages[1] === parseInt(event.target.innerHTML))
+    }
+
+    setDateFilter = () => {
+        let date = new Date();
+        let month = (date.getMonth() + 1);
+        let day = date.getDate();
+        if (month < 10) {
+            month = "0" + month.toString();
+        }
+        if (day < 10) {
+            day = "0" + day.toString();
+        }
+        this.setState({
+            filterFromDate: `${date.getFullYear()}-${month}-${day}`,
+            filterToDate: `${date.getFullYear()}-${month}-${day}`
+        })
+    }
+
+    onChangeToDateHandler = async (event) => {
+        console.log(this.state.filterToDate)
+        console.log(this.state.filterFromDate)
+        this.setState({
+            filterToDate: event.target.value,
+        })
+
+    }
+
+    onChangeFromDateHandler = async (event) => {
+        console.log(this.state.filterToDate)
+        console.log(this.state.filterFromDate)
+        this.setState({
+            filterFromDate: event.target.value,
+        })
+    }
+
+    onChangeNumberOfItemsPerPage = (event) => {
+        console.log(event.target)
+        console.log(event.target.value)
+        this.setState({
+            numberOfItemsPerPage: event.target.value
+        })
     }
 
     handleSubmit = async (event) => {
-
-        event.preventDefault();
-
-
+        console.log("handleSubmit")
+        await this.gerOrderInfo();
+        console.log(this.state)
     }
 
 
@@ -190,31 +231,81 @@ class Orders extends Component {
                            value="<< Go Back to Dashboard" onClick={this.props.onSubmitRoute}/>
                 </div>
 
-                <div className="orders row py-3 ">
+                <h2 className="text-center">Orders</h2>
+
+                <div className="order-filters">
+                    <div className="d-flex flex-row pt-2">
+                        <div className="col-3 d-flex align-items-baseline">
+                            <label>From:</label>
+                            <input type="date"
+                                   value={this.state.filterFromDate}
+                                   className="w-75 px-1 ml-3 coupon-percentage-discount-field"
+                                   onChange={this.onChangeFromDateHandler}
+                                   onClick={this.onChangeFromDateHandler}
+                            />
+                        </div>
+                        <div className="col-3 d-flex align-items-baseline">
+                            <label>To:</label>
+                            <input type="date"
+                                   value={this.state.filterToDate}
+                                   className="w-75 px-1 ml-3 coupon-percentage-discount-field"
+                                   onChange={this.onChangeToDateHandler}
+                                   onClick={this.onChangeToDateHandler}
+                            />
+                        </div>
+                        <div className="col-2 d-flex align-items-baseline">
+                            <select className="select-order-info font-weight-bold"
+                                    onChange={this.onChangeNumberOfItemsPerPage}
+                                    value={this.state.numberOfItemsPerPage}
+                            >
+
+                                <option className="font-weight-bold" value="5">5</option>
+                                <option className="font-weight-bold" value="10">10</option>
+                                <option className="font-weight-bold" value="25">25</option>
+                                <option className="font-weight-bold" value="50">50</option>
+                                <option className="font-weight-bold" value="100">100</option>
+
+                            </select>
+                        </div>
+                        <div className="col-3 d-flex align-items-baseline">
+                            <button type="button"
+                                    className="btn-order-info-apply"
+                                    onClick={this.handleSubmit}
+                            >Apply
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="orders row pb-3 ">
 
                     <div className="orders-title d-flex mt-5">
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Full Name</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Username</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Meal Qty</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Servings Qty</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Subtotal($)</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Shipping($)</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
                             <p className="py-2">Total($)</p>
                         </div>
-                        <div className="col coupons-col">
+                        <div className="col order-col">
+                            <p className="py-2">Order Date</p>
+                        </div>
+                        <div className="col order-col">
                             <p className="py-2">Action</p>
                         </div>
                     </div>
@@ -228,14 +319,16 @@ class Orders extends Component {
                                     return <li key={"order-id-" + index}>
                                         <OrdersInfo
                                             order={item}
-                                            fullName={item.user.firstName + " " + item.user.lastName}
-                                            username={item.user.username}
+                                            fullName={item.firstName + " " + item.lastName}
+                                            username={item.username}
                                             mealQty={item.mealNumber}
                                             servingsQty={item.servingNumber}
                                             subtotal={item.subtotal}
                                             shipping={item.shippingCost}
                                             total={item.total}
+                                            orderDate={item.orderInfo.orderDate.split("T")[0]}
                                             keyEl={"order-id-" + index}
+                                            orderId={item.orderInfo.orderId}
                                         />
                                     </li>
                                 })

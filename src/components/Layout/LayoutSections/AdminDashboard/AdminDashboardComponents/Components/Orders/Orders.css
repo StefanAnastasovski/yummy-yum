@@ -1,23 +1,52 @@
-.orders-title{
+.orders-title {
     width: 100%
 }
 
-.orders-info{
+.orders-info {
     width: 100%
 }
 
-.orders-info > ul{
+.orders-info > ul {
     width: 100%
 }
 
-.orders-info-col{
+.orders-info-col {
     border: 1px solid #530ea2;;
+}
+
+.order-col {
+    border: 1px solid #530ea2;
+    text-align: center;
 }
 
 .orders-info-col > p {
     text-align: center;
 }
 
-.orders-info-page-bg{
+.orders-info-page-bg {
 
+}
+
+.order-details-order-info p, .order-details-payment p, .order-details-order-meals p {
+    text-align: center;
+}
+
+.btn-order-info-apply {
+    background-color: #579843;
+    border: none;
+    padding:5px 15px;
+}
+
+.btn-order-info-apply:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.select-order-info{
+    padding:5px 15px;
+    background: #c6f6b9;
+    color: #4a099a;
 }

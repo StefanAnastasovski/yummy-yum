@@ -9,7 +9,7 @@ const getOrderInvoice = {
         return axios.get(`/api/order-invoice/username=${username}/start-date=${startDate}&end-date=${endDate}`)
     },
     fetchOrderInvoiceByOrderId: (orderId) => {
-        return axios.get(`/api/order-invoice/order-invoice/order-number=${orderId}`)
+        return axios.get(`/api/order-invoice/order-number=${orderId}`)
     },
     fetchOrderInvoiceByOrderDate: (orderDate) => {
         return axios.get(`/api/order-invoice/order-date=orderDate`)
@@ -22,8 +22,9 @@ const getOrderInvoice = {
     },
     fetchFullOrderInvoiceByUsernameAndOrderDate: (username, orderDate) => {
         return axios.get(`/api/user-order-invoice/username=${username}/order-date=${orderDate}`)
+    }, fetchFullOrderInvoiceByOrderId: (orderId) => {
+        return axios.get(`/api/user-order-invoice/order-id=${orderId}`)
     },
-    
 };
 
 export default getOrderInvoice;

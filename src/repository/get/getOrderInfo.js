@@ -10,6 +10,9 @@ const getOrderInfo = {
     },
     fetchOrderInfoAndOrderMealsByOrderId: (orderId) => {
         return axios.get(`/api/order-info/order-meals/orderId=${orderId}`)
+    },
+    fetchOrderInfoBetweenStartAndEndDates: (startDate, endDate) => {
+        return axios.get(`/api/user-order-invoice/start-date=${startDate}&end-date=${endDate}`)
     }
 };
 

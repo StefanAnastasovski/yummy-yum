@@ -234,46 +234,50 @@ class Orders extends Component {
                 <h2 className="text-center">Orders</h2>
 
                 <div className="order-filters">
-                    <div className="d-flex flex-row pt-2">
-                        <div className="col-3 d-flex align-items-baseline">
-                            <label>From:</label>
-                            <input type="date"
-                                   value={this.state.filterFromDate}
-                                   className="w-75 px-1 ml-3 coupon-percentage-discount-field"
-                                   onChange={this.onChangeFromDateHandler}
-                                   onClick={this.onChangeFromDateHandler}
-                            />
+                    <div className="d-flex flex pt-2">
+                        <div className="col d-flex flex-row">
+                            <div className="col d-flex align-items-baseline">
+                                <label>From:</label>
+                                <input type="date"
+                                       value={this.state.filterFromDate}
+                                       className="w-75 px-1 ml-3 coupon-percentage-discount-field"
+                                       onChange={this.onChangeFromDateHandler}
+                                       onClick={this.onChangeFromDateHandler}
+                                />
+                            </div>
+                            <div className="col d-flex align-items-baseline">
+                                <label>To:</label>
+                                <input type="date"
+                                       value={this.state.filterToDate}
+                                       className="w-75 px-1 ml-3 coupon-percentage-discount-field"
+                                       onChange={this.onChangeToDateHandler}
+                                       onClick={this.onChangeToDateHandler}
+                                />
+                            </div>
                         </div>
-                        <div className="col-3 d-flex align-items-baseline">
-                            <label>To:</label>
-                            <input type="date"
-                                   value={this.state.filterToDate}
-                                   className="w-75 px-1 ml-3 coupon-percentage-discount-field"
-                                   onChange={this.onChangeToDateHandler}
-                                   onClick={this.onChangeToDateHandler}
-                            />
-                        </div>
-                        <div className="col-2 d-flex align-items-baseline">
-                            <select className="select-order-info font-weight-bold"
-                                    onChange={this.onChangeNumberOfItemsPerPage}
-                                    value={this.state.numberOfItemsPerPage}
-                            >
+                        <div className="col  d-flex flex-row">
+                            <div className="col-3 d-flex align-items-baseline">
+                                <select className="select-order-info font-weight-bold"
+                                        onChange={this.onChangeNumberOfItemsPerPage}
+                                        value={this.state.numberOfItemsPerPage}>
 
-                                <option className="font-weight-bold" value="5">5</option>
-                                <option className="font-weight-bold" value="10">10</option>
-                                <option className="font-weight-bold" value="25">25</option>
-                                <option className="font-weight-bold" value="50">50</option>
-                                <option className="font-weight-bold" value="100">100</option>
+                                    <option className="font-weight-bold" value="5">5</option>
+                                    <option className="font-weight-bold" value="10">10</option>
+                                    <option className="font-weight-bold" value="25">25</option>
+                                    <option className="font-weight-bold" value="50">50</option>
+                                    <option className="font-weight-bold" value="100">100</option>
 
-                            </select>
+                                </select>
+                            </div>
+                            <div className="col-8 d-flex align-items-baseline">
+                                <button type="button"
+                                        className="btn-order-info-apply"
+                                        onClick={this.handleSubmit}
+                                >Apply
+                                </button>
+                            </div>
                         </div>
-                        <div className="col-3 d-flex align-items-baseline">
-                            <button type="button"
-                                    className="btn-order-info-apply"
-                                    onClick={this.handleSubmit}
-                            >Apply
-                            </button>
-                        </div>
+
                     </div>
 
                 </div>

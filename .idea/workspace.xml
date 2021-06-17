@@ -29,15 +29,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrdersInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrdersInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/get/getOrderInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/get/getOrderInfo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/get/getOrderInvoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/get/getOrderInvoice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +215,8 @@
       <workItem from="1623761312735" duration="6244000" />
       <workItem from="1623810912406" duration="5073000" />
       <workItem from="1623862567528" duration="5240000" />
-      <workItem from="1623926257168" duration="8728000" />
+      <workItem from="1623926257168" duration="8933000" />
+      <workItem from="1623955609178" duration="768000" />
     </task>
     <task id="LOCAL-00001" summary="AdminDashboard - CreateRecipe added">
       <created>1610854610993</created>
@@ -559,7 +554,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623724866813</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Orders Component + Pagination v1.0">
+      <created>1623955550015</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1623955550015</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,7 +595,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! WeeklyMenu Slider - v1.0" />
     <MESSAGE value="WeeklyMenu Card -&gt; Customize It" />
     <MESSAGE value="Cart Component v0.1" />
     <MESSAGE value="Cart Component v0.2" />
@@ -618,20 +619,21 @@
     <MESSAGE value="Create Subscription Plan Component v1.0" />
     <MESSAGE value="Manage Coupons and Manage Subscription Plans Comps v1.0" />
     <MESSAGE value="Orders Component v0.1 + Pagination" />
-    <option name="LAST_COMMIT_MESSAGE" value="Orders Component v0.1 + Pagination" />
+    <MESSAGE value="Orders Component + Pagination v1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Orders Component + Pagination v1.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619230509800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1623724864230">
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1623955547395">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
     <state x="505" y="88" width="1411" height="863" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943310571" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623724864230" />
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623955547395" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="-1828" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1616284404069">
       <screen x="-1920" y="0" width="1920" height="1040" />
@@ -653,13 +655,13 @@
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1615941546130" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619386992031" />
     <state x="2601" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618099414550" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1623724869349">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1623955729854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495509909" />
     <state x="469" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320312452" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1615943316107" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623724869349" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1623955729854" />
     <state x="92" y="92" width="1736" height="856" key="dock-window-1" timestamp="1615851537360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

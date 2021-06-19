@@ -21,7 +21,6 @@ class Orders extends Component {
     }
 
     async componentDidMount() {
-        console.log("componentDidMount")
         if (this.state.filterFromDate === "" || this.state.filterToDate === "")
             await this.setDateFilter();
         await this.gerOrderInfo();
@@ -33,12 +32,9 @@ class Orders extends Component {
     }
 
     gerOrderInfo = async () => {
-        console.log(this.state.filterFromDate)
-        console.log(this.state.filterToDate)
 
         try {
             await OrderInfoCalls.fetchOrderInfoBetweenStartAndEndDates(this.state.filterFromDate, this.state.filterToDate).then(response => {
-                console.log(response.data)
                 this.setState({
                     allOrderInfoByDate: response.data,
                 })
@@ -189,8 +185,6 @@ class Orders extends Component {
     }
 
     onChangeToDateHandler = async (event) => {
-        console.log(this.state.filterToDate)
-        console.log(this.state.filterFromDate)
         this.setState({
             filterToDate: event.target.value,
         })
@@ -198,25 +192,19 @@ class Orders extends Component {
     }
 
     onChangeFromDateHandler = async (event) => {
-        console.log(this.state.filterToDate)
-        console.log(this.state.filterFromDate)
         this.setState({
             filterFromDate: event.target.value,
         })
     }
 
     onChangeNumberOfItemsPerPage = (event) => {
-        console.log(event.target)
-        console.log(event.target.value)
         this.setState({
             numberOfItemsPerPage: event.target.value
         })
     }
 
     handleSubmit = async (event) => {
-        console.log("handleSubmit")
         await this.gerOrderInfo();
-        console.log(this.state)
     }
 
 

@@ -16,8 +16,9 @@ const getEmail = {
     },
     fetchEmailByIsUser: (isUser) => {
         return axios.get(`/api/emails/user/${isUser}`)
+    }, countEmailsByIsUser: (isUser) => {
+        return axios.get(`/api/emails/number-of-users/is-user=${isUser}`)
     }
-
 };
 
 export default getEmail;

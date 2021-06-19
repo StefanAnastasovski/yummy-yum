@@ -1,23 +1,68 @@
 import React from "react";
 
 const Dashboard = (props) => {
+
+    let onChangeToDateHandler = (event) => {
+        props.onChangeToDateHandler(event.target.value)
+    }
+    let onChangeFromDateHandler = (event) => {
+        props.onChangeFromDateHandler(event.target.value)
+    }
+
     return (
 
         <div className="dashboard-wrapper row flex-column py-5">
 
             <div className="col d-flex flex-column">
 
-                <div className="row">
+                <div className="row d-flex flex-column">
 
-                    <div className="col">
-                        <p>Subscribed Users:
-                            <span className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
-                                {props.SubscribedUsers}
-                            </span>
-                        </p>
+                    <div className="col w-50 pb-2 d-flex flex-row">
+                        <div className="col d-flex align-items-baseline">
+                            <label>Order From:</label>
+                            <input type="date"
+                                   value={props.filterDates.filterFromDate}
+                                   className="px-1 ml-3 coupon-percentage-discount-field"
+                                   onChange={onChangeFromDateHandler}
+                                   onClick={onChangeFromDateHandler}
+                            />
+                        </div>
+                        <div className="col d-flex align-items-baseline">
+                            <label>Order To:</label>
+                            <input type="date"
+                                   value={props.filterDates.filterToDate}
+                                   className="px-1 ml-3 coupon-percentage-discount-field"
+                                   onChange={onChangeToDateHandler}
+                                   onClick={onChangeToDateHandler}
+                            />
+                        </div>
                     </div>
 
+                    <div className="col d-flex flex-column">
+                        <div className="col d-flex ">
+                            <p className="col-2">Orders:</p>
+                            <p className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
+                                {props.dashboardInfo.numberOfOrders}
+                            </p>
+                        </div>
+
+                        <div className="col d-flex">
+                            <p className="col-2">Active Users:</p>
+                            <p className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
+                                {props.dashboardInfo.activeUsers}
+                            </p>
+                        </div>
+
+                        <div className="col d-flex">
+                            <p className="col-2">Subscribed Users:</p>
+                            <p className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
+                                {props.dashboardInfo.subscribedUsers}
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
+
 
             </div>
 
@@ -97,7 +142,6 @@ const Dashboard = (props) => {
                 </div>
 
             </div>
-
 
         </div>
 

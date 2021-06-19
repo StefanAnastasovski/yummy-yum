@@ -7,8 +7,11 @@ import CreateMenu from "./AdminDashboardComponents/Components/CreateMenu/CreateM
 import SendEmail from "./AdminDashboardComponents/Components/SendEmail/SendEmail";
 
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
+import EmailCalls from '../../../../repository/get/getEmail';
+import OrderCalls from '../../../../repository/get/getOrderInfo';
 import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon/CreateCoupon";
-import CreateSubscriptionPlan from "./AdminDashboardComponents/Components/CreateSubscriptionPlan/CreateSubscriptionPlan";
+import CreateSubscriptionPlan
+    from "./AdminDashboardComponents/Components/CreateSubscriptionPlan/CreateSubscriptionPlan";
 import ManageCoupon from "./AdminDashboardComponents/Components/ManageCoupon/ManageCoupon";
 import ManageSubscriptionPlan
     from "./AdminDashboardComponents/Components/ManageSubscriptionPlan/ManageSubscriptionPlan";
@@ -18,7 +21,15 @@ class AdminDashboard extends Component {
 
     state = {
         routeComponent: "Dashboard",
-        SubscribedUsers: "",
+        dashboardInfo: {
+            subscribedUsers: "",
+            activeUsers: 0,
+            numberOfOrders: 0
+        },
+        filterDates: {
+            filterToDate: "",
+            filterFromDate: ""
+        }
 
     }
 
@@ -30,14 +41,93 @@ class AdminDashboard extends Component {
             routeComponent: this.props.routeComponent
         })
 
-        await SubscribeEmailCalls.fetchSubscribeEmails().then((response) => {
+        await this.getSubscribeEmails();
+        await this.getActiveUsers();
+        await this.setDateFilter();
+        await this.getOrders();
 
+    }
+
+    getSubscribeEmails = async () => {
+        await SubscribeEmailCalls.fetchSubscribeEmails().then((response) => {
             this.setState({
-                SubscribedUsers: response.data.length
+                dashboardInfo: {
+                    ...this.state.dashboardInfo,
+                    subscribedUsers: response.data.length
+                }
             })
+        })
+    }
+
+    getActiveUsers = async () => {
+        await EmailCalls.countEmailsByIsUser(true).then((response) => {
+            this.setState({
+                dashboardInfo: {
+                    ...this.state.dashboardInfo,
+                    activeUsers: response.data
+                }
+            })
+        })
+    }
+
+    getOrders = async () => {
+        try {
+            await OrderCalls.fetchOrderInfoBetweenStartAndEndDates(this.state.filterDates.filterFromDate,
+                this.state.filterDates.filterToDate).then(response => {
+                this.setState({
+                    dashboardInfo: {
+                        ...this.state.dashboardInfo,
+                        numberOfOrders: response.data.length
+                    }
+                })
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+
+    }
+
+    onChangeToDateHandler = async (date) => {
+        this.setState({
+            filterDates: {
+                ...this.state.filterDates,
+                filterToDate: date
+            }
         })
 
     }
+
+    onChangeFromDateHandler = async (date) => {
+        this.setState({
+            filterDates: {
+                ...this.state.filterDates,
+                filterFromDate: date
+            }
+        })
+    }
+
+    setDateFilter = () => {
+        let date = new Date();
+        let month = (date.getMonth() + 1);
+        let day = date.getDate();
+        if (month < 10) {
+            month = "0" + month.toString();
+        }
+        if (day < 10) {
+            day = "0" + day.toString();
+        }
+        this.setState({
+            filterDates: {
+                ...this.state.filterDates,
+                filterFromDate: `${date.getFullYear()}-${month}-${day}`,
+                filterToDate: `${date.getFullYear()}-${month}-${day}`
+            }
+        })
+    }
+
 
     onSubmitRoute = (event) => {
         console.log(event.target)
@@ -112,7 +202,7 @@ class AdminDashboard extends Component {
 
         } else if (this.state.routeComponent === "Send Email") {
             routeComponent = <SendEmail
-                subscribedUsers={this.state.SubscribedUsers}
+                dashboardInfo={this.state.dashboardInfo}
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}/>
 
@@ -143,9 +233,12 @@ class AdminDashboard extends Component {
 
         } else {
             routeComponent = <Dashboard
-                SubscribedUsers={this.state.SubscribedUsers}
+                dashboardInfo={this.state.dashboardInfo}
+                filterDates={this.state.filterDates}
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}
+                onChangeToDateHandler={this.onChangeToDateHandler.bind(this)}
+                onChangeFromDateHandler={this.onChangeFromDateHandler.bind(this)}
             />
         }
 

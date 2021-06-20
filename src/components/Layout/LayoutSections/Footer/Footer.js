@@ -126,9 +126,15 @@ class Footer extends Component {
     render() {
 
         let showFooterNavMenu = "";
+        let showFooter = "";
 
         if (window.location.pathname !== "/") {
             showFooterNavMenu = "d-none";
+        }
+
+        if (window.location.pathname.includes("dashboard/user") ||
+            window.location.pathname.includes("dashboard/admin")) {
+            showFooter = "d-none";
         }
 
 
@@ -136,7 +142,7 @@ class Footer extends Component {
 
             <Aux>
 
-                <div className="footer-wrapper py-3">
+                <div className={"footer-wrapper py-3 " + showFooter} >
 
                     <div className="container">
 

@@ -1,0 +1,62 @@
+.main-wrapper .user-dashboard-wrapper {
+    background-color: rgb(255 226 187);
+    flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+}
+
+.user-dashboard-wrapper .dashboard-wrapper {
+    display: flex;
+    flex-grow: 1;
+}
+
+.dashboard-wrapper .user-menu {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 3em
+}
+
+.user-menu .user-menu-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.user-menu .user-menu-options p {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.user-menu .user-menu-options p:hover {
+    color: #6b9958 !important;
+}
+
+.user-menu-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.user-menu-body-title, .user-menu-body-main {
+    background-color: rgba(255, 255, 255, 0.35);
+    flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+}
+
+.user-menu-body-title {
+    max-width: 100% !important;
+    justify-content: center;
+    border-bottom: 1px solid #6b9958;
+}
+
+.user-option-selected{
+    background-color: lightgreen;
+}
+
+.user-option-selected:hover{
+        background-color: rgba(255, 255, 255, 0.35);
+
+}

@@ -20,6 +20,7 @@ import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
 import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
 import OrderDetails from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails";
+import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
 
 class MainRouter extends Component {
 
@@ -158,6 +159,7 @@ class MainRouter extends Component {
 
                     </Switch>
 
+                    {/*Admin Dashboard*/}
                     <Switch>
 
                         <Route exact path="/dashboard/admin">
@@ -253,6 +255,16 @@ class MainRouter extends Component {
                         <OrderDetails/>
 
                     </Route>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user">
+
+                            <UserDashboard routeComponent="Dashboard"/>
+
+                        </Route>
+
+                    </Switch>
 
                     <Switch>
 

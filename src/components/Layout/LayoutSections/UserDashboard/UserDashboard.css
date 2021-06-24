@@ -52,11 +52,26 @@
     border-bottom: 1px solid #6b9958;
 }
 
-.user-option-selected{
+.user-option-selected {
     background-color: lightgreen;
 }
 
-.user-option-selected:hover{
-        background-color: rgba(255, 255, 255, 0.35);
+.user-option-selected:hover {
+    background-color: rgba(255, 255, 255, 0.35);
 
+}
+
+.btn-save-user-information {
+    border: none;
+    background-color: #6b9958;
+    padding: 10px 30px;
+}
+
+
+.btn-save-user-information:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
 }

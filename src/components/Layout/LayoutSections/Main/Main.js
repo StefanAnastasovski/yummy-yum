@@ -11,7 +11,7 @@ const Main = (props) => {
 
         <div className="main-wrapper">
 
-            {/*MainRouter - Routing Main components*/}
+            {/*MainRouter - Routing Main SubscriptionPlanComponents*/}
             <MainRouter logIn={props.logIn}
                         isLoggedIn={props.isLoggedIn}
                         isRedirectedToHome={props.isRedirectedToHome}

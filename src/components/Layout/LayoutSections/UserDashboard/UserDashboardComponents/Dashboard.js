@@ -1,6 +1,9 @@
 import React from "react";
 import UserPersonalInformation from "./Components/UserPersonalInformation";
 import UserMenuOptions from "./Components/UserMenuOptions";
+import UserBillingInformation from "./Components/UserBillingInformation";
+import UserShippingInformation from "./Components/UserShippingInformation";
+import SubscriptionPlans from "./Components/SubscriptionPlans/SubscriptionPlans";
 
 const Dashboard = (props) => {
 
@@ -11,17 +14,33 @@ const Dashboard = (props) => {
     //     props.onChangeFromDateHandler(event.target.value)
     // }
     let userComponent = null;
-    console.log(props)
     if (props.userComponent === "Personal Information") {
         userComponent = <UserPersonalInformation
             info={props.userComponentInfo}
         />
     } else if (props.userComponent === "Billing Information") {
-
+        userComponent = <UserBillingInformation
+            info={props.userComponentInfo}
+            onChangeBillingInformationHandler={props.onChangeBillingInformationHandler}
+            onSubmitSave={props.onSubmitSave}
+        />
     } else if (props.userComponent === "Shipping Information") {
-
+        userComponent = <UserShippingInformation
+            info={props.userComponentInfo}
+            onChangeShippingInformationHandler={props.onChangeShippingInformationHandler}
+            onSubmitSave={props.onSubmitSave}
+        />
     } else if (props.userComponent === "Subscription") {
-
+        userComponent = <SubscriptionPlans
+            selectedSubscriptionPlanName={props.selectedSubscriptionPlanName}
+            selectedSubscriptionPlanValues={props.selectedSubscriptionPlanValues}
+            onChangeSubscriptionPlanValuesHandler={props.onChangeSubscriptionPlanValuesHandler}
+            onChangeWeeklyDeliveryDaysHandler={props.onChangeWeeklyDeliveryDaysHandler}
+            isSubscriptionSaved={props.isSubscriptionSaved}
+            onSubmitSave={props.onSubmitSave}
+            subscriptionPlanValues={props.subscriptionPlanValues}
+            info={props.userComponentInfo}
+        />
     } else if (props.userComponent === "Order History") {
 
     }

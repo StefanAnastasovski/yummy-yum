@@ -1,7 +1,10 @@
 import React from "react";
 
 const UserBillingInformation = (props) => {
-    console.log(props)
+
+    let billingInfo = JSON.parse(localStorage.getItem("userInformation")).billingInformation;
+    console.log(billingInfo)
+
     return (
 
         <div className="user-menu-body-main col">
@@ -16,7 +19,7 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                props.info ? props.info.nameOnCard :
+                                billingInfo ? billingInfo.nameOnCard :
                                     <input type="text" placeholder="Name On Card" name="name-on-card"
                                            onChange={props.onChangeBillingInformationHandler}
                                            required/>
@@ -30,7 +33,7 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                props.info ? "*" + props.info.cardNumber.slice(-4) :
+                                billingInfo ? "*" + billingInfo.cardNumber.slice(-4) :
                                     <input type="text"
                                            maxLength="16" minLength="16"
                                            placeholder="Card Number" name="card-number"
@@ -46,7 +49,7 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                props.info ? props.info.expirationDateMonth :
+                                billingInfo ? billingInfo.expirationDateMonth :
                                     <input type="text" placeholder="Expiration Date (Month)"
                                            maxLength="2"
                                            name="expiration-date-month"
@@ -62,7 +65,7 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green w-75">
                             {
-                                props.info ? props.info.expirationDateYear :
+                                billingInfo ? billingInfo.expirationDateYear :
                                     <input type="text" placeholder="Expiration Date (Year)"
                                            maxLength="2"
                                            name="expiration-date-year"
@@ -73,18 +76,18 @@ const UserBillingInformation = (props) => {
                     </div>
 
                     {
-                        props.info && <div className="col d-flex py-3">
+                        billingInfo && <div className="col d-flex py-3">
                             <p className="col-3">
                                 Status:
                             </p>
                             <p className="col text-color-green">
-                                {props.info.isActive ? "Active" : "Inactive"}
+                                {billingInfo.isActive ? "Active" : "Inactive"}
                             </p>
                         </div>
                     }
 
                     {
-                        !props.info ? <div className="col d-flex py-3">
+                        !billingInfo ? <div className="col d-flex py-3">
                                 <button type="button" className=" btn-save-user-information"
                                         name="save-billing-information"
                                         onClick={props.onSubmitSave}>

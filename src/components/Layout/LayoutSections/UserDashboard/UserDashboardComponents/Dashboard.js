@@ -4,15 +4,11 @@ import UserMenuOptions from "./Components/UserMenuOptions";
 import UserBillingInformation from "./Components/UserBillingInformation";
 import UserShippingInformation from "./Components/UserShippingInformation";
 import SubscriptionPlans from "./Components/SubscriptionPlans/SubscriptionPlans";
+import Payment from "../../Main/Checkout/Payment/Payment";
+import PaymentSuccessful from "../../Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
 
 const Dashboard = (props) => {
 
-    // let onChangeToDateHandler = (event) => {
-    //     props.onChangeToDateHandler(event.target.value)
-    // }
-    // let onChangeFromDateHandler = (event) => {
-    //     props.onChangeFromDateHandler(event.target.value)
-    // }
     let userComponent = null;
     if (props.userComponent === "Personal Information") {
         userComponent = <UserPersonalInformation
@@ -36,10 +32,26 @@ const Dashboard = (props) => {
             selectedSubscriptionPlanValues={props.selectedSubscriptionPlanValues}
             onChangeSubscriptionPlanValuesHandler={props.onChangeSubscriptionPlanValuesHandler}
             onChangeWeeklyDeliveryDaysHandler={props.onChangeWeeklyDeliveryDaysHandler}
+            onChangeDeliveryTimeHandler={props.onChangeDeliveryTimeHandler}
             isSubscriptionSaved={props.isSubscriptionSaved}
             onSubmitSave={props.onSubmitSave}
+            totalAmount={props.totalAmount}
+            shippingCost={props.shippingCost}
+            shippingCostPerServing={props.shippingCostPerServing}
             subscriptionPlanValues={props.subscriptionPlanValues}
             info={props.userComponentInfo}
+            isSubscriptionExist={props.isSubscriptionExist}
+            subscriptionInfo={props.subscriptionInfo}
+        />
+    } else if (props.userComponent === "Payment") {
+        userComponent = <Payment
+            isUserDashboard={true}
+            onSubmitRoute={props.onSubmitRoute}
+        />
+    } else if (props.userComponent === "Payment Successful") {
+        userComponent = <PaymentSuccessful
+            isUserDashboard={true}
+            onSubmitRoute={props.onSubmitRoute}
         />
     } else if (props.userComponent === "Order History") {
 
@@ -61,7 +73,7 @@ const Dashboard = (props) => {
 
             <div className="user-menu-body col-8">
 
-                <div className="user-menu-body-title col-1">
+                <div className="user-menu-body-title user-dashboard-title-col px-2">
                     <p>{props.userComponent}</p>
                 </div>
 

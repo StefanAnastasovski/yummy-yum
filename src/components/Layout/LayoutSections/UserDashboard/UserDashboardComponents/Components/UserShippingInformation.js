@@ -2,6 +2,8 @@ import React from "react";
 
 const UserShippingInformation = (props) => {
 
+    let shippingInfo = JSON.parse(localStorage.getItem("userInformation")).shippingInformation;
+
     return (
 
         <div className="user-menu-body-main col">
@@ -13,7 +15,7 @@ const UserShippingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                props.info ? props.info.address :
+                                shippingInfo ? shippingInfo.address :
                                     <input type="text" placeholder="Address"
                                            name="shipping-address"
                                            required
@@ -28,7 +30,7 @@ const UserShippingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                props.info ? props.info.zipCode :
+                                shippingInfo ? shippingInfo.zipCode :
                                     <input type="text" placeholder="Zip Code"
                                            name="shipping-zip-code"
                                            required
@@ -38,7 +40,7 @@ const UserShippingInformation = (props) => {
                         </p>
                     </div>
                     {
-                        !props.info ? <div className="col d-flex py-3">
+                        !shippingInfo ? <div className="col d-flex py-3">
                                 <button type="button" className=" btn-save-user-information"
                                         name="save-shipping-information"
                                         onClick={props.onSubmitSave}>

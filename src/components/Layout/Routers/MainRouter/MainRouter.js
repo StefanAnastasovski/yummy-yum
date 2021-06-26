@@ -268,6 +268,76 @@ class MainRouter extends Component {
 
                     <Switch>
 
+                        <Route exact path="/dashboard/user/personal-information">
+
+                            <UserDashboard routeComponent="Personal Information"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/billing-information">
+
+                            <UserDashboard routeComponent="Billing Information"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/shipping-information">
+
+                            <UserDashboard routeComponent="Shipping Information"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/subscription">
+
+                            <UserDashboard routeComponent="Subscription"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/order-history">
+
+                            <UserDashboard routeComponent="Order History"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/subscription/cart/pay-now">
+
+                            <UserDashboard routeComponent="Payment"/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/user/subscription/cart/payment-successful">
+
+                            <PaymentSuccessful isSubscription={true}/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
                         <Route exact path="/cart">
 
                             <Cart/>

@@ -2,6 +2,8 @@ import React from "react";
 
 const UserPersonalInformation = (props) => {
 
+    let userInfo = JSON.parse(localStorage.getItem("userInformation")).userInformation;
+
     return (
 
         <div className="user-menu-body-main col">
@@ -12,7 +14,7 @@ const UserPersonalInformation = (props) => {
                             Full Name:
                         </p>
                         <p className="col text-color-green">
-                            {props.info.firstName + " " + props.info.lastName}
+                            {userInfo.firstName + " " + userInfo.lastName}
                         </p>
                     </div>
                     <div className="col d-flex py-3">
@@ -20,7 +22,7 @@ const UserPersonalInformation = (props) => {
                             Username:
                         </p>
                         <p className="col text-color-green">
-                            {props.info.username}
+                            {userInfo.username}
                         </p>
                     </div>
                     <div className="col d-flex py-3">
@@ -28,7 +30,7 @@ const UserPersonalInformation = (props) => {
                             Email:
                         </p>
                         <p className="col text-color-green">
-                            {props.info.email.email}
+                            {userInfo.email.email}
                         </p>
                     </div>
                     <div className="col d-flex py-3">

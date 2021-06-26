@@ -6,7 +6,15 @@ import SuccessfulIcon from "./Icons/SuccessfulIcon";
 
 const PaymentSuccessful = (props) => {
 
-    let total = JSON.parse(localStorage.getItem("orderSummary")).total;
+    let total;
+    let location;
+    if (!props.isSubscription) {
+        total = JSON.parse(localStorage.getItem("orderSummary")).total;
+        location = "/dashboard";
+    } else if (props.isSubscription) {
+        total = JSON.parse(localStorage.getItem("subscriptionPayment")).totalAmount;
+        location = "/dashboard/user/personal-information";
+    }
 
     return (
 
@@ -28,7 +36,7 @@ const PaymentSuccessful = (props) => {
                 </div>
 
                 <div className="ps-dashboard">
-                    <a href="/dashboard" className="ps-go-to-dashboard font-size-1">Go To Dashboard</a>
+                    <a href={location} className="ps-go-to-dashboard font-size-1">Go To Dashboard</a>
                 </div>
 
             </div>

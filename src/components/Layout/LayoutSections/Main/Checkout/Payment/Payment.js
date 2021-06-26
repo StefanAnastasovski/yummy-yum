@@ -12,6 +12,7 @@ import postShippingAddress from '../../../../../../repository/post/postShippingA
 import postOrderInfo from '../../../../../../repository/post/postOrderInfo';
 import postOrderMeals from "../../../../../../repository/post/postOrderMeals";
 import postPayment from "../../../../../../repository/post/postPayment";
+import postSubscription from "../../../../../../repository/post/postSubscription"
 
 // import passwordHash from 'password-hash';
 
@@ -630,8 +631,12 @@ class Payment extends Component {
         })
     }
 
-    redirectToPaymentCompleted = () => {
-        window.location.href = '/cart/payment-successful'
+    redirectToPaymentCompleted = (isSubscription) => {
+        if (!isSubscription) {
+            window.location.href = '/cart/payment-successful';
+        } else if (isSubscription) {
+            window.location.href = '/dashboard/user/subscription/cart/payment-successful';
+        }
     }
 
     generateOrderID = () => {
@@ -755,14 +760,31 @@ class Payment extends Component {
     }
 
     setLocalStorages = () => {
-          localStorage.setItem("shoppingCartItems", JSON.stringify([]));
-            localStorage.setItem("mealRecipe", JSON.stringify([]));
-            localStorage.setItem("mealInfo", JSON.stringify([]));
-            localStorage.setItem("checkoutPrice", JSON.stringify([]));
-            localStorage.setItem("coupon", JSON.stringify([]));
-            //orderInvoiceInfo - parameter
-            // localStorage.setItem("paymentInfo", JSON.stringify(orderInvoiceInfo));
-            localStorage.setItem("paymentInfo", JSON.stringify([]));
+        localStorage.setItem("shoppingCartItems", JSON.stringify([]));
+        localStorage.setItem("mealRecipe", JSON.stringify([]));
+        localStorage.setItem("mealInfo", JSON.stringify([]));
+        localStorage.setItem("checkoutPrice", JSON.stringify([]));
+        localStorage.setItem("coupon", JSON.stringify([]));
+        //orderInvoiceInfo - parameter
+        // localStorage.setItem("paymentInfo", JSON.stringify(orderInvoiceInfo));
+        localStorage.setItem("paymentInfo", JSON.stringify([]));
+    }
+
+    subscriptionPayment = async () => {
+        let paymentInfo = JSON.parse(localStorage.getItem("subscriptionPayment"))
+        let subscriptionInfo = {
+            ...paymentInfo,
+            cardNumber: this.state.formValues.cardNumberValue,
+            address: this.state.formValues.shippingAddressValue,
+            zipCode: this.state.formValues.zipCodeValue
+        }
+        console.log(subscriptionInfo)
+        await postSubscription.createSubscription(subscriptionInfo).then(response => {
+            console.log(response)
+        }).catch(e => {
+            console.log(e)
+        })
+
     }
 
     handleSubmit = async (event) => {
@@ -774,6 +796,7 @@ class Payment extends Component {
 
         const isFormValid = isShippingAddressValid && isCardValid;
 
+
         if (isFormValid) {
             if (this.state.shouldSaveCreditCard) {
                 await this.createCreditCard();
@@ -781,18 +804,18 @@ class Payment extends Component {
             if (this.state.shouldSaveShippingAddress) {
                 await this.createShippingAddress();
             }
-            let orderId = await this.createOrderInfo();
-            await this.createOrderMeals(orderId);
-            await this.createPayment(orderId);
-            // let orderInvoiceInfo = {
-            //     orderId: orderId,
-            //     paymentId: this.state.paymentId
-            // };
-            // await this.setLocalStorages(orderInvoiceInfo)
-            await this.setLocalStorages()
+            if (!this.props.isUserDashboard) {
+                let orderId = await this.createOrderInfo();
+                await this.createOrderMeals(orderId);
+                await this.createPayment(orderId);
+                await this.setLocalStorages();
+            } else if (this.props.isUserDashboard) {
+                await this.subscriptionPayment();
+            }
+
         }
 
-        this.redirectToPaymentCompleted();
+        this.redirectToPaymentCompleted(this.props.isUserDashboard);
 
     }
 
@@ -974,6 +997,11 @@ class Payment extends Component {
                                                 Pay Now
                                             </button>
                                         </div>
+                                        {this.props.isUserDashboard && <div className="button-go-back-to-dashboard">
+                                            <input type="button" className="btn-go-back-to-dashboard"
+                                                   value="<< Go Back to Dashboard" onClick={this.props.onSubmitRoute}/>
+                                        </div>
+                                        }
 
                                     </div>
 

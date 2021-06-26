@@ -75,3 +75,37 @@
     rgb(112, 188, 95) 85%);
     box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
 }
+
+.user-dashboard-title-col {
+    min-height: 54px;
+    max-height: 54px;
+}
+
+.user-dashboard-wrapper .btn-pay-now-submit {
+    border: none;
+}
+
+.user-dashboard-wrapper .button-go-back-to-dashboard {
+    margin-top: 5px;
+}
+
+.user-dashboard-wrapper .btn-go-back-to-dashboard {
+    border: none;
+    background-color: #6b9958;
+    padding: 10px 30px;
+}
+
+.user-dashboard-wrapper .btn-go-back-to-dashboard:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+}
+
+.btn-cancel-edit-subscription-plan {
+    background-color: #dc3545;
+    color: white !important;
+    border: none;
+    padding: 10px 30px;
+}

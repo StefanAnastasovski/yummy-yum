@@ -12,7 +12,7 @@ const HeaderUsername = (props) => {
     if (isAdmin === "YES") {
         hrefDestination = "admin"
     } else if (isAdmin === "NO") {
-        hrefDestination = "user"
+        hrefDestination = "user/personal-information"
     }
 
 

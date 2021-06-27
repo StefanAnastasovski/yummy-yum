@@ -235,6 +235,7 @@ class UserDashboard extends Component {
                 subscriptionType: "Weekly",
                 numberOfWeeklyDeliveryDays: 1,
                 weeklyDeliveryDays: ["Wednesday"],
+                deliveryTime: ["08:00 AM - 08:30 AM"]
             }
         })
     }
@@ -394,11 +395,24 @@ class UserDashboard extends Component {
             await getSubscription.fetchSubscriptionByUsername(this.state.username).then(response => {
                 console.log(response.data)
                 if (response.data) {
-                    this.setState({
+                    this.setState(prevState => ({
                         isSubscriptionExist: true,
                         isSubscriptionSaved: true,
-                        subscriptionInfo: response.data
-                    })
+                        subscriptionInfo: response.data,
+                        subscriptionPlanValues: {
+                            ...prevState.subscriptionPlanValues,
+                            deliveryTime: response.data.weeklyDeliveryTime.split("|"),
+                            isCanceled: response.data.isCanceled,
+                            name: response.data.name,
+                            numberOfWeeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|").length,
+                            numberOfWeeklyMeals: response.data.numberOfWeeklyMeals,
+                            servingsPerMeal: response.data.servingsPerMeal,
+                            subscriptionType: response.data.subscriptionType,
+                            weeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|")
+                        }
+
+                    }))
+
                 }
             }).catch(e => {
                 console.log(e);
@@ -493,6 +507,7 @@ class UserDashboard extends Component {
                 let temp = {};
                 this.state.userComponentInfo.forEach((item, index) => {
                     if (event.target.value === item.name) {
+                        console.log(item)
                         temp = item;
                         this.setState(prevState => ({
                             selectedSubscriptionPlanValues: item,
@@ -504,6 +519,7 @@ class UserDashboard extends Component {
                         }))
                     }
                 })
+                console.log(temp)
                 await this.setSubscriptionPlanValues(temp);
             }
         } else if (event.target.name === "number-of-weekly-meals") {
@@ -533,8 +549,12 @@ class UserDashboard extends Component {
                 }))
                 obj['weeklyDeliveryDays'] = this.state.subscriptionPlanValues.weeklyDeliveryDays.slice(0, event.target.value);
             } else {
+                console.log(this.state.subscriptionPlanValues)
+
                 let currentDeliveryDaysValues = this.state.subscriptionPlanValues.weeklyDeliveryDays;
                 let currentDeliveryTimeValues = this.state.subscriptionPlanValues.deliveryTime;
+                console.log(currentDeliveryDaysValues)
+                console.log(currentDeliveryTimeValues)
                 if (event.target.value > 1) {
                     let weeklyDeliveryDayFields = Array.from(
                         {length: event.target.value - currentDeliveryDaysValues.length},

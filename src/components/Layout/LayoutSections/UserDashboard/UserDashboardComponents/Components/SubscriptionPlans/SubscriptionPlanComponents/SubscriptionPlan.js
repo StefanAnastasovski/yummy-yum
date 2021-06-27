@@ -175,6 +175,31 @@ const SubscriptionPlan = (props) => {
                                 <p className=" p-2">Subscription Type:</p>
                                 <p className="text-color-green font-weight-bold">{props.subscriptionInfo.subscriptionType}</p>
                             </div>
+
+                            <div className="d-flex align-items-baseline">
+                                <div className="d-flex align-items-baseline">
+                                    <p className=" p-2">From:</p>
+                                    <p className="text-color-green font-weight-bold">{props.subscriptionInfo.activationDate}</p>
+                                </div>
+                                <div className="d-flex align-items-baseline">
+                                    <p className=" p-2">To:</p>
+                                    <p className="text-color-green font-weight-bold">{props.subscriptionInfo.canceledDate}</p>
+                                </div>
+                            </div>
+
+                            <div className="d-flex align-items-baseline">
+                                <p className=" p-2">Status:</p>
+                                {
+                                    new Date() <= new Date(props.subscriptionInfo.canceledDate.split("-")[0],
+                                        props.subscriptionInfo.canceledDate.split("-")[1] - 1,
+                                        props.subscriptionInfo.canceledDate.split("-")[2])
+                                        ? <p className="text-color-green font-weight-bold">Active</p> :
+                                        <div>
+                                            <p className="text-danger">Inactive</p>
+                                            <p className="font-size-2 text-danger">Time to renew your subscription</p>
+                                        </div>
+                                }
+                            </div>
                         </div>
 
                 }
@@ -311,12 +336,19 @@ const SubscriptionPlan = (props) => {
                                 </div>
                             }
                         </div> :
-                        <div className="col py-2 d-flex w-50">
-                            <button type="button" className=" btn-save-user-information"
-                                    name="edit-subscription-plan"
-                                    onClick={props.onSubmitSave}>
-                                Edit
-                            </button>
+                        <div className="d-flex w-75">
+                            <div className="col-6 py-2 d-flex w-50">
+                                <button type="button" className=" btn-save-user-information"
+                                        name="edit-subscription-plan"
+                                        onClick={props.onSubmitSave}>
+                                    Edit
+                                </button>
+                                <a className="ml-1 btn-save-user-information text-decoration-none"
+                                        name="take-a-meal"
+                                        href="/weekly-menu">
+                                    Take a Meal
+                                </a>
+                            </div>
                         </div>
 
                 }

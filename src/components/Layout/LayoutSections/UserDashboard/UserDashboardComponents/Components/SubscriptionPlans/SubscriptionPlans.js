@@ -3,7 +3,6 @@ import SubscriptionPlan from "./SubscriptionPlanComponents/SubscriptionPlan";
 
 const SubscriptionPlans = (props) => {
 
-    console.log(props)
 
     return (
 

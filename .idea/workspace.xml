@@ -29,23 +29,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlanPrices.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/get/getSubscription.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postSubscription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/HeaderComponents/HeaderUsername.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/HeaderComponents/HeaderUsername.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/Payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlans.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlans.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,14 +230,8 @@
       <workItem from="1624534279942" duration="14851000" />
       <workItem from="1624625487944" duration="22612000" />
       <workItem from="1624691511006" duration="3937000" />
-      <workItem from="1624723863351" duration="10198000" />
-    </task>
-    <task id="LOCAL-00004" summary="Login - create Login + Modifications">
-      <created>1611956271144</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1611956271144</updated>
+      <workItem from="1624723863351" duration="10240000" />
+      <workItem from="1624792946593" duration="5310000" />
     </task>
     <task id="LOCAL-00005" summary="WeeklyMenu Cards added">
       <created>1612307184742</created>
@@ -587,7 +569,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624501553445</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="User Dashboard v0.4">
+      <created>1624737130444</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1624737130444</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +610,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Cart Component v0.3" />
     <MESSAGE value="Cart Component v0.4" />
     <MESSAGE value="Cart Component v0.5 unfinished" />
     <MESSAGE value="Cart Component v0.6" />
@@ -646,19 +634,20 @@
     <MESSAGE value="fixup! Orders Component + Pagination v1.0" />
     <MESSAGE value="AdminDashboard v1.1" />
     <MESSAGE value="User Dashboard v0.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="User Dashboard v0.3" />
+    <MESSAGE value="User Dashboard v0.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Dashboard v0.4" />
   </component>
   <component name="WindowStateProjectService">
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619230509800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1624501550581">
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1624737126658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1624501550581" />
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1624737126658" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="-1828" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1616284404069">
       <screen x="-1920" y="0" width="1920" height="1040" />
@@ -676,12 +665,12 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1624499738376" />
     <state x="2601" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618099414550" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1624501556080">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1624737146345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495509909" />
     <state x="469" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320312452" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1624501556080" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1624737146345" />
     <state x="435" y="23" width="1353" height="952" key="find.popup" timestamp="1624736927439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

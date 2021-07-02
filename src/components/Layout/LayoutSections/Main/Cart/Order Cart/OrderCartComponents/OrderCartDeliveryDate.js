@@ -5,33 +5,6 @@ const OrderCartDeliveryDate = (props) => {
 
     let dates = []
 
-    // let getMondayInCurrentWeek = () => {
-    //     let currentDate = new Date();
-    //     let month = currentDate.getMonth();
-    //     let monthDate = currentDate.getDate();
-    //     let year = currentDate.getFullYear();
-    //     let dayInMonth = new Date(year, month, monthDate);
-    //     let dayInMonthNumber = dayInMonth.getDay();
-    //     let fullDate;
-    //
-    //     if (dayInMonthNumber === 0) {
-    //         fullDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 6);
-    //         monthDate = fullDate.getDate();
-    //         month = fullDate.getMonth();
-    //     } else {
-    //         let mondayInWeek = (dayInMonthNumber - 1);
-    //         monthDate = monthDate - mondayInWeek;
-    //         if (monthDate < 0) {
-    //             let newDate = new Date(year, month, 0)
-    //             monthDate = newDate.getDate() - (Math.abs(monthDate));
-    //             month = month - 1;
-    //         }
-    //     }
-    //
-    //     return [month, monthDate, year];
-    //
-    // }
-
     let populateDates = () => {
         let deliveryDates = [];
 

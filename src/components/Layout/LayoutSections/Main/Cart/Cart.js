@@ -33,7 +33,6 @@ class Cart extends Component {
 
 
         this.allowToContinueCheckout();
-        console.log(this.state.allowToContinueCheckout)
     }
 
     allowToContinueCheckout = () => {
@@ -65,7 +64,7 @@ class Cart extends Component {
     redirectToCheckout = () => {
         if (this.state.allowToContinueCheckout) {
             window.location.href = "/cart/checkout"
-        } else{
+        } else {
             this.setState({
                 redirectToCheckoutError: "Remove meals that you can't order, please!"
             })
@@ -132,9 +131,10 @@ class Cart extends Component {
 
     }
 
-    populateItems = () => {
-        let items = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        items = items.map((item, index) => {
+    populateItems = async () => {
+        let items;
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        shoppingCartItems = shoppingCartItems.map((item, index) => {
             let mealMenuDate = item.mealMenuDate;
             return {
                 "img": {
@@ -153,41 +153,74 @@ class Cart extends Component {
                 "servings": parseInt(item.servings),
                 "deliveryDate": item.deliveryDate,
                 "deliveryTime": item.deliveryTime,
-                "customizeItOption": item.customizeIt
+                "customizeItOption": item.customizeIt,
+                "isSubscriptionItem": false
             }
         })
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        scheduleCartItems = scheduleCartItems.map((item, index) => {
+            let mealMenuDate = item.mealMenuDate;
+            return {
+                "img": {
+                    "url": item.img.url,
+                    "alt": item.img.alt,
+                    "cookingStep": item.img.cookingStep,
+                    "isChefImg": item.img.isChefImg,
+                    "isMainRecipeImg": item.img.isMainRecipeImg
+                },
+                "mealName": item.mealName,
+                "price": parseFloat(item.price),
+                "mealMenuDate": mealMenuDate,
+                "pricePerUnit": parseFloat(item.pricePerUnit),
+                "cardIndex": index,
+                "menuCardIndex": item.menuCardIndex,
+                "servings": parseInt(item.servings),
+                "deliveryDate": item.deliveryDate,
+                "deliveryTime": item.deliveryTime,
+                "customizeItOption": item.customizeIt,
+                "isSubscriptionItem": item.isSubscriptionItem
+            }
+        })
+        items = shoppingCartItems.concat(scheduleCartItems);
         this.setState({
             items: items,
             loading: false,
         })
-        this.populateReceipt();
+
+        await this.populateReceipt();
     }
 
-    increaseServingHandler = (index) => {
+    increaseServingHandler = async (index) => {
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
         let array = [...this.state.items];
-        array[index].servings = array[index].servings + 1;
-        array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
-        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+
+        shoppingCartItems[index].servings = array[index].servings = array[index].servings + 1;
+        shoppingCartItems[index].price = array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
         this.setState({
             items: array,
         })
-        this.populateReceipt();
+        await this.populateReceipt();
     }
 
-    decreaseServingHandler = (index) => {
+    decreaseServingHandler = async (index) => {
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+
         let array = [...this.state.items];
         if (array[index].servings > 1) {
-            array[index].servings = array[index].servings - 1;
-            array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
+            shoppingCartItems[index].servings = array[index].servings = array[index].servings - 1;
+            shoppingCartItems[index].price = array[index].price = parseFloat((array[index].servings * array[index].pricePerUnit).toFixed(2));
         }
-        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
         this.setState({
             items: array,
         })
-        this.populateReceipt();
+        await this.populateReceipt();
     }
 
-    servingOnChangeHandler = (event) => {
+    servingOnChangeHandler = async (event) => {
         let splitName = event.target.name.split("-");
         let index = parseInt(splitName[2]);
         let array = [...this.state.items];
@@ -197,7 +230,7 @@ class Cart extends Component {
             items: array,
         })
 
-        this.populateReceipt();
+        await this.populateReceipt();
     }
 
     cardHandler = (event) => {
@@ -216,9 +249,15 @@ class Cart extends Component {
     }
 
     removeHandler = async (index) => {
+        let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        shoppingCartItems.splice(index, 1)
-        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        items = shoppingCartItems.concat(scheduleCartItems);
+        items.splice(index, 1)
+        let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
+        let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
             isSomethingChanged: true
         })
@@ -226,9 +265,15 @@ class Cart extends Component {
     }
 
     deliveryDateOnChangeHandler = async (event, index) => {
+        let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        shoppingCartItems[index].deliveryDate = event.target.value;
-        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        items = shoppingCartItems.concat(scheduleCartItems);
+        items[index].deliveryDate = event.target.value;
+        let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
+        let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
             isSomethingChanged: true
         })
@@ -236,9 +281,18 @@ class Cart extends Component {
     }
 
     deliveryTimeOnChangeHandler = async (event, index) => {
+        this.setState({
+            loading: true
+        })
+        let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        shoppingCartItems[index].deliveryTime = event.target.value;
-        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        items = shoppingCartItems.concat(scheduleCartItems);
+        items[index].deliveryTime = event.target.value;
+        let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
+        let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
             isSomethingChanged: true
         })
@@ -286,6 +340,7 @@ class Cart extends Component {
                                                         deliveryDateValue={item.deliveryDate}
                                                         deliveryTimeValue={item.deliveryTime}
                                                         customizeItOption={item.customizeItOption}
+                                                        isSubscriptionItem={item.isSubscriptionItem}
                                                     />
                                                 </li>
                                             }) :

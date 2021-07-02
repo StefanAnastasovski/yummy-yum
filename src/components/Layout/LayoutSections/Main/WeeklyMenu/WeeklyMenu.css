@@ -214,6 +214,10 @@
     background-color: #dc3545 !important;
 }
 
+.wm-amtc-remove-item:hover p {
+    color: white !important;
+}
+
 .wm-amtc-reduce-servings:hover {
     background-color: #245b0a !important;
 }

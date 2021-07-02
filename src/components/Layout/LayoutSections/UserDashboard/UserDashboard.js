@@ -78,8 +78,6 @@ class UserDashboard extends Component {
     }
 
     async componentDidMount() {
-        console.log("updated")
-
         window.scrollTo(0, 0);
 
         await this.populateUsername();
@@ -371,7 +369,9 @@ class UserDashboard extends Component {
                             weeklyDeliveryDays: ["Wednesday"],
                             deliveryTime: ["08:00 AM - 08:30 AM"],
                             isCanceled: false,
-                            name: response.data[0].name
+                            name: response.data[0].name,
+                            activationDate: response.data.activationDate,
+                            canceledDate: response.data.canceledDate
                         }
                     })
                 } else {
@@ -393,7 +393,6 @@ class UserDashboard extends Component {
     getSubscriptionIfExist = async () => {
         try {
             await getSubscription.fetchSubscriptionByUsername(this.state.username).then(response => {
-                console.log(response.data)
                 if (response.data) {
                     this.setState(prevState => ({
                         isSubscriptionExist: true,
@@ -408,7 +407,9 @@ class UserDashboard extends Component {
                             numberOfWeeklyMeals: response.data.numberOfWeeklyMeals,
                             servingsPerMeal: response.data.servingsPerMeal,
                             subscriptionType: response.data.subscriptionType,
-                            weeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|")
+                            weeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|"),
+                            activationDate: response.data.activationDate,
+                            canceledDate: response.data.canceledDate
                         }
 
                     }))
@@ -507,7 +508,6 @@ class UserDashboard extends Component {
                 let temp = {};
                 this.state.userComponentInfo.forEach((item, index) => {
                     if (event.target.value === item.name) {
-                        console.log(item)
                         temp = item;
                         this.setState(prevState => ({
                             selectedSubscriptionPlanValues: item,
@@ -519,7 +519,6 @@ class UserDashboard extends Component {
                         }))
                     }
                 })
-                console.log(temp)
                 await this.setSubscriptionPlanValues(temp);
             }
         } else if (event.target.name === "number-of-weekly-meals") {
@@ -549,12 +548,8 @@ class UserDashboard extends Component {
                 }))
                 obj['weeklyDeliveryDays'] = this.state.subscriptionPlanValues.weeklyDeliveryDays.slice(0, event.target.value);
             } else {
-                console.log(this.state.subscriptionPlanValues)
-
                 let currentDeliveryDaysValues = this.state.subscriptionPlanValues.weeklyDeliveryDays;
                 let currentDeliveryTimeValues = this.state.subscriptionPlanValues.deliveryTime;
-                console.log(currentDeliveryDaysValues)
-                console.log(currentDeliveryTimeValues)
                 if (event.target.value > 1) {
                     let weeklyDeliveryDayFields = Array.from(
                         {length: event.target.value - currentDeliveryDaysValues.length},
@@ -785,7 +780,6 @@ class UserDashboard extends Component {
     }
 
     populateRouteComponent = async () => {
-        console.log(window.location.href.includes("/dashboard/user/personal-information"))
         if (window.location.href.includes("/dashboard/user/personal-information")) {
             this.setState({
                 routeComponent: this.state.routeComponent,
@@ -824,8 +818,6 @@ class UserDashboard extends Component {
     }
 
     render() {
-        // console.log(this.state.routeComponent)
-        // console.log(window.location.href)
         let routeComponent;
         if (this.state.selectedSubscriptionPlanName === "") {
             routeComponent = <Dashboard

@@ -3,7 +3,6 @@ import SubscriptionPlan from "./SubscriptionPlanComponents/SubscriptionPlan";
 
 const SubscriptionPlans = (props) => {
 
-
     return (
 
         <div className="user-menu-body-main col">

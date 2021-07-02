@@ -10,6 +10,8 @@ import PlusIcon from "./Icons/PlusIcon/PlusIcon";
 
 const WeeklyMenuCard = (props) => {
 
+    // console.log(props);
+
     let mealIngredientTags = props.meal.mealIngredientTag.split(", ");
 
     let isLoggedIn = false;
@@ -26,6 +28,10 @@ const WeeklyMenuCard = (props) => {
         props.addToCartHandler(props.cardIdNumber, props.meal, props.img)
     }
 
+    let scheduleAMealHandler = () => {
+        props.scheduleAMealHandler(props.cardIdNumber, props.meal, props.img)
+    }
+
     let dateValues = props.mealMenuName.split("-");
     let cartDate = new Date(dateValues[1], dateValues[2] - 1, dateValues[3]);
 
@@ -40,10 +46,20 @@ const WeeklyMenuCard = (props) => {
         }
     })
 
+    let showScheduleBtn = true;
+    let scheduleCartItems = JSON.parse(localStorage.getItem('scheduleCartItems'));
+    scheduleCartItems.forEach(item => {
+        if (props.cardIdNumber === item.menuCardIndex) {
+            showScheduleBtn = false;
+        }
+    })
     const removeItem = () => {
         props.removeItemFromCart(props.cardIdNumber);
     }
 
+    const removeItemFromScheduleItems = () => {
+        props.removeItemFromScheduleItems(props.cardIdNumber);
+    }
     const increaseServings = () => {
         props.increaseServings(props.cardIdNumber);
     }
@@ -132,7 +148,6 @@ const WeeklyMenuCard = (props) => {
                                                 >
                                                     Add to Cart
                                                 </button>
-
                                             </div> :
 
                                             <div className="wm-amtc-wrapper">
@@ -161,6 +176,25 @@ const WeeklyMenuCard = (props) => {
                                                 </div>
 
                                             </div>
+                                    }
+                                    {
+                                        showScheduleBtn ? <div className="wm-amtc-add-to-cart">
+                                            {
+                                                props.isUserSubscribed && <button
+                                                    type="button" className="btn-add-meal-to-cart w-100 "
+                                                    onClick={scheduleAMealHandler}>
+                                                    Schedule A Meal
+                                                </button>
+                                            }
+                                        </div> : <div className="wm-amtc-wrapper">
+
+                                            <div className="wm-amtc-remove-item w-100 justify-content-center"
+                                                 onClick={removeItemFromScheduleItems}>
+                                                <RemoveIcon/> <p className="wm-amtc-remove-item">Cancel</p>
+                                            </div>
+
+                                        </div>
+
                                     }
 
                                 </div> :

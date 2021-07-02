@@ -4,6 +4,7 @@ import './WeeklyMenu.css';
 
 import Menu from "./Menu";
 import MenuCalls from "../../../../../repository/get/getMenu";
+import SubscriptionCalls from "../../../../../repository/get/getSubscription";
 
 
 class WeeklyMenu extends Component {
@@ -30,6 +31,220 @@ class WeeklyMenu extends Component {
         isMenuExist: true,
         menuName: "",
         isCustomizeCard: false,
+        isUserSubscribed: false,
+        userSubscriptionData: {},
+        subscriptionAllowedDays: {
+            days: [],
+            dates: [],
+            time: []
+        }
+    }
+
+    async componentDidMount() {
+
+        window.scrollTo(0, 0);
+
+        let [month, mondayDate, year] = this.getMondayInWeek();
+        await this.setDate();
+
+        let menu = await this.populateMenuName(year, month, mondayDate);
+        if (menu) {
+            await this.createAllMenus();
+            await this.isUserSubscribed();
+            // await this.isMenuExist()
+        }
+
+        this.isLoading();
+
+
+    }
+
+    getDayOfWeek = (date) => {
+        let day = date.getDay();
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        return {'dayNumber': day, 'day': days[day]}
+    }
+
+    getDateFromString = (date) => {
+        let array = date.split("-");
+        return new Date(array[0], (array[1] - 1), array[2]);
+    }
+
+    numberOfDaysBetweenTwoDates = (date1, date2) => {
+        let Difference_In_Time = date1.getTime() - date2.getTime();
+        return Difference_In_Time / (1000 * 3600 * 24);
+    }
+
+    generateSubscriptionAllowedDates = async (startDate, numberOfAllowedDays) => {
+
+        let year, month, day;
+        year = startDate.getUTCFullYear();
+        month = (startDate.getMonth() - 1);
+        day = startDate.getDate();
+
+        let array = [];
+
+
+        for (let i = 0; i < numberOfAllowedDays; i++) {
+            if (array.length > 0) {
+                year = array[array.length - 1].getUTCFullYear();
+                month = array[array.length - 1].getMonth();
+                day = array[array.length - 1].getDate();
+                array.push(new Date(year, month, (day + 1)));
+            } else {
+                array.push(new Date(year, month, (day + 1)));
+            }
+        }
+
+        return array;
+    }
+
+    checkThePeriodOfSubscription = async () => {
+
+        let activationDate = this.state.userSubscriptionData.activationDate;
+        let cancellationDate = this.state.userSubscriptionData.canceledDate;
+
+        let menuStartDateArray = this.state.menuName.split("-").slice(1,);
+        let menuStartDate = menuStartDateArray.join("-");
+        let menuEndDate = new Date(parseInt(menuStartDateArray[0]),
+            (parseInt(menuStartDateArray[1]) - 1),
+            (parseInt(menuStartDateArray[2]) + 6));
+        let monthEndDate = (menuEndDate.getMonth() + 1);
+        let dayEndDate = menuEndDate.getDate();
+
+        if (monthEndDate < 10) {
+            monthEndDate = '0' + monthEndDate;
+        }
+        if (dayEndDate < 10) {
+            dayEndDate = '0' + dayEndDate;
+        }
+
+        menuEndDate = `${menuEndDate.getFullYear()}-${monthEndDate}-${dayEndDate}`;
+
+        let cancellationDateValue = this.getDateFromString(cancellationDate);
+        let activationDateValue = this.getDateFromString(activationDate);
+        let menuStartDateValue = this.getDateFromString(menuStartDate);
+        let menuEndDateValue = this.getDateFromString(menuEndDate);
+
+        const daysUTC = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        let allowedDays = [];
+        let dates = [];
+
+        if (cancellationDateValue > menuEndDateValue) {
+            if (activationDateValue < menuStartDateValue) {
+                allowedDays = [...daysUTC];
+                dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
+                this.setState({
+                    isUserSubscribed: true,
+                    subscriptionAllowedDays: {
+                        days: allowedDays,
+                        dates: dates
+                    }
+                })
+            } else if (activationDateValue > menuStartDateValue && activationDateValue < menuEndDateValue) {
+                let dayOfWeek = this.getDayOfWeek(activationDateValue);
+                allowedDays = [...daysUTC].slice(dayOfWeek.dayNumber, daysUTC.length);
+                dates = await this.generateSubscriptionAllowedDates(activationDateValue, allowedDays.length)
+                this.setState({
+                    isUserSubscribed: true,
+                    subscriptionAllowedDays: {
+                        days: allowedDays,
+                        dates: dates
+                    }
+                })
+            }
+        } else if (cancellationDateValue < menuEndDateValue && cancellationDateValue > menuStartDateValue) {
+            if (activationDateValue < menuStartDateValue) {
+                let dayOfWeek = this.getDayOfWeek(cancellationDateValue);
+                allowedDays = [...daysUTC].slice(0, dayOfWeek.dayNumber);
+                dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
+                this.setState({
+                    isUserSubscribed: true,
+                    subscriptionAllowedDays: {
+                        days: allowedDays,
+                        dates: dates
+                    }
+                })
+            } else if (activationDateValue >= menuStartDateValue && activationDateValue < menuEndDateValue) {
+                let activationDayOfWeekActivation = this.getDayOfWeek(activationDateValue);
+                let cancellationDayOfWeek = this.getDayOfWeek(cancellationDateValue);
+                allowedDays = [...daysUTC].slice(activationDayOfWeekActivation.dayNumber, cancellationDayOfWeek.dayNumber);
+                dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
+                this.setState({
+                    isUserSubscribed: true,
+                    subscriptionAllowedDays: {
+                        days: allowedDays,
+                        dates: dates
+                    }
+                })
+            }
+        } else if (cancellationDateValue < menuStartDateValue) {
+            //Do nothing
+            allowedDays = [];
+            dates = [];
+            this.setState({
+                isUserSubscribed: false,
+                subscriptionAllowedDays: {
+                    days: allowedDays,
+                    dates: dates
+                }
+            })
+        } else {
+            //Do nothing
+            allowedDays = [];
+            dates = [];
+            this.setState({
+                isUserSubscribed: false,
+                subscriptionAllowedDays: {
+                    days: allowedDays,
+                    dates: dates
+                }
+            })
+        }
+
+    }
+
+    isUserSubscribed = async () => {
+        await this.getSubscriptionInformationIfExist();
+        if (Object.keys(this.state.userSubscriptionData).length !== 0) {
+            localStorage.setItem("Subscription", JSON.stringify(this.state.userSubscriptionData))
+            await this.checkThePeriodOfSubscription();
+        } else {
+            localStorage.setItem("Subscription", JSON.stringify({}));
+            this.setState({
+                isUserSubscribed: false
+            })
+        }
+    }
+
+    getSubscriptionInformationIfExist = async () => {
+        try {
+            await SubscriptionCalls.fetchSubscriptionByUsername(localStorage.getItem("username")).then(response => {
+                if (response.data) {
+                    this.setState(prevState => ({
+                        isUserSubscribed: true,
+                        userSubscriptionData: {
+                            ...prevState.userSubscriptionData,
+                            deliveryTime: response.data.weeklyDeliveryTime.split("|"),
+                            isCanceled: response.data.isCanceled,
+                            name: response.data.name,
+                            numberOfWeeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|").length,
+                            numberOfWeeklyMeals: response.data.numberOfWeeklyMeals,
+                            servingsPerMeal: response.data.servingsPerMeal,
+                            subscriptionType: response.data.subscriptionType,
+                            weeklyDeliveryDays: response.data.weeklyDeliveryDay.split("|"),
+                            activationDate: response.data.activationDate,
+                            canceledDate: response.data.canceledDate
+                        }
+                    }))
+                }
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     onClickMealFilter = (event) => {
@@ -92,25 +307,6 @@ class WeeklyMenu extends Component {
         return !err;
     }
 
-    async componentDidMount() {
-
-        window.scrollTo(0, 0);
-
-        let [month, mondayDate, year] = this.getMondayInWeek();
-        await this.setDate();
-
-        let menu = await this.populateMenuName(year, month, mondayDate);
-
-        if (menu) {
-            await this.createAllMenus();
-            // await this.isMenuExist()
-        }
-
-        this.isLoading();
-
-
-    }
-
     populateMenuName = async (year, month, day) => {
         month = (month + 1);
         if (month < 10) {
@@ -125,7 +321,6 @@ class WeeklyMenu extends Component {
         })
         return await this.getMenuByMenuName(menuName);
     }
-
 
     setDate = async () => {
         let [month, mondayDate] = this.getMondayInWeek();
@@ -233,6 +428,7 @@ class WeeklyMenu extends Component {
         let nextWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState + 7);
         await this.populateSliderDate(nextWeekDate);
         await this.createAllMenus()
+        await this.isUserSubscribed();
         this.isLoading();
 
     }
@@ -257,7 +453,8 @@ class WeeklyMenu extends Component {
         let newCurrentDate = new Date(new Date().getFullYear(), weekMonth, weekSelectDateState);
         let previousWeekDate = new Date(newCurrentDate.getFullYear(), weekMonth, weekSelectDateState - 7);
         await this.populateSliderDate(previousWeekDate);
-        await this.createAllMenus()
+        await this.createAllMenus();
+        await this.isUserSubscribed();
         this.isLoading();
 
     }
@@ -316,7 +513,7 @@ class WeeklyMenu extends Component {
 
     addToCartHandler = (cardId, mealInfo, mealImg) => {
 
-        let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
+        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         if (!mealRecipe) {
             localStorage.setItem("mealRecipe", JSON.stringify([]))
@@ -363,14 +560,74 @@ class WeeklyMenu extends Component {
             pricePerUnit: mealInfo.price,
             price: mealInfo.price,
             mealMenuDate: mealMenuDate[2] + "-" + mealMenuDate[3] + "-" + mealMenuDate[1],
-            cardIndex: array.length,
+            cardIndex: shoppingCartItems.length,
             servings: 1,
             deliveryDate: deliveryDate,
             deliveryTime: "08:00 AM - 08:30 AM",
             customizeIt: customizeItOption
         }
-        array.push(obj)
-        localStorage.setItem("shoppingCartItems", JSON.stringify(array))
+        shoppingCartItems.push(obj)
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
+    }
+
+    scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
+
+        //Data
+        let subscriptionInfo = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues
+        let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
+        let scheduleCartItems;
+
+        if (localStorage.getItem("scheduleCartItems")) {
+            scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        } else {
+            localStorage.setItem("scheduleCartItems", JSON.stringify([]));
+            scheduleCartItems = [];
+        }
+        let customizeItOption = "Default";
+        let deliveryDate;
+        let deliveryTime;
+        let mealMenuDate = this.state.menuName.split("-");
+
+        //Set Data
+        mealRecipe.forEach(item => {
+            if (item.cardIdNumber === cardId) {
+                customizeItOption = item.customizeItOption
+            }
+        })
+
+        deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " "
+            + (this.state.subscriptionAllowedDays.dates[0].getDate()) + ", " + this.state.subscriptionAllowedDays.dates[0].getFullYear();
+
+        deliveryTime = this.state.userSubscriptionData.deliveryTime[0];
+
+        mealMenuDate = `${mealMenuDate[2]}-${mealMenuDate[3]}-${mealMenuDate[1]}`;
+
+        //Add Item To Cart
+
+        let obj = {
+            menuCardIndex: cardId,
+            img: {
+                alt: mealImg.alt,
+                cookingStep: mealImg.cookingStep,
+                isChefImg: mealImg.isChefImg,
+                isMainRecipeImg: mealImg.isMainRecipeImg,
+                url: mealImg.url
+            },
+            mealName: mealInfo.mealName,
+            pricePerUnit: mealInfo.price,
+            price: mealInfo.price,
+            mealMenuDate: mealMenuDate,
+            cardIndex: scheduleCartItems.length,
+            servings: 1,
+            deliveryDate: deliveryDate,
+            deliveryTime: deliveryTime,
+            customizeIt: customizeItOption,
+            isSubscriptionItem: true
+        }
+        scheduleCartItems.push(obj)
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems))
+
+
     }
 
     populateMealNameLocalStorage = (mealName, cardIDNumber, mealCategory) => {
@@ -399,6 +656,19 @@ class WeeklyMenu extends Component {
         this.forceUpdate();
     }
 
+    removeItemFromScheduleItems = (cardID) => {
+        let array = JSON.parse(localStorage.getItem("scheduleCartItems"));
+
+        array.forEach((item, index) => {
+            if (cardID === item.menuCardIndex) {
+                array.splice(index, 1);
+            }
+        })
+
+        localStorage.setItem("scheduleCartItems", JSON.stringify(array));
+        this.forceUpdate();
+    }
+
     decreaseServings = (cardID) => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
 
@@ -406,7 +676,7 @@ class WeeklyMenu extends Component {
             if (cardID === item.menuCardIndex) {
                 if (parseInt(item.servings) > 1) {
                     item.servings--;
-                    item.price = item.pricePerUnit*item.servings;
+                    item.price = item.pricePerUnit * item.servings;
                 }
             }
         })
@@ -422,7 +692,7 @@ class WeeklyMenu extends Component {
             if (cardId === item.menuCardIndex) {
                 if (parseInt(item.servings) > 1 || parseInt(item.servings) === 1) {
                     item.servings = parseInt(item.servings) + 1;
-                    item.price = item.pricePerUnit*item.servings;
+                    item.price = item.pricePerUnit * item.servings;
                 }
             }
         })
@@ -465,8 +735,12 @@ class WeeklyMenu extends Component {
                             customizeCardClicked={this.switchToCustomize.bind(this)}
                             customizeCardIndex={this.state.customizeCardIndex}
                             removeItemFromCart={this.removeItemFromCart.bind(this)}
+                            removeItemFromScheduleItems={this.removeItemFromScheduleItems.bind(this)}
                             increaseServings={this.increaseServings.bind(this)}
                             decreaseServings={this.decreaseServings.bind(this)}
+                            isUserSubscribed={this.state.isUserSubscribed}
+                            userSubscriptionData={this.state.userSubscriptionData}
+                            scheduleAMealHandler={this.scheduleAMealHandler.bind(this)}
                             // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
                         />
 
@@ -474,6 +748,7 @@ class WeeklyMenu extends Component {
 
                 }
             </div>
+
         )
     }
 

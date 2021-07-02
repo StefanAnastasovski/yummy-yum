@@ -66,15 +66,18 @@ const Menu = (props) => {
                     populateLocalStorageOnCustomizeIt={() => populateLocalStorage(item.meal.mealName,
                         (item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString()))}
                     removeItemFromCart={props.removeItemFromCart}
+                    removeItemFromScheduleItems={props.removeItemFromScheduleItems}
                     increaseServings={props.increaseServings}
                     decreaseServings={props.decreaseServings}
                     mealCustomizeOptions={item.meal.mealCustomizeOptions}
+                    isUserSubscribed={props.isUserSubscribed}
+                    userSubscriptionData={props.userSubscriptionData}
+                    scheduleAMealHandler={props.scheduleAMealHandler}
                 />
 
             </li>
         });
     }
-
 
     let populateLocalStorage = (mealName, cardIdNumber) => {
         let temp = JSON.parse(localStorage.getItem("mealRecipe"));
@@ -108,7 +111,6 @@ const Menu = (props) => {
 
 
     }
-
 
     let checkMenuName = (menuName) => {
         let menu = props.menu;

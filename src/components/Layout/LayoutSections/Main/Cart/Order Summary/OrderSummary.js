@@ -1,11 +1,15 @@
 import React from "react";
+import Aux from "../../../../../../hoc/Auxilliary";
 
 
 const OrderSummary = (props) => {
 
+    let shouldShowScheduleBtn = JSON.parse(localStorage.getItem("scheduleCartItems"));
+
     return (
 
         <div className="card">
+
             <h3 className="pb-3">Order Summary</h3>
             <div className="py-2">
                 <div className="order-summary-meals">
@@ -60,10 +64,38 @@ const OrderSummary = (props) => {
 
                 {
                     props.redirectToCheckoutError.length > 0 ?
-                        <p className="text-danger text-center font-size-1">{props.redirectToCheckoutError} </p>: null
+                        <p className="text-danger text-center font-size-1">{props.redirectToCheckoutError} </p> : null
                 }
 
             </div>
+
+            {
+
+                shouldShowScheduleBtn.length > 0 &&
+
+                <Aux>
+
+                    <hr/>
+
+                    <div className="shopping-cart-schedule-field">
+
+                        <button type="button"
+                                className="btn-shopping-cart-schedule"
+                                onClick={props.allowToContinueSchedule}>
+                            Schedule
+                        </button>
+
+
+                        {
+                            props.scheduleMealError.length > 0 &&
+                            <p className="text-danger text-center font-size-2">{props.scheduleMealError} </p>
+                        }
+
+                    </div>
+
+                </Aux>
+
+            }
 
         </div>
 

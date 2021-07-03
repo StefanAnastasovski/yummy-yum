@@ -2,13 +2,13 @@ import React, {Component} from "react";
 
 import "./UserDashboard.css";
 
-import OrderCalls from '../../../../repository/get/getOrderInfo';
-import UserInfoCalls from '../../../../repository/get/getUser';
+// import OrderCalls from '../../../../repository/get/getOrderInfo';
+// import UserInfoCalls from '../../../../repository/get/getUser';
 import CreditCardCalls from '../../../../repository/get/getCreditCard';
 import ShippingAddressCalls from '../../../../repository/get/getShippingAddress';
-import DeliveryAddressCalls from '../../../../repository/get/getDeliveryAddress';
+// import DeliveryAddressCalls from '../../../../repository/get/getDeliveryAddress';
 import SubscriptionPlanCalls from '../../../../repository/get/getSubscriptionPlan';
-import Subscription from '../../../../repository/get/getSubscription';
+// import Subscription from '../../../../repository/get/getSubscription';
 
 import postCreditCard from '../../../../repository/post/postCreditCard';
 import postShippingAddress from '../../../../repository/post/postShippingAddress';
@@ -600,10 +600,13 @@ class UserDashboard extends Component {
     }
 
     onChangeWeeklyDeliveryDaysHandler = (event) => {
+        let subscriptionPlanValues = JSON.parse(localStorage.getItem("userInformation"));
         let index = event.target.name.split("-");
         index = index[index.length - 1]
         let weeklyDeliveryDays = this.state.subscriptionPlanValues.weeklyDeliveryDays;
         weeklyDeliveryDays[index] = event.target.value;
+        subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays = weeklyDeliveryDays;
+        localStorage.setItem("userInformation", JSON.stringify(subscriptionPlanValues));
         this.setState(prevState => ({
             subscriptionPlanValues: {
                 ...prevState.subscriptionPlanValues,
@@ -613,10 +616,13 @@ class UserDashboard extends Component {
     }
 
     onChangeDeliveryTimeHandler = (event) => {
+        let subscriptionPlanValues = JSON.parse(localStorage.getItem("userInformation"));
         let index = event.target.name.split("-");
         index = index[index.length - 1]
         let deliveryTime = this.state.subscriptionPlanValues.deliveryTime;
         deliveryTime[index] = event.target.value;
+        subscriptionPlanValues.subscriptionPlanValues.deliveryTime = deliveryTime;
+        localStorage.setItem("userInformation", JSON.stringify(subscriptionPlanValues));
         this.setState(prevState => ({
             subscriptionPlanValues: {
                 ...prevState.subscriptionPlanValues,

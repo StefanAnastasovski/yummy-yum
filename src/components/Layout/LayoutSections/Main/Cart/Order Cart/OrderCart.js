@@ -1,8 +1,4 @@
 import React from "react";
-import Image from "../../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
-import OrderCartDeliveryTime from "./OrderCartComponents/OrderCartDeliveryTime";
-import OrderCartDeliveryDate from "./OrderCartComponents/OrderCartDeliveryDate";
-import OrderCartCustomizeIt from "./OrderCartComponents/OrderCartCustomizeIt";
 import {useHistory} from 'react-router-dom';
 import SellingOrderCart from "../CartTypes/SellingOrderCart";
 import SubscriptionOrderCart from "../CartTypes/SubscriptionOrderCart";
@@ -58,7 +54,6 @@ const OrderCart = (props) => {
     return (
 
         <div className="card">
-
             {
                 !props.isSubscriptionItem ?
                     <SellingOrderCart
@@ -79,6 +74,7 @@ const OrderCart = (props) => {
                         weekDates={weekDates}
                         deliveryDateHandler={deliveryDateHandler.bind(this)}
                         deliveryTimeHandler={deliveryTimeHandler.bind(this)}
+                        allowToContinueSchedule={props.allowToContinueSchedule}
                         deliveryTimeValue={props.deliveryTimeValue}
                         deliveryDateValue={props.deliveryDateValue}
                         redirectToURL={redirectToURL}

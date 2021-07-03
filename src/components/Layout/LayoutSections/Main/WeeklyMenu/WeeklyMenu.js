@@ -208,10 +208,10 @@ class WeeklyMenu extends Component {
     isUserSubscribed = async () => {
         await this.getSubscriptionInformationIfExist();
         if (Object.keys(this.state.userSubscriptionData).length !== 0) {
-            localStorage.setItem("Subscription", JSON.stringify(this.state.userSubscriptionData))
+            localStorage.setItem("subscription", JSON.stringify(this.state.userSubscriptionData))
             await this.checkThePeriodOfSubscription();
         } else {
-            localStorage.setItem("Subscription", JSON.stringify({}));
+            localStorage.setItem("subscription", JSON.stringify({}));
             this.setState({
                 isUserSubscribed: false
             })
@@ -573,7 +573,7 @@ class WeeklyMenu extends Component {
     scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
 
         //Data
-        let subscriptionInfo = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues
+        // let subscriptionInfo = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues
         let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         let scheduleCartItems;
 

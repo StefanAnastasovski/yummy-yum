@@ -684,7 +684,8 @@ class Payment extends Component {
             customizeIt: orderMeal.customizeIt,
             price: parseFloat(orderMeal.price),
             deliveryTime: orderMeal.deliveryTime,
-            deliveryDate: orderMeal.deliveryDate
+            deliveryDate: orderMeal.deliveryDate,
+            isSubscription: false
         };
     }
 

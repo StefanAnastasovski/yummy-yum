@@ -14,24 +14,6 @@ const OrderCartDeliveryDate = (props) => {
 
         let currentDate = new Date();
 
-        // let mondayInCurrentWeekDate = getMondayInCurrentWeek().join("-");
-        // let mondayInMenuWeekDate = newDate.getMonth() + "-" + newDate.getDate() + "-" + newDate.getFullYear();
-        //
-        // let allowOrder = false;
-        //
-        // if (mondayInCurrentWeekDate === mondayInMenuWeekDate &&
-        //     (currentDate.getDay() === 0 && currentDate.getHours() < 6)) {
-        //     allowOrder = true;
-        // } else if (newDate.getTime() > currentDate.getTime()) {
-        //     allowOrder = true;
-        // } else if (newDate.getTime() < currentDate.getTime()) {
-        //     allowOrder = false;
-        // } else if (mondayInCurrentWeekDate === mondayInMenuWeekDate &&
-        //     (currentDate.getDay() === 0 && currentDate.getHours() > 6)) {
-        //     allowOrder = false
-        // }
-
-
         if (currentDate.getTime() > newDate.getTime()
             || currentDate.getTime() === newDate.getTime()) {
             const month = currentDate.toLocaleString('default', {month: 'long'});

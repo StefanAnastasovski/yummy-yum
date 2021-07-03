@@ -137,3 +137,26 @@
 
 .main-wrapper .cart-wrapper .shopping-cart-customize-it-recipe {
 }
+
+
+.main-wrapper .cart-wrapper .shopping-cart-schedule-field {
+
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-schedule {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background-color: #530ea2;
+    height: 45px !important;
+    text-decoration: none;
+    color: white !important;
+}
+
+.main-wrapper .cart-wrapper .btn-shopping-cart-schedule:hover {
+    background-color: #E6D8F3;
+    color: #3c0c7a !important;
+    border: 1px solid #3c0c7a;
+}

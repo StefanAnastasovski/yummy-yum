@@ -4,6 +4,10 @@ import "./Cart.css";
 import OrderCart from "./Order Cart/OrderCart";
 import OrderSummary from "./Order Summary/OrderSummary";
 
+import OrderMealsCalls from "./../../../../../repository/get/getOrderMeals";
+import postOrderInfo from '../../../../../repository/post/postOrderInfo';
+import postOrderMeals from "../../../../../repository/post/postOrderMeals";
+
 
 class Cart extends Component {
 
@@ -22,7 +26,10 @@ class Cart extends Component {
         loadingReceipt: true,
         isSomethingChanged: false,
         allowToContinueCheckout: true,
-        redirectToCheckoutError: ""
+        redirectToCheckoutError: "",
+        scheduleMealError: "",
+        showScheduleBtn: false,
+        subscriptionOrderedMeals: []
     }
 
     async componentDidMount() {
@@ -33,6 +40,144 @@ class Cart extends Component {
 
 
         this.allowToContinueCheckout();
+    }
+
+    getOrderMeals = async (startDate, endDate) => {
+
+        let isSubscription = true;
+        console.log(startDate)
+        console.log(endDate)
+
+        try {
+            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(startDate, endDate, isSubscription)
+                .then((response) => {
+                    console.log(response.data)
+                    if (response.data) {
+                        this.setState({
+                            subscriptionOrderedMeals: response.data
+                        })
+                    }
+
+                })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    createOrderInfo = async () => {
+        let orderInfo = JSON.parse(localStorage.getItem("scheduleCartItems"))
+        let subscription = JSON.parse(localStorage.getItem("subscription"))
+        let orderId = this.generateOrderID();
+        let obj = {
+            mealNumber: parseInt(orderInfo.length),
+            servingNumber: parseInt((orderInfo.length) * (subscription.servingsPerMeal)),
+            subtotal: 0,
+            shippingCost: 0,
+            total: 0,
+            orderId: orderId,
+            user: {
+                username: localStorage.getItem("username")
+            }
+        }
+
+        await postOrderInfo.createOrderInfo(obj).then(response => {
+// console.log({message: "The OrderInfo is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+
+        return orderId;
+
+    }
+
+    createOrderMeals = async (orderId) => {
+
+        let orderMealItems = JSON.parse(localStorage.getItem("scheduleCartItems"))
+
+        let orderMeals = [];
+        orderMealItems.forEach(item => {
+            orderMeals.push(this.orderSubscriptionMealObject(item));
+        })
+
+        let obj = {
+            orderMeals: orderMeals
+        }
+//
+        await postOrderMeals.createOrderMeals(obj, orderId).then(response => {
+// console.log({message: "The OrderMeals is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    generateOrderID = () => {
+        let dateToday = new Date();
+        let randNumber = Math.floor(100000 + Math.random() * 900000);
+        return dateToday.getFullYear().toString() +
+            (dateToday.getMonth() + 1).toString() +
+            dateToday.getDate().toString() + randNumber;
+    }
+
+    convertStringToDate = (date) => {
+
+        let array = [];
+
+        date.split(',').forEach((dateItems, index) => {
+            if (index === 0) {
+                let temp = dateItems.split(" ");
+                temp.forEach((item) => {
+                    array.push(item.trim());
+                })
+            } else if (index === 1) {
+                array.push(dateItems.trim());
+            }
+        })
+
+        const months = {
+            "January": 0,
+            "February": 1,
+            "March": 2,
+            "April": 3,
+            "May": 4,
+            "June": 5,
+            "July": 6,
+            "August": 7,
+            "September": 8,
+            "October": 9,
+            "November": 10,
+            "December": 11
+        };
+
+        array[0] = months[array[0]];
+
+        if (parseInt(array[0] + 1) < 10) {
+            array[0] = '0' + parseInt(array[0] + 1);
+        }
+        if (parseInt(array[1]) < 10) {
+            array[1] = '0' + parseInt(array[1]);
+        }
+
+        let newDate = [array[2], array[0], array[1]];
+
+        return newDate.join("-");
+
+    }
+
+    orderSubscriptionMealObject = (orderMeal) => {
+        let mealMenuDate = orderMeal.mealMenuDate.split("-");
+        let menuName = "M-" + mealMenuDate[2] + "-" + mealMenuDate[1] + "-" + mealMenuDate[0];
+        let newDate = this.convertStringToDate(orderMeal.deliveryDate);
+        return {
+            mealName: orderMeal.mealName,
+            menuName: menuName,
+            servings: parseInt(JSON.parse(localStorage.getItem("subscription")).servingsPerMeal),
+            customizeIt: orderMeal.customizeIt,
+            price: 0,
+            deliveryTime: orderMeal.deliveryTime,
+            deliveryDate: newDate,
+            isSubscription: true
+        };
     }
 
     allowToContinueCheckout = () => {
@@ -61,6 +206,118 @@ class Cart extends Component {
         })
     }
 
+    separateMealsByWeeks = async () => {
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+
+        let numberOfDifferentWeeks = 1;
+        let mealMenuDates = [];
+
+        let mealMenuDate = scheduleCartItems[0].mealMenuDate;
+        mealMenuDates.push(mealMenuDate);
+        scheduleCartItems.forEach((item, index) => {
+            console.log(item.mealMenuDate)
+            if (mealMenuDate !== item.mealMenuDate) {
+                numberOfDifferentWeeks++;
+                mealMenuDate = item.mealMenuDate;
+                mealMenuDates.push(mealMenuDate);
+            }
+        })
+
+        console.log(numberOfDifferentWeeks);
+        let arr = [];
+        for (let i = 0; i < numberOfDifferentWeeks; i++) {
+            arr[i] = {
+                mealMenuDate: mealMenuDates[i],
+                meals: []
+            };
+        }
+        console.log(arr)
+        console.log(mealMenuDates)
+
+        scheduleCartItems.forEach((item, index) => {
+
+            mealMenuDates.forEach((mealMenuDate, mealMenuDateIndex) => {
+                if (item.mealMenuDate === mealMenuDate) {
+                    arr[mealMenuDateIndex].meals.push(item);
+                }
+            })
+
+        })
+        console.log(arr)
+
+    }
+
+    allowToContinueSchedule = async () => {
+
+
+        //DATA & SET
+        let subscription = JSON.parse(localStorage.getItem("subscription"));
+        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
+
+        console.log(subscription)
+        console.log(scheduleCartItems)
+        console.log(userInformation)
+        let weeklyAllowedNumberOfDays = subscription.numberOfWeeklyDeliveryDays
+        let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals;
+        let startDate = subscription.activationDate;
+        let endDate = subscription.canceledDate;
+        let isNumberOfAllowedMealsValid = false;
+        let scheduledMeals;
+        let differentNumberOfWeeks;
+        let subscriptionType = subscription.subscriptionType;
+
+        //SET
+
+        // await this.getOrderMeals(startDate, endDate);
+        await this.separateMealsByWeeks();
+
+        console.log("weeklyAllowedNumberOfMeals: " + weeklyAllowedNumberOfMeals)
+        console.log("scheduleCartItems: " + scheduleCartItems.length)
+        console.log("subscriptionType: " + subscriptionType)
+
+        if (!subscription.isCanceled) {
+
+            if (subscriptionType === "Weekly") {
+                await this.getOrderMeals(startDate, endDate);
+                scheduledMeals = this.state.subscriptionOrderedMeals;
+                console.log(scheduledMeals)
+                if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
+                    console.log("good to go")
+                    let orderId = await this.createOrderInfo();
+                    await this.createOrderMeals(orderId);
+                    // localStorage.setItem("scheduleCartItems", JSON.stringify([]));
+
+                } else if (scheduledMeals.length + scheduleCartItems.length === weeklyAllowedNumberOfMeals) {
+                    console.log("good to go")
+                    let orderId = await this.createOrderInfo();
+                    await this.createOrderMeals(orderId);
+                } else {
+                    await this.getOrderMeals(startDate, endDate);
+                    scheduledMeals = this.state.subscriptionOrderedMeals;
+                    console.log(scheduledMeals)
+                    console.log(weeklyAllowedNumberOfMeals)
+                    if (scheduledMeals.length === weeklyAllowedNumberOfMeals) {
+                        this.setState({
+                            scheduleMealError: `You reach the limit!`
+                        })
+                    } else {
+                        this.setState({
+                            scheduleMealError: `You can schedule 
+                        ${(weeklyAllowedNumberOfMeals - scheduledMeals.length)} more meals. 
+                        Please, schedule the right number of meals!`
+                        })
+                    }
+                }
+            } else if (subscriptionType === "Monthly") {
+
+            }
+
+
+        }
+
+    }
+
     redirectToCheckout = () => {
         if (this.state.allowToContinueCheckout) {
             window.location.href = "/cart/checkout"
@@ -69,7 +326,16 @@ class Cart extends Component {
                 redirectToCheckoutError: "Remove meals that you can't order, please!"
             })
         }
+    }
 
+    redirectToSchedule = () => {
+        if (this.state.allowToContinueCheckout) {
+            window.location.href = "/cart/schedule"
+        } else {
+            this.setState({
+                redirectToCheckoutError: "Remove meals that you can't order, please!"
+            })
+        }
     }
 
     calculateShipping = (servings) => {
@@ -158,6 +424,7 @@ class Cart extends Component {
             }
         })
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+        let subscription = JSON.parse(localStorage.getItem("subscription"));
         scheduleCartItems = scheduleCartItems.map((item, index) => {
             let mealMenuDate = item.mealMenuDate;
             return {
@@ -169,16 +436,16 @@ class Cart extends Component {
                     "isMainRecipeImg": item.img.isMainRecipeImg
                 },
                 "mealName": item.mealName,
-                "price": parseFloat(item.price),
+                "price": 0,
                 "mealMenuDate": mealMenuDate,
-                "pricePerUnit": parseFloat(item.pricePerUnit),
+                "pricePerUnit": 0,
                 "cardIndex": index,
                 "menuCardIndex": item.menuCardIndex,
-                "servings": parseInt(item.servings),
-                "deliveryDate": item.deliveryDate,
-                "deliveryTime": item.deliveryTime,
+                "servings": parseInt(subscription.servingsPerMeal),
+                "deliveryDate": subscription.weeklyDeliveryDays[index],
+                "deliveryTime": subscription.deliveryTime[index],
                 "customizeItOption": item.customizeIt,
-                "isSubscriptionItem": item.isSubscriptionItem
+                "isSubscriptionItem": true
             }
         })
         items = shoppingCartItems.concat(scheduleCartItems);
@@ -331,6 +598,7 @@ class Cart extends Component {
                                                         cardHandler={this.cardHandler}
                                                         servingOnChangeHandler={this.servingOnChangeHandler.bind(this)}
                                                         removeHandler={this.removeHandler.bind(this)}
+                                                        allowToContinueSchedule={this.allowToContinueSchedule}
                                                         deliveryDateOnChangeHandler={(e) => {
                                                             this.deliveryDateOnChangeHandler(e, index).then(r => null)
                                                         }}
@@ -366,9 +634,12 @@ class Cart extends Component {
 
                                 {!this.state.loadingReceipt && <OrderSummary
                                     redirectToCheckout={this.redirectToCheckout}
+                                    redirectToSchedule={this.redirectToSchedule}
+                                    allowToContinueSchedule={this.allowToContinueSchedule}
                                     redirectToCheckoutError={this.state.redirectToCheckoutError}
                                     allowCheckout={this.state.allowToContinueCheckout}
                                     orderSummary={this.state.orderSummary}
+                                    scheduleMealError={this.state.scheduleMealError}
                                 />
                                 }
 

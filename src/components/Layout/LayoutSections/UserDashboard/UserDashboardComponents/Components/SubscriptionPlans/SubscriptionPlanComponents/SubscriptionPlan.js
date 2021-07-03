@@ -215,15 +215,18 @@ const SubscriptionPlan = (props) => {
                                 </p>
                             </div>
                             {
-                                !props.isSubscriptionExist ? weeklyDeliveryDayFields.map((item, index) => {
+                                !props.isSubscriptionExist ? weeklyDeliveryDayFields.map((item, indexDayField) => {
+                                    // console.log(weeklyDeliveryDayFields)
+                                    // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays)
+                                    // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[item-1])
                                         return <div className="row"
-                                                    key={"weekly-delivery-day-id-" + (index + 1)}>
+                                                    key={"weekly-delivery-day-id-" + (indexDayField + 1)}>
                                             <div className="col pr-1">
-                                                <p className="text-color-green">Day #{(index + 1)}</p>
+                                                <p className="text-color-green">Day #{(indexDayField + 1)}</p>
                                                 <select
-                                                    value={subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[index]}
+                                                    value={subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[indexDayField]}
                                                     className="p-2 w-100"
-                                                    name={"weekly-delivery-day-id-" + (index)}
+                                                    name={"weekly-delivery-day-id-" + (indexDayField)}
                                                     onChange={props.onChangeWeeklyDeliveryDaysHandler}
                                                 >
                                                     {
@@ -238,7 +241,7 @@ const SubscriptionPlan = (props) => {
                                             </div>
                                             <div className="col align-self-end pl-1">
                                                 <select className="p-2 w-100"
-                                                        name={"delivery-time-id-" + index}
+                                                        name={"delivery-time-id-" + indexDayField}
                                                         onChange={props.onChangeDeliveryTimeHandler}
                                                 >
 

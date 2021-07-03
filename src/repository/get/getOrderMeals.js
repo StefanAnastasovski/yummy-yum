@@ -5,6 +5,9 @@ const getOrderMeals = {
     fetchOrderMealsByOrderId: (orderId) => {
         return axios.get(`/api/order-meals/orderId=${orderId}`)
     },
+    fetchOrderMealsBetweenDatesAndIsSubscription: (startDate, endDate, isSubscription) => {
+        return axios.get(`/api/order-meals/subscription/startDate=${startDate}&endDate=${endDate}/subscription=${isSubscription}`)
+    },
 };
 
 export default getOrderMeals;

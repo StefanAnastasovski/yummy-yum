@@ -113,14 +113,15 @@ const SubscriptionOrderCart = (props) => {
 
                 </div>
 
-                <div className="shopping-cart-remove">
+                <div className="shopping-cart-remove d-flex flex-column align-self-end">
 
                     <button
-                        type="button" className="btn-remove-item" name="remove-item-from-cart"
-                        onClick={props.removeItem}
+                        type="button" className="btn-shopping-cart-schedule" name="schedule-a-meal"
+                        onClick={props.allowToContinueSchedule}
                     >
                         Schedule
                     </button>
+
 
                 </div>
 

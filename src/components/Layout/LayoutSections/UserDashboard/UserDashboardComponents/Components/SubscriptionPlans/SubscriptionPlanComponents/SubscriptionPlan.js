@@ -207,7 +207,7 @@ const SubscriptionPlan = (props) => {
 
                 <div className="col d-flex py-3">
 
-                    <div className="row w-100 p-2">
+                    <div className="row w-100">
                         <div className="col">
                             <div className="col d-flex flex-row">
                                 <p className="col pr-1">
@@ -216,9 +216,9 @@ const SubscriptionPlan = (props) => {
                             </div>
                             {
                                 !props.isSubscriptionExist ? weeklyDeliveryDayFields.map((item, indexDayField) => {
-                                    // console.log(weeklyDeliveryDayFields)
-                                    // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays)
-                                    // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[item-1])
+                                        // console.log(weeklyDeliveryDayFields)
+                                        // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays)
+                                        // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[item-1])
                                         return <div className="row"
                                                     key={"weekly-delivery-day-id-" + (indexDayField + 1)}>
                                             <div className="col pr-1">
@@ -285,6 +285,14 @@ const SubscriptionPlan = (props) => {
                     !props.isSubscriptionExist && <div className="col d-flex flex-column py-3 align-items-baseline">
                         <div className="d-flex flex-row align-items-baseline">
                             <p className="font-size-2">
+                                Subtotal:
+                            </p>
+                            <p className="text-color-green font-size-2 ml-1 bg-white">
+                                ${(props.totalAmount).toFixed(2)}
+                            </p>
+                        </div>
+                        <div className="d-flex flex-row align-items-baseline">
+                            <p className="font-size-2">
                                 Shipping Cost:
                             </p>
                             <p className="text-color-green font-size-2 ml-1 bg-white">
@@ -293,18 +301,10 @@ const SubscriptionPlan = (props) => {
                         </div>
                         <div className="d-flex flex-row align-items-baseline">
                             <p className="font-size-2">
-                                Shipping Cost Per Serving:
+                                Shipping Cost (Per Serving):
                             </p>
                             <p className="text-color-green font-size-2 ml-1 bg-white">
                                 ${(props.shippingCostPerServing).toFixed(2)}
-                            </p>
-                        </div>
-                        <div className="d-flex flex-row align-items-baseline">
-                            <p className="font-size-2">
-                                Subtotal:
-                            </p>
-                            <p className="text-color-green font-size-2 ml-1 bg-white">
-                                ${(props.totalAmount).toFixed(2)}
                             </p>
                         </div>
                         <div className="d-flex flex-row align-items-baseline">
@@ -339,18 +339,20 @@ const SubscriptionPlan = (props) => {
                                 </div>
                             }
                         </div> :
-                        <div className="d-flex w-75">
-                            <div className="col-6 py-2 d-flex w-50">
-                                <button type="button" className=" btn-save-user-information"
+                        <div className="d-flex flex-column w-75">
+                            <div className="col py-2 d-flex w-100">
+                                <a className="ml-1 w-50 text-center btn-save-user-information text-decoration-none"
+                                   name="take-a-meal"
+                                   href="/weekly-menu">
+                                    Take a Meal
+                                </a>
+                            </div>
+                            <div className="col py-2 d-flex w-75">
+                                <button type="button" className="w-25 btn-save-user-information"
                                         name="edit-subscription-plan"
                                         onClick={props.onSubmitSave}>
                                     Edit
                                 </button>
-                                <a className="ml-1 btn-save-user-information text-decoration-none"
-                                        name="take-a-meal"
-                                        href="/weekly-menu">
-                                    Take a Meal
-                                </a>
                             </div>
                         </div>
 

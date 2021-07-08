@@ -376,6 +376,16 @@ class MainRouter extends Component {
 
                     </Switch>
 
+                    <Switch>
+
+                        <Route exact path="/cart/schedule">
+
+                            <PaymentSuccessful isSubscription={true}/>
+
+                        </Route>
+
+                    </Switch>
+
                 </Router>
 
             </Aux>

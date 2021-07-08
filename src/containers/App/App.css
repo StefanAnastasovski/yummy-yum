@@ -8,32 +8,42 @@ body, p, h1, h2, h3, h4, h5, a, input, textarea, button {
     margin: 0;
 }
 
-.text-color-green{
+
+.text-color-black {
+    color: black !important;
+}
+
+.text-color-green {
     color: #6b9958 !important;
 }
 
-.text-color-mlgreen{
+.text-color-mlgreen {
     color: #579843 !important;
 }
 
-body .row, body .col, body .col-3, body ul, body .col-8, body .col-4, body .col-9{
-    padding:0 ;
-    margin:0 ;
+.text-color-darkgreen{
+    color: #0f4100 !important;
 }
 
-.font-size-1{
+
+body .row, body .col, body .col-3, body ul, body .col-8, body .col-4, body .col-9 {
+    padding: 0;
+    margin: 0;
+}
+
+.font-size-1 {
     font-size: 1.2em !important;
 }
 
-.font-size-2{
+.font-size-2 {
     font-size: 0.9em !important;
 }
 
-.font-size-3{
-    font-size:0.7em !important;
+.font-size-3 {
+    font-size: 0.7em !important;
 }
 
-.font-header-size-1{
+.font-header-size-1 {
     font-size: 4em !important;
 }
 

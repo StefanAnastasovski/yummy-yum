@@ -91,6 +91,7 @@ const SubscriptionOrderCart = (props) => {
                             mealMenuDate={props.cardInfo.mealMenuDate}
                             deliveryDateName="delivery-date"
                             deliveryDateId={"delivery-date-" + props.cardInfo.cardIndex}
+                            setCorrectDeliveryDate={props.setCorrectDeliveryDate}
                             deliveryDateOnChangeHandler={props.deliveryDateHandler}
                             deliveryDateValue={props.deliveryDateValue}
                         />

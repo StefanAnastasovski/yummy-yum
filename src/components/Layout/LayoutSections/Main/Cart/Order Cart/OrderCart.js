@@ -25,7 +25,10 @@ const OrderCart = (props) => {
 
     let deliveryDateHandler = (event) => {
         props.deliveryDateOnChangeHandler(event, props.cardInfo.cardIndex);
+    }
 
+    let setCorrectDeliveryDate = (index, deliveryDate) => {
+        props.setCorrectDeliveryDate(index, deliveryDate);
     }
 
     let deliveryTimeHandler = (event, cardId) => {
@@ -74,6 +77,7 @@ const OrderCart = (props) => {
                         weekDates={weekDates}
                         deliveryDateHandler={deliveryDateHandler.bind(this)}
                         deliveryTimeHandler={deliveryTimeHandler.bind(this)}
+                        setCorrectDeliveryDate={setCorrectDeliveryDate}
                         allowToContinueSchedule={props.allowToContinueSchedule}
                         deliveryTimeValue={props.deliveryTimeValue}
                         deliveryDateValue={props.deliveryDateValue}

@@ -45,8 +45,6 @@ class Cart extends Component {
     getOrderMeals = async (startDate, endDate) => {
 
         let isSubscription = true;
-        console.log(startDate)
-        console.log(endDate)
 
         try {
             await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(startDate, endDate, isSubscription)
@@ -109,6 +107,7 @@ class Cart extends Component {
             console.log(error);
         })
 
+        this.redirectToSchedule();
     }
 
     generateOrderID = () => {
@@ -223,7 +222,6 @@ class Cart extends Component {
             }
         })
 
-        console.log(numberOfDifferentWeeks);
         let arr = [];
         for (let i = 0; i < numberOfDifferentWeeks; i++) {
             arr[i] = {
@@ -231,8 +229,6 @@ class Cart extends Component {
                 meals: []
             };
         }
-        console.log(arr)
-        console.log(mealMenuDates)
 
         scheduleCartItems.forEach((item, index) => {
 
@@ -243,7 +239,6 @@ class Cart extends Component {
             })
 
         })
-        console.log(arr)
 
     }
 
@@ -255,9 +250,6 @@ class Cart extends Component {
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
         let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
 
-        console.log(subscription)
-        console.log(scheduleCartItems)
-        console.log(userInformation)
         let weeklyAllowedNumberOfDays = subscription.numberOfWeeklyDeliveryDays
         let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals;
         let startDate = subscription.activationDate;
@@ -272,31 +264,22 @@ class Cart extends Component {
         // await this.getOrderMeals(startDate, endDate);
         await this.separateMealsByWeeks();
 
-        console.log("weeklyAllowedNumberOfMeals: " + weeklyAllowedNumberOfMeals)
-        console.log("scheduleCartItems: " + scheduleCartItems.length)
-        console.log("subscriptionType: " + subscriptionType)
-
         if (!subscription.isCanceled) {
-
+            scheduledMeals = this.state.subscriptionOrderedMeals;
+            console.log(scheduledMeals)
             if (subscriptionType === "Weekly") {
                 await this.getOrderMeals(startDate, endDate);
                 scheduledMeals = this.state.subscriptionOrderedMeals;
-                console.log(scheduledMeals)
                 if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
-                    console.log("good to go")
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
-                    // localStorage.setItem("scheduleCartItems", JSON.stringify([]));
 
                 } else if (scheduledMeals.length + scheduleCartItems.length === weeklyAllowedNumberOfMeals) {
-                    console.log("good to go")
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
                 } else {
                     await this.getOrderMeals(startDate, endDate);
                     scheduledMeals = this.state.subscriptionOrderedMeals;
-                    console.log(scheduledMeals)
-                    console.log(weeklyAllowedNumberOfMeals)
                     if (scheduledMeals.length === weeklyAllowedNumberOfMeals) {
                         this.setState({
                             scheduleMealError: `You reach the limit!`
@@ -397,6 +380,29 @@ class Cart extends Component {
 
     }
 
+    convertDayInAWeekToDate = (mealMenuDate, deliveryDay) => {
+
+        let mondayDate = mealMenuDate.split("-");
+        mondayDate = new Date(mondayDate[2], (mondayDate[0] - 1), mondayDate[1]);
+
+        let days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6
+        }
+
+        let deliveryDate = new Date(mondayDate.getUTCFullYear(), mondayDate.getMonth(),
+            mondayDate.getDate() + days[deliveryDay])
+
+        return deliveryDate.toLocaleString('default', {month: 'long'}) + " " +
+            (deliveryDate.getDate()) + ", " + deliveryDate.getFullYear();
+
+    }
+
     populateItems = async () => {
         let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
@@ -427,6 +433,12 @@ class Cart extends Component {
         let subscription = JSON.parse(localStorage.getItem("subscription"));
         scheduleCartItems = scheduleCartItems.map((item, index) => {
             let mealMenuDate = item.mealMenuDate;
+            let dates = this.populateDates(mealMenuDate);
+            let deliveryDate = this.convertDayInAWeekToDate(item.mealMenuDate, subscription.weeklyDeliveryDays[index])
+            if (!dates.includes(deliveryDate)) {
+                scheduleCartItems[index].deliveryDate = dates[0];
+                localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
+            }
             return {
                 "img": {
                     "url": item.img.url,
@@ -442,7 +454,7 @@ class Cart extends Component {
                 "cardIndex": index,
                 "menuCardIndex": item.menuCardIndex,
                 "servings": parseInt(subscription.servingsPerMeal),
-                "deliveryDate": subscription.weeklyDeliveryDays[index],
+                "deliveryDate": scheduleCartItems[index].deliveryDate ,
                 "deliveryTime": subscription.deliveryTime[index],
                 "customizeItOption": item.customizeIt,
                 "isSubscriptionItem": true
@@ -566,6 +578,78 @@ class Cart extends Component {
         await this.populateItems();
     }
 
+
+    populateDates = (mealMenuDate) => {
+
+        let deliveryDates = [];
+
+        let menuDate = mealMenuDate.split("-");
+
+        let newDate = new Date(menuDate[2], menuDate[0] - 1, menuDate[1])
+
+        let currentDate = new Date();
+
+        if (currentDate.getTime() > newDate.getTime()
+            || currentDate.getTime() === newDate.getTime()) {
+            const month = currentDate.toLocaleString('default', {month: 'long'});
+            let day = currentDate.getDate();
+            let dayInWeek = currentDate.getDay();
+
+            if (dayInWeek === 0) {
+                let deliveryDate = month + " " + (day) + ", " + currentDate.getFullYear();
+                deliveryDates.push(deliveryDate);
+            }
+
+            let iValue = dayInWeek + 1;
+            if (currentDate.getHours() < 6) {
+                iValue = dayInWeek;
+                --day;
+            }
+            if (dayInWeek > 0 && dayInWeek <= 6) {
+                for (let i = iValue; i <= 7; i++) {
+                    let deliveryDate = month + " " + (++day) + ", " + currentDate.getFullYear();
+                    deliveryDates.push(deliveryDate);
+                }
+            }
+        } else if (currentDate.getTime() < newDate.getTime()) {
+            const month = newDate.toLocaleString('default', {month: 'long'});
+            let day = newDate.getDate();
+            let dayInWeek = newDate.getDay();
+            if (dayInWeek > 0 && dayInWeek <= 6) {
+                if (dayInWeek === 1) {
+                    for (let i = dayInWeek; i <= 7; i++) {
+                        let deliveryDate = month + " " + (day++) + ", " + newDate.getFullYear();
+                        deliveryDates.push(deliveryDate);
+                    }
+                } else {
+                    let iValue = dayInWeek + 1;
+                    if (currentDate.getHours() < 6) {
+                        iValue = dayInWeek;
+                        day--;
+                    }
+                    for (let i = iValue; i <= 7; i++) {
+                        let deliveryDate = month + " " + (day++) + ", " + newDate.getFullYear();
+                        deliveryDates.push(deliveryDate);
+                    }
+                }
+
+            }
+        }
+
+        return deliveryDates;
+
+    }
+
+    setCorrectDeliveryDate = (index, correctDeliveryDate) => {
+        let items = this.state.items;
+        items[index].deliveryDate = correctDeliveryDate;
+
+        this.setState({
+            items: items
+
+        })
+    }
+
     render() {
 
         return (
@@ -599,6 +683,7 @@ class Cart extends Component {
                                                         servingOnChangeHandler={this.servingOnChangeHandler.bind(this)}
                                                         removeHandler={this.removeHandler.bind(this)}
                                                         allowToContinueSchedule={this.allowToContinueSchedule}
+                                                        setCorrectDeliveryDate={this.setCorrectDeliveryDate.bind(this)}
                                                         deliveryDateOnChangeHandler={(e) => {
                                                             this.deliveryDateOnChangeHandler(e, index).then(r => null)
                                                         }}

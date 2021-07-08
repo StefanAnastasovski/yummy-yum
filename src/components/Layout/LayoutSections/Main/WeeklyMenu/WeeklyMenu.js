@@ -570,6 +570,28 @@ class WeeklyMenu extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))
     }
 
+    setCorrectDeliveryDate = (mealMenuDate, deliveryDayNumber) => {
+        let subscription = JSON.parse(localStorage.getItem("subscription"));
+        let mondayDate = mealMenuDate.split("-");
+        mondayDate = new Date(mondayDate[1], mondayDate[2] - 1, mondayDate[3]);
+
+        let days = {
+            "Monday": 0,
+            "Tuesday": 1,
+            "Wednesday": 2,
+            "Thursday": 3,
+            "Friday": 4,
+            "Saturday": 5,
+            "Sunday": 6
+        }
+        let deliveryDate = new Date(mondayDate.getUTCFullYear(), mondayDate.getMonth(),
+            mondayDate.getDate() + days[subscription.weeklyDeliveryDays[deliveryDayNumber]]);
+
+        return deliveryDate.toLocaleString('default', {month: 'long'}) + " " +
+            (deliveryDate.getDate()) + ", " + deliveryDate.getFullYear();
+
+    }
+
     scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
 
         //Data
@@ -595,10 +617,11 @@ class WeeklyMenu extends Component {
             }
         })
 
-        deliveryDate = new Date().toLocaleString('default', {month: 'long'}) + " "
-            + (this.state.subscriptionAllowedDays.dates[0].getDate()) + ", " + this.state.subscriptionAllowedDays.dates[0].getFullYear();
+        deliveryDate = this.setCorrectDeliveryDate(this.state.menuName, scheduleCartItems.length)
+            // this.state.subscriptionAllowedDays.dates[scheduleCartItems.length]
+            //     .toLocaleDateString("default", {weekday: 'long'}));
 
-        deliveryTime = this.state.userSubscriptionData.deliveryTime[0];
+        deliveryTime = this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length];
 
         mealMenuDate = `${mealMenuDate[2]}-${mealMenuDate[3]}-${mealMenuDate[1]}`;
 

@@ -9,13 +9,23 @@ const PaymentSuccessful = (props) => {
 
     let config;
     let btnAction;
+    let showPayment = false;
 
     if (!props.isSubscription) {
+        showPayment = true;
         config = {
             title: "Payment Successful!",
             amountPaid: JSON.parse(localStorage.getItem("orderSummary")).total,
-            location: "/dashboard"
+            location: "/dashboard/user/personal-information"
         }
+    } else if (props.isSubscription && (JSON.parse(localStorage.getItem("scheduleCartItems")).length === 0)) {
+        showPayment = true;
+        config = {
+            title: "Payment Successful!",
+            amountPaid: JSON.parse(localStorage.getItem("subscriptionPayment")).totalAmount,
+            location: "/dashboard/user/personal-information"
+        }
+
     } else if (props.isSubscription) {
         let items = JSON.parse(localStorage.getItem("scheduleCartItems"))
         config = {
@@ -46,17 +56,22 @@ const PaymentSuccessful = (props) => {
                 </div>
 
                 <div className="ps-info">
-                    <h3>{config.title}</h3>
+                    {
+                        showPayment &&
+                        <h3>{config.title}</h3>
+                    }
                     <hr/>
                     {
-                        !props.isSubscription ?
-                            <Aux>
-                                <h5 className="text-uppercase">Amount paid</h5>
-                                <p className="text-color-green">
-                                    ${config.total}
-                                </p>
-                            </Aux> :
-                            <div>
+                        showPayment &&
+                        <Aux>
+                            <h5 className="text-uppercase">Amount paid</h5>
+                            <p className="text-color-green">
+                                ${config.amountPaid}
+                            </p>
+                        </Aux>
+                    }
+                    {
+                        props.isSubscription && !showPayment && <div>
                                 <div className="row d-flex flex-column">
                                     {
                                         config.mealNames.map((item, index) => {
@@ -105,7 +120,7 @@ const PaymentSuccessful = (props) => {
                 {
                     !props.isSubscription ? <div className="ps-dashboard">
                         <a href={config.location} className="ps-go-to-dashboard font-size-1">Go To Dashboard</a>
-                    </div> :  <div className="ps-dashboard" onClick={btnAction}>
+                    </div> : <div className="ps-dashboard" onClick={btnAction}>
                         <a href={config.location} className="ps-go-to-dashboard font-size-1">Go To Dashboard</a>
                     </div>
                 }

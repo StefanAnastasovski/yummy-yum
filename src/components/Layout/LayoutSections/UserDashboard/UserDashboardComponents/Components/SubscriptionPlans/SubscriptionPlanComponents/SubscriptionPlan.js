@@ -341,14 +341,14 @@ const SubscriptionPlan = (props) => {
                         </div> :
                         <div className="d-flex flex-column w-75">
                             <div className="col py-2 d-flex w-100">
-                                <a className="ml-1 w-50 text-center btn-save-user-information text-decoration-none"
+                                <a className="ml-1 col-6 text-center btn-save-user-information text-decoration-none"
                                    name="take-a-meal"
                                    href="/weekly-menu">
                                     Take a Meal
                                 </a>
                             </div>
                             <div className="col py-2 d-flex w-75">
-                                <button type="button" className="w-25 btn-save-user-information"
+                                <button type="button" className=" btn-save-user-information"
                                         name="edit-subscription-plan"
                                         onClick={props.onSubmitSave}>
                                     Edit

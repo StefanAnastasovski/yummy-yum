@@ -738,7 +738,9 @@ class Payment extends Component {
     createPayment = async (orderId) => {
         let checkoutPrice = JSON.parse(localStorage.getItem("checkoutPrice"));
         let coupon = JSON.parse(localStorage.getItem("coupon"));
-        console.log(coupon.couponName)
+        if(coupon){
+            coupon = coupon.couponName
+        }
         let object = {
             cardNumber: this.state.formValues.cardNumberValue,
             totalAmount: parseFloat(checkoutPrice.total),
@@ -747,7 +749,7 @@ class Payment extends Component {
             username: this.state.username,
             orderInfoId: orderId,
             paymentNumberId: "",
-            couponName: coupon.couponName
+            couponName: coupon
         }
 
         await postPayment.createPayment(object).then(response => {

@@ -91,6 +91,38 @@ const OrderSummary = (props) => {
                             <p className="text-danger text-center font-size-2">{props.scheduleMealError} </p>
                         }
 
+                        {
+                            props.scheduleMealMonthlyError.length > 0 &&
+                            props.scheduleMealMonthlyError.map((item, index) => {
+
+                                if (!(item.message.length === 0)) {
+                                    if (!(index === props.scheduleMealMonthlyError.length - 1)) {
+                                        return <div key={"schedule-meal-error-id-" + index}
+                                                    className="d-flex flex-column pt-1 pb-1 border-bottom border-danger">
+                                            <p className="text-center font-size-2">
+                                                Week: {item.week}
+                                            </p>
+                                            <p className="text-danger text-center font-size-2">
+                                                <span className="text-color-purple">Message:</span> {item.message}
+                                            </p>
+                                        </div>
+                                    } else {
+                                        return <div key={"schedule-meal-error-id-" + index}
+                                                    className="d-flex flex-column">
+                                            <p className="text-center font-size-2">
+                                                Week: {item.week}
+                                            </p>
+                                            <p className="text-danger text-center font-size-2">
+                                                <span className="text-color-purple">Message:</span> {item.message}
+                                            </p>
+                                        </div>
+                                    }
+                                }
+
+                            })
+
+                        }
+
                     </div>
 
                 </Aux>

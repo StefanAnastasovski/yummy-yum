@@ -21,8 +21,12 @@ body, p, h1, h2, h3, h4, h5, a, input, textarea, button {
     color: #579843 !important;
 }
 
-.text-color-darkgreen{
+.text-color-darkgreen {
     color: #0f4100 !important;
+}
+
+.text-color-purple {
+    color: #4a099a !important;
 }
 
 

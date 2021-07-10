@@ -25,7 +25,6 @@ const PaymentSuccessful = (props) => {
             amountPaid: JSON.parse(localStorage.getItem("subscriptionPayment")).totalAmount,
             location: "/dashboard/user/personal-information"
         }
-
     } else if (props.isSubscription) {
         let items = JSON.parse(localStorage.getItem("scheduleCartItems"))
         config = {
@@ -72,47 +71,48 @@ const PaymentSuccessful = (props) => {
                     }
                     {
                         props.isSubscription && !showPayment && <div>
-                                <div className="row d-flex flex-column">
-                                    {
-                                        config.mealNames.map((item, index) => {
-                                            if (index < config.mealNames.length - 1) {
-                                                return <div key={"scheduled-meal-id-" + index}
-                                                            className="col d-flex flex-column pb-1 border-bottom border-info">
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Meal:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{item}</p>
-                                                    </div>
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Date:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryDates[index]}</p>
-                                                    </div>
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Time:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryTimes[index]}</p>
-                                                    </div>
+                            <div className="row d-flex flex-column">
+                                {
+                                    config.mealNames.map((item, index) => {
+                                        if (index < config.mealNames.length - 1) {
+                                            return <div key={"scheduled-meal-id-" + index}
+                                                        className="col d-flex flex-column pb-1 border-bottom border-info">
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Meal:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{item}</p>
                                                 </div>
-                                            }
-                                            if (config.mealNames.length - 1 === index) {
-                                                return <div key={"scheduled-meal-id-" + index}
-                                                            className="col d-flex flex-column">
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Meal:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{item}</p>
-                                                    </div>
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Date:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryDates[index]}</p>
-                                                    </div>
-                                                    <div className="col d-flex flex-row align-items-baseline">
-                                                        <p className="font-size-1 text-color-black pr-1">Time:</p>
-                                                        <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryTimes[index]}</p>
-                                                    </div>
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Date:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryDates[index]}</p>
                                                 </div>
-                                            }
-                                        })
-                                    }
-                                </div>
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Time:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryTimes[index]}</p>
+                                                </div>
+                                            </div>
+                                        } else if (config.mealNames.length - 1 === index) {
+                                            return <div key={"scheduled-meal-id-" + index}
+                                                        className="col d-flex flex-column">
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Meal:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{item}</p>
+                                                </div>
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Date:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryDates[index]}</p>
+                                                </div>
+                                                <div className="col d-flex flex-row align-items-baseline">
+                                                    <p className="font-size-1 text-color-black pr-1">Time:</p>
+                                                    <p className="font-size-1 text-color-darkgreen">{config.mealDeliveryTimes[index]}</p>
+                                                </div>
+                                            </div>
+                                        } else {
+                                            return null;
+                                        }
+                                    })
+                                }
                             </div>
+                        </div>
                     }
 
                 </div>

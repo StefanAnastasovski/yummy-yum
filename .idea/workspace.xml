@@ -31,9 +31,12 @@
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/Payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Summary/OrderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Summary/OrderSummary.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,14 +244,9 @@
       <workItem from="1625245084965" duration="5217000" />
       <workItem from="1625269662950" duration="11719000" />
       <workItem from="1625699209322" duration="6197000" />
-      <workItem from="1625746304634" duration="13125000" />
-    </task>
-    <task id="LOCAL-00010" summary="LogOut PopUp created + How It Works added">
-      <created>1613868070021</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1613868070021</updated>
+      <workItem from="1625746304634" duration="25725000" />
+      <workItem from="1625836839927" duration="22014000" />
+      <workItem from="1625880114261" duration="1836000" />
     </task>
     <task id="LOCAL-00011" summary="Create Recipe added">
       <created>1613868146188</created>
@@ -586,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625764420835</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Subscription - Weekly: Order Cart v0.2">
+      <created>1625765830346</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1625765830346</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -620,7 +625,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Cart Component v0.6.3" />
     <MESSAGE value="Cart Component v0.6.4" />
     <MESSAGE value="Cart Component v0.6.5" />
     <MESSAGE value="Cart Component v0.7" />
@@ -645,29 +649,31 @@
     <MESSAGE value="Subscription: Order Cart v0.1" />
     <MESSAGE value="Subscription: Order Cart v0.2 - unfinished" />
     <MESSAGE value="Subscription - Weekly: Order Cart v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Subscription - Weekly: Order Cart v0.1" />
+    <MESSAGE value="Subscription - Weekly: Order Cart v0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscription - Weekly: Order Cart v0.2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619230509800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1625764417672">
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1625765828682">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
     <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320123044" />
-    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1625764417672" />
+    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1625765828682" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1625765092995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625765092995" />
-    <state x="-1239" y="267" width="955" height="525" key="StructurePopup" timestamp="1625705979924">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="681" y="261" width="955" height="525" key="StructurePopup" timestamp="1625857537086">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1239" y="267" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625705979924" />
+    <state x="681" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625857537086" />
     <state x="-1239" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617494887837" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617221981580" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
@@ -680,29 +686,31 @@
     <state x="469" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617320312452" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1625764515339" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1625765762907">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1625877393590">
+      <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625706332015" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625877393590" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625856865960" />
     <state x="-1353" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617555652331" />
     <state x="567" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1617228512706" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625765762907" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625849192522" />
     <state x="264" y="454" width="762" height="1022" key="find.popup/1080.0.1920.1040/0.0.1080.1880@0.0.1080.1880" timestamp="1619132395511" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="2487" y="252" width="1353" height="565" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618100912741" />
-    <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1625765085888">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1625873198551">
+      <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625703781176" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625873198551" />
     <state x="-1305" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617567089922" />
-    <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625765085888" />
+    <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625789585147" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625281319400" />
     <state x="2535" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618101018575" />
-    <state x="-1297" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1625702863942">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1625852529342">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="231" width="672" height="678" key="search.everywhere.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625702863942" />
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617488430661" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625852529342" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625279969069" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208074251" />
   </component>

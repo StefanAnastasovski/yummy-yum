@@ -28,6 +28,7 @@ class Cart extends Component {
         allowToContinueCheckout: true,
         redirectToCheckoutError: "",
         scheduleMealError: "",
+        scheduleMealMonthlyError: [],
         showScheduleBtn: false,
         subscriptionOrderedMeals: []
     }
@@ -49,7 +50,6 @@ class Cart extends Component {
         try {
             await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(startDate, endDate, isSubscription)
                 .then((response) => {
-                    console.log(response.data)
                     if (response.data) {
                         this.setState({
                             subscriptionOrderedMeals: response.data
@@ -205,75 +205,107 @@ class Cart extends Component {
         })
     }
 
-    separateMealsByWeeks = async () => {
-        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
+    separateMealsByWeeks = async (storageType, data) => {
 
         let numberOfDifferentWeeks = 1;
         let mealMenuDates = [];
+        let localStorageItems = [];
+        let databaseItems = [];
 
-        let mealMenuDate = scheduleCartItems[0].mealMenuDate;
-        mealMenuDates.push(mealMenuDate);
-        scheduleCartItems.forEach((item, index) => {
-            console.log(item.mealMenuDate)
-            if (mealMenuDate !== item.mealMenuDate) {
-                numberOfDifferentWeeks++;
-                mealMenuDate = item.mealMenuDate;
-                mealMenuDates.push(mealMenuDate);
-            }
-        })
+        if (storageType === "localStorage") {
 
-        let arr = [];
-        for (let i = 0; i < numberOfDifferentWeeks; i++) {
-            arr[i] = {
-                mealMenuDate: mealMenuDates[i],
-                meals: []
-            };
-        }
+            let mealMenuDate = data[0].mealMenuDate;
+            mealMenuDates.push(mealMenuDate);
 
-        scheduleCartItems.forEach((item, index) => {
-
-            mealMenuDates.forEach((mealMenuDate, mealMenuDateIndex) => {
-                if (item.mealMenuDate === mealMenuDate) {
-                    arr[mealMenuDateIndex].meals.push(item);
+            data.forEach(item => {
+                if (mealMenuDate !== item.mealMenuDate) {
+                    mealMenuDate = item.mealMenuDate;
+                    if (!mealMenuDates.includes(mealMenuDate)) {
+                        numberOfDifferentWeeks++;
+                        mealMenuDates.push(mealMenuDate);
+                    }
                 }
             })
 
-        })
+            for (let i = 0; i < numberOfDifferentWeeks; i++) {
+                localStorageItems[i] = {
+                    mealMenuDate: mealMenuDates[i],
+                    meals: []
+                };
+            }
+
+            data.forEach(item => {
+                mealMenuDates.forEach((mealMenuDate, mealMenuDateIndex) => {
+                    if (item.mealMenuDate === mealMenuDate) {
+                        localStorageItems[mealMenuDateIndex].meals.push(item);
+                    }
+                })
+            })
+
+        } else if (storageType === "database") {
+
+            data.forEach(item => {
+                let mealMenuDate = item.menuName.split("-").slice(1,);
+                mealMenuDate = `${mealMenuDate[2]}-${mealMenuDate[1]}-${mealMenuDate[0]}`;
+                if (!mealMenuDates.includes(mealMenuDate)) {
+                    mealMenuDates.push(mealMenuDate)
+                }
+            })
+
+            for (let i = 0; i < mealMenuDates.length; i++) {
+                databaseItems[i] = {
+                    mealMenuDate: mealMenuDates[i],
+                    meals: []
+                };
+            }
+
+            data.forEach(item => {
+                mealMenuDates.forEach((mealMenuDate, mealMenuDateIndex) => {
+                    let tempMealMenuDate = item.menuName.split("-").slice(1,);
+                    tempMealMenuDate = `${tempMealMenuDate[2]}-${tempMealMenuDate[1]}-${tempMealMenuDate[0]}`;
+                    if (tempMealMenuDate === mealMenuDate) {
+                        databaseItems[mealMenuDateIndex].meals.push(item);
+                    }
+                })
+            })
+
+        }
+
+        return {
+            localStorageItems: localStorageItems,
+            databaseItems: databaseItems
+        };
 
     }
 
     allowToContinueSchedule = async () => {
 
-
         //DATA & SET
         let subscription = JSON.parse(localStorage.getItem("subscription"));
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
-        let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
+        // let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
 
-        let weeklyAllowedNumberOfDays = subscription.numberOfWeeklyDeliveryDays
         let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals;
         let startDate = subscription.activationDate;
         let endDate = subscription.canceledDate;
-        let isNumberOfAllowedMealsValid = false;
         let scheduledMeals;
-        let differentNumberOfWeeks;
+        // let differentNumberOfWeeks;
+        // let isNumberOfAllowedMealsValid = false;
+        // let weeklyAllowedNumberOfDays = subscription.numberOfWeeklyDeliveryDays
+
         let subscriptionType = subscription.subscriptionType;
 
         //SET
-
         // await this.getOrderMeals(startDate, endDate);
-        await this.separateMealsByWeeks();
 
         if (!subscription.isCanceled) {
             scheduledMeals = this.state.subscriptionOrderedMeals;
-            console.log(scheduledMeals)
             if (subscriptionType === "Weekly") {
                 await this.getOrderMeals(startDate, endDate);
                 scheduledMeals = this.state.subscriptionOrderedMeals;
                 if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
-
                 } else if (scheduledMeals.length + scheduleCartItems.length === weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
@@ -288,15 +320,207 @@ class Cart extends Component {
                         this.setState({
                             scheduleMealError: `You can schedule 
                         ${(weeklyAllowedNumberOfMeals - scheduledMeals.length)} more meals. 
-                        Please, schedule the right number of meals!`
+                        Please, schedule the right number of meals! You need to remove 
+                                ${scheduleCartItems.length - scheduledMeals.length -
+                            weeklyAllowedNumberOfMeals}
+                           meal(s).`
                         })
                     }
                 }
             } else if (subscriptionType === "Monthly") {
 
+                //Data
+
+                let mealsToBeScheduled = (await this.separateMealsByWeeks("localStorage",
+                    JSON.parse(localStorage.getItem("scheduleCartItems")))).localStorageItems;
+
+                await this.getOrderMeals(startDate, endDate);
+
+                let scheduledMeals = (await this.separateMealsByWeeks("database",
+                    this.state.subscriptionOrderedMeals)).databaseItems;
+
+                // let isReadyToContinue = false;
+                let isScheduledMealsExist = scheduledMeals.length > 0;
+                // Set
+
+                console.log("---------------------------- START ------------------------");
+                //Checking
+                this.scheduleMealsMonthlyHandler(mealsToBeScheduled, scheduledMeals,
+                    isScheduledMealsExist, weeklyAllowedNumberOfMeals);
+
             }
 
+        }
 
+    }
+
+    mealScheduleErrorHandler = (scheduleMealMonthlyError, mealsToBeScheduled,
+                                mealsToBeScheduledList, message) => {
+
+        if (scheduleMealMonthlyError.length === 0) {
+            mealsToBeScheduled.forEach(item => {
+                scheduleMealMonthlyError.push({
+                    week: item.mealMenuDate,
+                    message: ""
+                })
+            })
+            this.setState({
+                scheduleMealMonthlyError: scheduleMealMonthlyError
+            })
+        }
+        scheduleMealMonthlyError.forEach((errorItem, errorIndex) => {
+            if (errorItem.week === mealsToBeScheduledList.mealMenuDate) {
+                scheduleMealMonthlyError[errorIndex].message = message;
+            }
+        })
+        this.setState({
+            scheduleMealMonthlyError: scheduleMealMonthlyError
+        })
+    }
+
+    mealScheduleErrorIfIsScheduledMealsExist = (scheduledMeals, scheduledMealsIndex,
+                                                weeklyAllowedNumberOfMeals, scheduleMealMonthlyError,
+                                                mealsToBeScheduled, mealsToBeScheduledList,
+                                                isScheduledMealsListExist) => {
+
+        if (mealsToBeScheduled.length !== scheduledMeals.length) {
+            let biggerArray;
+            let lowerArray;
+            if (mealsToBeScheduled.length >= scheduledMeals.length) {
+                biggerArray = mealsToBeScheduled;
+                lowerArray = scheduledMeals;
+            } else {
+                biggerArray = scheduledMeals;
+                lowerArray = mealsToBeScheduled;
+            }
+
+            biggerArray.forEach((itemBiggerArray, indexBiggerArray) => {
+                let found = false;
+                lowerArray.forEach((itemLowerArray, indexLowerArray) => {
+                    if (itemBiggerArray.mealMenuDate === itemLowerArray.mealMenuDate) {
+                        found = true;
+                    }
+                })
+                console.log(itemBiggerArray)
+                if (!found) {
+                    scheduleMealMonthlyError.forEach( (errorItem, errorIndex) =>{
+                        console.log(errorItem)
+                    })
+                }
+            })
+        }
+
+        if (isScheduledMealsListExist) {
+            //show message if the all meals are already scheduled for the selected week
+            if (scheduledMeals[scheduledMealsIndex].meals.length === weeklyAllowedNumberOfMeals) {
+                let message = `The limit is reached! 
+                            You can't schedule more meals for the selected week. Please remove them to continue.`;
+                this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
+                    mealsToBeScheduledList, message);
+            } else if (mealsToBeScheduledList.meals.length > 0 &&
+                ((mealsToBeScheduledList.meals.length
+                    + scheduledMeals[scheduledMealsIndex].meals.length)
+                    > weeklyAllowedNumberOfMeals)) {
+                //show message if some meals are already scheduled for the selected week,
+                // but the total number is grater than the allowed number of meals that can be scheduled
+                let message = `You can schedule 
+                        ${(weeklyAllowedNumberOfMeals - scheduledMeals[scheduledMealsIndex].meals.length)} more meal(s). 
+                        Please, schedule the right number of meals! You need to remove 
+                        ${mealsToBeScheduledList.meals.length - (weeklyAllowedNumberOfMeals
+                    - scheduledMeals[scheduledMealsIndex].meals.length)} meal(s).`;
+                this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
+                    mealsToBeScheduledList, message);
+            }
+        } else {
+            let message = `You can schedule ${(weeklyAllowedNumberOfMeals)} more meal(s). 
+                        Please, schedule the right number of meals! You need to remove 
+                        ${mealsToBeScheduledList.meals.length - weeklyAllowedNumberOfMeals}
+                        meal(s).`;
+            this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
+                mealsToBeScheduledList, message);
+        }
+    }
+
+    scheduleMealsMonthlyHandler = async (mealsToBeScheduled, scheduledMeals,
+                                         isScheduledMealsExist, weeklyAllowedNumberOfMeals) => {
+
+        let canScheduleMeals = false;
+        if (isScheduledMealsExist) {
+
+            let scheduledMealsIndex = 0
+            let isScheduledMealsListExist = false;
+            let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
+
+            mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
+
+                canScheduleMeals = false
+
+                //set the index of the correct meals array
+                isScheduledMealsListExist = false;
+                scheduledMeals.forEach((item, index) => {
+                    if (mealsToBeScheduledList.mealMenuDate === item.mealMenuDate) {
+                        scheduledMealsIndex = index;
+                        isScheduledMealsListExist = true;
+                    }
+                })
+
+                if (weeklyAllowedNumberOfMeals - scheduledMeals[scheduledMealsIndex].meals.length
+                    === mealsToBeScheduledList.meals.length) {
+                    let message = ``;
+                    this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
+                        mealsToBeScheduledList, message);
+                    console.log("SCHEDULE MEALS")
+                    canScheduleMeals = true;
+                }
+
+                this.mealScheduleErrorIfIsScheduledMealsExist(scheduledMeals, scheduledMealsIndex,
+                    weeklyAllowedNumberOfMeals, scheduleMealMonthlyError,
+                    mealsToBeScheduled, mealsToBeScheduledList, isScheduledMealsListExist)
+
+
+            })
+
+            if (canScheduleMeals) {
+                let orderId = await this.createOrderInfo();
+                await this.createOrderMeals(orderId);
+            }
+
+        } else if (!isScheduledMealsExist) {
+            // console.log("Doesn't exist")
+            let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
+            mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
+                // console.log(mealsToBeScheduledList)
+                if (mealsToBeScheduledList.meals.length <= weeklyAllowedNumberOfMeals) {
+                    if (scheduleMealMonthlyError.length > 0) {
+                        scheduleMealMonthlyError.forEach((item, index) => {
+                            if (item.week === mealsToBeScheduledList.mealMenuDate) {
+                                scheduleMealMonthlyError[index].message = "";
+                            }
+                        })
+                        this.setState({
+                            scheduleMealMonthlyError: scheduleMealMonthlyError
+                        })
+                    }
+
+
+                    console.log("Schedule Meals!");
+                } else if (mealsToBeScheduledList.meals.length > weeklyAllowedNumberOfMeals) {
+
+                    let message = `You can schedule 
+                        ${(weeklyAllowedNumberOfMeals - scheduledMeals.length)} more meal(s). 
+                        Please, schedule the right number of meals! You need to remove 
+                                ${mealsToBeScheduledList.meals.length - scheduledMeals.length -
+                    weeklyAllowedNumberOfMeals}
+                           meal(s).`;
+                    this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
+                        mealsToBeScheduledList, message);
+                }
+
+            });
+
+            if (scheduledMeals + mealsToBeScheduled < weeklyAllowedNumberOfMeals) {
+                // console.log("Doesn't exist")
+            }
         }
 
     }
@@ -439,6 +663,7 @@ class Cart extends Component {
                 scheduleCartItems[index].deliveryDate = dates[0];
                 localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
             }
+
             return {
                 "img": {
                     "url": item.img.url,
@@ -454,7 +679,7 @@ class Cart extends Component {
                 "cardIndex": index,
                 "menuCardIndex": item.menuCardIndex,
                 "servings": parseInt(subscription.servingsPerMeal),
-                "deliveryDate": scheduleCartItems[index].deliveryDate ,
+                "deliveryDate": scheduleCartItems[index].deliveryDate,
                 "deliveryTime": subscription.deliveryTime[index],
                 "customizeItOption": item.customizeIt,
                 "isSubscriptionItem": true
@@ -577,7 +802,6 @@ class Cart extends Component {
         })
         await this.populateItems();
     }
-
 
     populateDates = (mealMenuDate) => {
 
@@ -725,6 +949,7 @@ class Cart extends Component {
                                     allowCheckout={this.state.allowToContinueCheckout}
                                     orderSummary={this.state.orderSummary}
                                     scheduleMealError={this.state.scheduleMealError}
+                                    scheduleMealMonthlyError={this.state.scheduleMealMonthlyError}
                                 />
                                 }
 

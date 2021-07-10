@@ -617,9 +617,7 @@ class WeeklyMenu extends Component {
             }
         })
 
-        deliveryDate = this.setCorrectDeliveryDate(this.state.menuName, scheduleCartItems.length)
-            // this.state.subscriptionAllowedDays.dates[scheduleCartItems.length]
-            //     .toLocaleDateString("default", {weekday: 'long'}));
+        deliveryDate = this.setCorrectDeliveryDate(this.state.menuName, scheduleCartItems.length);
 
         deliveryTime = this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length];
 

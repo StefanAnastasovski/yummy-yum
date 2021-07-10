@@ -6,7 +6,6 @@ import SubscriptionOrderCart from "../CartTypes/SubscriptionOrderCart";
 const OrderCart = (props) => {
 
     let removeItem = (param) => {
-        console.log(param)
         props.removeHandler(props.cardInfo.cardIndex);
     }
 

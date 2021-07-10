@@ -2,13 +2,10 @@ import React, {Component} from "react";
 
 import "./UserDashboard.css";
 
-// import OrderCalls from '../../../../repository/get/getOrderInfo';
-// import UserInfoCalls from '../../../../repository/get/getUser';
+import OrderMealsCalls from '../../../../repository/get/getOrderMeals';
 import CreditCardCalls from '../../../../repository/get/getCreditCard';
 import ShippingAddressCalls from '../../../../repository/get/getShippingAddress';
-// import DeliveryAddressCalls from '../../../../repository/get/getDeliveryAddress';
 import SubscriptionPlanCalls from '../../../../repository/get/getSubscriptionPlan';
-// import Subscription from '../../../../repository/get/getSubscription';
 
 import postCreditCard from '../../../../repository/post/postCreditCard';
 import postShippingAddress from '../../../../repository/post/postShippingAddress';
@@ -64,6 +61,7 @@ class UserDashboard extends Component {
             isCanceled: false,
             name: ""
         },
+        orderHistory: [],
         isLoading: true,
         isSubscriptionSaved: false,
         totalAmount: 0.00,
@@ -87,8 +85,8 @@ class UserDashboard extends Component {
         await this.getUserComponentInfo();
 
         await this.setDateFilter();
+        await this.getOrderMealsCalls();
         this.loaded();
-        // await this.getOrders();
 
     }
 
@@ -205,20 +203,39 @@ class UserDashboard extends Component {
     }
 
     setDateFilter = () => {
-        let date = new Date();
-        let month = (date.getMonth() + 1);
-        let day = date.getDate();
-        if (month < 10) {
-            month = "0" + month.toString();
+
+        let dateTo = {
+            date: new Date(),
+            month: (new Date().getMonth() + 1),
+            day: (new Date().getDate())
+        };
+
+        let dateFrom = {
+            date: new Date(dateTo.date.getFullYear(), dateTo.date.getMonth(), dateTo.date.getDate() - 30),
+            month: "",
+            day: Math.abs((dateTo.date.getDate() - 30))
+        };
+
+        dateFrom.month = (dateFrom.date.getMonth() + 1)
+
+        if (dateTo.month < 10) {
+            dateTo.month = "0" + dateTo.month.toString();
         }
-        if (day < 10) {
-            day = "0" + day.toString();
+        if (dateTo.day < 10) {
+            dateTo.day = "0" + dateTo.day.toString();
         }
+        if (dateFrom.month < 10) {
+            dateFrom.month = "0" + dateFrom.month.toString();
+        }
+        if (dateFrom.day < 10) {
+            dateFrom.day = "0" + dateFrom.day.toString();
+        }
+
         this.setState({
             filterDates: {
                 ...this.state.filterDates,
-                filterFromDate: `${date.getFullYear()}-${month}-${day}`,
-                filterToDate: `${date.getFullYear()}-${month}-${day}`
+                filterFromDate: `${dateFrom.date.getFullYear()}-${dateFrom.month}-${dateFrom.day}`,
+                filterToDate: `${dateFrom.date.getFullYear()}-${dateTo.month}-${dateTo.day}`
             }
         })
     }
@@ -421,6 +438,40 @@ class UserDashboard extends Component {
         } catch (e) {
             console.log(e);
         }
+    }
+
+    getOrderMealsCalls = async () => {
+        try {
+            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(this.state.filterDates.filterFromDate,
+                this.state.filterDates.filterToDate, false).then(response => {
+                this.setState({
+                    userComponentInfo: response.data,
+                    orderHistory: response.data
+                })
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+        try {
+            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(this.state.filterDates.filterFromDate,
+                this.state.filterDates.filterToDate, true).then(response => {
+                let userComponentInfo = this.state.userComponentInfo;
+                userComponentInfo = userComponentInfo.concat(response.data)
+                this.setState({
+                    userComponentInfo: userComponentInfo,
+                    orderHistory: userComponentInfo
+                })
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+
     }
 
     onChangeToDateHandler = async (date) => {

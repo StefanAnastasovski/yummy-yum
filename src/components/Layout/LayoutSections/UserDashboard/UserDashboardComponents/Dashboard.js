@@ -6,6 +6,7 @@ import UserShippingInformation from "./Components/UserShippingInformation";
 import SubscriptionPlans from "./Components/SubscriptionPlans/SubscriptionPlans";
 import Payment from "../../Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
+import OrderHistory from "./Components/OrderHistory/OrderHistory";
 
 const Dashboard = (props) => {
 
@@ -54,7 +55,13 @@ const Dashboard = (props) => {
             onSubmitRoute={props.onSubmitRoute}
         />
     } else if (props.userComponent === "Order History") {
-
+        userComponent = <OrderHistory
+            onSubmitRoute={props.onSubmitRoute}
+            filterDates={props.filterDates}
+            info={props.userComponentInfo}
+            onChangeToDateHandler={props.onChangeToDateHandler}
+            onChangeFromDateHandler={props.onChangeFromDateHandler}
+        />
     }
 
 

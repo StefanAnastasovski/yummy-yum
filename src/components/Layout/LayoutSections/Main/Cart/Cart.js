@@ -30,7 +30,7 @@ class Cart extends Component {
         scheduleMealError: "",
         scheduleMealMonthlyError: [],
         showScheduleBtn: false,
-        subscriptionOrderedMeals: []
+        subscriptionOrderedMeals: [],
     }
 
     async componentDidMount() {
@@ -403,7 +403,7 @@ class Cart extends Component {
                 })
                 console.log(itemBiggerArray)
                 if (!found) {
-                    scheduleMealMonthlyError.forEach( (errorItem, errorIndex) =>{
+                    scheduleMealMonthlyError.forEach((errorItem, errorIndex) => {
                         console.log(errorItem)
                     })
                 }
@@ -453,7 +453,7 @@ class Cart extends Component {
 
             mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
 
-                canScheduleMeals = false
+                canScheduleMeals = false;
 
                 //set the index of the correct meals array
                 isScheduledMealsListExist = false;
@@ -488,6 +488,7 @@ class Cart extends Component {
         } else if (!isScheduledMealsExist) {
             // console.log("Doesn't exist")
             let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
+            canScheduleMeals = false;
             mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
                 // console.log(mealsToBeScheduledList)
                 if (mealsToBeScheduledList.meals.length <= weeklyAllowedNumberOfMeals) {
@@ -504,6 +505,7 @@ class Cart extends Component {
 
 
                     console.log("Schedule Meals!");
+                    canScheduleMeals = true;
                 } else if (mealsToBeScheduledList.meals.length > weeklyAllowedNumberOfMeals) {
 
                     let message = `You can schedule 
@@ -517,6 +519,11 @@ class Cart extends Component {
                 }
 
             });
+
+            if (canScheduleMeals) {
+                let orderId = await this.createOrderInfo();
+                await this.createOrderMeals(orderId);
+            }
 
             if (scheduledMeals + mealsToBeScheduled < weeklyAllowedNumberOfMeals) {
                 // console.log("Doesn't exist")

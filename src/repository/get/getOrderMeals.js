@@ -7,6 +7,8 @@ const getOrderMeals = {
     },
     fetchOrderMealsBetweenDatesAndIsSubscription: (startDate, endDate, isSubscription) => {
         return axios.get(`/api/order-meals/subscription/startDate=${startDate}&endDate=${endDate}/subscription=${isSubscription}`)
+    }, fetchOrderMealsBetweenDates: (startDate, endDate) => {
+        return axios.get(`/api/order-meals/subscription/startDate=${startDate}&endDate=${endDate}`)
     },
 };
 

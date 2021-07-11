@@ -55,12 +55,25 @@ const Dashboard = (props) => {
             onSubmitRoute={props.onSubmitRoute}
         />
     } else if (props.userComponent === "Order History") {
+        console.log("I'm HERE LET ME SHOW DATA")
+        console.log("props")
+        console.log(props)
         userComponent = <OrderHistory
             onSubmitRoute={props.onSubmitRoute}
             filterDates={props.filterDates}
             info={props.userComponentInfo}
+            allOrderMealsByDate={props.allOrderMealsByDate}
             onChangeToDateHandler={props.onChangeToDateHandler}
             onChangeFromDateHandler={props.onChangeFromDateHandler}
+            onChangeNumberOfItemsPerPage={props.onChangeNumberOfItemsPerPage}
+            numberOfItemsPerPage={props.numberOfItemsPerPage}
+            onClickPagePerClick={props.onClickPagePerClick}
+            showPages={props.showPages}
+            pageSelected={props.pageSelected}
+            orderMealsByPage={props.orderMealsByPage}
+            onApplyCallOrderMealsQuery={props.onApplyCallOrderMealsQuery}
+            showMealsByValue={props.showMealsByValue}
+            onChangeShowMealsByHandler={props.onChangeShowMealsByHandler}
         />
     }
 

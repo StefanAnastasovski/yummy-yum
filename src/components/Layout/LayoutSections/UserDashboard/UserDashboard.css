@@ -95,7 +95,13 @@
     padding: 10px 30px;
 }
 
-.user-dashboard-wrapper .btn-go-back-to-dashboard:hover {
+.btn-apply-order-history {
+    border: none;
+    background-color: #6b9958;
+    padding: 5px 20px;
+}
+
+.user-dashboard-wrapper .btn-go-back-to-dashboard:hover, .btn-apply-order-history:hover {
     background: linear-gradient(330deg,
     rgb(139, 208, 101) 0%,
     rgb(168, 214, 98) 60%,

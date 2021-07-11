@@ -117,6 +117,8 @@ const OrderSummary = (props) => {
                                             </p>
                                         </div>
                                     }
+                                } else {
+                                    return null;
                                 }
 
                             })

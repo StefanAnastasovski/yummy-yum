@@ -15,6 +15,7 @@ import getUser from "../../../../repository/get/getUser";
 import Payment from "../Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
 import getSubscription from "../../../../repository/get/getSubscription";
+import OrderHistory from "./UserDashboardComponents/Components/OrderHistory/OrderHistory";
 
 class UserDashboard extends Component {
 
@@ -61,8 +62,8 @@ class UserDashboard extends Component {
             isCanceled: false,
             name: ""
         },
-        orderHistory: [],
         isLoading: true,
+        isOrderMealsListLoading: true,
         isSubscriptionSaved: false,
         totalAmount: 0.00,
         isPaymentLoading: true,
@@ -70,7 +71,21 @@ class UserDashboard extends Component {
         shippingCostPerServing: 0.00,
         redirectToPayment: false,
         isSubscriptionExist: false,
-        subscriptionInfo: {}
+        subscriptionInfo: {},
+
+        //pagination
+        allScheduledMealsByDate: [],
+        allOrderedMealsByDate: [],
+        allOrderMealsByDate: [],
+        pagination: [],
+        showPages: [],
+        orderMealsByPage: [],
+        pageSelected: 0,
+        numberOfItemsPerPage: 5,
+        allowedNumberOfPages: 5,
+
+        //
+        showMealsByValue: "All",
 
 
     }
@@ -84,13 +99,23 @@ class UserDashboard extends Component {
         await this.setUserDashboardLocalStorage();
         await this.getUserComponentInfo();
 
-        await this.setDateFilter();
-        await this.getOrderMealsCalls();
+        // await this.setDateFilter();
+        // await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
+        //     this.state.filterDates.filterToDate);
+        // await this.getOrderMealsCalls();
+        // await this.pagination();
         this.loaded();
+        this.orderMealsListLoaded();
 
     }
 
     loaded = () => {
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    orderMealsListLoaded = () => {
         this.setState({
             isLoading: false
         })
@@ -101,6 +126,14 @@ class UserDashboard extends Component {
         await this.getUserBillingInformation();
         await this.getUserShippingInformation();
         await this.getSubscriptionIfExist();
+
+        //NEW
+        await this.setDateFilter();
+        await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate);
+        await this.getOrderMealsCalls();
+        await this.pagination();
+        // this.orderMealsListLoaded();
     }
 
     setUserDashboardLocalStorage = async () => {
@@ -202,7 +235,7 @@ class UserDashboard extends Component {
 
     }
 
-    setDateFilter = () => {
+    setDateFilter = async () => {
 
         let dateTo = {
             date: new Date(),
@@ -308,7 +341,7 @@ class UserDashboard extends Component {
         } else if (comp === "Subscription") {
             await this.getSubscriptionPlans();
         } else if (comp === "Order History") {
-
+            await this.getOrderHistoryInformation();
         }
     }
 
@@ -440,57 +473,113 @@ class UserDashboard extends Component {
         }
     }
 
+    getAllOrderMealsBetweenDates = async (startDate, endDate) => {
+
+        try {
+            await OrderMealsCalls.fetchOrderMealsBetweenDates(startDate, endDate).then(response => {
+                this.setState({
+                    allOrderMealsByDate: [...response.data].sort((a, b) => a.deliveryDate.localeCompare(b.deliveryDate))
+                })
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    getOrderMealsIsSubscription = async (startDate, endDate, isSubscription) => {
+        try {
+            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(startDate,
+                endDate, isSubscription).then(response => {
+                if (isSubscription) {
+                    this.setState({
+                        allScheduledMealsByDate: response.data,
+                    })
+                } else {
+                    this.setState({
+                        allOrderedMealsByDate: response.data
+                    })
+                }
+
+            }).catch(e => {
+                console.log(e);
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    getOrderHistoryInformation = async () => {
+        await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate);
+        await this.getOrderMealsIsSubscription(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate, true);
+        await this.getOrderMealsIsSubscription(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate, false);
+        await this.setShowMealsByList();
+        await this.pagination();
+    }
+
+    getOrderedMealDate = (date) => {
+        let newDate = date.split("-");
+
+        return new Date(newDate[0], (newDate[1] - 1), newDate[2]);
+    }
+
+    sortMealsByDate = async () => {
+
+
+        let sortedScheduledMeals = [...this.state.allScheduledMealsByDate]
+        let sortedOrderedMeals = [...this.state.allOrderedMealsByDate]
+        sortedScheduledMeals.sort((a, b) => a.deliveryDate.localeCompare(b.deliveryDate));
+        sortedOrderedMeals.sort((a, b) => a.deliveryDate.localeCompare(b.deliveryDate));
+
+
+        this.setState({
+            allScheduledMealsByDate: sortedScheduledMeals,
+            allOrderedMealsByDate: sortedOrderedMeals
+        })
+
+
+    }
+
     getOrderMealsCalls = async () => {
-        try {
-            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(this.state.filterDates.filterFromDate,
-                this.state.filterDates.filterToDate, false).then(response => {
-                this.setState({
-                    userComponentInfo: response.data,
-                    orderHistory: response.data
-                })
-            }).catch(e => {
-                console.log(e);
-            })
-        } catch (e) {
-            console.log(e);
-        }
-
-        try {
-            await OrderMealsCalls.fetchOrderMealsBetweenDatesAndIsSubscription(this.state.filterDates.filterFromDate,
-                this.state.filterDates.filterToDate, true).then(response => {
-                let userComponentInfo = this.state.userComponentInfo;
-                userComponentInfo = userComponentInfo.concat(response.data)
-                this.setState({
-                    userComponentInfo: userComponentInfo,
-                    orderHistory: userComponentInfo
-                })
-            }).catch(e => {
-                console.log(e);
-            })
-        } catch (e) {
-            console.log(e);
-        }
-
+        await this.getOrderMealsIsSubscription(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate, true);
+        await this.sortMealsByDate();
+        await this.getOrderMealsIsSubscription(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate, false);
+        await this.sortMealsByDate();
 
     }
 
-    onChangeToDateHandler = async (date) => {
+    onChangeToDateHandler = async (event) => {
         this.setState({
             filterDates: {
                 ...this.state.filterDates,
-                filterToDate: date
+                filterToDate: event.target.value
             }
         })
-
     }
 
-    onChangeFromDateHandler = async (date) => {
+    onChangeFromDateHandler = async (event) => {
         this.setState({
             filterDates: {
                 ...this.state.filterDates,
-                filterFromDate: date
+                filterFromDate: event.target.value
             }
         })
+    }
+
+    onApplyCallOrderMealsQuery = async () => {
+        this.setState({
+            isOrderMealsListLoading: true
+        })
+        await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
+            this.state.filterDates.filterToDate);
+        await this.getOrderMealsCalls();
+        await this.setShowMealsByList();
+        this.orderMealsListLoaded();
     }
 
     onChangeBillingInformationHandler = (event) => {
@@ -874,6 +963,209 @@ class UserDashboard extends Component {
         })
     }
 
+    //pagination
+
+    createRange = (start, end, step = 1) => {
+        const len = Math.floor((end - start) / step) + 1
+        return Array(len).fill().map((_, idx) => start + (idx * step))
+    }
+
+    getPages = (numberOfItemsPerPage) => {
+        let numberOfItemsPerPageValue = this.state.numberOfItemsPerPage;
+        if (numberOfItemsPerPage) {
+            numberOfItemsPerPageValue = parseInt(numberOfItemsPerPage);
+        }
+        console.log(this.state.allOrderMealsByDate.length)
+        console.log(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue)
+        console.log(Math.ceil(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue))
+        return Math.ceil(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue);
+    }
+
+    pagination = async (numberOfItemsPerPage) => {
+        let numberOfItemsPerPageValue = this.state.numberOfItemsPerPage;
+        let allOrderMealsByDateValue = this.state.allOrderMealsByDate;
+        let pages = [];
+        if (numberOfItemsPerPage) {
+            numberOfItemsPerPageValue = parseInt(numberOfItemsPerPage);
+            pages = this.getPages(numberOfItemsPerPageValue);
+        } else {
+            pages = this.getPages();
+        }
+        let flag = false;
+
+        console.log(pages)
+        console.log(this.createRange(1, pages, 1))
+        if (pages === 0) {
+            this.setState({
+                showPages: [1],
+                pagination: [1]
+            })
+        } else {
+            this.setState({
+                pagination: this.createRange(1, pages, 1),
+                pageSelected: 0
+            })
+            if (this.state.pageSelected === 0 || numberOfItemsPerPage) {
+                console.log("HERE")
+                if (pages > this.state.allowedNumberOfPages) {
+                    console.log("HERE 1")
+                    this.setState({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages), ">"],
+                        orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
+                    })
+                } else if (pages < this.state.allowedNumberOfPages) {
+                    console.log("HERE 2")
+                    console.log([...this.createRange(1, pages, 1).slice(0, pages)])
+                    console.log([...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)])
+                    this.setState({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, pages)],
+                        orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
+                    })
+                } else if (pages === this.state.allowedNumberOfPages) {
+                    console.log("HERE 3")
+                    this.setState({
+                        showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages)],
+                        orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
+                    })
+                }
+            }
+        }
+        if (flag) {
+            this.setState({
+                isOrderMealsListLoading: false
+            })
+        }
+
+    }
+
+    setShowPages = (pageSelectedNumber) => {
+        let pages = this.getPages();
+        let pageStart = 0;
+        let pageEnd = 2;
+        let numberOfPages = this.state.allowedNumberOfPages;
+        let showPages;
+        if (pageSelectedNumber === (pages - 1)) {
+            pageStart = pages - numberOfPages;
+            pageEnd = pages;
+            showPages = ["<", ...this.createRange(1, pages, 1)
+                .slice(pageStart, pageEnd)];
+        } else if (pageSelectedNumber + 2 >= pages) {
+            pageStart = pageSelectedNumber;
+            pageEnd = pages;
+            showPages = ["<", ...this.createRange(1, pages, 1)
+                .slice(pageStart, pageEnd)];
+        } else if (pageSelectedNumber !== 0) {
+            pageStart = pageSelectedNumber;
+            pageEnd = pageSelectedNumber + 2
+            showPages = ["<", ...this.createRange(1, pages, 1)
+                .slice(pageStart, pageEnd), ">"];
+        } else if (pageSelectedNumber === 0) {
+            showPages = [...this.createRange(1, pages, 1)
+                .slice(pageStart, pageEnd), ">"];
+        }
+        return showPages;
+
+    }
+
+    setPageRange = async (pageSelectedNumber) => {
+        let showPages = this.setShowPages(pageSelectedNumber);
+        this.setState(prevState => ({
+            showPages: showPages,
+            orderMealsByPage: [...prevState.allOrderMealsByDate
+                .slice((pageSelectedNumber + 1) * this.state.numberOfItemsPerPage - this.state.numberOfItemsPerPage,
+                    (pageSelectedNumber + 1) * this.state.numberOfItemsPerPage)]
+        }))
+    }
+
+    onClickPagePerClick = async (event) => {
+        if (!(this.state.pagination.length === 1)) {
+
+            if (event.target.innerHTML === "&gt;") {
+                this.setState({
+                    pageSelected: (this.getPages() - 1)
+                })
+                await this.setPageRange(this.getPages() - 1);
+            } else if (event.target.innerHTML === "&lt;") {
+                this.setState({
+                    pageSelected: 0
+                })
+                await this.setPageRange(0);
+            } else if (event.target.ariaLabel === "Previous" || event.target.innerHTML === "«") {
+                if (this.state.pageSelected > 0) {
+                    await this.setPageRange(this.state.pageSelected - 1);
+                    this.setState(prevState => ({
+                        pageSelected: (prevState.pageSelected - 1)
+                    }))
+                }
+            } else if (event.target.ariaLabel === "Next" || event.target.innerHTML === "»") {
+                if (this.state.pageSelected < this.getPages() - 1) {
+                    await this.setPageRange(this.state.pageSelected + 1);
+                    this.setState(prevState => ({
+                        pageSelected: (prevState.pageSelected + 1)
+                    }))
+                }
+            } else {
+                this.setState({
+                    pageSelected: (event.target.innerHTML - 1)
+                })
+                await this.setPageRange(event.target.innerHTML - 1);
+            }
+
+        }
+    }
+
+    onChangeNumberOfItemsPerPage = async (event) => {
+        this.setState({
+            numberOfItemsPerPage: event.target.value
+        })
+
+        await this.pagination(event.target.value);
+    }
+
+    setShowMealsByList = async (showMealsByValue) => {
+
+
+        let showMealsValue = this.state.showMealsByValue;
+
+        if (showMealsByValue) {
+            showMealsValue = showMealsByValue;
+        }
+        let value = [];
+        console.log("SHOW MEALS")
+        console.log(showMealsValue)
+        if (showMealsValue === "All") {
+            value = this.state.allOrderMealsByDate;
+            this.setState({
+                allOrderMealsByDate: [...this.state.allOrderMealsByDate],
+                isOrderMealsListLoading: true
+            })
+        } else if (showMealsValue === "Scheduled") {
+            value = this.state.allScheduledMealsByDate;
+            this.setState({
+                allOrderMealsByDate: [...this.state.allScheduledMealsByDate],
+                isOrderMealsListLoading: true
+            })
+        } else if (showMealsValue === "Ordered") {
+            value = this.state.allOrderedMealsByDate;
+            this.setState({
+                allOrderMealsByDate: [...this.state.allOrderedMealsByDate],
+                isOrderMealsListLoading: true
+            })
+        }
+
+        await this.pagination(this.state.numberOfItemsPerPage);
+        console.log(this.state.orderMealsByPage)
+    }
+
+    onChangeShowMealsByHandler = async (event) => {
+        this.setState({
+            showMealsByValue: event.target.value,
+            isOrderMealsListLoading: true
+        })
+        await this.setShowMealsByList(event.target.value);
+        this.orderMealsListLoaded();
+    }
+
     render() {
         let routeComponent;
         if (this.state.selectedSubscriptionPlanName === "") {
@@ -887,6 +1179,16 @@ class UserDashboard extends Component {
                 onSubmitRoute={this.onSubmitRoute}
                 onChangeToDateHandler={this.onChangeToDateHandler.bind(this)}
                 onChangeFromDateHandler={this.onChangeFromDateHandler.bind(this)}
+                onChangeNumberOfItemsPerPage={this.onChangeNumberOfItemsPerPage.bind(this)}
+                onClickPagePerClick={this.onClickPagePerClick.bind(this)}
+                showPages={this.state.showPages}
+                pageSelected={this.state.pageSelected}
+                numberOfItemsPerPage={this.state.numberOfItemsPerPage}
+                orderMealsByPage={this.state.orderMealsByPage}
+                allOrderMealsByDate={this.state.allOrderMealsByDate}
+                showMealsByValue={this.state.showMealsByValue}
+                onChangeShowMealsByHandler={this.onChangeShowMealsByHandler.bind(this)}
+                onApplyCallOrderMealsQuery={this.onApplyCallOrderMealsQuery}
                 onChangeBillingInformationHandler={this.onChangeBillingInformationHandler.bind(this)}
                 onChangeShippingInformationHandler={this.onChangeShippingInformationHandler.bind(this)}
                 onSubmitSave={this.onSubmitSave.bind(this)}
@@ -919,6 +1221,16 @@ class UserDashboard extends Component {
                 calculateSubscriptionPlanPrice={this.calculateSubscriptionPlanPrice}
                 isSubscriptionExist={this.state.isSubscriptionExist}
                 subscriptionInfo={this.state.subscriptionInfo}
+                onChangeNumberOfItemsPerPage={this.onChangeNumberOfItemsPerPage.bind(this)}
+                onClickPagePerClick={this.onClickPagePerClick.bind(this)}
+                showPages={this.state.showPages}
+                pageSelected={this.state.pageSelected}
+                numberOfItemsPerPage={this.state.numberOfItemsPerPage}
+                orderMealsByPage={this.state.orderMealsByPage}
+                allOrderMealsByDate={this.state.allOrderMealsByDate}
+                showMealsByValue={this.state.showMealsByValue}
+                onChangeShowMealsByHandler={this.onChangeShowMealsByHandler.bind(this)}
+                onApplyCallOrderMealsQuery={this.onApplyCallOrderMealsQuery}
             />
         } else if (this.state.routeComponent === "Payment") {
             routeComponent = <Payment

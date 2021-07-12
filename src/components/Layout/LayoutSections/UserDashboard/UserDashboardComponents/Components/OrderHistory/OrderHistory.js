@@ -3,9 +3,6 @@ import OrderHistoryCart from "./OrderHistoryComponents/OrderHistoryCart";
 
 const OrderHistory = (props) => {
 
-    console.log("=============Order History Props=============")
-    console.log(props)
-
     return (
 
         <div className="user-menu-body-main col">
@@ -58,7 +55,7 @@ const OrderHistory = (props) => {
                     </div>
 
                     <div className="d-flex align-items-baseline">
-                        <label className="mr-2">Show Meals By:</label>
+                        <label className="mr-2">Show Meals:</label>
                         <select className="select-order-info font-weight-bold bg-white"
                                 onChange={props.onChangeShowMealsByHandler}
                                 value={props.showMealsByValue}>
@@ -130,8 +127,52 @@ const OrderHistory = (props) => {
                         }
 
                     </ul>
+                    {
+                        (props.orderMealsByPage.length > 0 && props.numberOfItemsPerPage > 5) &&
+                        <div aria-label="Page navigation example"
+                             className="pt-1 pb-3 w-100 d-flex justify-content-center">
+
+                            <ul className="pagination">
+                                <li className="page-item">
+                                <span className="page-link cursor-pointer" aria-label="Previous"
+                                      onClick={props.onClickPagePerClick}>
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span className="sr-only">Previous</span>
+                                </span>
+                                </li>
+                                {
+                                    props.showPages.map((item, index) => {
+                                        if (item === (parseInt(props.pageSelected) + 1)) {
+                                            return <li className="page-item active" key={"page-item-id-" + index}
+                                                       onClick={props.onClickPagePerClick}
+                                            >
+                                                <span className="page-link cursor-pointer">{item}</span>
+                                            </li>
+                                        } else {
+                                            return <li className="page-item" key={"page-item-id-" + index}
+                                                       onClick={props.onClickPagePerClick}
+                                            >
+                                                <span className="page-link cursor-pointer">{item}</span>
+                                            </li>
+                                        }
+
+
+                                    })
+                                }
+                                <li className="page-item">
+                                <span className="page-link cursor-pointer" aria-label="Next"
+                                      onClick={props.onClickPagePerClick}>
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span className="sr-only">Next</span>
+                                </span>
+                                </li>
+                            </ul>
+
+                        </div>
+                    }
 
                 </div>
+
 
             </div>
 

@@ -15,7 +15,6 @@ import getUser from "../../../../repository/get/getUser";
 import Payment from "../Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
 import getSubscription from "../../../../repository/get/getSubscription";
-import OrderHistory from "./UserDashboardComponents/Components/OrderHistory/OrderHistory";
 
 class UserDashboard extends Component {
 
@@ -63,7 +62,6 @@ class UserDashboard extends Component {
             name: ""
         },
         isLoading: true,
-        isOrderMealsListLoading: true,
         isSubscriptionSaved: false,
         totalAmount: 0.00,
         isPaymentLoading: true,
@@ -76,13 +74,14 @@ class UserDashboard extends Component {
         //pagination
         allScheduledMealsByDate: [],
         allOrderedMealsByDate: [],
+        allScheduledOrderedMealsByDate: [],
         allOrderMealsByDate: [],
         pagination: [],
         showPages: [],
         orderMealsByPage: [],
         pageSelected: 0,
         numberOfItemsPerPage: 5,
-        allowedNumberOfPages: 5,
+        allowedNumberOfPages: 2,
 
         //
         showMealsByValue: "All",
@@ -99,23 +98,11 @@ class UserDashboard extends Component {
         await this.setUserDashboardLocalStorage();
         await this.getUserComponentInfo();
 
-        // await this.setDateFilter();
-        // await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
-        //     this.state.filterDates.filterToDate);
-        // await this.getOrderMealsCalls();
-        // await this.pagination();
-        this.loaded();
-        this.orderMealsListLoaded();
+        await this.loaded();
 
     }
 
     loaded = () => {
-        this.setState({
-            isLoading: false
-        })
-    }
-
-    orderMealsListLoaded = () => {
         this.setState({
             isLoading: false
         })
@@ -127,7 +114,6 @@ class UserDashboard extends Component {
         await this.getUserShippingInformation();
         await this.getSubscriptionIfExist();
 
-        //NEW
         await this.setDateFilter();
         await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
             this.state.filterDates.filterToDate);
@@ -246,7 +232,7 @@ class UserDashboard extends Component {
         let dateFrom = {
             date: new Date(dateTo.date.getFullYear(), dateTo.date.getMonth(), dateTo.date.getDate() - 30),
             month: "",
-            day: Math.abs((dateTo.date.getDate() - 30))
+            day: Math.abs((dateTo.date.getDate() - 7))
         };
 
         dateFrom.month = (dateFrom.date.getMonth() + 1)
@@ -478,7 +464,7 @@ class UserDashboard extends Component {
         try {
             await OrderMealsCalls.fetchOrderMealsBetweenDates(startDate, endDate).then(response => {
                 this.setState({
-                    allOrderMealsByDate: [...response.data].sort((a, b) => a.deliveryDate.localeCompare(b.deliveryDate))
+                    allScheduledOrderedMealsByDate: [...response.data].sort((a, b) => a.deliveryDate.localeCompare(b.deliveryDate))
                 })
             })
         } catch (e) {
@@ -517,7 +503,7 @@ class UserDashboard extends Component {
         await this.getOrderMealsIsSubscription(this.state.filterDates.filterFromDate,
             this.state.filterDates.filterToDate, false);
         await this.setShowMealsByList();
-        await this.pagination();
+        await this.pagination(this.state.numberOfItemsPerPage);
     }
 
     getOrderedMealDate = (date) => {
@@ -572,14 +558,11 @@ class UserDashboard extends Component {
     }
 
     onApplyCallOrderMealsQuery = async () => {
-        this.setState({
-            isOrderMealsListLoading: true
-        })
         await this.getAllOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
             this.state.filterDates.filterToDate);
         await this.getOrderMealsCalls();
         await this.setShowMealsByList();
-        this.orderMealsListLoaded();
+        await this.pagination(this.state.numberOfItemsPerPage);
     }
 
     onChangeBillingInformationHandler = (event) => {
@@ -975,15 +958,13 @@ class UserDashboard extends Component {
         if (numberOfItemsPerPage) {
             numberOfItemsPerPageValue = parseInt(numberOfItemsPerPage);
         }
-        console.log(this.state.allOrderMealsByDate.length)
-        console.log(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue)
-        console.log(Math.ceil(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue))
         return Math.ceil(this.state.allOrderMealsByDate.length / numberOfItemsPerPageValue);
     }
 
     pagination = async (numberOfItemsPerPage) => {
+
         let numberOfItemsPerPageValue = this.state.numberOfItemsPerPage;
-        let allOrderMealsByDateValue = this.state.allOrderMealsByDate;
+
         let pages = [];
         if (numberOfItemsPerPage) {
             numberOfItemsPerPageValue = parseInt(numberOfItemsPerPage);
@@ -991,14 +972,12 @@ class UserDashboard extends Component {
         } else {
             pages = this.getPages();
         }
-        let flag = false;
 
-        console.log(pages)
-        console.log(this.createRange(1, pages, 1))
         if (pages === 0) {
             this.setState({
                 showPages: [1],
-                pagination: [1]
+                pagination: [1],
+                orderMealsByPage: []
             })
         } else {
             this.setState({
@@ -1006,23 +985,17 @@ class UserDashboard extends Component {
                 pageSelected: 0
             })
             if (this.state.pageSelected === 0 || numberOfItemsPerPage) {
-                console.log("HERE")
                 if (pages > this.state.allowedNumberOfPages) {
-                    console.log("HERE 1")
                     this.setState({
                         showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages), ">"],
                         orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
                     })
                 } else if (pages < this.state.allowedNumberOfPages) {
-                    console.log("HERE 2")
-                    console.log([...this.createRange(1, pages, 1).slice(0, pages)])
-                    console.log([...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)])
                     this.setState({
                         showPages: [...this.createRange(1, pages, 1).slice(0, pages)],
                         orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
                     })
                 } else if (pages === this.state.allowedNumberOfPages) {
-                    console.log("HERE 3")
                     this.setState({
                         showPages: [...this.createRange(1, pages, 1).slice(0, this.state.allowedNumberOfPages)],
                         orderMealsByPage: [...this.state.allOrderMealsByDate.slice(this.state.pageSelected, numberOfItemsPerPageValue)]
@@ -1030,11 +1003,7 @@ class UserDashboard extends Component {
                 }
             }
         }
-        if (flag) {
-            this.setState({
-                isOrderMealsListLoading: false
-            })
-        }
+
 
     }
 
@@ -1114,6 +1083,8 @@ class UserDashboard extends Component {
         }
     }
 
+    //order history fields' handlers
+
     onChangeNumberOfItemsPerPage = async (event) => {
         this.setState({
             numberOfItemsPerPage: event.target.value
@@ -1124,49 +1095,38 @@ class UserDashboard extends Component {
 
     setShowMealsByList = async (showMealsByValue) => {
 
-
         let showMealsValue = this.state.showMealsByValue;
 
         if (showMealsByValue) {
             showMealsValue = showMealsByValue;
         }
         let value = [];
-        console.log("SHOW MEALS")
-        console.log(showMealsValue)
         if (showMealsValue === "All") {
-            value = this.state.allOrderMealsByDate;
-            this.setState({
-                allOrderMealsByDate: [...this.state.allOrderMealsByDate],
-                isOrderMealsListLoading: true
-            })
+            value = this.state.allScheduledOrderedMealsByDate;
         } else if (showMealsValue === "Scheduled") {
             value = this.state.allScheduledMealsByDate;
-            this.setState({
-                allOrderMealsByDate: [...this.state.allScheduledMealsByDate],
-                isOrderMealsListLoading: true
-            })
+
         } else if (showMealsValue === "Ordered") {
             value = this.state.allOrderedMealsByDate;
-            this.setState({
-                allOrderMealsByDate: [...this.state.allOrderedMealsByDate],
-                isOrderMealsListLoading: true
-            })
         }
 
-        await this.pagination(this.state.numberOfItemsPerPage);
-        console.log(this.state.orderMealsByPage)
+        this.setState({
+            allOrderMealsByDate: [...value]
+        })
+
     }
 
     onChangeShowMealsByHandler = async (event) => {
         this.setState({
-            showMealsByValue: event.target.value,
-            isOrderMealsListLoading: true
+            showMealsByValue: event.target.value
         })
         await this.setShowMealsByList(event.target.value);
-        this.orderMealsListLoaded();
+        await this.pagination(this.state.numberOfItemsPerPage);
+
     }
 
     render() {
+
         let routeComponent;
         if (this.state.selectedSubscriptionPlanName === "") {
             routeComponent = <Dashboard
@@ -1251,7 +1211,9 @@ class UserDashboard extends Component {
                     <h1 className="text-center border-bottom border-success">User Dashboard</h1>
                 </div>
 
-                {!this.state.isLoading && routeComponent}
+                {
+                    (!this.state.isLoading && routeComponent)
+                }
 
             </div>
 

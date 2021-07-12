@@ -55,9 +55,6 @@ const Dashboard = (props) => {
             onSubmitRoute={props.onSubmitRoute}
         />
     } else if (props.userComponent === "Order History") {
-        console.log("I'm HERE LET ME SHOW DATA")
-        console.log("props")
-        console.log(props)
         userComponent = <OrderHistory
             onSubmitRoute={props.onSubmitRoute}
             filterDates={props.filterDates}

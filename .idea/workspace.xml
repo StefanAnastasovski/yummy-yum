@@ -28,18 +28,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Order History v0.2 finished!">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Summary/OrderSummary.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Summary/OrderSummary.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/OrderHistory/OrderHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/OrderHistory/OrderHistory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/OrderHistory/OrderHistoryComponents/OrderHistoryCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/OrderHistory/OrderHistoryComponents/OrderHistoryCart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repository/get/getOrderMeals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/get/getOrderMeals.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +90,13 @@
       <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\CreateSubscriptionPlan" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" nameIsGenerated="true" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="LaunchBrowser.Before.Run" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -252,14 +253,8 @@
       <workItem from="1625880114261" duration="5133000" />
       <workItem from="1625926076225" duration="385000" />
       <workItem from="1625932665686" duration="20759000" />
-      <workItem from="1626013584028" duration="6011000" />
-    </task>
-    <task id="LOCAL-00013" summary="03-08-21">
-      <created>1615160804072</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1615160804072</updated>
+      <workItem from="1626013584028" duration="6468000" />
+      <workItem from="1626103982119" duration="9147000" />
     </task>
     <task id="LOCAL-00014" summary="ForgotPassword + UpdatePassword">
       <created>1615426154801</created>
@@ -597,7 +592,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625885261059</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Order History v0.2 unfinished">
+      <created>1626025667891</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1626025667891</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -631,8 +633,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Cart Component v0.7" />
-    <MESSAGE value="Cart Component v0.7.1" />
     <MESSAGE value="Cart Component v1.0" />
     <MESSAGE value="Checkout Component v0.1" />
     <MESSAGE value="Payment Component v0.1" />
@@ -656,25 +656,51 @@
     <MESSAGE value="Subscription - Weekly: Order Cart v0.2" />
     <MESSAGE value="Subscription - Monthly: Order Cart v0.1 - unfinished" />
     <MESSAGE value="Order History v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Order History v0.1" />
+    <MESSAGE value="Order History v0.2 unfinished" />
+    <MESSAGE value="Order History v0.2 finished!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Order History v0.2 finished!" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626104580675" />
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619230509800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="-1415" y="94" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1625885259475">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1626116459045">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1415" y="94" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625885259475" />
+    <state x="-1415" y="94" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626025663920" />
     <state x="-1415" y="88" key="CommitChangelistDialog2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495362591" />
-    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1625765828682" />
+    <state x="505" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1626116459045" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1625765092995">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625765092995" />
+    <state x="739" y="262" key="FileChooserDialogImpl" timestamp="1626104575740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1626104575740" />
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1626104601719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626104601719" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1626104601719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626104601719" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1626104601719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626104601719" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1626104601719">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626104601719" />
     <state x="-1239" y="267" width="955" height="525" key="StructurePopup" timestamp="1625933767916">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
@@ -684,31 +710,32 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
     <state x="2601" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618099414550" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1625885280825">
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1626026002157">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625885280825" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626026002157" />
     <state x="-1368" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617495509909" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1625764515339" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
-    <state x="385" y="0" width="1419" height="1027" key="dock-window-1" timestamp="1626014296588">
+    <state x="385" y="0" width="1419" height="1027" key="dock-window-1" timestamp="1626104513347">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="385" y="0" width="1419" height="1027" key="dock-window-1/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626014296588" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1625962390443">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="385" y="0" width="1419" height="1027" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1626104513347" />
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1626114956463">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625962390443" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625856865960" />
     <state x="-1353" y="253" width="1353" height="565" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617555652331" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625849192522" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626114956463" />
     <state x="264" y="454" width="762" height="1022" key="find.popup/1080.0.1920.1040/0.0.1080.1880@0.0.1080.1880" timestamp="1619132395511" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="2487" y="252" width="1353" height="565" key="find.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1618100912741" />
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1625873198551">
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1626025889848">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1625873198551" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626025889848" />
     <state x="-1305" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1617567089922" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1625789585147" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625281319400" />

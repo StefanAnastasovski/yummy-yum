@@ -595,7 +595,7 @@ class WeeklyMenu extends Component {
     scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
 
         //Data
-        // let subscriptionInfo = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues
+        let subscription = JSON.parse(localStorage.getItem("subscription"));
         let mealRecipe = JSON.parse(localStorage.getItem("mealRecipe"));
         let scheduleCartItems;
 
@@ -635,11 +635,11 @@ class WeeklyMenu extends Component {
                 url: mealImg.url
             },
             mealName: mealInfo.mealName,
-            pricePerUnit: mealInfo.price,
-            price: mealInfo.price,
+            pricePerUnit: 0,
+            price: 0,
             mealMenuDate: mealMenuDate,
             cardIndex: scheduleCartItems.length,
-            servings: 1,
+            servings: parseInt(subscription.servingsPerMeal),
             deliveryDate: deliveryDate,
             deliveryTime: deliveryTime,
             customizeIt: customizeItOption,

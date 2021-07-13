@@ -2,7 +2,6 @@ import React from "react";
 import Aux from "../../../../../../../hoc/Auxilliary";
 
 const OrderCartDeliveryDate = (props) => {
-
     let dates = []
 
     let populateDates = () => {

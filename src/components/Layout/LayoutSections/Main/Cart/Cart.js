@@ -343,7 +343,6 @@ class Cart extends Component {
                 let isScheduledMealsExist = scheduledMeals.length > 0;
                 // Set
 
-                console.log("---------------------------- START ------------------------");
                 //Checking
                 this.scheduleMealsMonthlyHandler(mealsToBeScheduled, scheduledMeals,
                     isScheduledMealsExist, weeklyAllowedNumberOfMeals);
@@ -401,7 +400,6 @@ class Cart extends Component {
                         found = true;
                     }
                 })
-                console.log(itemBiggerArray)
                 if (!found) {
                     scheduleMealMonthlyError.forEach((errorItem, errorIndex) => {
                         console.log(errorItem)
@@ -469,7 +467,6 @@ class Cart extends Component {
                     let message = ``;
                     this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
                         mealsToBeScheduledList, message);
-                    console.log("SCHEDULE MEALS")
                     canScheduleMeals = true;
                 }
 
@@ -486,11 +483,9 @@ class Cart extends Component {
             }
 
         } else if (!isScheduledMealsExist) {
-            // console.log("Doesn't exist")
             let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
             canScheduleMeals = false;
             mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
-                // console.log(mealsToBeScheduledList)
                 if (mealsToBeScheduledList.meals.length <= weeklyAllowedNumberOfMeals) {
                     if (scheduleMealMonthlyError.length > 0) {
                         scheduleMealMonthlyError.forEach((item, index) => {
@@ -504,7 +499,6 @@ class Cart extends Component {
                     }
 
 
-                    console.log("Schedule Meals!");
                     canScheduleMeals = true;
                 } else if (mealsToBeScheduledList.meals.length > weeklyAllowedNumberOfMeals) {
 
@@ -526,7 +520,6 @@ class Cart extends Component {
             }
 
             if (scheduledMeals + mealsToBeScheduled < weeklyAllowedNumberOfMeals) {
-                // console.log("Doesn't exist")
             }
         }
 
@@ -786,9 +779,10 @@ class Cart extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
         localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
-            isSomethingChanged: true
+            isSomethingChanged: true,
+            items: items
         })
-        await this.populateItems();
+        // await this.populateItems();
     }
 
     deliveryTimeOnChangeHandler = async (event, index) => {
@@ -805,9 +799,10 @@ class Cart extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
         localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
-            isSomethingChanged: true
+            isSomethingChanged: true,
+            items: items
         })
-        await this.populateItems();
+        // await this.populateItems();
     }
 
     populateDates = (mealMenuDate) => {

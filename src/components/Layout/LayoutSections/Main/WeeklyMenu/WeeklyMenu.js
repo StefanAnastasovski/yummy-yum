@@ -592,6 +592,10 @@ class WeeklyMenu extends Component {
 
     }
 
+    isWholeNumber = (n) => {
+        return !((n - Math.floor(n)) !== 0);
+    }
+
     scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
 
         //Data
@@ -619,7 +623,20 @@ class WeeklyMenu extends Component {
 
         deliveryDate = this.setCorrectDeliveryDate(this.state.menuName, scheduleCartItems.length);
 
-        deliveryTime = this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length];
+        // 2nd issue is here, it's getting only from 0 to delivery days
+        if (this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length]) {
+            deliveryTime = this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length];
+        } else {
+            let tempModule = scheduleCartItems.length % subscription.numberOfWeeklyDeliveryDays;
+            let tempDivide = scheduleCartItems.length / subscription.numberOfWeeklyDeliveryDays;
+            let timeCartValueIndex;
+            if (tempModule === 0) {
+                timeCartValueIndex = scheduleCartItems.length - (tempDivide * subscription.numberOfWeeklyDeliveryDays)
+            } else {
+                timeCartValueIndex = scheduleCartItems.length - ((Math.floor(tempDivide) * subscription.numberOfWeeklyDeliveryDays))
+            }
+            deliveryTime = this.state.userSubscriptionData.deliveryTime[timeCartValueIndex];
+        }
 
         mealMenuDate = `${mealMenuDate[2]}-${mealMenuDate[3]}-${mealMenuDate[1]}`;
 

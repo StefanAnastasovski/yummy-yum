@@ -786,9 +786,6 @@ class Cart extends Component {
     }
 
     deliveryTimeOnChangeHandler = async (event, index) => {
-        this.setState({
-            loading: true
-        })
         let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));

@@ -23,15 +23,15 @@ const OrderCart = (props) => {
     let weekDates = mealFromTheWeekOf();
 
     let deliveryDateHandler = (event) => {
-        props.deliveryDateOnChangeHandler(event, props.cardInfo.cardIndex);
+        props.deliveryDateAndTimeHandler(event, props.cardInfo.cardIndex, "deliveryDate");
     }
 
     let setCorrectDeliveryDate = (index, deliveryDate) => {
         props.setCorrectDeliveryDate(index, deliveryDate);
     }
 
-    let deliveryTimeHandler = (event, cardId) => {
-        props.deliveryTimeOnChangeHandler(event, cardId);
+    let deliveryTimeHandler = (event) => {
+        props.deliveryDateAndTimeHandler(event, props.cardInfo.cardIndex, "deliveryTime");
     }
 
     const populateMealNameInLocalStorage = (mealName, mealMenuDate) => {

@@ -768,12 +768,16 @@ class Cart extends Component {
         await this.populateItems();
     }
 
-    deliveryDateOnChangeHandler = async (event, index) => {
+    deliveryDateAndTimeHandler = async (event, index, deliveryType) => {
         let items;
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
         items = shoppingCartItems.concat(scheduleCartItems);
-        items[index].deliveryDate = event.target.value;
+        if (deliveryType === "deliveryDate") {
+            items[index].deliveryDate = event.target.value;
+        } else if (deliveryType === "deliveryTime") {
+            items[index].deliveryTime = event.target.value;
+        }
         let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
         let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
@@ -782,24 +786,6 @@ class Cart extends Component {
             isSomethingChanged: true,
             items: items
         })
-        // await this.populateItems();
-    }
-
-    deliveryTimeOnChangeHandler = async (event, index) => {
-        let items;
-        let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
-        let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
-        items = shoppingCartItems.concat(scheduleCartItems);
-        items[index].deliveryTime = event.target.value;
-        let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
-        let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
-        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
-        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
-        this.setState({
-            isSomethingChanged: true,
-            items: items
-        })
-        // await this.populateItems();
     }
 
     populateDates = (mealMenuDate) => {
@@ -907,12 +893,7 @@ class Cart extends Component {
                                                         removeHandler={this.removeHandler.bind(this)}
                                                         allowToContinueSchedule={this.allowToContinueSchedule}
                                                         setCorrectDeliveryDate={this.setCorrectDeliveryDate.bind(this)}
-                                                        deliveryDateOnChangeHandler={(e) => {
-                                                            this.deliveryDateOnChangeHandler(e, index).then(r => null)
-                                                        }}
-                                                        deliveryTimeOnChangeHandler={(e) => {
-                                                            this.deliveryTimeOnChangeHandler(e, index).then(r => null)
-                                                        }}
+                                                        deliveryDateAndTimeHandler={this.deliveryDateAndTimeHandler.bind(this)}
                                                         deliveryDateValue={item.deliveryDate}
                                                         deliveryTimeValue={item.deliveryTime}
                                                         customizeItOption={item.customizeItOption}

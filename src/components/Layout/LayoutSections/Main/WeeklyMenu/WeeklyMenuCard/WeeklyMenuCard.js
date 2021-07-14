@@ -6,6 +6,7 @@ import Aux from "../../../../../../hoc/Auxilliary";
 import RemoveIcon from "./Icons/RemoveIcon/RemoveIcon";
 import MinusIcon from "./Icons/MinusIcon/MinusIcon";
 import PlusIcon from "./Icons/PlusIcon/PlusIcon";
+import {parse} from "@fortawesome/fontawesome-svg-core";
 
 
 const WeeklyMenuCard = (props) => {
@@ -53,6 +54,7 @@ const WeeklyMenuCard = (props) => {
             showScheduleBtn = false;
         }
     })
+
     const removeItem = () => {
         props.removeItemFromCart(props.cardIdNumber);
     }
@@ -60,6 +62,7 @@ const WeeklyMenuCard = (props) => {
     const removeItemFromScheduleItems = () => {
         props.removeItemFromScheduleItems(props.cardIdNumber);
     }
+
     const increaseServings = () => {
         props.increaseServings(props.cardIdNumber);
     }
@@ -67,6 +70,28 @@ const WeeklyMenuCard = (props) => {
     const decreaseServings = () => {
         props.decreaseServings(props.cardIdNumber);
     }
+
+    const currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+
+    let shouldShowAddToCartHandler = () => {
+        let currentWeeksMenuDate = new Date (currentDate.getFullYear(), currentDate.getMonth(),
+            currentDate.getDate()-(currentDate.getDay()-1));
+        let doNotShow = true;
+        let isCartDateSmallerThanCurrentWeeksMenuDate = false;
+
+        if(cartDate < currentWeeksMenuDate){
+            isCartDateSmallerThanCurrentWeeksMenuDate=true;
+        }
+
+        if(!isCartDateSmallerThanCurrentWeeksMenuDate){
+            if(currentDate.getDay() === 0 && new Date().getHours() > 6){
+                doNotShow = false
+            }
+        }
+        return doNotShow && !isCartDateSmallerThanCurrentWeeksMenuDate;
+    }
+
+    let shouldShowAddToCart = shouldShowAddToCartHandler();
 
     return (
 
@@ -131,10 +156,9 @@ const WeeklyMenuCard = (props) => {
                             </div>
                         </div>
 
+
                         {
-                            ((new Date().getTime() > cartDate.getTime()) &&
-                                !(new Date().getDay() === 0 && new Date().getHours() > 6)) ||
-                            ((new Date().getTime() < cartDate.getTime()))
+                            shouldShowAddToCart
 
                                 ?
 

@@ -623,7 +623,6 @@ class WeeklyMenu extends Component {
 
         deliveryDate = this.setCorrectDeliveryDate(this.state.menuName, scheduleCartItems.length);
 
-        // 2nd issue is here, it's getting only from 0 to delivery days
         if (this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length]) {
             deliveryTime = this.state.userSubscriptionData.deliveryTime[scheduleCartItems.length];
         } else {

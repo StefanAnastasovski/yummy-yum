@@ -74,17 +74,17 @@ const WeeklyMenuCard = (props) => {
     const currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 
     let shouldShowAddToCartHandler = () => {
-        let currentWeeksMenuDate = new Date (currentDate.getFullYear(), currentDate.getMonth(),
-            currentDate.getDate()-(currentDate.getDay()-1));
+        let currentWeeksMenuDate = new Date(currentDate.getFullYear(), currentDate.getMonth(),
+            currentDate.getDate() - (currentDate.getDay() - 1));
         let doNotShow = true;
         let isCartDateSmallerThanCurrentWeeksMenuDate = false;
 
-        if(cartDate < currentWeeksMenuDate){
-            isCartDateSmallerThanCurrentWeeksMenuDate=true;
+        if (cartDate < currentWeeksMenuDate) {
+            isCartDateSmallerThanCurrentWeeksMenuDate = true;
         }
 
-        if(!isCartDateSmallerThanCurrentWeeksMenuDate){
-            if(currentDate.getDay() === 0 && new Date().getHours() > 6){
+        if (!isCartDateSmallerThanCurrentWeeksMenuDate) {
+            if (currentDate.getDay() === 0 && new Date().getHours() > 6) {
                 doNotShow = false
             }
         }
@@ -205,7 +205,8 @@ const WeeklyMenuCard = (props) => {
                                         showScheduleBtn ? <div className="wm-amtc-add-to-cart">
                                             {
                                                 props.isUserSubscribed && <button
-                                                    type="button" className="btn-add-meal-to-cart w-100 "
+                                                    type="button" className="btn-schedule-a-meal w-100
+                                                    text-white bg-color-purple"
                                                     onClick={scheduleAMealHandler}>
                                                     Schedule A Meal
                                                 </button>

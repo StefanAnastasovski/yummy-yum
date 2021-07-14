@@ -33,6 +33,10 @@ body, p, h1, h2, h3, h4, h5, a, input, textarea, button {
     background-color: #d7ffa2!important;
 }
 
+.bg-color-purple{
+    background-color: #4a099a !important;
+}
+
 body .row, body .col, body .col-3, body ul, body .col-8, body .col-4, body .col-9 {
     padding: 0;
     margin: 0;

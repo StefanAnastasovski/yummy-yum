@@ -402,7 +402,7 @@ class Cart extends Component {
                 })
                 if (!found) {
                     scheduleMealMonthlyError.forEach((errorItem, errorIndex) => {
-                        console.log(errorItem)
+                        // console.log(errorItem)
                     })
                 }
             })
@@ -485,7 +485,9 @@ class Cart extends Component {
         } else if (!isScheduledMealsExist) {
             let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
             canScheduleMeals = false;
+            let arrayOfErrors = [];
             mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
+                canScheduleMeals = false;
                 if (mealsToBeScheduledList.meals.length <= weeklyAllowedNumberOfMeals) {
                     if (scheduleMealMonthlyError.length > 0) {
                         scheduleMealMonthlyError.forEach((item, index) => {
@@ -497,8 +499,6 @@ class Cart extends Component {
                             scheduleMealMonthlyError: scheduleMealMonthlyError
                         })
                     }
-
-
                     canScheduleMeals = true;
                 } else if (mealsToBeScheduledList.meals.length > weeklyAllowedNumberOfMeals) {
 
@@ -510,11 +510,12 @@ class Cart extends Component {
                            meal(s).`;
                     this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
                         mealsToBeScheduledList, message);
+                    canScheduleMeals = false;
                 }
-
+                arrayOfErrors.push(canScheduleMeals);
             });
 
-            if (canScheduleMeals) {
+            if (arrayOfErrors.includes(false)===false) {
                 let orderId = await this.createOrderInfo();
                 await this.createOrderMeals(orderId);
             }

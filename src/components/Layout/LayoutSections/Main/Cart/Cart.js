@@ -605,8 +605,6 @@ class Cart extends Component {
     }
 
     convertDayInAWeekToDate = (mealMenuDate, deliveryDay) => {
-        console.log(mealMenuDate)
-        console.log(deliveryDay)
         let mondayDate = mealMenuDate.split("-");
         mondayDate = new Date(mondayDate[2], (mondayDate[0] - 1), mondayDate[1]);
 
@@ -660,7 +658,6 @@ class Cart extends Component {
             scheduleCartItems = scheduleCartItems.map((item, index) => {
                 let mealMenuDate = item.mealMenuDate;
                 let dates = this.populateDates(mealMenuDate);
-                console.log(dates)
                 let deliveryDate = this.convertDayInAWeekToDate(item.mealMenuDate, subscription.weeklyDeliveryDays[index])
                 if (!dates.includes(deliveryDate)) {
                     scheduleCartItems[index].deliveryDate = dates[0];

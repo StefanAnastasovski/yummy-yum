@@ -57,15 +57,15 @@ class MainRouter extends Component {
 
                     </Switch>
 
-                    <Switch>
+                    {/*<Switch>*/}
 
-                        <Route exact path="/choices">
+                    {/*    <Route exact path="/choices">*/}
 
-                            <CustomizeMeal/>
+                    {/*        <CustomizeMeal/>*/}
 
-                        </Route>
+                    {/*    </Route>*/}
 
-                    </Switch>
+                    {/*</Switch>*/}
 
                     <Switch>
 

@@ -49,7 +49,7 @@ const Section5 = () => {
                                 </p>
 
                                 <div className="ms5-mk-build-your-box-btn pt-3">
-                                    <a href="/choices" className="ms5-mk-btn text-decoration-none my-2">
+                                    <a href="/weekly-menu" className="ms5-mk-btn text-decoration-none my-2">
                                         Build Your Box
                                     </a>
                                 </div>
@@ -93,7 +93,7 @@ const Section5 = () => {
                                 </p>
 
                                 <div className="ms5-mk-plan-your-week-btn pt-3">
-                                    <a href="/choices" className="ms5-mk-btn text-decoration-none my-2">
+                                    <a href="/weekly-menu" className="ms5-mk-btn text-decoration-none my-2">
                                         Plan Your First Week
                                     </a>
                                 </div>
@@ -117,7 +117,7 @@ const Section5 = () => {
                                 </p>
 
                                 <div className="ms5-mk-dig-in-btn pt-3">
-                                    <a href="/choices" className="ms5-mk-btn text-decoration-none my-2">
+                                    <a href="/weekly-menu" className="ms5-mk-btn text-decoration-none my-2">
                                         Dig In
                                     </a>
                                 </div>

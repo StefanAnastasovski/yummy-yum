@@ -142,7 +142,7 @@ const HowItWorks = (props) => {
 
                         <div className="text-center my-3 py-2 hiw-btn-pick-meal">
 
-                            <a href="/choices">
+                            <a href="/weekly-menu">
                                 <button className="btn-pick-meal font-weight-bold">Pick Your Meals</button>
                             </a>
 

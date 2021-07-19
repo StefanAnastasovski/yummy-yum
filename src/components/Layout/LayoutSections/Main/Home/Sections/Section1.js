@@ -44,7 +44,7 @@ const Section1 = () => {
                     </h2>
 
                     <div className="my-4">
-                        <a href="/choices" className="ms1-pym-btn pick-your-meal px-5 py-3 text-decoration-none ">
+                        <a href="/weekly-menu" className="ms1-pym-btn pick-your-meal px-5 py-3 text-decoration-none ">
                             Pick Your Meal
                         </a>
                     </div>

@@ -605,7 +605,8 @@ class Cart extends Component {
     }
 
     convertDayInAWeekToDate = (mealMenuDate, deliveryDay) => {
-
+        console.log(mealMenuDate)
+        console.log(deliveryDay)
         let mondayDate = mealMenuDate.split("-");
         mondayDate = new Date(mondayDate[2], (mondayDate[0] - 1), mondayDate[1]);
 
@@ -655,36 +656,42 @@ class Cart extends Component {
         })
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
         let subscription = JSON.parse(localStorage.getItem("subscription"));
-        scheduleCartItems = scheduleCartItems.map((item, index) => {
-            let mealMenuDate = item.mealMenuDate;
-            let dates = this.populateDates(mealMenuDate);
-            let deliveryDate = this.convertDayInAWeekToDate(item.mealMenuDate, subscription.weeklyDeliveryDays[index])
-            if (!dates.includes(deliveryDate)) {
-                scheduleCartItems[index].deliveryDate = dates[0];
-                localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
-            }
+        if (Object.keys(subscription).length !== 0) {
+            scheduleCartItems = scheduleCartItems.map((item, index) => {
+                let mealMenuDate = item.mealMenuDate;
+                let dates = this.populateDates(mealMenuDate);
+                console.log(dates)
+                let deliveryDate = this.convertDayInAWeekToDate(item.mealMenuDate, subscription.weeklyDeliveryDays[index])
+                if (!dates.includes(deliveryDate)) {
+                    scheduleCartItems[index].deliveryDate = dates[0];
+                    localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
+                }
 
-            return {
-                "img": {
-                    "url": item.img.url,
-                    "alt": item.img.alt,
-                    "cookingStep": item.img.cookingStep,
-                    "isChefImg": item.img.isChefImg,
-                    "isMainRecipeImg": item.img.isMainRecipeImg
-                },
-                "mealName": item.mealName,
-                "price": 0,
-                "mealMenuDate": mealMenuDate,
-                "pricePerUnit": 0,
-                "cardIndex": index,
-                "menuCardIndex": item.menuCardIndex,
-                "servings": parseInt(subscription.servingsPerMeal),
-                "deliveryDate": scheduleCartItems[index].deliveryDate,
-                "deliveryTime": subscription.deliveryTime[index],
-                "customizeItOption": item.customizeIt,
-                "isSubscriptionItem": true
-            }
-        })
+                return {
+                    "img": {
+                        "url": item.img.url,
+                        "alt": item.img.alt,
+                        "cookingStep": item.img.cookingStep,
+                        "isChefImg": item.img.isChefImg,
+                        "isMainRecipeImg": item.img.isMainRecipeImg
+                    },
+                    "mealName": item.mealName,
+                    "price": 0,
+                    "mealMenuDate": mealMenuDate,
+                    "pricePerUnit": 0,
+                    "cardIndex": index,
+                    "menuCardIndex": item.menuCardIndex,
+                    "servings": parseInt(subscription.servingsPerMeal),
+                    "deliveryDate": scheduleCartItems[index].deliveryDate,
+                    "deliveryTime": subscription.deliveryTime[index],
+                    "customizeItOption": item.customizeIt,
+                    "isSubscriptionItem": true
+                }
+            })
+        } else {
+            scheduleCartItems = [];
+        }
+
         items = shoppingCartItems.concat(scheduleCartItems);
         this.setState({
             items: items,

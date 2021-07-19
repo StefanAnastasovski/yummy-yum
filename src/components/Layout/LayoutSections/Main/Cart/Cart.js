@@ -373,7 +373,7 @@ class Cart extends Component {
             }
         })
         this.setState({
-            scheduleMealMonthlyError: scheduleMealMonthlyError
+            scheduleMealMonthlyError: [...scheduleMealMonthlyError].sort((a, b) => a.week.localeCompare(b.week))
         })
     }
 

@@ -6,7 +6,6 @@ import Aux from "../../../../../../hoc/Auxilliary";
 import RemoveIcon from "./Icons/RemoveIcon/RemoveIcon";
 import MinusIcon from "./Icons/MinusIcon/MinusIcon";
 import PlusIcon from "./Icons/PlusIcon/PlusIcon";
-import {parse} from "@fortawesome/fontawesome-svg-core";
 
 
 const WeeklyMenuCard = (props) => {

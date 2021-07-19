@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom
 import Aux from "../../../../hoc/Auxilliary";
 
 import Home from "../../LayoutSections/Main/Home/Home";
-import CustomizeMeal from "../../LayoutSections/Main/CustomizeMeal/CustomizeMeal";
 import WeeklyMenu from "../../LayoutSections/Main/WeeklyMenu/WeeklyMenu";
 import SignUp from "../../LayoutSections/Main/SignUp/SignUp";
 import Login from "../../LayoutSections/Main/Login/Login";
@@ -24,18 +23,73 @@ import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
 
 class MainRouter extends Component {
 
-    // state = {};
+    state = {
+        redirect: false,
+        path: "/"
+    };
 
     // method = () => {
     //
     // };
 
+    async componentDidMount() {
+        await this.routeHandler();
+    }
+
     redirectToHome = () => {
         return <Redirect to="/"/>
     }
 
-    render() {
+    redirect = (path) => {
+        return <Redirect to={path}/>
+    }
 
+    routeHandler = async () => {
+        const isAdmin = localStorage.getItem("isAdmin");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const pathURL = document.location.pathname;
+        const urls = ["/", "/how-it-works", "/weekly-menu", '/meals', "/log-in",
+            "/forgot-password", "/join-now", "/joined", "/terms", "/privacy-policy"];
+        const dashboardAdminURLS = [
+            "/dashboard/admin", "/dashboard/admin/create-recipe", "/dashboard/admin/create-menu",
+            "/dashboard/admin/send-email", "/dashboard/admin/create-coupon", "/dashboard/admin/create-subscription-plan",
+            "/dashboard/admin/manage-coupon", "/dashboard/admin/manage-subscription-plan",
+            "/dashboard/admin/orders", '/dashboard/admin/orders/order-details/order-id='];
+        const dashboardUserURLS = [
+            "/dashboard/user", "/dashboard/user/personal-information", "/dashboard/user/billing-information",
+            "/dashboard/user/shipping-information", "/dashboard/user/subscription", "/dashboard/user/order-history",
+            "/dashboard/user/subscription/cart/pay-now", "/dashboard/user/subscription/cart/payment-successful",
+            "/cart", "/cart/checkout", "/cart/pay-now", "/cart/payment-successful", "/cart/schedule"];
+        let urlPath = window.location.pathname;
+
+        if (isLoggedIn === "YES") {
+            let shouldRedirect = false;
+            if (isAdmin === "NO") {
+                if (urls.includes(pathURL)) {
+                    shouldRedirect = false;
+                } else if (dashboardUserURLS.includes(pathURL)) {
+                    shouldRedirect = false;
+                } else shouldRedirect = !/\/meals/.test(urlPath);
+            }
+            if (isAdmin === "YES") {
+                if (urls.includes(pathURL)) {
+                    shouldRedirect = false;
+                } else if (dashboardUserURLS.includes(pathURL)) {
+                    shouldRedirect = false;
+                } else if (dashboardAdminURLS.includes(pathURL)) {
+                    shouldRedirect = false;
+                } else shouldRedirect = !/\/meals/.test(urlPath);
+            }
+            if (shouldRedirect) {
+                this.setState({
+                    redirect: shouldRedirect,
+                    path: "/"
+                })
+            }
+        }
+    }
+
+    render() {
 
         return (
 
@@ -45,6 +99,9 @@ class MainRouter extends Component {
 
                     {
                         this.props.isRedirectedToHome ? this.redirectToHome() : null
+                    }
+                    {
+                        this.state.redirect && this.redirect(this.state.path)
                     }
 
                     <Switch>

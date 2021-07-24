@@ -2,7 +2,24 @@ import React from "react";
 
 const UserBillingInformation = (props) => {
 
-    let billingInfo = JSON.parse(localStorage.getItem("userInformation")).billingInformation;
+    const getBillingInformation = () => {
+        let billingInfo;
+        let localStorageBillingInfo = JSON.parse(localStorage.getItem("userInformation")).billingInformation;
+        if (localStorageBillingInfo) {
+            billingInfo = localStorageBillingInfo;
+        } else if (props.info && props.info.nameOnCard.length > 0) {
+            billingInfo = {
+                nameOnCard: props.info.nameOnCard,
+                cardNumber: props.info.cardNumber,
+                expirationDateMonth: props.info.expirationDateMonth,
+                expirationDateYear: props.info.expirationDateYear,
+                isActive: props.info.isActive
+            }
+        }
+        return billingInfo;
+    }
+
+    const billingInformation = getBillingInformation();
 
     return (
 
@@ -18,8 +35,9 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                billingInfo ? billingInfo.nameOnCard :
+                                billingInformation ? billingInformation.nameOnCard :
                                     <input type="text" placeholder="Name On Card" name="name-on-card"
+                                           className="px-1"
                                            onChange={props.onChangeBillingInformationHandler}
                                            required/>
                             }
@@ -32,8 +50,9 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                billingInfo ? "*" + billingInfo.cardNumber.slice(-4) :
+                                billingInformation ? "*" + billingInformation.cardNumber.slice(-4) :
                                     <input type="text"
+                                           className="px-1"
                                            maxLength="16" minLength="16"
                                            placeholder="Card Number" name="card-number"
                                            required
@@ -48,9 +67,11 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                billingInfo ? billingInfo.expirationDateMonth :
+                                billingInformation ? billingInformation.expirationDateMonth :
                                     <input type="text" placeholder="Expiration Date (Month)"
+                                           className="px-1"
                                            maxLength="2"
+                                           minLength="2"
                                            name="expiration-date-month"
                                            required
                                            onChange={props.onChangeBillingInformationHandler}/>
@@ -64,9 +85,11 @@ const UserBillingInformation = (props) => {
                         </p>
                         <p className="col text-color-green w-75">
                             {
-                                billingInfo ? billingInfo.expirationDateYear :
+                                billingInformation ? billingInformation.expirationDateYear :
                                     <input type="text" placeholder="Expiration Date (Year)"
-                                           maxLength="2"
+                                           className="px-1"
+                                           maxLength="4"
+                                           minLength="4"
                                            name="expiration-date-year"
                                            required
                                            onChange={props.onChangeBillingInformationHandler}/>
@@ -75,32 +98,25 @@ const UserBillingInformation = (props) => {
                     </div>
 
                     {
-                        billingInfo && <div className="col d-flex py-3">
+                        billingInformation && <div className="col d-flex py-3">
                             <p className="col-3">
                                 Status:
                             </p>
                             <p className="col text-color-green">
-                                {billingInfo.isActive ? "Active" : "Inactive"}
+                                {billingInformation.isActive ? "Active" : "Inactive"}
                             </p>
                         </div>
                     }
 
                     {
-                        !billingInfo ? <div className="col d-flex py-3">
+                        !billingInformation ? <div className="col d-flex py-3">
                                 <button type="button" className=" btn-save-user-information"
                                         name="save-billing-information"
                                         onClick={props.onSubmitSave}>
                                     Save
                                 </button>
                             </div> :
-                            ""
-                            // <div className="col d-flex py-3">
-                            //     <button type="button" className=" btn-save-user-information"
-                            //             name="save-billing-information"
-                            //             onClick={props.onSubmitSave}>
-                            //         Change
-                            //     </button>
-                            // </div>
+                            null
                     }
 
                 </div>

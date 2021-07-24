@@ -85,6 +85,7 @@ class UserDashboard extends Component {
 
         //
         showMealsByValue: "All",
+        isUpdated: false
 
 
     }
@@ -852,8 +853,14 @@ class UserDashboard extends Component {
 
     createBillingInformation = async () => {
         try {
-            await postCreditCard.createCreditCard(this.state.billingInformation, this.state.username).then((response) => {
-                // console.log(response.data.code);
+            let obj;
+            if (!this.state.billingInformation.isActive) {
+                obj = {
+                    ...this.state.billingInformation,
+                    isActive: true
+                }
+            }
+            await postCreditCard.createCreditCard(obj, this.state.username).then((response) => {
             })
         } catch (e) {
             console.log(e);

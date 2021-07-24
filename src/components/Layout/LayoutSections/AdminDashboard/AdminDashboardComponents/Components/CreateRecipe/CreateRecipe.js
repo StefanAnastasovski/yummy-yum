@@ -822,7 +822,6 @@ class CreateRecipe extends Component {
     //---------------------------------------------------------------------------------------
 
     componentDidMount() {
-        console.log(this.state)
         let mealIngredientsList = [...this.state.mealIngredients, <li key={this.state.ingredientNumber}>
 
             <div className="col d-flex ">
@@ -1044,53 +1043,6 @@ class CreateRecipe extends Component {
             mealCustomizeOptionsBlocks: mealCustomizeOptionsBlocks
         }))
 
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.state.mealCustomizeOptions)
-        console.log(this.state)
-        // let mealImages;
-        //
-        // mealImages = {
-        //     mainRecipeImages: this.state.mealInformation.mainRecipeImages,
-        //     chefImage: this.state.mealChef.chefImage,
-        //     cookingStepImages: this.state.cookingSteps.cookingStepsImages
-        // }
-
-        // let mealCategory = {
-        //     mealCategory: this.state.mealCategory
-        // }
-
-        //     let meal = {
-        //         mealName: this.state.mealInformation.mealName,
-        //         mealDescription: this.state.mealInformation.mealDescription,
-        //         mealIngredientTag: this.state.mealInformation.mealIngredientTag,
-        //         mealTimeTag: this.state.mealInformation.mealTimeTag,
-        //         mealPrice: this.state.mealInformation.mealPrice,
-        //         cookWithin: this.state.mealOverview.cookWithin,
-        //         difficultyLevel: this.state.mealOverview.difficultyLevel,
-        //         prepCookTime: this.state.mealOverview.prepCookTime,
-        //         spiceLevel: this.state.mealOverview.spiceLevel,
-        //         mealChefDescription: this.state.mealChef.mealChefDescription,
-        //         chefFullName: this.state.mealChef.chefFullName,
-        //         calories: this.state.mealNutrition.calories,
-        //         carbohydrates: this.state.mealNutrition.carbohydrates,
-        //         protein: this.state.mealNutrition.protein,
-        //         fat: this.state.mealNutrition.fat,
-        //         serveQuantity: this.state.mealBox.serveQuantity,
-        //         mealIngredientValues: this.state.mealBox.mealIngredientValues.join(" | "),
-        //         mealUtensilsList1: this.state.recipeSteps.mealUtensilsList1.join(" | "),
-        //         mealUtensilsList2: this.state.recipeSteps.mealUtensilsList2.join(" | "),
-        //         cookingStepValues: this.state.cookingSteps.cookingStepValues,
-        //         cookingSteps: this.state.cookingSteps,
-        //         customizeInstructions: this.state.mealInstructions.customizeInstructions,
-        //         mealInstructionCookSteps: this.state.mealInstructions.cookSteps.join(" | "),
-        //         mealInstructionGuidelines: this.state.mealInstructions.guidelines.join(" | ")
-        //     }
-        //
-        //
-        //
-        //
     }
 
     //---------------------------------------------------------------------------------------

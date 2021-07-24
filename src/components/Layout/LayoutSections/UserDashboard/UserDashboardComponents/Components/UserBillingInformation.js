@@ -3,7 +3,6 @@ import React from "react";
 const UserBillingInformation = (props) => {
 
     let billingInfo = JSON.parse(localStorage.getItem("userInformation")).billingInformation;
-    console.log(billingInfo)
 
     return (
 

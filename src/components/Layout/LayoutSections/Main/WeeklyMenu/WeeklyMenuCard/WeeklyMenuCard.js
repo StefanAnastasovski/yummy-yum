@@ -161,7 +161,8 @@ const WeeklyMenuCard = (props) => {
 
                                 ?
 
-                                isLoggedIn && <div className="">
+                               isLoggedIn && <div className="">
+
                                     {
                                         showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
 
@@ -221,12 +222,14 @@ const WeeklyMenuCard = (props) => {
 
                                     }
 
-                                </div> :
+                                </div>
 
-                                <div>
+                                :
+
+                                isLoggedIn  ? <div>
                                     <p className="text-center bg-danger py-1 text-white">Sorry! You can't order this
                                         meal!</p>
-                                </div>
+                                </div> : null
 
                         }
 

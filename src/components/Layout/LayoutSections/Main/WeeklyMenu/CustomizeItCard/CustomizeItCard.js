@@ -52,8 +52,6 @@ const CustomizeItCard = (props) => {
         })
         props.customizeItCardOnClickHandler(event, props.cardIdNumber, props.mealName, props.mealMenuName)
     }
-    console.log(props)
-
 
     return (
 

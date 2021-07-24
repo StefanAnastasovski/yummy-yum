@@ -120,6 +120,7 @@ class Login extends Component {
                                             <label className="m-0 text-color-green">Email Address: </label>
                                             <input type="email" className="log-in-email-btn w-100 py-2 px-1 mb-3"
                                                    name="login-email"
+                                                   required
                                                    onChange={this.onChangeHandle}
                                                    placeholder="JohnDoe@domain.com"/>
 
@@ -134,6 +135,7 @@ class Login extends Component {
 
                                             <input type="password" className="log-in-password-btn w-100 py-2 px-1 mb-2"
                                                    name="login-password"
+                                                   required
                                                    onChange={this.onChangeHandle}
                                                    placeholder="Password"/>
 

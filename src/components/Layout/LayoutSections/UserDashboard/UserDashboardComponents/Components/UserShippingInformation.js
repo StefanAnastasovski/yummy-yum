@@ -2,7 +2,22 @@ import React from "react";
 
 const UserShippingInformation = (props) => {
 
-    let shippingInfo = JSON.parse(localStorage.getItem("userInformation")).shippingInformation;
+
+    const getShippingInformation = () => {
+        let shippingInfo;
+        let localStorageShippingInfo = JSON.parse(localStorage.getItem("userInformation")).shippingInformation;
+        if (localStorageShippingInfo) {
+            shippingInfo = localStorageShippingInfo;
+        } else if (props.info && props.info.address.length > 0) {
+            shippingInfo = {
+                address: props.info.address,
+                zipCode: props.info.zipCode,
+            }
+        }
+        return shippingInfo;
+    }
+
+    const shippingInformation = getShippingInformation();
 
     return (
 
@@ -15,7 +30,7 @@ const UserShippingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                shippingInfo ? shippingInfo.address :
+                                shippingInformation ? shippingInformation.address :
                                     <input type="text" placeholder="Address"
                                            name="shipping-address"
                                            required
@@ -30,7 +45,7 @@ const UserShippingInformation = (props) => {
                         </p>
                         <p className="col text-color-green">
                             {
-                                shippingInfo ? shippingInfo.zipCode :
+                                shippingInformation ? shippingInformation.zipCode :
                                     <input type="text" placeholder="Zip Code"
                                            name="shipping-zip-code"
                                            required
@@ -40,21 +55,14 @@ const UserShippingInformation = (props) => {
                         </p>
                     </div>
                     {
-                        !shippingInfo ? <div className="col d-flex py-3">
+                        !shippingInformation ? <div className="col d-flex py-3">
                                 <button type="button" className=" btn-save-user-information"
                                         name="save-shipping-information"
                                         onClick={props.onSubmitSave}>
                                     Save
                                 </button>
                             </div> :
-                            ""
-                        // <div className="col d-flex py-3">
-                        //     <button type="button" className=" btn-save-user-information"
-                        //             name="save-billing-information"
-                        //             onClick={props.onSubmitSave}>
-                        //         Change
-                        //     </button>
-                        // </div>
+                            null
 
                     }
                 </div>

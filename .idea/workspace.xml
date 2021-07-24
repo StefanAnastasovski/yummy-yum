@@ -29,11 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,14 +260,7 @@
       <workItem from="1626709406109" duration="9160000" />
       <workItem from="1627046122288" duration="724000" />
       <workItem from="1627100065125" duration="2422000" />
-      <workItem from="1627137865026" duration="7401000" />
-    </task>
-    <task id="LOCAL-00028" summary="Cart Component v0.3">
-      <created>1617494690420</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1617494690420</updated>
+      <workItem from="1627137865026" duration="7563000" />
     </task>
     <task id="LOCAL-00029" summary="Cart Component v0.4">
       <created>1617495363861</created>
@@ -608,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627141072623</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="BillingInformation bugs fixed">
+      <created>1627146188200</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1627146188200</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +639,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="User Dashboard v0.3" />
     <MESSAGE value="User Dashboard v0.4" />
     <MESSAGE value="User Dashboard v0.5" />
     <MESSAGE value="Subscription: Schedule A Meal v0.1" />
@@ -667,7 +663,8 @@
     <MESSAGE value="change /choices path to /weekly-menu path" />
     <MESSAGE value="Forbid URL without token" />
     <MESSAGE value="Login, CreateRecipe and WeeklyMenuCard bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login, CreateRecipe and WeeklyMenuCard bugs fixed" />
+    <MESSAGE value="BillingInformation bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="BillingInformation bugs fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -678,10 +675,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="-1415" y="94" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1627141069825">
+    <state x="-1011" y="122" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1627146186802">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1415" y="94" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627141069825" />
+    <state x="-1011" y="122" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627146186802" />
     <state x="505" y="88" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1626291253591" />
     <state x="1019" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1626721480210" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />

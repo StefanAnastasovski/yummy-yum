@@ -673,7 +673,7 @@ class Payment extends Component {
 
     }
 
-    orderMealObject = (orderMeal) => {
+    orderMealObject = async (orderMeal) => {
         let mealMenuDate = orderMeal.mealMenuDate.split("-");
         let menuName = "M-" + mealMenuDate[2] + "-" + mealMenuDate[1] + "-" + mealMenuDate[0];
 
@@ -684,7 +684,7 @@ class Payment extends Component {
             customizeIt: orderMeal.customizeIt,
             price: parseFloat(orderMeal.price),
             deliveryTime: orderMeal.deliveryTime,
-            deliveryDate: orderMeal.deliveryDate,
+            deliveryDate: await this.convertStringToDate(orderMeal.deliveryDate),
             isSubscription: false
         };
     }
@@ -693,9 +693,9 @@ class Payment extends Component {
 
         let orderMealItems = JSON.parse(localStorage.getItem("orderSummary")).items;
         let orderMeals = [];
-        orderMealItems.forEach(item => {
-            orderMeals.push(this.orderMealObject(item));
-        })
+        for (const item of orderMealItems) {
+            orderMeals.push(await this.orderMealObject(item));
+        }
 
         let obj = {
             orderMeals: orderMeals
@@ -785,6 +785,51 @@ class Payment extends Component {
         }).catch(e => {
             console.log(e)
         })
+
+    }
+
+    convertStringToDate = (date) => {
+
+        let array = [];
+
+        date.split(',').forEach((dateItems, index) => {
+            if (index === 0) {
+                let temp = dateItems.split(" ");
+                temp.forEach((item) => {
+                    array.push(item.trim());
+                })
+            } else if (index === 1) {
+                array.push(dateItems.trim());
+            }
+        })
+
+        const months = {
+            "January": 0,
+            "February": 1,
+            "March": 2,
+            "April": 3,
+            "May": 4,
+            "June": 5,
+            "July": 6,
+            "August": 7,
+            "September": 8,
+            "October": 9,
+            "November": 10,
+            "December": 11
+        };
+
+        array[0] = months[array[0]];
+
+        if (parseInt(array[0] + 1) < 10) {
+            array[0] = '0' + parseInt(array[0] + 1);
+        }
+        if (parseInt(array[1]) < 10) {
+            array[1] = '0' + parseInt(array[1]);
+        }
+
+        let newDate = [array[2], array[0], array[1]];
+
+        return newDate.join("-");
 
     }
 

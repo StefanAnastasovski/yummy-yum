@@ -21,6 +21,7 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
+    border: none;
 }
 
 .payment-wrapper .btn-pay-now-submit:hover {

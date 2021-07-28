@@ -131,18 +131,18 @@ class Payment extends Component {
                 this.setState({
                     formValues: obj
                 })
+                this.setErrorMessage(false, field);
             } else if (value === "") {
                 let obj = {...this.state.formValues, zipCodeValue: value}
                 this.setState({
                     formValues: obj
                 })
+                this.setErrorMessage(false, field);
             }
         } else {
-            this.setErrorMessage(true, field);
-        }
-
-        if (value === "") {
-            this.setErrorMessage(true, field);
+            if (length !== 6) {
+                this.setErrorMessage(true, field);
+            }
         }
 
     }
@@ -738,7 +738,7 @@ class Payment extends Component {
     createPayment = async (orderId) => {
         let checkoutPrice = JSON.parse(localStorage.getItem("checkoutPrice"));
         let coupon = JSON.parse(localStorage.getItem("coupon"));
-        if(coupon){
+        if (coupon) {
             coupon = coupon.couponName
         }
         let object = {
@@ -781,7 +781,6 @@ class Payment extends Component {
             address: this.state.formValues.shippingAddressValue,
             zipCode: this.state.formValues.zipCodeValue
         }
-        console.log(subscriptionInfo)
         await postSubscription.createSubscription(subscriptionInfo).then(response => {
             console.log(response)
         }).catch(e => {
@@ -818,7 +817,7 @@ class Payment extends Component {
 
         }
 
-        this.redirectToPaymentCompleted(this.props.isUserDashboard);
+        // this.redirectToPaymentCompleted(this.props.isUserDashboard);
 
     }
 

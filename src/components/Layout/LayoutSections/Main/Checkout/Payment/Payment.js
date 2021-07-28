@@ -167,7 +167,7 @@ class Payment extends Component {
 
     securityCodeValidator = (value, length, isDigit, field) => {
 
-        if ((length < 5 && isDigit) || length === 0) {
+        if (((length < 5 || length < 4) && isDigit) || length === 0) {
             if (isInt(value)) {
                 let obj = {...this.state.formValues, securityCodeValue: value}
                 this.setState({
@@ -519,16 +519,16 @@ class Payment extends Component {
 
         let flag = true;
 
-        if (code.length !== 4) {
+        if (code.length !== 4 && code.length !== 3) {
             flag = false;
         } else if (!isInt(code)) {
             flag = false;
         }
 
-        if (!flag)
-            this.setErrorMessage(true, "pnb-security-code")
-        else
+        if (flag)
             this.setErrorMessage(false, "pnb-security-code")
+        else
+            this.setErrorMessage(true, "pnb-security-code")
 
 
         return flag;
@@ -565,7 +565,7 @@ class Payment extends Component {
 
     }
 
-    isShippingAddressValid = () => {
+    isShippingAddressValid = async () => {
         let formValues = {...this.state.formValues};
         let isAddressValid = true;
         let addressFlag = true;
@@ -574,10 +574,10 @@ class Payment extends Component {
             addressFlag = false;
         }
 
-        if (!addressFlag)
-            this.setErrorMessage(true, "pnb-shipping-address")
+        if (addressFlag)
+            await this.setErrorMessage(false, "pnb-shipping-address")
         else
-            this.setErrorMessage(false, "pnb-shipping-address")
+            await this.setErrorMessage(true, "pnb-shipping-address")
 
         return isAddressValid;
     }
@@ -592,17 +592,17 @@ class Payment extends Component {
             zipCodeFlag = false;
         }
 
-        if (!zipCodeFlag)
-            this.setErrorMessage(true, "pnb-zip-code")
-        else
+        if (zipCodeFlag)
             this.setErrorMessage(false, "pnb-zip-code")
+        else
+            this.setErrorMessage(true, "pnb-zip-code")
         return isZipCodeValid;
     }
 
     shippingAddressValidator = async () => {
 
-        const isAddressValid = this.isShippingAddressValid();
-        const isZipCodeValid = this.isZipCodeValid();
+        const isAddressValid = await this.isShippingAddressValid();
+        const isZipCodeValid = await this.isZipCodeValid();
 
         return isAddressValid && isZipCodeValid;
 
@@ -782,7 +782,6 @@ class Payment extends Component {
             zipCode: this.state.formValues.zipCodeValue
         }
         await postSubscription.createSubscription(subscriptionInfo).then(response => {
-            console.log(response)
         }).catch(e => {
             console.log(e)
         })
@@ -798,7 +797,6 @@ class Payment extends Component {
 
         const isFormValid = isShippingAddressValid && isCardValid;
 
-
         if (isFormValid) {
             if (this.state.shouldSaveCreditCard) {
                 await this.createCreditCard();
@@ -811,13 +809,14 @@ class Payment extends Component {
                 await this.createOrderMeals(orderId);
                 await this.createPayment(orderId);
                 await this.setLocalStorages();
+                this.redirectToPaymentCompleted(this.props.isUserDashboard);
             } else if (this.props.isUserDashboard) {
                 await this.subscriptionPayment();
+                this.redirectToPaymentCompleted(this.props.isUserDashboard);
             }
 
         }
 
-        // this.redirectToPaymentCompleted(this.props.isUserDashboard);
 
     }
 
@@ -853,7 +852,12 @@ class Payment extends Component {
                                                            name="pnb-shipping-address"
                                                            className="payment-delivery-address-field"
                                                            placeholder="Shipping Address"/>
-
+                                                    {
+                                                        this.state.paymentError.shippingAddressError.isError ?
+                                                            <p className="text-danger font-size-2">
+                                                                {this.state.paymentError.shippingAddressError.message}
+                                                            </p> : null
+                                                    }
                                                     <input type="checkbox" className="mr-1"
                                                            name="save-shipping-address"
                                                            onChange={this.onClickSaveCreditCard}
@@ -862,12 +866,6 @@ class Payment extends Component {
                                                     <label className="font-size-2 m-0">Save Shipping Address for later
                                                         reuse</label>
 
-                                                    {
-                                                        this.state.paymentError.shippingAddressError.isError ?
-                                                            <p className="text-danger font-size-2">
-                                                                {this.state.paymentError.shippingAddressError.message}
-                                                            </p> : null
-                                                    }
 
                                                 </div>
 

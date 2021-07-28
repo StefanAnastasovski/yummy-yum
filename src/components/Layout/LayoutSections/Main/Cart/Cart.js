@@ -285,7 +285,7 @@ class Cart extends Component {
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
         // let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
 
-        let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals;
+        let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals * subscription.numberOfWeeklyDeliveryDays;
         let startDate = subscription.activationDate;
         let endDate = subscription.canceledDate;
         let scheduledMeals;

@@ -29,9 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartDeliveryDate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCartComponents/OrderCartDeliveryDate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,14 +263,7 @@
       <workItem from="1627137865026" duration="7971000" />
       <workItem from="1627376497797" duration="781000" />
       <workItem from="1627461896291" duration="13115000" />
-      <workItem from="1627637992840" duration="2269000" />
-    </task>
-    <task id="LOCAL-00035" summary="Cart Component v0.6.4">
-      <created>1618172306729</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1618172306729</updated>
+      <workItem from="1627637992840" duration="3204000" />
     </task>
     <task id="LOCAL-00036" summary="Cart Component v0.6.5">
       <created>1618444293010</created>
@@ -609,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627642507874</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Cart - Delivery Date - 32date bug fixed">
+      <created>1627645044850</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1627645044850</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -643,7 +642,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Subscription - Weekly: Order Cart v0.2" />
     <MESSAGE value="Subscription - Monthly: Order Cart v0.1 - unfinished" />
     <MESSAGE value="Order History v0.1" />
     <MESSAGE value="Order History v0.2 unfinished" />
@@ -668,7 +666,8 @@
     <MESSAGE value="Payment bugs fixed" />
     <MESSAGE value="weeklyAllowedNumberOfMeals bug - fixed" />
     <MESSAGE value="WeeklyMenu not logged in - bug - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="WeeklyMenu not logged in - bug - fixed" />
+    <MESSAGE value="Cart - Delivery Date - 32date bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart - Delivery Date - 32date bug fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -679,19 +678,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="1019" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1627642505620">
+    <state x="1001" y="88" width="1181" height="863" key="CommitChangelistDialog2" timestamp="1627645043441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1011" y="122" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627465829482" />
     <state x="828" y="106" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496415728" />
-    <state x="1019" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627642505620" />
+    <state x="1001" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627645043441" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />
     <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
-    <state x="-1828" y="98" width="1736" height="856" key="DiffContextDialog" timestamp="1626139214975">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1627645792550">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1828" y="98" key="DiffContextDialog/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626139214975" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625765092995" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627645792550" />
     <state x="739" y="262" key="FileChooserDialogImpl" timestamp="1626104575740">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

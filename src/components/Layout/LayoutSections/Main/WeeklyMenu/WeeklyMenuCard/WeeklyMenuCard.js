@@ -68,6 +68,12 @@ const WeeklyMenuCard = (props) => {
             }
         })
 
+        scheduleCartItems.forEach(item => {
+            if (props.cardIdNumber === item.menuCardIndex) {
+                showScheduleBtn = false;
+            }
+        })
+
 
         shouldShowAddToCart = shouldShowAddToCartHandler()
     }

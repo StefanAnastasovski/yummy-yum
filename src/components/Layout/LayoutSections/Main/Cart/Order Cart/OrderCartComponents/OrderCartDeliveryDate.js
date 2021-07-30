@@ -30,7 +30,7 @@ const OrderCartDeliveryDate = (props) => {
                 --day;
             }
             if (dayInWeek > 0 && dayInWeek <= 6) {
-                for (let i = iValue; i <= 7; i++) {
+                for (let i = iValue; i < 7; i++) {
                     let deliveryDate = month + " " + (++day) + ", " + currentDate.getFullYear();
                     deliveryDates.push(deliveryDate);
                 }

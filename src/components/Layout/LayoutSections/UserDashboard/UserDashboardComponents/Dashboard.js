@@ -16,7 +16,6 @@ const Dashboard = (props) => {
             info={props.userComponentInfo}
         />
     } else if (props.userComponent === "Billing Information") {
-        console.log("HERE")
         userComponent = <UserBillingInformation
             info={props.userComponentInfo}
             onChangeBillingInformationHandler={props.onChangeBillingInformationHandler}

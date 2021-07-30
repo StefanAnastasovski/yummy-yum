@@ -32,47 +32,9 @@ const WeeklyMenuCard = (props) => {
         props.scheduleAMealHandler(props.cardIdNumber, props.meal, props.img)
     }
 
-    let dateValues = props.mealMenuName.split("-");
-    let cartDate = new Date(dateValues[1], dateValues[2] - 1, dateValues[3]);
-
-    let cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
-
-    let showAddToCartBtn = true;
-    let numberOfServings = 0;
-    cartItems.forEach(item => {
-        if (props.cardIdNumber === item.menuCardIndex) {
-            showAddToCartBtn = false;
-            numberOfServings = item.servings
-        }
-    })
-
-    let showScheduleBtn = true;
-    let scheduleCartItems = JSON.parse(localStorage.getItem('scheduleCartItems'));
-    scheduleCartItems.forEach(item => {
-        if (props.cardIdNumber === item.menuCardIndex) {
-            showScheduleBtn = false;
-        }
-    })
-
-    const removeItem = () => {
-        props.removeItemFromCart(props.cardIdNumber);
-    }
-
-    const removeItemFromScheduleItems = () => {
-        props.removeItemFromScheduleItems(props.cardIdNumber);
-    }
-
-    const increaseServings = () => {
-        props.increaseServings(props.cardIdNumber);
-    }
-
-    const decreaseServings = () => {
-        props.decreaseServings(props.cardIdNumber);
-    }
-
-    const currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-
     let shouldShowAddToCartHandler = () => {
+        let dateValues = props.mealMenuName.split("-");
+        let cartDate = new Date(dateValues[1], dateValues[2] - 1, dateValues[3]);
         let currentWeeksMenuDate = new Date(currentDate.getFullYear(), currentDate.getMonth(),
             currentDate.getDate() - (currentDate.getDay() - 1));
         let doNotShow = true;
@@ -90,7 +52,41 @@ const WeeklyMenuCard = (props) => {
         return doNotShow && !isCartDateSmallerThanCurrentWeeksMenuDate;
     }
 
-    let shouldShowAddToCart = shouldShowAddToCartHandler();
+    let shouldShowAddToCart;
+    let scheduleCartItems = JSON.parse(localStorage.getItem('scheduleCartItems'));
+    let cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
+    const currentDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+    let showAddToCartBtn = true;
+    let showScheduleBtn = true;
+    let numberOfServings = 0;
+    if (isLoggedIn) {
+
+        cartItems.forEach(item => {
+            if (props.cardIdNumber === item.menuCardIndex) {
+                showAddToCartBtn = false;
+                numberOfServings = item.servings
+            }
+        })
+
+
+        shouldShowAddToCart = shouldShowAddToCartHandler()
+    }
+
+    const removeItem = () => {
+        props.removeItemFromCart(props.cardIdNumber);
+    }
+
+    const removeItemFromScheduleItems = () => {
+        props.removeItemFromScheduleItems(props.cardIdNumber);
+    }
+
+    const increaseServings = () => {
+        props.increaseServings(props.cardIdNumber);
+    }
+
+    const decreaseServings = () => {
+        props.decreaseServings(props.cardIdNumber);
+    }
 
     return (
 
@@ -161,7 +157,7 @@ const WeeklyMenuCard = (props) => {
 
                                 ?
 
-                               isLoggedIn && <div className="">
+                                isLoggedIn && <div className="">
 
                                     {
                                         showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
@@ -226,7 +222,7 @@ const WeeklyMenuCard = (props) => {
 
                                 :
 
-                                isLoggedIn  ? <div>
+                                isLoggedIn ? <div>
                                     <p className="text-center bg-danger py-1 text-white">Sorry! You can't order this
                                         meal!</p>
                                 </div> : null

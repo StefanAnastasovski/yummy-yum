@@ -543,7 +543,7 @@ class WeeklyMenu extends Component {
                     + (new Date().getDate() + 1) + ", " + new Date().getFullYear();
             }
         } else {
-            let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, parseInt(mealMenuDate[3]))
+            let date = new Date(parseInt(mealMenuDate[1]), parseInt(mealMenuDate[2]) - 1, new Date().getDate() + 1)
             deliveryDate = date.toLocaleString('default', {month: 'long'}) + " " + date.getDate() + ", " + date.getFullYear();
         }
 

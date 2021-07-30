@@ -15,7 +15,7 @@ const OrderCartDeliveryDate = (props) => {
 
         if (currentDate.getTime() > newDate.getTime()
             || currentDate.getTime() === newDate.getTime()) {
-            const month = currentDate.toLocaleString('default', {month: 'long'});
+            let month = currentDate.toLocaleString('default', {month: 'long'});
             let day = currentDate.getDate();
             let dayInWeek = currentDate.getDay();
 
@@ -30,8 +30,21 @@ const OrderCartDeliveryDate = (props) => {
                 --day;
             }
             if (dayInWeek > 0 && dayInWeek <= 6) {
-                for (let i = iValue; i < 7; i++) {
-                    let deliveryDate = month + " " + (++day) + ", " + currentDate.getFullYear();
+                for (let i = iValue; i <= 7; i++) {
+
+                    let tempMonth = currentDate.getMonth() + 1;
+                    let tempYear = currentDate.getFullYear();
+
+                    let daysInMonth = new Date(tempYear, tempMonth, 0).getDate();
+                    let deliveryDate;
+                    if (day < daysInMonth) {
+                        deliveryDate = month + " " + (++day) + ", " + currentDate.getFullYear();
+                    } else if ((day +1) > daysInMonth) {
+                        let newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, (day+1    ) - daysInMonth)
+                        month = newDate.toLocaleString('default', {month: 'long'})
+                        day = newDate.getDate();
+                        deliveryDate = month + " " + (day) + ", " + currentDate.getFullYear();
+                    }
                     deliveryDates.push(deliveryDate);
                 }
             }

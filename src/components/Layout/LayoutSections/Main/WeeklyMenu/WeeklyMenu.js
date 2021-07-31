@@ -665,7 +665,6 @@ class WeeklyMenu extends Component {
         scheduleCartItems.push(obj)
         localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems))
 
-
     }
 
     populateMealNameLocalStorage = (mealName, cardIDNumber, mealCategory) => {

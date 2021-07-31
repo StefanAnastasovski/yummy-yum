@@ -22,7 +22,7 @@ class AdminDashboard extends Component {
     state = {
         routeComponent: "Dashboard",
         dashboardInfo: {
-            subscribedUsers: "",
+            subscribedUsers: 0,
             activeUsers: 0,
             numberOfOrders: 0
         },
@@ -41,9 +41,9 @@ class AdminDashboard extends Component {
             routeComponent: this.props.routeComponent
         })
 
+        await this.setDateFilter();
         await this.getSubscribeEmails();
         await this.getActiveUsers();
-        await this.setDateFilter();
         await this.getOrders();
 
     }
@@ -91,22 +91,27 @@ class AdminDashboard extends Component {
     }
 
     onChangeToDateHandler = async (date) => {
-        this.setState({
-            filterDates: {
-                ...this.state.filterDates,
-                filterToDate: date
-            }
-        })
-
+        if (date >= this.state.filterDates.filterFromDate) {
+            this.setState({
+                filterDates: {
+                    ...this.state.filterDates,
+                    filterToDate: date
+                }
+            })
+            await this.updateDashboardInfo();
+        }
     }
 
     onChangeFromDateHandler = async (date) => {
-        this.setState({
-            filterDates: {
-                ...this.state.filterDates,
-                filterFromDate: date
-            }
-        })
+        if (date <= this.state.filterDates.filterToDate) {
+            this.setState({
+                filterDates: {
+                    ...this.state.filterDates,
+                    filterFromDate: date
+                }
+            })
+            await this.updateDashboardInfo();
+        }
     }
 
     setDateFilter = () => {
@@ -127,7 +132,6 @@ class AdminDashboard extends Component {
             }
         })
     }
-
 
     onSubmitRoute = (event) => {
         console.log(event.target)
@@ -190,6 +194,16 @@ class AdminDashboard extends Component {
 
     }
 
+    updateDashboardInfo = async () => {
+        await this.getSubscribeEmails();
+        await this.getActiveUsers();
+        await this.getOrders();
+    }
+
+    onClickApply = async () => {
+        await this.updateDashboardInfo();
+    }
+
     render() {
 
         let routeComponent;
@@ -229,7 +243,8 @@ class AdminDashboard extends Component {
         } else if (this.state.routeComponent === "Orders") {
             routeComponent = <Orders
                 route={this.state.routeComponent}
-                onSubmitRoute={this.onSubmitRoute}/>
+                onSubmitRoute={this.onSubmitRoute}
+            />
 
         } else {
             routeComponent = <Dashboard
@@ -239,6 +254,7 @@ class AdminDashboard extends Component {
                 onSubmitRoute={this.onSubmitRoute}
                 onChangeToDateHandler={this.onChangeToDateHandler.bind(this)}
                 onChangeFromDateHandler={this.onChangeFromDateHandler.bind(this)}
+                onClickApply={this.onClickApply}
             />
         }
 

@@ -36,6 +36,14 @@ const Dashboard = (props) => {
                                    onClick={onChangeToDateHandler}
                             />
                         </div>
+
+                        <div className="col-2 d-flex align-items-baseline">
+                            <button type="button"
+                                    className="btn-order-info-apply"
+                                onClick={props.onClickApply}
+                            >Apply
+                            </button>
+                        </div>
                     </div>
 
                     <div className="col d-flex flex-column">

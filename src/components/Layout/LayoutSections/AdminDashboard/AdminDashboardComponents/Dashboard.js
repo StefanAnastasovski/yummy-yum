@@ -17,7 +17,7 @@ const Dashboard = (props) => {
 
                 <div className="row d-flex flex-column">
 
-                    <div className="col w-50 pb-2 d-flex flex-row">
+                    <div className="col w-75 pb-2 d-flex flex-row justify-content-around">
                         <div className="col d-flex align-items-baseline">
                             <label>Order From:</label>
                             <input type="date"

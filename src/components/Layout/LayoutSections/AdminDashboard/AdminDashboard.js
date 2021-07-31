@@ -8,7 +8,7 @@ import SendEmail from "./AdminDashboardComponents/Components/SendEmail/SendEmail
 
 import SubscribeEmailCalls from '../../../../repository/get/getSubscribeEmail';
 import EmailCalls from '../../../../repository/get/getEmail';
-import OrderCalls from '../../../../repository/get/getOrderInfo';
+import OrderMealsCalls from '../../../../repository/get/getOrderMeals';
 import CreateCoupon from "./AdminDashboardComponents/Components/CreateCoupon/CreateCoupon";
 import CreateSubscriptionPlan
     from "./AdminDashboardComponents/Components/CreateSubscriptionPlan/CreateSubscriptionPlan";
@@ -72,7 +72,7 @@ class AdminDashboard extends Component {
 
     getOrders = async () => {
         try {
-            await OrderCalls.fetchOrderInfoBetweenStartAndEndDates(this.state.filterDates.filterFromDate,
+            await OrderMealsCalls.fetchOrderMealsBetweenDates(this.state.filterDates.filterFromDate,
                 this.state.filterDates.filterToDate).then(response => {
                 this.setState({
                     dashboardInfo: {

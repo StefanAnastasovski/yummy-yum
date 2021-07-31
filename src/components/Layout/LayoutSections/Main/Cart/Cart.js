@@ -757,16 +757,16 @@ class Cart extends Component {
 
     }
 
-    removeHandler = async (index) => {
-        let items;
+    removeHandler = async (index, isSubscription) => {
         let shoppingCartItems = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
-        items = shoppingCartItems.concat(scheduleCartItems);
-        items.splice(index, 1)
-        let shoppingCartValues = [...items].slice(0, shoppingCartItems.length);
-        let scheduleCartValues = [...items].slice(shoppingCartItems.length, items.length)
-        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
-        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
+        if (isSubscription) {
+            scheduleCartItems.splice(index, 1)
+        } else {
+            shoppingCartItems.splice(index, 1)
+        }
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
         this.setState({
             isSomethingChanged: true
         })
@@ -806,7 +806,7 @@ class Cart extends Component {
 
         if (currentDate.getTime() > newDate.getTime()
             || currentDate.getTime() === newDate.getTime()) {
-            let  month = currentDate.toLocaleString('default', {month: 'long'});
+            let month = currentDate.toLocaleString('default', {month: 'long'});
             let day = currentDate.getDate();
             let dayInWeek = currentDate.getDay();
 

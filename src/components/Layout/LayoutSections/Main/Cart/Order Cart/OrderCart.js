@@ -6,7 +6,7 @@ import SubscriptionOrderCart from "../CartTypes/SubscriptionOrderCart";
 const OrderCart = (props) => {
 
     let removeItem = (param) => {
-        props.removeHandler(props.cardInfo.cardIndex);
+        props.removeHandler(props.cardInfo.cardIndex, props.cardInfo.isSubscriptionItem);
     }
 
     let mealFromTheWeekOf = () => {

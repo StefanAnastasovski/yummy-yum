@@ -27,8 +27,8 @@
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,14 +262,7 @@
       <workItem from="1627376497797" duration="781000" />
       <workItem from="1627461896291" duration="13115000" />
       <workItem from="1627637992840" duration="10112000" />
-      <workItem from="1627735480378" duration="8542000" />
-    </task>
-    <task id="LOCAL-00041" summary="Payment Component v0.1">
-      <created>1619403707051</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1619403707051</updated>
+      <workItem from="1627735480378" duration="9782000" />
     </task>
     <task id="LOCAL-00042" summary="Payment Component v0.2 - OrderInfo and OrderMeals">
       <created>1622344483142</created>
@@ -607,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627768914036</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Remove Cart Handler bug - fixed">
+      <created>1627770755357</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1627770755357</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +641,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Subscription - Order Cart - Time  Handler fixed" />
     <MESSAGE value="Date and Time Handlers added into 1 Handler" />
     <MESSAGE value="Schedule Successfully message" />
     <MESSAGE value="Weekly Menu Take a Meal message issue fixed!" />
@@ -666,7 +665,8 @@
     <MESSAGE value="fixup! Cart - Delivery Date - 32date bug fixed" />
     <MESSAGE value="Cart - Delivery Time and Order Summary - fixed" />
     <MESSAGE value="Schedule - Delivery Date - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schedule - Delivery Date - fixed" />
+    <MESSAGE value="Remove Cart Handler bug - fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove Cart Handler bug - fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -677,10 +677,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="742" y="322" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1619230509800" />
-    <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2" timestamp="1627768912540">
+    <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2" timestamp="1627770754042">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627768912540" />
+    <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627770754042" />
     <state x="828" y="106" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496415728" />
     <state x="1001" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627651558115" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />
@@ -717,10 +717,10 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625857537086" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1627654927146">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1627770988458">
+      <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627146536557" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627770988458" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496421089" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627654927146" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
@@ -729,10 +729,10 @@
     </state>
     <state x="385" y="0" width="1419" height="1027" key="dock-window-1/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626014296588" />
     <state x="385" y="0" width="1419" height="1027" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1626104513347" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627767807400">
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627771091458">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627767807400" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627771091458" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="264" y="454" width="762" height="1022" key="find.popup/1080.0.1920.1040/0.0.1080.1880@0.0.1080.1880" timestamp="1619132395511" />
@@ -758,6 +758,12 @@
           <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails.js</url>
           <line>321</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboard.js</url>
+          <line>792</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

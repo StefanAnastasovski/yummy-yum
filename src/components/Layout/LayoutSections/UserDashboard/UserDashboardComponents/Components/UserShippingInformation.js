@@ -48,6 +48,8 @@ const UserShippingInformation = (props) => {
                                 shippingInformation ? shippingInformation.zipCode :
                                     <input type="text" placeholder="Zip Code"
                                            name="shipping-zip-code"
+                                           minLength="5"
+                                           maxLength="6"
                                            required
                                            onChange={props.onChangeShippingInformationHandler}
                                     />

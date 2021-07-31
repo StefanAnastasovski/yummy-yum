@@ -765,13 +765,36 @@ class UserDashboard extends Component {
         await this.loaded();
     }
 
+    shippingInformationValidator = () => {
+        let addressFlag = false;
+        let zipCodeFlag = false;
+        if (this.state.shippingInformation.address.split(" ").length >= 2) {
+            addressFlag = true;
+        }
+        if (this.state.shippingInformation.zipCode.length >= 5 && this.state.shippingInformation.zipCode.length < 7) {
+            let isNumeric = true;
+            this.state.shippingInformation.zipCode.split("").forEach((item) => {
+                if (isNaN(parseInt(item))) {
+                    console.log("here")
+                    isNumeric = false;
+                }
+            })
+            if (isNumeric)
+                zipCodeFlag = true
+        }
+
+        return addressFlag && zipCodeFlag;
+    }
+
     onSubmitSave = async (event) => {
         if (event.target.name === "save-billing-information") {
             await this.createBillingInformation();
             await this.getUserComponentInfo();
         } else if (event.target.name === "save-shipping-information") {
-            await this.createShippingInformation();
-            await this.getUserComponentInfo();
+            if (await this.shippingInformationValidator()) {
+                await this.createShippingInformation();
+                await this.getUserComponentInfo();
+            }
         } else if (event.target.name === "save-subscription-plan") {
             this.setState({
                 isSubscriptionSaved: true,

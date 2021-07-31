@@ -7,9 +7,7 @@ const OrderCartCustomizeIt = (props) => {
 
         <Aux>
 
-            {
-                    <p className="text-color-green pl-2 text-center">{props.customizeItValue}</p>
-            }
+            <p className="text-color-green pl-2 text-center">{props.customizeItValue}</p>
 
         </Aux>
 

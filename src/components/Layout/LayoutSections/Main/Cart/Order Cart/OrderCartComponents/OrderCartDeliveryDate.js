@@ -40,7 +40,7 @@ const OrderCartDeliveryDate = (props) => {
                     if (day < daysInMonth) {
                         deliveryDate = month + " " + (++day) + ", " + currentDate.getFullYear();
                     } else if ((day +1) > daysInMonth) {
-                        let newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, (day+1    ) - daysInMonth)
+                        let newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, (day+1) - daysInMonth)
                         month = newDate.toLocaleString('default', {month: 'long'})
                         day = newDate.getDate();
                         deliveryDate = month + " " + (day) + ", " + currentDate.getFullYear();

@@ -515,7 +515,7 @@ class Cart extends Component {
                 arrayOfErrors.push(canScheduleMeals);
             });
 
-            if (arrayOfErrors.includes(false)===false) {
+            if (arrayOfErrors.includes(false) === false) {
                 let orderId = await this.createOrderInfo();
                 await this.createOrderMeals(orderId);
             }
@@ -788,9 +788,10 @@ class Cart extends Component {
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartValues));
         localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartValues));
         this.setState({
+            items: items,
             isSomethingChanged: true,
-            items: items
         })
+        await this.populateReceipt();
     }
 
     populateDates = (mealMenuDate) => {
@@ -901,7 +902,7 @@ class Cart extends Component {
                                                         deliveryDateAndTimeHandler={this.deliveryDateAndTimeHandler.bind(this)}
                                                         deliveryDateValue={item.deliveryDate}
                                                         deliveryTimeValue={item.deliveryTime}
-                                                        customizeItOption={item.customizeItOption}
+                                                        customizeItOption={item.customizeItOption || item.customizeIt}
                                                         isSubscriptionItem={item.isSubscriptionItem}
                                                     />
                                                 </li>

@@ -564,7 +564,8 @@ class WeeklyMenu extends Component {
             servings: 1,
             deliveryDate: deliveryDate,
             deliveryTime: "08:00 AM - 08:30 AM",
-            customizeIt: customizeItOption
+            customizeIt: customizeItOption,
+            isSubscriptionItem: false
         }
         shoppingCartItems.push(obj)
         localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems))

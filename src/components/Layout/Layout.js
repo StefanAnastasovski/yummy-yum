@@ -135,7 +135,13 @@ class Layout extends Component {
     onClickLogOut = () => {
         localStorage.setItem("username", "")
         localStorage.setItem("isLoggedIn", "NO")
-        localStorage.setItem("isAdmin", "NO")
+        localStorage.setItem("subscriptionPayment", JSON.stringify({}))
+        localStorage.setItem("userInformation", JSON.stringify({}))
+        localStorage.setItem("scheduleCartItems", JSON.stringify([]))
+        localStorage.setItem("shoppingCartItems", JSON.stringify([]))
+        localStorage.setItem("orderSummary", JSON.stringify({}))
+        localStorage.setItem("subscription", JSON.stringify({}))
+        localStorage.setItem("checkoutPrice", JSON.stringify([]))
         this.setState({
             isLoggedIn: false,
             isRedirectedToHome: true

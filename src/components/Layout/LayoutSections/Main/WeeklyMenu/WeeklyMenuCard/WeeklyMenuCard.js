@@ -49,7 +49,8 @@ const WeeklyMenuCard = (props) => {
                 doNotShow = false
             }
         }
-        return doNotShow && !isCartDateSmallerThanCurrentWeeksMenuDate;
+
+        return !doNotShow && !isCartDateSmallerThanCurrentWeeksMenuDate;
     }
 
     let shouldShowAddToCart;

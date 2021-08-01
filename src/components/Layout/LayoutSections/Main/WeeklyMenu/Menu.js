@@ -46,13 +46,11 @@ const Menu = (props) => {
             let menuName = props.mealMenuName.split("-");
             let id = [...menuName].splice(1,).join("");
             showCard = props.customizeCardIndex !== item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString();
-
             return <li
                 key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
                 onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
                 onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
             >
-
                 <WeeklyMenuCard
                     customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
                     addToCartHandler={props.addToCartHandler}

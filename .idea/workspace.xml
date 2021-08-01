@@ -29,12 +29,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Weekly Menu Card - Show Buttons bug - fixed">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Weekly Menu Card - Show Buttons bug - fixed">
+      <change afterPath="$PROJECT_DIR$/src/repository/post/postOrderInvoice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrdersInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrdersInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,42 +269,8 @@
       <workItem from="1627461896291" duration="13115000" />
       <workItem from="1627637992840" duration="10112000" />
       <workItem from="1627735480378" duration="14942000" />
-      <workItem from="1627821321452" duration="1890000" />
-    </task>
-    <task id="LOCAL-00047" summary="Manage Coupons and Manage Subscription Plans Comps v1.0">
-      <created>1623634459102</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1623634459102</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Orders Component v0.1 + Pagination">
-      <created>1623724866813</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1623724866813</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Orders Component + Pagination v1.0">
-      <created>1623955550015</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1623955550015</updated>
-    </task>
-    <task id="LOCAL-00050" summary="fixup! Orders Component + Pagination v1.0">
-      <created>1623956424760</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1623956424761</updated>
-    </task>
-    <task id="LOCAL-00051" summary="AdminDashboard v1.1">
-      <created>1624061342525</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1624061342525</updated>
+      <workItem from="1627821321452" duration="8183000" />
+      <workItem from="1627856517511" duration="4106000" />
     </task>
     <task id="LOCAL-00052" summary="User Dashboard v0.3">
       <created>1624501553445</created>
@@ -614,7 +580,42 @@
       <option name="project" value="LOCAL" />
       <updated>1627826176183</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Admin Dashboard - Orders - isSubscription Added, Data bug - fixed">
+      <created>1627826603365</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1627826603365</updated>
+    </task>
+    <task id="LOCAL-00097" summary="WeeklyMenu - Schedule Button - Sunday bug - fixed">
+      <created>1627831150094</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1627831150094</updated>
+    </task>
+    <task id="LOCAL-00098" summary="fixup! WeeklyMenu - Schedule Button - Sunday bug - fixed">
+      <created>1627831197444</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1627831197444</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Logout - clear Local Storage">
+      <created>1627831999964</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1627831999964</updated>
+    </task>
+    <task id="LOCAL-00100" summary="fixup! Weekly Menu Card - Show Buttons bug - fixed">
+      <created>1627857150086</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1627857150086</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,11 +649,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! Subscription - Order Cart - Local Storage fixed" />
-    <MESSAGE value="Subscription - Order Cart - Schedule if it can - fixed" />
-    <MESSAGE value="Subscription - Order Cart - Schedule Errors Date Sorted" />
-    <MESSAGE value="change /choices path to /weekly-menu path" />
-    <MESSAGE value="Forbid URL without token" />
     <MESSAGE value="Login, CreateRecipe and WeeklyMenuCard bugs fixed" />
     <MESSAGE value="BillingInformation bugs fixed" />
     <MESSAGE value="ShippingInformation bug fixed" />
@@ -673,7 +669,12 @@
     <MESSAGE value="Admin Dashboard - Calendar - fixed" />
     <MESSAGE value="Admin Dashboard - Create Recipe - Meal Created Message added" />
     <MESSAGE value="Weekly Menu Card - Show Buttons bug - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weekly Menu Card - Show Buttons bug - fixed" />
+    <MESSAGE value="Admin Dashboard - Orders - isSubscription Added, Data bug - fixed" />
+    <MESSAGE value="WeeklyMenu - Schedule Button - Sunday bug - fixed" />
+    <MESSAGE value="fixup! WeeklyMenu - Schedule Button - Sunday bug - fixed" />
+    <MESSAGE value="Logout - clear Local Storage" />
+    <MESSAGE value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -691,7 +692,6 @@
     <state x="828" y="106" key="CommitChangelistDialog2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496415728" />
     <state x="1001" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627651558115" />
     <state x="505" y="88" width="1181" height="863" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282354875" />
-    <state x="2425" y="88" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208358569" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1627645792550">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -717,36 +717,40 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626116581076" />
-    <state x="-1239" y="267" width="955" height="525" key="StructurePopup" timestamp="1627767156018">
+    <state x="-1239" y="267" width="955" height="525" key="StructurePopup" timestamp="1627830998721">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1239" y="267" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627767156018" />
+    <state x="-1239" y="267" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627830998721" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625857537086" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1627826187389">
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1627860744527">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627826187389" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627860744527" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496421089" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627654927146" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
-    <state x="385" y="0" width="1419" height="1027" key="dock-window-1" timestamp="1626104513347">
+    <state x="247" y="0" width="1604" height="803" maximized="true" key="dock-window-1" timestamp="1627829412505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="385" y="0" width="1419" height="1027" key="dock-window-1/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626014296588" />
+    <state x="247" y="0" width="1604" height="803" maximized="true" key="dock-window-1/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627829412505" />
     <state x="385" y="0" width="1419" height="1027" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1626104513347" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627826356462">
+    <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2" timestamp="1627856934036">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627832192315">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627826356462" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627832192315" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
-    <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1626713102094">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1627830393132">
+      <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1626025889848" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627830393132" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626713102094" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625281319400" />
     <state x="-1297" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1627775496928">
@@ -755,7 +759,6 @@
     <state x="-1297" y="231" width="672" height="678" key="search.everywhere.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627775496928" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627468197866" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625279969069" />
-    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1619208074251" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

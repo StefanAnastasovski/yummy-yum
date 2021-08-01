@@ -6,8 +6,8 @@ import OrderSummary from "./Order Summary/OrderSummary";
 
 import OrderMealsCalls from "./../../../../../repository/get/getOrderMeals";
 import postOrderInfo from '../../../../../repository/post/postOrderInfo';
+import postOrderInvoice from '../../../../../repository/post/postOrderInvoice';
 import postOrderMeals from "../../../../../repository/post/postOrderMeals";
-
 
 class Cart extends Component {
 
@@ -38,7 +38,6 @@ class Cart extends Component {
 
         if (this.state.items.length !== 0)
             await this.populateReceipt();
-
 
         this.allowToContinueCheckout();
     }
@@ -79,7 +78,7 @@ class Cart extends Component {
         }
 
         await postOrderInfo.createOrderInfo(obj).then(response => {
-// console.log({message: "The OrderInfo is successfully created!"})
+            // console.log({message: "The OrderInfo is successfully created!"})
         }).catch(error => {
             console.log(error);
         })
@@ -102,12 +101,20 @@ class Cart extends Component {
         }
 //
         await postOrderMeals.createOrderMeals(obj, orderId).then(response => {
-// console.log({message: "The OrderMeals is successfully created!"})
+            // console.log({message: "The OrderMeals is successfully created!"})
         }).catch(error => {
             console.log(error);
         })
 
         this.redirectToSchedule();
+    }
+
+    createOrderInvoice = async (orderId) => {
+        await postOrderInvoice.createSubscriptionOrderInovice(localStorage.getItem("username"), orderId).then(response => {
+            // console.log({message: "The OrderInfo is successfully created!"})
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     generateOrderID = () => {
@@ -306,10 +313,12 @@ class Cart extends Component {
                 if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
-                    
+                    await this.createOrderInvoice(orderId);
+
                 } else if (scheduledMeals.length + scheduleCartItems.length === weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
+                    await this.createOrderInvoice(orderId);
                 } else {
                     await this.getOrderMeals(startDate, endDate);
                     scheduledMeals = this.state.subscriptionOrderedMeals;
@@ -319,9 +328,9 @@ class Cart extends Component {
                         })
                     } else {
                         this.setState({
-                            scheduleMealError: `You can schedule 
-                        ${(weeklyAllowedNumberOfMeals - scheduledMeals.length)} more meals. 
-                        Please, schedule the right number of meals! You need to remove 
+                            scheduleMealError: `You can schedule
+                        ${(weeklyAllowedNumberOfMeals - scheduledMeals.length)} more meals.
+                        Please, schedule the right number of meals! You need to remove
                                 ${scheduleCartItems.length - scheduledMeals.length -
                             weeklyAllowedNumberOfMeals}
                            meal(s).`
@@ -481,6 +490,7 @@ class Cart extends Component {
             if (canScheduleMeals) {
                 let orderId = await this.createOrderInfo();
                 await this.createOrderMeals(orderId);
+                await this.createOrderInvoice(orderId);
             }
 
         } else if (!isScheduledMealsExist) {
@@ -519,6 +529,7 @@ class Cart extends Component {
             if (arrayOfErrors.includes(false) === false) {
                 let orderId = await this.createOrderInfo();
                 await this.createOrderMeals(orderId);
+                await this.createOrderInvoice(orderId);
             }
 
             if (scheduledMeals + mealsToBeScheduled < weeklyAllowedNumberOfMeals) {

@@ -34,14 +34,14 @@
 #btn-new-customize-instruction:hover, .btn-go-back-to-dashboard:hover,
 .btn-create-recipe:hover, .btn-create-menu:hover,
 .btn-send-email:hover, .btn-create-next-menu:hover, .btn-new-main-recipe-img:hover, .btn-create-coupon:hover,
-.btn-create-subscription-plan:hover {
+.btn-create-subscription-plan:hover, .btn-create-new-meal:hover {
     border: 1px solid #4a099a;
     background: linear-gradient(330deg, rgb(139, 208, 101) 0%, rgb(168, 214, 98) 60%, rgb(112, 188, 95) 85%);
     z-index: 1000;
 }
 
 .main-wrapper .admin-dashboard-wrapper .btn-meal, .main-wrapper .admin-dashboard-wrapper .btn-coupon,
-.main-wrapper .admin-dashboard-wrapper .btn-create-subscription-plan{
+.main-wrapper .admin-dashboard-wrapper .btn-create-subscription-plan, .btn-create-new-meal{
     border: none;
     border-radius: 10px;
     background-color: #6b9958;

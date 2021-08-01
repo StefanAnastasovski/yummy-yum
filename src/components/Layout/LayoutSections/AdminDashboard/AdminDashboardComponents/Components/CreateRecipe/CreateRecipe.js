@@ -102,7 +102,9 @@ class CreateRecipe extends Component {
         mealInstructionCookSteps: [],
         mealInstructionGuidelines: [],
         // mealInstructionCustomizeInstructions: [],
-        mealCustomizeOptionsBlocks: []
+        mealCustomizeOptionsBlocks: [],
+
+        isMealCreated: false
 
     }
 
@@ -297,6 +299,12 @@ class CreateRecipe extends Component {
             }))
         }
 
+    }
+
+    onClickGoToCreateRecipe = () => {
+        this.setState({
+            isMealCreated: false
+        })
     }
 
     //-----------------------------------------------------------------------------
@@ -787,16 +795,16 @@ class CreateRecipe extends Component {
         let newList;
         if (event.target.id === "btn-new-customize-instruction") {
             newElement = <li
-                key={(this.state.mealCustomizeOptionsNumber+1)}>
+                key={(this.state.mealCustomizeOptionsNumber + 1)}>
 
                 <div className="col d-flex flex-row align-items-center justify-content-center">
 
                     <div className="col-4">
-                        <label>Customize Option #{(this.state.mealCustomizeOptionsNumber+1)}</label>
+                        <label>Customize Option #{(this.state.mealCustomizeOptionsNumber + 1)}</label>
                     </div>
                     <div className="col-8"><input required
                                                   id={"customize-option-" +
-                                                  (this.state.mealCustomizeOptionsNumber+1)}
+                                                  (this.state.mealCustomizeOptionsNumber + 1)}
                                                   placeholder="Chicken breast"
                                                   className="w-75 px-1"
                                                   onChange={this.onChangeHandleMealCustomizeOptions}/>
@@ -1047,16 +1055,12 @@ class CreateRecipe extends Component {
 
     //---------------------------------------------------------------------------------------
 
-    handleSubmit = async (event) => {
-
-        event.preventDefault();
-
-        let obj;
+    setMealInfo = () => {
 
         let stepTitles = this.state.cookingSteps.stepTitles.join(" | ");
         let stepDescriptions = this.state.cookingSteps.stepDescriptions.join(" | ");
 
-        obj = {
+        return {
 
             mealName: this.state.mealInformation.mealName,
             mealDescription: this.state.mealInformation.mealDescription,
@@ -1103,11 +1107,9 @@ class CreateRecipe extends Component {
 
         }
 
-        await CreateMealCalls.createMeal(obj).then(response => {
-            console.log("Meal is created!");
-        }).catch(error => {
-            console.log(error);
-        })
+    }
+
+    setImagesToAMeal = async () => {
 
         let images = [
             {mainRecipeImages: this.state.mealInformation.mainRecipeImages},
@@ -1115,7 +1117,8 @@ class CreateRecipe extends Component {
             {cookingStepsImages: this.state.cookingSteps.cookingStepsImages}
         ]
 
-        images.forEach((item, index) => {
+        for (const item of images) {
+            let index = images.indexOf(item);
             if (index === 0) {
                 let image;
                 for (let counter = 0; counter < item.mainRecipeImages.length; counter++) {
@@ -1129,10 +1132,7 @@ class CreateRecipe extends Component {
                             mealName: this.state.mealInformation.mealName
                         }
                     }
-                    PostImage.addMealImage(image).then(response => {
-                    }).catch(error => {
-                        console.log(error)
-                    })
+                    await this.createImageForAMeal(image);
                 }
             } else if (index === 2) {
                 let image;
@@ -1147,10 +1147,7 @@ class CreateRecipe extends Component {
                             mealName: this.state.mealInformation.mealName
                         }
                     }
-                    PostImage.addMealImage(image).then(response => {
-                    }).catch(error => {
-                        console.log(error)
-                    })
+                    await this.createImageForAMeal(image);
                 }
             } else {
                 let image = {
@@ -1163,13 +1160,40 @@ class CreateRecipe extends Component {
                         mealName: this.state.mealInformation.mealName.toString()
                     }
                 }
-                PostImage.addMealImage(image).then(response => {
-                }).catch(error => {
-                    console.log(error)
-                })
+                await this.createImageForAMeal(image);
             }
+        }
+
+    }
+
+    createAMeal = async () => {
+        let obj = this.setMealInfo();
+
+        await CreateMealCalls.createMeal(obj).then(response => {
+            // console.log("Meal is created!");
+        }).catch(error => {
+            console.log(error);
         })
 
+        await this.setImagesToAMeal();
+
+        this.setState({
+            isMealCreated: true
+        })
+    }
+
+    createImageForAMeal = async (image) => {
+        PostImage.addMealImage(image).then(response => {
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
+    handleSubmit = async (event) => {
+
+        event.preventDefault();
+
+        await this.createAMeal();
 
     }
 
@@ -1184,111 +1208,129 @@ class CreateRecipe extends Component {
                            value="<< Go Back to Dashboard" onClick={this.props.onSubmitRoute}/>
                 </div>
 
-                <div className="cr-meal py-3 ">
+                {
+                    !this.state.isMealCreated ?
 
-                    <form onSubmit={this.handleSubmit}>
+                        <div className="cr-meal py-3 ">
 
-                        <div className="row">
+                            <form onSubmit={this.handleSubmit}>
 
-                            <div className="col left-row d-flex flex-column">
+                                <div className="row">
 
-                                <div className="col"><MealInfo
-                                    addMainRecipeImageField={this.addMainRecipeImageField}
-                                    mainRecipeImageElements={this.state.mainRecipeImageElements}
-                                    mealInformation={this.state.mealInformation}
-                                    onChangeHandleMealName={this.onChangeHandleMealName}
-                                    onChangeHandleMealDescription={this.onChangeHandleMealDescription}
-                                    onChangeHandleMealIngredientTag={this.onChangeHandleMealIngredientTag}
-                                    onChangeHandleMealTimeTag={this.onChangeHandleMealTimeTag}
-                                    onChangeHandleMealPrice={this.onChangeHandleMealPrice}
-                                    onChangeMealCategory={this.onChangeMealCategory}
-                                /></div>
+                                    <div className="col left-row d-flex flex-column">
 
-                                <div className="col"><MealChef
-                                    onChangeChefDescription={this.onChangeChefDescription.bind(this)}
-                                    onChangeChefFullName={this.onChangeChefFullName.bind(this)}
-                                    onChangeChefImageHandler={this.onChangeChefImageHandler.bind(this)}
-                                /></div>
+                                        <div className="col"><MealInfo
+                                            addMainRecipeImageField={this.addMainRecipeImageField}
+                                            mainRecipeImageElements={this.state.mainRecipeImageElements}
+                                            mealInformation={this.state.mealInformation}
+                                            onChangeHandleMealName={this.onChangeHandleMealName}
+                                            onChangeHandleMealDescription={this.onChangeHandleMealDescription}
+                                            onChangeHandleMealIngredientTag={this.onChangeHandleMealIngredientTag}
+                                            onChangeHandleMealTimeTag={this.onChangeHandleMealTimeTag}
+                                            onChangeHandleMealPrice={this.onChangeHandleMealPrice}
+                                            onChangeMealCategory={this.onChangeMealCategory}
+                                        /></div>
 
-                                <div className="col"><MealNutrition
-                                    onChangeCalories={this.onChangeCalories.bind(this)}
-                                    onChangeCarbohydrates={this.onChangeCarbohydrates.bind(this)}
-                                    onChangeProtein={this.onChangeProtein.bind(this)}
-                                    onChangeFat={this.onChangeFat.bind(this)}
-                                /></div>
+                                        <div className="col"><MealChef
+                                            onChangeChefDescription={this.onChangeChefDescription.bind(this)}
+                                            onChangeChefFullName={this.onChangeChefFullName.bind(this)}
+                                            onChangeChefImageHandler={this.onChangeChefImageHandler.bind(this)}
+                                        /></div>
 
-                                <div className="col"><RecipeSteps
-                                    onChangeAddElementInMealBoxOrRecipeSteps={this.onChangeAddElementInMealBoxOrRecipeSteps.bind(this)}
-                                    addRecipeStep={this.addRecipeStep}
-                                    recipeStepNumber1={this.state.recipeStepNumber1}
-                                    recipeStepList1={this.state.recipeStepList1}
-                                    recipeStepNumber2={this.state.recipeStepNumber2}
-                                    recipeStepList2={this.state.recipeStepList2}
-                                />
+                                        <div className="col"><MealNutrition
+                                            onChangeCalories={this.onChangeCalories.bind(this)}
+                                            onChangeCarbohydrates={this.onChangeCarbohydrates.bind(this)}
+                                            onChangeProtein={this.onChangeProtein.bind(this)}
+                                            onChangeFat={this.onChangeFat.bind(this)}
+                                        /></div>
+
+                                        <div className="col"><RecipeSteps
+                                            onChangeAddElementInMealBoxOrRecipeSteps={this.onChangeAddElementInMealBoxOrRecipeSteps.bind(this)}
+                                            addRecipeStep={this.addRecipeStep}
+                                            recipeStepNumber1={this.state.recipeStepNumber1}
+                                            recipeStepList1={this.state.recipeStepList1}
+                                            recipeStepNumber2={this.state.recipeStepNumber2}
+                                            recipeStepList2={this.state.recipeStepList2}
+                                        />
+                                        </div>
+
+                                    </div>
+
+                                    <div className="col right-row d-flex flex-column">
+
+                                        <div className="col"><MealOverview
+                                            onChangeDifficultyLevelValue={this.onChangeDifficultyLevelValue.bind(this)}
+                                            onChangeSpiceLevelValue={this.onChangeSpiceLevelValue.bind(this)}
+                                            onChangeCookWithinValue={this.onChangeCookWithinValue.bind(this)}
+                                            onChangePrepCookTimeValue={this.onChangePrepCookTimeValue.bind(this)}
+                                        /></div>
+
+                                        <div className="col"><MealBox
+                                            mealIngredients={this.state.mealIngredients}
+                                            addMealIngredient={this.addMealIngredient}
+                                            onChangeServeQuantity={this.onChangeServeQuantity.bind(this)}
+                                            onChangeAddElementInMealBoxOrRecipeSteps={() => this.onChangeAddElementInMealBoxOrRecipeSteps.bind(this)}
+                                            serveQuantity={this.state.mealBox.serveQuantity}
+                                        /></div>
+
+                                        <div className="col"><CookingSteps
+                                            cookingStepBlocks={this.state.cookingStepBlocks}
+                                            addCookingStep={this.addCookingStep.bind(this)}
+                                        /></div>
+
+                                        <div className="col">
+                                            <CustomizeItOptions
+                                                mealCustomizeOptionsBlocks=
+                                                    {this.state.mealCustomizeOptionsBlocks}
+                                                addCustomizeOptions={() => this.addCustomizeOptions.bind(this)}
+                                            />
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
-                            </div>
+                                <div className="row">
 
-                            <div className="col right-row d-flex flex-column">
+                                    <div className="col left-row d-flex flex-column">
 
-                                <div className="col"><MealOverview
-                                    onChangeDifficultyLevelValue={this.onChangeDifficultyLevelValue.bind(this)}
-                                    onChangeSpiceLevelValue={this.onChangeSpiceLevelValue.bind(this)}
-                                    onChangeCookWithinValue={this.onChangeCookWithinValue.bind(this)}
-                                    onChangePrepCookTimeValue={this.onChangePrepCookTimeValue.bind(this)}
-                                /></div>
+                                        <div className="col"><MealInstructions
+                                            mealInstructionNumber={this.state.mealInstructionNumber}
+                                            mealInstructionCookSteps={this.state.mealInstructionCookSteps}
+                                            mealInstructionGuidelines={this.state.mealInstructionGuidelines}
+                                            addMealInstruction={() => this.addMealInstruction.bind(this)}
+                                            // mealInstructionCustomizeInstructions=
+                                            //     {this.state.mealInstructionCustomizeInstructions}
+                                        />
+                                        </div>
 
-                                <div className="col"><MealBox
-                                    mealIngredients={this.state.mealIngredients}
-                                    addMealIngredient={this.addMealIngredient}
-                                    onChangeServeQuantity={this.onChangeServeQuantity.bind(this)}
-                                    onChangeAddElementInMealBoxOrRecipeSteps={() => this.onChangeAddElementInMealBoxOrRecipeSteps.bind(this)}
-                                    serveQuantity={this.state.mealBox.serveQuantity}
-                                /></div>
-
-                                <div className="col"><CookingSteps
-                                    cookingStepBlocks={this.state.cookingStepBlocks}
-                                    addCookingStep={this.addCookingStep.bind(this)}
-                                /></div>
-
-                                <div className="col">
-                                    <CustomizeItOptions
-                                        mealCustomizeOptionsBlocks=
-                                            {this.state.mealCustomizeOptionsBlocks}
-                                        addCustomizeOptions={() => this.addCustomizeOptions.bind(this)}
-                                    />
+                                    </div>
 
                                 </div>
 
-                            </div>
+                                <div className="row d-flex justify-content-center pt-4">
+                                    <button className="w-25 btn-meal" type="submit">Create Meal!</button>
+                                </div>
+
+                            </form>
 
                         </div>
 
-                        <div className="row">
+                        :
 
-                            <div className="col left-row d-flex flex-column">
-
-                                <div className="col"><MealInstructions
-                                    mealInstructionNumber={this.state.mealInstructionNumber}
-                                    mealInstructionCookSteps={this.state.mealInstructionCookSteps}
-                                    mealInstructionGuidelines={this.state.mealInstructionGuidelines}
-                                    addMealInstruction={() => this.addMealInstruction.bind(this)}
-                                    // mealInstructionCustomizeInstructions=
-                                    //     {this.state.mealInstructionCustomizeInstructions}
-                                />
-                                </div>
-
-                            </div>
-
+                        <div className="d-flex flex-column col-8 m-auto py-4">
+                            <h3 className="text-color-darkgreen bg-light-lemon-green px-5 py-2 text-center">
+                                The meal was successfully created!
+                            </h3>
+                            <button type="button" className="col-6 align-self-center mt-3 btn-create-new-meal"
+                                    onClick={this.onClickGoToCreateRecipe}
+                            >
+                                Create A New Meal
+                            </button>
                         </div>
 
-                        <div className="row d-flex justify-content-center pt-4">
-                            <button className="w-25 btn-meal" type="submit">Create Meal!</button>
-                        </div>
-
-                    </form>
-
-                </div>
+                }
 
             </div>
 

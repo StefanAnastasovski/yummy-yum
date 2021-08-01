@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import './Orders.css';
 
 import OrderInfoCalls from "../../../../../../../repository/get/getOrderInfo";
-import OrdersInfo from "./OrdersInfo";
+import OrdersInfo from "./Components/OrdersInfo";
 
 class Orders extends Component {
 

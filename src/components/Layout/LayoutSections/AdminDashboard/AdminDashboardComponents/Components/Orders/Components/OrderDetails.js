@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 
 
-import OrderInvoiceCalls from '../../../../../../../repository/get/getOrderInvoice'
+import OrderInvoiceCalls from '../../../../../../../../repository/get/getOrderInvoice'
 
 class OrderDetails extends Component {
 

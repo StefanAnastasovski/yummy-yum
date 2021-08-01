@@ -29,8 +29,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Create Order Invoice + show Orders in Admin Dashboard">
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SubscriptionOrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SubscriptionOrderCart.js" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="SubscriptionOrderCart - Customize It bug - fixed">
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,14 +269,7 @@
       <workItem from="1627637992840" duration="10112000" />
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
-      <workItem from="1627856517511" duration="4275000" />
-    </task>
-    <task id="LOCAL-00054" summary="User Dashboard v0.5">
-      <created>1624815644950</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1624815644950</updated>
+      <workItem from="1627856517511" duration="4773000" />
     </task>
     <task id="LOCAL-00055" summary="Subscription: Schedule A Meal v0.1">
       <created>1625187173224</created>
@@ -611,7 +607,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627860863649</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="SubscriptionOrderCart - Customize It bug - fixed">
+      <created>1627861002519</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1627861002519</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +648,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="ShippingInformation bug fixed" />
     <MESSAGE value="Zip Code field bug fixed" />
     <MESSAGE value="Shipping Address, CVV fields and Payment bugs fixed" />
     <MESSAGE value="Payment bugs fixed" />
@@ -670,7 +672,8 @@
     <MESSAGE value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
     <MESSAGE value="Create Order Invoice + show Orders in Admin Dashboard" />
     <MESSAGE value="fixup! Create Order Invoice + show Orders in Admin Dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixup! Create Order Invoice + show Orders in Admin Dashboard" />
+    <MESSAGE value="SubscriptionOrderCart - Customize It bug - fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionOrderCart - Customize It bug - fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">

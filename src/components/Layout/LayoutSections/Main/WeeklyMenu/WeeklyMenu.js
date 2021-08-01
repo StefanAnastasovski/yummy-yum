@@ -59,11 +59,15 @@ class WeeklyMenu extends Component {
 
     }
 
-    getDayOfWeek = (date) => {
+    getDayOfWeek = (date, isCancellationDate) => {
         let day = date.getDay();
+        let dayNumber = day;
+        if(day === 0 && isCancellationDate){
+            dayNumber = 6
+        }
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-        return {'dayNumber': day, 'day': days[day]}
+        return {'dayNumber': dayNumber, 'day': days[day]}
     }
 
     getDateFromString = (date) => {
@@ -130,7 +134,6 @@ class WeeklyMenu extends Component {
         const daysUTC = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
         let allowedDays = [];
         let dates = [];
-
         if (cancellationDateValue > menuEndDateValue) {
             if (activationDateValue < menuStartDateValue) {
                 allowedDays = [...daysUTC];
@@ -156,7 +159,8 @@ class WeeklyMenu extends Component {
             }
         } else if (cancellationDateValue < menuEndDateValue && cancellationDateValue > menuStartDateValue) {
             if (activationDateValue < menuStartDateValue) {
-                let dayOfWeek = this.getDayOfWeek(cancellationDateValue);
+                //keep testing this with True
+                let dayOfWeek = this.getDayOfWeek(cancellationDateValue, true);
                 allowedDays = [...daysUTC].slice(0, dayOfWeek.dayNumber);
                 dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
                 this.setState({
@@ -168,7 +172,7 @@ class WeeklyMenu extends Component {
                 })
             } else if (activationDateValue >= menuStartDateValue && activationDateValue < menuEndDateValue) {
                 let activationDayOfWeekActivation = this.getDayOfWeek(activationDateValue);
-                let cancellationDayOfWeek = this.getDayOfWeek(cancellationDateValue);
+                let cancellationDayOfWeek = this.getDayOfWeek(cancellationDateValue, true);
                 allowedDays = [...daysUTC].slice(activationDayOfWeekActivation.dayNumber, cancellationDayOfWeek.dayNumber);
                 dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
                 this.setState({
@@ -185,6 +189,19 @@ class WeeklyMenu extends Component {
             dates = [];
             this.setState({
                 isUserSubscribed: false,
+                subscriptionAllowedDays: {
+                    days: allowedDays,
+                    dates: dates
+                }
+            })
+        } else if (this.state.userSubscriptionData.subscriptionType === "Weekly" && menuStartDateValue < cancellationDateValue) {
+            let activationDayOfWeekActivation = this.getDayOfWeek(activationDateValue);
+            let cancellationDayOfWeek = this.getDayOfWeek(cancellationDateValue, true);
+            allowedDays = [...daysUTC].slice(activationDayOfWeekActivation.dayNumber, cancellationDayOfWeek.dayNumber);
+            dates = await this.generateSubscriptionAllowedDates(menuStartDateValue, allowedDays.length)
+
+            this.setState({
+                isUserSubscribed: true,
                 subscriptionAllowedDays: {
                     days: allowedDays,
                     dates: dates
@@ -207,6 +224,7 @@ class WeeklyMenu extends Component {
 
     isUserSubscribed = async () => {
         await this.getSubscriptionInformationIfExist();
+        console.log(this.state.userSubscriptionData)
         if (Object.keys(this.state.userSubscriptionData).length !== 0) {
             localStorage.setItem("subscription", JSON.stringify(this.state.userSubscriptionData))
             await this.checkThePeriodOfSubscription();

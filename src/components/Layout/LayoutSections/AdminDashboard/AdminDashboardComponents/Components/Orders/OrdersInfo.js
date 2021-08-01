@@ -42,6 +42,11 @@ const OrdersInfo = (props) => {
             </div>
             <div className="col orders-info-col d-flex justify-content-center align-items-center">
                 <p className="py-2 text-color-green">
+                    {props.isSubscription ? "YES" : "NO"}
+                </p>
+            </div>
+            <div className="col orders-info-col d-flex justify-content-center align-items-center">
+                <p className="py-2 text-color-green">
                     {props.orderDate}
                 </p>
             </div>

@@ -306,6 +306,7 @@ class Cart extends Component {
                 if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);
+                    
                 } else if (scheduledMeals.length + scheduleCartItems.length === weeklyAllowedNumberOfMeals) {
                     let orderId = await this.createOrderInfo();
                     await this.createOrderMeals(orderId);

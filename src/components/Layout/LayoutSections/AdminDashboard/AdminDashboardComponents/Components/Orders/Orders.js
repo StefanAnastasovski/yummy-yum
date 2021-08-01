@@ -295,6 +295,9 @@ class Orders extends Component {
                             <p className="py-2">Total($)</p>
                         </div>
                         <div className="col order-col">
+                            <p className="py-2">isSubscription</p>
+                        </div>
+                        <div className="col order-col">
                             <p className="py-2">Order Date</p>
                         </div>
                         <div className="col order-col">
@@ -313,11 +316,12 @@ class Orders extends Component {
                                             order={item}
                                             fullName={item.firstName + " " + item.lastName}
                                             username={item.username}
-                                            mealQty={item.mealNumber}
-                                            servingsQty={item.servingNumber}
-                                            subtotal={item.subtotal}
-                                            shipping={item.shippingCost}
-                                            total={item.total}
+                                            mealQty={item.orderInfo.mealNumber}
+                                            servingsQty={item.orderInfo.servingNumber}
+                                            subtotal={item.orderInfo.subtotal}
+                                            shipping={item.orderInfo.shippingCost}
+                                            total={item.orderInfo.total}
+                                            isSubscription={item.orderInfo.total <= 0}
                                             orderDate={item.orderInfo.orderDate.split("T")[0]}
                                             keyEl={"order-id-" + index}
                                             orderId={item.orderInfo.orderId}

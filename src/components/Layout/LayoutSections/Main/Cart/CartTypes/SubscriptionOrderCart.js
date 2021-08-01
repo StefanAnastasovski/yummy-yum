@@ -36,7 +36,7 @@ const SubscriptionOrderCart = (props) => {
                     <p>Customize It:</p>
 
                     <OrderCartCustomizeIt
-                        customizeItValue={props.cardInfo.customizeItOption}
+                        customizeItValue={props.cardInfo.customizeItOption || props.cardInfo.customizeIt}
                     />
 
                 </div>

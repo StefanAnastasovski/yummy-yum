@@ -29,12 +29,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Weekly Menu Card - Show Buttons bug - fixed">
-      <change afterPath="$PROJECT_DIR$/src/repository/post/postOrderInvoice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Create Order Invoice + show Orders in Admin Dashboard">
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SubscriptionOrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SubscriptionOrderCart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,21 +266,7 @@
       <workItem from="1627637992840" duration="10112000" />
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
-      <workItem from="1627856517511" duration="4106000" />
-    </task>
-    <task id="LOCAL-00052" summary="User Dashboard v0.3">
-      <created>1624501553445</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1624501553445</updated>
-    </task>
-    <task id="LOCAL-00053" summary="User Dashboard v0.4">
-      <created>1624737130444</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1624737130444</updated>
+      <workItem from="1627856517511" duration="4275000" />
     </task>
     <task id="LOCAL-00054" summary="User Dashboard v0.5">
       <created>1624815644950</created>
@@ -615,7 +597,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627857150086</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Create Order Invoice + show Orders in Admin Dashboard">
+      <created>1627860812584</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1627860812584</updated>
+    </task>
+    <task id="LOCAL-00102" summary="fixup! Create Order Invoice + show Orders in Admin Dashboard">
+      <created>1627860863649</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1627860863649</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,8 +645,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Login, CreateRecipe and WeeklyMenuCard bugs fixed" />
-    <MESSAGE value="BillingInformation bugs fixed" />
     <MESSAGE value="ShippingInformation bug fixed" />
     <MESSAGE value="Zip Code field bug fixed" />
     <MESSAGE value="Shipping Address, CVV fields and Payment bugs fixed" />
@@ -674,7 +668,9 @@
     <MESSAGE value="fixup! WeeklyMenu - Schedule Button - Sunday bug - fixed" />
     <MESSAGE value="Logout - clear Local Storage" />
     <MESSAGE value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
+    <MESSAGE value="Create Order Invoice + show Orders in Admin Dashboard" />
+    <MESSAGE value="fixup! Create Order Invoice + show Orders in Admin Dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixup! Create Order Invoice + show Orders in Admin Dashboard" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -724,10 +720,10 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625857537086" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1627860744527">
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1627860867617">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627860744527" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627860867617" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496421089" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627654927146" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />

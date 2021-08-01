@@ -18,7 +18,7 @@ import Cart from "../../LayoutSections/Main/Cart/Cart";
 import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
 import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
-import OrderDetails from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails";
+import OrderDetails from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails";
 import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
 
 class MainRouter extends Component {

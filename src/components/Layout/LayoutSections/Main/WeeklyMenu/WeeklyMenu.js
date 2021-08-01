@@ -224,7 +224,6 @@ class WeeklyMenu extends Component {
 
     isUserSubscribed = async () => {
         await this.getSubscriptionInformationIfExist();
-        console.log(this.state.userSubscriptionData)
         if (Object.keys(this.state.userSubscriptionData).length !== 0) {
             localStorage.setItem("subscription", JSON.stringify(this.state.userSubscriptionData))
             await this.checkThePeriodOfSubscription();

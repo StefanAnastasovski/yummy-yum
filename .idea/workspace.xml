@@ -29,11 +29,14 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="SubscriptionOrderCart - Customize It bug - fixed">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Order + Component - structure">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Components/SubscriptionInfo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Subscription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Order Cart/OrderCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,19 +79,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\Orders\Components" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\OrderHistory" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans\components" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Projects\src\images\Checkout" />
       <recent name="E:\Projects\src\images\MealRecipe\Icons" />
       <recent name="E:\Projects\src\images\Header\Icons" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\PopUp\PopUpMessages" />
       <recent name="E:\Projects\src\images\HowItWorks" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\OrderHistory" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans\components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\CreateSubscriptionPlan" />
     </key>
   </component>
   <component name="RunManager">
@@ -269,28 +272,7 @@
       <workItem from="1627637992840" duration="10112000" />
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
-      <workItem from="1627856517511" duration="4773000" />
-    </task>
-    <task id="LOCAL-00055" summary="Subscription: Schedule A Meal v0.1">
-      <created>1625187173224</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1625187173224</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Subscription: Order Cart v0.1">
-      <created>1625192296006</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1625192296006</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Subscription: Order Cart v0.2 - unfinished">
-      <created>1625282358322</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1625282358323</updated>
+      <workItem from="1627856517511" duration="6194000" />
     </task>
     <task id="LOCAL-00058" summary="Subscription - Weekly: Order Cart v0.1">
       <created>1625764420835</created>
@@ -614,7 +596,28 @@
       <option name="project" value="LOCAL" />
       <updated>1627861002519</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="deliveryDateAndTimeHandler - fixed">
+      <created>1627861465961</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1627861465961</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Order + Component - structure">
+      <created>1627861731843</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1627861731843</updated>
+    </task>
+    <task id="LOCAL-00106" summary="fixup! Order + Component - structure">
+      <created>1627861757474</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1627861757474</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,9 +651,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Zip Code field bug fixed" />
-    <MESSAGE value="Shipping Address, CVV fields and Payment bugs fixed" />
-    <MESSAGE value="Payment bugs fixed" />
     <MESSAGE value="weeklyAllowedNumberOfMeals bug - fixed" />
     <MESSAGE value="WeeklyMenu not logged in - bug - fixed" />
     <MESSAGE value="Cart - Delivery Date - 32date bug fixed" />
@@ -673,7 +673,10 @@
     <MESSAGE value="Create Order Invoice + show Orders in Admin Dashboard" />
     <MESSAGE value="fixup! Create Order Invoice + show Orders in Admin Dashboard" />
     <MESSAGE value="SubscriptionOrderCart - Customize It bug - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="SubscriptionOrderCart - Customize It bug - fixed" />
+    <MESSAGE value="deliveryDateAndTimeHandler - fixed" />
+    <MESSAGE value="Order + Component - structure" />
+    <MESSAGE value="fixup! Order + Component - structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixup! Order + Component - structure" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -739,10 +742,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627832192315">
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627862825447">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627832192315" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627862825447" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
@@ -763,7 +766,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/OrderDetails.js</url>
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails.js</url>
           <line>321</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

@@ -16,6 +16,7 @@ import ManageCoupon from "./AdminDashboardComponents/Components/ManageCoupon/Man
 import ManageSubscriptionPlan
     from "./AdminDashboardComponents/Components/ManageSubscriptionPlan/ManageSubscriptionPlan";
 import Orders from "./AdminDashboardComponents/Components/Orders/Orders";
+import Subscription from "./AdminDashboardComponents/Components/Subscription/Subscription";
 
 class AdminDashboard extends Component {
 
@@ -183,6 +184,12 @@ class AdminDashboard extends Component {
             })
             window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/manage-subscription-plan");
 
+        }  else if (route === "Subscription") {
+            this.setState({
+                routeComponent: route
+            })
+            window.history.pushState({}, null, "http://localhost:3000/dashboard/admin/subscription");
+
         } else if (route === "<< Go Back to Dashboard") {
             route = "Dashboard";
             this.setState({
@@ -242,6 +249,12 @@ class AdminDashboard extends Component {
 
         } else if (this.state.routeComponent === "Orders") {
             routeComponent = <Orders
+                route={this.state.routeComponent}
+                onSubmitRoute={this.onSubmitRoute}
+            />
+
+        }  else if (this.state.routeComponent === "Subscription") {
+            routeComponent = <Subscription
                 route={this.state.routeComponent}
                 onSubmitRoute={this.onSubmitRoute}
             />

@@ -40,7 +40,7 @@ const Dashboard = (props) => {
                         <div className="col-2 d-flex align-items-baseline">
                             <button type="button"
                                     className="btn-order-info-apply"
-                                onClick={props.onClickApply}
+                                    onClick={props.onClickApply}
                             >Apply
                             </button>
                         </div>
@@ -123,6 +123,14 @@ const Dashboard = (props) => {
                     </div>
 
                     <div className="col d-flex justify-content-center py-3">
+                        <a className="w-100 text-center" href={window.location.href + "/subscription"}>
+                            <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
+                                Subscription
+                            </button>
+                        </a>
+                    </div>
+
+                    <div className="col d-flex justify-content-center py-3">
                         <a className="w-100 text-center" href={window.location.href + "/manage-coupon"}>
                             <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
                                 Manage Coupons
@@ -139,7 +147,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center pt-3 pb-5">
                         <a className="w-100 text-center" href={window.location.href + "/send-email"}>
                             <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
                                 Send Email

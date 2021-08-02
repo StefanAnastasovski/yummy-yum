@@ -18,7 +18,8 @@ import Cart from "../../LayoutSections/Main/Cart/Cart";
 import Checkout from "../../LayoutSections/Main/Checkout/Checkout";
 import Payment from "../../LayoutSections/Main/Checkout/Payment/Payment";
 import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/PaymentSuccessful/PaymentSuccessful";
-import OrderDetails from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails";
+import OrderDetails
+    from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails";
 import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
 
 class MainRouter extends Component {
@@ -54,7 +55,7 @@ class MainRouter extends Component {
             "/dashboard/admin", "/dashboard/admin/create-recipe", "/dashboard/admin/create-menu",
             "/dashboard/admin/send-email", "/dashboard/admin/create-coupon", "/dashboard/admin/create-subscription-plan",
             "/dashboard/admin/manage-coupon", "/dashboard/admin/manage-subscription-plan",
-            "/dashboard/admin/orders", '/dashboard/admin/orders/order-details/order-id='];
+            "/dashboard/admin/orders", '/dashboard/admin/orders/order-details/order-id=', "/dashboard/admin/subscription"];
         const dashboardUserURLS = [
             "/dashboard/user", "/dashboard/user/personal-information", "/dashboard/user/billing-information",
             "/dashboard/user/shipping-information", "/dashboard/user/subscription", "/dashboard/user/order-history",
@@ -307,11 +308,26 @@ class MainRouter extends Component {
 
                     </Switch>
 
-                    <Route exact path='/dashboard/admin/orders/order-details/order-id=:orderId'>
+                    <Switch>
 
-                        <OrderDetails/>
+                        <Route exact path='/dashboard/admin/orders/order-details/order-id=:orderId'>
 
-                    </Route>
+                            <OrderDetails/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/dashboard/admin/subscription">
+
+                            <AdminDashboard routeComponent="Subscription"/>
+
+                        </Route>
+
+                    </Switch>
+
 
                     <Switch>
 

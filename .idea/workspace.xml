@@ -29,14 +29,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! Order + Component - structure">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Components/SubscriptionInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Subscription.js" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Admin Dashboard - Subscription comp - added">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Subscription.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Components/SubscriptionInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Components/SubscriptionInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Subscription/Subscription.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +44,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -272,14 +270,7 @@
       <workItem from="1627637992840" duration="10112000" />
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
-      <workItem from="1627856517511" duration="6194000" />
-    </task>
-    <task id="LOCAL-00058" summary="Subscription - Weekly: Order Cart v0.1">
-      <created>1625764420835</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1625764420835</updated>
+      <workItem from="1627856517511" duration="7334000" />
     </task>
     <task id="LOCAL-00059" summary="Subscription - Weekly: Order Cart v0.2">
       <created>1625765830346</created>
@@ -617,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627861757474</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Admin Dashboard - Subscription comp - added">
+      <created>1627862933678</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1627862933678</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +649,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="weeklyAllowedNumberOfMeals bug - fixed" />
     <MESSAGE value="WeeklyMenu not logged in - bug - fixed" />
     <MESSAGE value="Cart - Delivery Date - 32date bug fixed" />
     <MESSAGE value="fixup! WeeklyMenu not logged in - bug - fixed" />
@@ -676,7 +673,8 @@
     <MESSAGE value="deliveryDateAndTimeHandler - fixed" />
     <MESSAGE value="Order + Component - structure" />
     <MESSAGE value="fixup! Order + Component - structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixup! Order + Component - structure" />
+    <MESSAGE value="Admin Dashboard - Subscription comp - added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin Dashboard - Subscription comp - added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
@@ -742,10 +740,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627862825447">
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1627862946498">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627862825447" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627862946498" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />

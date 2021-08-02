@@ -1,0 +1,52 @@
+.subscriptions-title {
+    width: 100%
+}
+
+.subscription-info {
+    width: 100%
+}
+
+.subscription-info > ul {
+    width: 100%
+}
+
+.subscription-info-col {
+    border: 1px solid #530ea2;;
+}
+
+.subscription-col {
+    border: 1px solid #530ea2;
+    text-align: center;
+}
+
+.subscription-info-col > p {
+    text-align: center;
+}
+
+.subscription-info-page-bg {
+
+}
+
+.subscription-details-subscription-info p, .subscription-details-payment p, .subscription-details-subscription-meals p {
+    text-align: center;
+}
+
+.btn-subscription-info-apply {
+    background-color: #579843;
+    border: none;
+    padding:5px 15px;
+}
+
+.btn-subscription-info-apply:hover {
+    background: linear-gradient(330deg,
+    rgb(139, 208, 101) 0%,
+    rgb(168, 214, 98) 60%,
+    rgb(112, 188, 95) 85%);
+    z-index: 1000;
+}
+
+.select-subscription-info{
+    padding:5px 15px;
+    background: #c6f6b9;
+    color: #4a099a;
+}

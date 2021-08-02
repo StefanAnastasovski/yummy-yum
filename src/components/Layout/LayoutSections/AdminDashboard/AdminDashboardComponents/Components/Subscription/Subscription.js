@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 
+import "./Subscription.css"
 
 import SubscriptionCalls from "../../../../../../../repository/get/getSubscription";
 import SubscriptionInfo from "./Components/SubscriptionInfo";
@@ -22,7 +23,7 @@ class Subscription extends Component {
     async componentDidMount() {
         if (this.state.filterFromDate === "" || this.state.filterToDate === "")
             await this.setDateFilter();
-        // await this.getSubscriptions();
+        await this.getSubscriptions();
     }
 
     createRange = (start, end, step = 1) => {
@@ -34,6 +35,7 @@ class Subscription extends Component {
 
         try {
             await SubscriptionCalls.fetchAllSubscriptions(this.state.filterFromDate, this.state.filterToDate).then(response => {
+                console.log(response.data)
                 this.setState({
                     allSubscriptionDataByDate: response.data,
                 })
@@ -220,7 +222,7 @@ class Subscription extends Component {
 
                 <h2 className="text-center">Subscription</h2>
 
-                <div className="order-filters">
+                <div className="subscription-filters">
                     <div className="d-flex flex pt-2">
                         <div className="col d-flex flex-row">
                             <div className="col d-flex align-items-baseline">
@@ -244,7 +246,7 @@ class Subscription extends Component {
                         </div>
                         <div className="col  d-flex flex-row">
                             <div className="col-3 d-flex align-items-baseline">
-                                <select className="select-order-info font-weight-bold"
+                                <select className="select-subscription-info font-weight-bold"
                                         onChange={this.onChangeNumberOfItemsPerPage}
                                         value={this.state.numberOfItemsPerPage}>
 
@@ -258,7 +260,7 @@ class Subscription extends Component {
                             </div>
                             <div className="col-8 d-flex align-items-baseline">
                                 <button type="button"
-                                        className="btn-order-info-apply"
+                                        className="btn-subscription-info-apply"
                                         onClick={this.handleSubmit}
                                 >Apply
                                 </button>
@@ -272,12 +274,12 @@ class Subscription extends Component {
                 <div className="subscriptions row pb-3 ">
 
                     <div className="subscriptions-title d-flex mt-5">
-                        <div className="col subscription-col">
-                            <p className="py-2">Full Name</p>
-                        </div>
-                        <div className="col subscription-col">
-                            <p className="py-2">Username</p>
-                        </div>
+                        {/*<div className="col subscription-col">*/}
+                        {/*    <p className="py-2">Full Name</p>*/}
+                        {/*</div>*/}
+                        {/*<div className="col subscription-col">*/}
+                        {/*    <p className="py-2">Username</p>*/}
+                        {/*</div>*/}
                         <div className="col subscription-col">
                             <p className="py-2">Number Of Weekly Meals</p>
                         </div>
@@ -309,23 +311,22 @@ class Subscription extends Component {
                         <ul className="list-unstyled">
 
                             {
-                                // this.state.subscriptionByPage.map((item, index) => {
-                                //     return <li key={"order-id-" + index}>
-                                //         <SubscriptionInfo
-                                //             // order={item}
-                                //             // fullName={item.firstName + " " + item.lastName}
-                                //             // username={item.username}
-                                //             // mealQty={item.orderInfo.mealNumber}
-                                //             // servingsQty={item.orderInfo.servingNumber}
-                                //             // subtotal={item.orderInfo.subtotal}
-                                //             // shipping={item.orderInfo.shippingCost}
-                                //             // total={item.orderInfo.total}
-                                //             // isSubscription={item.orderInfo.total <= 0}
-                                //             // orderDate={item.orderInfo.orderDate.split("T")[0]}
-                                //             // keyEl={"order-id-" + index}
-                                //             // orderId={item.orderInfo.orderId}
-                                //         />
-                                //     </li>
+                                this.state.subscriptionByPage.map((item, index) => {
+                                    return <li key={"subscription-id-" + index}>
+                                        <SubscriptionInfo
+                                            // fullName={item.fullName}
+                                            // username={item.username}
+                                            numberOfWeeklyMeals={item.numberOfWeeklyMeals}
+                                            servingsPerMeal={item.servingsPerMeal}
+                                            weeklyDeliveryDays={item.weeklyDeliveryDay}
+                                            weeklyDeliveryTime={item.weeklyDeliveryTime}
+                                            subscriptionType={item.subscriptionType}
+                                            activationDate={item.activationDate}
+                                            cancellationDate={item.canceledDate}
+                                            isCanceled={item.isCanceled}
+                                            keyEl={"subscription-id-" + index}
+                                        />
+                                    </li>
                                 })
                             }
 

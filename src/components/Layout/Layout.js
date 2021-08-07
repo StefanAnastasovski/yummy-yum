@@ -9,7 +9,6 @@ import PopUpBox from "./LayoutSections/PopUp/PopUpBox";
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
-import {Redirect} from "react-router";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
 // import MenuCalls from "../../repository/get/getMenu";
 

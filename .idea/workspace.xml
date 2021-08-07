@@ -29,12 +29,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="fixup! User Dashboard - Login and LogOut Local Storage">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/MeetTheTeam/MeetTheTeam.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/MeetTheTeam/MeetTheTeam.js" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Meet The Team v1.0 added">
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/OurGoal/OurGoal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/OurGoal/OurGoal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/OurGoal/healthy-vegetables-wooden-table.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +64,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images/Checkout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images/OurGoal" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -78,19 +78,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\Orders\Components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\OrderHistory" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans\components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\images\OurGoal" />
       <recent name="E:\Projects\src\images\Checkout" />
       <recent name="E:\Projects\src\images\MealRecipe\Icons" />
       <recent name="E:\Projects\src\images\Header\Icons" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\PopUp\PopUpMessages" />
-      <recent name="E:\Projects\src\images\HowItWorks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\src\images\OurGoal" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\AdminDashboard\AdminDashboardComponents\Components\Orders\Components" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\OrderHistory" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans\components" />
+      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\SubscriptionPlans" />
     </key>
   </component>
   <component name="RunManager">
@@ -272,14 +272,7 @@
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
       <workItem from="1627856517511" duration="7394000" />
-      <workItem from="1628331723812" duration="8569000" />
-    </task>
-    <task id="LOCAL-00063" summary="Order History v0.2 finished!">
-      <created>1626116563551</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1626116563566</updated>
+      <workItem from="1628331723812" duration="12462000" />
     </task>
     <task id="LOCAL-00064" summary="Subscription - Order Cart - Date Handler fixed">
       <created>1626139243835</created>
@@ -617,7 +610,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628339120185</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="Meet The Team v1.0 added">
+      <created>1628344992313</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1628344992313</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +651,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! Cart - Delivery Date - 32date bug fixed" />
     <MESSAGE value="Cart - Delivery Time and Order Summary - fixed" />
     <MESSAGE value="Schedule - Delivery Date - fixed" />
     <MESSAGE value="Remove Cart Handler bug - fixed" />
@@ -676,13 +675,22 @@
     <MESSAGE value="Admin Dashboard - Send Email bug - fixed" />
     <MESSAGE value="User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="fixup! User Dashboard - Login and LogOut Local Storage" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixup! User Dashboard - Login and LogOut Local Storage" />
+    <MESSAGE value="Meet The Team v1.0 added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Meet The Team v1.0 added" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
+      <screen x="-1920" y="6" width="1920" height="1040" />
+    </state>
+    <state x="-1208" y="335" key="#Images/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628347187575" />
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1626104580675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626104580675" />
+    <state x="-1230" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1628349147661">
+      <screen x="-1920" y="6" width="1920" height="1040" />
+    </state>
+    <state x="-1230" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628349147661" />
     <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2" timestamp="1627776085690">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
@@ -738,17 +746,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1628342762887">
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1628348202640">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628342762887" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628348202640" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1627830393132">
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1628347876366">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627830393132" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628347876366" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1626713102094" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625281319400" />
     <state x="-1297" y="231" width="672" height="678" key="search.everywhere.popup" timestamp="1627775496928">

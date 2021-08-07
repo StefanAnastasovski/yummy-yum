@@ -22,6 +22,7 @@ import OrderDetails
     from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails";
 import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
 import MeetTheTeam from "../../LayoutSections/Main/MeetTheTeam/MeetTheTeam";
+import OurGoal from "../../LayoutSections/Main/OurGoal/OurGoal";
 
 class MainRouter extends Component {
 
@@ -51,7 +52,7 @@ class MainRouter extends Component {
         const isLoggedIn = localStorage.getItem("isLoggedIn");
         const pathURL = document.location.pathname;
         const urls = ["/", "/how-it-works", "/weekly-menu", '/meals', "/log-in",
-            "/forgot-password", "/join-now", "/joined", "/terms", "/privacy-policy",  "/meet-the-team"];
+            "/forgot-password", "/join-now", "/joined", "/terms", "/privacy-policy", "/meet-the-team", "/our-goal"];
         const dashboardAdminURLS = [
             "/dashboard/admin", "/dashboard/admin/create-recipe", "/dashboard/admin/create-menu",
             "/dashboard/admin/send-email", "/dashboard/admin/create-coupon", "/dashboard/admin/create-subscription-plan",
@@ -465,6 +466,16 @@ class MainRouter extends Component {
                         <Route exact path="/meet-the-team">
 
                             <MeetTheTeam />
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/our-goal">
+
+                            <OurGoal />
 
                         </Route>
 

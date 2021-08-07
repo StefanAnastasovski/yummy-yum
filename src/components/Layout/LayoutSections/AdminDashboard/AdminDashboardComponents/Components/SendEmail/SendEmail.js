@@ -243,7 +243,7 @@ class SendEmail extends Component {
                             <p className="">Subscribed Users: </p>
 
                             <p className="bg-white text-color-green p-2 ml-2">
-                                {this.props.subscribedUsers}
+                                {this.state.subscribeEmails.length}
                             </p>
 
                         </div>

@@ -14,7 +14,7 @@ const UserPersonalInformation = (props) => {
                             Full Name:
                         </p>
                         <p className="col text-color-green">
-                            {userInfo.firstName + " " + userInfo.lastName}
+                            {userInfo && userInfo.firstName + " " + userInfo.lastName}
                         </p>
                     </div>
                     <div className="col d-flex py-3">
@@ -22,7 +22,7 @@ const UserPersonalInformation = (props) => {
                             Username:
                         </p>
                         <p className="col text-color-green">
-                            {userInfo.username}
+                            {userInfo && userInfo.username}
                         </p>
                     </div>
                     <div className="col d-flex py-3">
@@ -30,7 +30,7 @@ const UserPersonalInformation = (props) => {
                             Email:
                         </p>
                         <p className="col text-color-green">
-                            {userInfo.email.email}
+                            {userInfo && userInfo.email.email}
                         </p>
                     </div>
                     <div className="col d-flex py-3">

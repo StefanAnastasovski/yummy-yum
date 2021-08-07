@@ -9,6 +9,7 @@ import PopUpBox from "./LayoutSections/PopUp/PopUpBox";
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
+import {Redirect} from "react-router";
 // import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
 // import MenuCalls from "../../repository/get/getMenu";
 
@@ -79,9 +80,9 @@ class Layout extends Component {
         if (!/\/meals/.test(urlPath)) {
             // localStorage.setItem("mealInfo", JSON.stringify({mealName: "", mealNameDate: ""}))
         }
-        if(localStorage.getItem("shoppingCartItems")===null){
-            localStorage.setItem("shoppingCartItems",JSON.stringify([]))
-        }
+        // if (localStorage.getItem("shoppingCartItems") === null) {
+        //     localStorage.setItem("shoppingCartItems", JSON.stringify([]))
+        // }
 
         if (localStorage.getItem("isLoggedIn") === "NO" && this.state.isRedirectedToHome) {
             // console.log("dasd")
@@ -132,20 +133,31 @@ class Layout extends Component {
         })
     }
 
+    removeLocalStorage = () => {
+
+        localStorage.removeItem("shoppingCartItems");
+        localStorage.removeItem("scheduleCartItems");
+        localStorage.removeItem("subscriptionPayment");
+        localStorage.removeItem("subscription");
+        localStorage.removeItem("orderSummary");
+        localStorage.removeItem("checkoutPrice");
+
+
+    }
+
     onClickLogOut = () => {
+
+        this.removeLocalStorage();
+
         localStorage.setItem("username", "")
         localStorage.setItem("isLoggedIn", "NO")
-        localStorage.setItem("subscriptionPayment", JSON.stringify({}))
         localStorage.setItem("userInformation", JSON.stringify({}))
-        localStorage.setItem("scheduleCartItems", JSON.stringify([]))
-        localStorage.setItem("shoppingCartItems", JSON.stringify([]))
-        localStorage.setItem("orderSummary", JSON.stringify({}))
-        localStorage.setItem("subscription", JSON.stringify({}))
-        localStorage.setItem("checkoutPrice", JSON.stringify([]))
+
         this.setState({
             isLoggedIn: false,
             isRedirectedToHome: true
         })
+
 
     }
 

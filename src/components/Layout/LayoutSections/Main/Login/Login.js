@@ -20,6 +20,17 @@ class Login extends Component {
 
     }
 
+    createLocalStorage = () => {
+
+        localStorage.setItem("shoppingCartItems", JSON.stringify([]));
+        localStorage.setItem("scheduleCartItems", JSON.stringify([]));
+        localStorage.setItem("subscriptionPayment", JSON.stringify({}));
+        localStorage.setItem("subscription", JSON.stringify({}));
+        localStorage.setItem("orderSummary", JSON.stringify({}));
+        localStorage.setItem("checkoutPrice", JSON.stringify([]));
+
+    }
+
     handleSubmitLogin = async (event) => {
         event.preventDefault();
 
@@ -61,6 +72,8 @@ class Login extends Component {
             }
             postLogin.createLogin(newLogin).then(response => {
             });
+
+            this.createLocalStorage();
 
             this.props.logIn()
 

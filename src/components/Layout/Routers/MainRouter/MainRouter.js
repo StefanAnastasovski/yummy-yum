@@ -21,6 +21,7 @@ import PaymentSuccessful from "../../LayoutSections/Main/Checkout/Payment/Paymen
 import OrderDetails
     from "../../LayoutSections/AdminDashboard/AdminDashboardComponents/Components/Orders/Components/OrderDetails";
 import UserDashboard from "../../LayoutSections/UserDashboard/UserDashboard";
+import MeetTheTeam from "../../LayoutSections/Main/MeetTheTeam/MeetTheTeam";
 
 class MainRouter extends Component {
 
@@ -50,7 +51,7 @@ class MainRouter extends Component {
         const isLoggedIn = localStorage.getItem("isLoggedIn");
         const pathURL = document.location.pathname;
         const urls = ["/", "/how-it-works", "/weekly-menu", '/meals', "/log-in",
-            "/forgot-password", "/join-now", "/joined", "/terms", "/privacy-policy"];
+            "/forgot-password", "/join-now", "/joined", "/terms", "/privacy-policy",  "/meet-the-team"];
         const dashboardAdminURLS = [
             "/dashboard/admin", "/dashboard/admin/create-recipe", "/dashboard/admin/create-menu",
             "/dashboard/admin/send-email", "/dashboard/admin/create-coupon", "/dashboard/admin/create-subscription-plan",
@@ -454,6 +455,16 @@ class MainRouter extends Component {
                         <Route exact path="/cart/schedule">
 
                             <PaymentSuccessful isSubscription={true}/>
+
+                        </Route>
+
+                    </Switch>
+
+                    <Switch>
+
+                        <Route exact path="/meet-the-team">
+
+                            <MeetTheTeam />
 
                         </Route>
 

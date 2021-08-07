@@ -1,0 +1,13 @@
+/*Meet Our Team*/
+
+
+.meet-our-team-wrapper {
+    min-height: 100%;
+    flex: 1;
+    background-color: rgba(243, 218, 187, 0.61);
+}
+
+
+.mot .mot-img img{
+    border-radius: 20%;
+}

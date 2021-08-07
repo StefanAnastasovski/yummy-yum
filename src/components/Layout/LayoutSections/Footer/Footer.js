@@ -191,8 +191,8 @@ class Footer extends Component {
                                             <h5 className="text-uppercase text-color-green">About Us</h5>
                                             <ul className="nav navbar-nav  nav-menu">
 
-                                                <li><a href="/">Our Goal</a></li>
-                                                <li><a href="/">Meet the Team</a></li>
+                                                <li><a href="/our-goal">Our Goal</a></li>
+                                                <li><a href="/meet-the-team">Meet the Team</a></li>
 
                                             </ul>
 

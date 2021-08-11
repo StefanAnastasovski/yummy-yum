@@ -111,7 +111,7 @@
 }
 
 .main-wrapper .wm-menu-cards .btn-add-meal-to-cart, .main-wrapper .wm-menu-cards .btn-go-to-cart,
-.main-wrapper .wm-menu-cards .btn-schedule-a-meal  {
+.main-wrapper .wm-menu-cards .btn-schedule-a-meal {
     background-color: #6b9958;
     width: 100%;
     height: 50px;
@@ -123,6 +123,10 @@
     background-color: transparent;
     border: none;
     padding: 10px 0;
+}
+
+.meal-card-body{
+    flex-grow: 1;
 }
 
 .main-wrapper .wm-menu-cards .card-customize-it-btn {

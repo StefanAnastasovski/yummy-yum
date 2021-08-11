@@ -101,140 +101,160 @@ const WeeklyMenuCard = (props) => {
 
             {
                 props.showCard ?
+
                     <Aux>
-                        <a href={"/meals/" + props.meal.mealName} className="text-decoration-none "
-                        >
-                            <div onClick={props.clicked}>
-                                <Image
-                                    img={props.img}
-                                    menuName="Adventurous" imgNumber="1"/>
 
-                                <div className="card-body">
+                        <div className="meal-card-body">
 
-                                    <h4 className="card-title">
-                                        {props.meal.mealName}
-                                    </h4>
+                            <a href={"/meals/" + props.meal.mealName} className="text-decoration-none ">
 
-                                    <p className="card-text text-color-green">
-                                        {props.meal.mealDescription}
-                                    </p>
+                                <div onClick={props.clicked}>
+                                    <Image
+                                        img={props.img}
+                                        menuName="Adventurous" imgNumber="1"/>
 
-                                </div>
+                                    <div className="card-body">
 
-                                <div className="card-footer d-flex align-items-center text-muted">
+                                        <h4 className="card-title">
+                                            {props.meal.mealName}
+                                        </h4>
 
-                                    <ul className="wm-tags">
-                                        <li className="wm-tags-time">
-                                            <small className="">
-                                                {props.meal.mealTimeTag}
-                                            </small>
-                                        </li>
-                                    </ul>
+                                        <p className="card-text text-color-green">
+                                            {props.meal.mealDescription}
+                                        </p>
 
-                                    <ul className="wm-tags-ingredients d-flex justify-content-between mr-1 ">
-
-                                        {mealIngredientTags.map(item => {
-                                            return <li key={item} className="">
-                                                <small className="text-muted">{item}</small>
-                                            </li>
-                                        })
-                                        }
-
-                                    </ul>
+                                    </div>
 
                                 </div>
-                            </div>
-                        </a>
-                        <div className="card-customize-it-btn row border-top" onClick={clicked}>
-                            <div className="col-10">
-                                <button type="button"
-                                        className="btn-customize-it w-100 text-left pl-1"
-                                >
-                                    Customize It
-                                </button>
-                            </div>
-                            <div className="col-2 d-flex justify-content-center">
-                                <p className="align-self-center">></p>
-                            </div>
+
+                            </a>
+
                         </div>
 
+                        <div>
 
-                        {
-                            shouldShowAddToCart
+                            <div className="card-footer d-flex align-items-center text-muted w-100">
 
-                                ?
+                                <ul className="wm-tags">
+                                    <li className="wm-tags-time">
+                                        <small className="">
+                                            {props.meal.mealTimeTag}
+                                        </small>
+                                    </li>
+                                </ul>
 
-                                isLoggedIn && <div className="">
+                                <ul className="wm-tags-ingredients d-flex justify-content-between mr-1 ">
 
-                                    {
-                                        showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
-
-                                                <button
-                                                    type="button" className="btn-add-meal-to-cart w-100 "
-                                                    onClick={addToCart}
-                                                >
-                                                    Add to Cart
-                                                </button>
-                                            </div> :
-
-                                            <div className="wm-amtc-wrapper">
-
-                                                <div className="wm-amtc-remove-item"
-                                                     onClick={removeItem}>
-                                                    <RemoveIcon/>
-                                                </div>
-
-                                                <div className="wm-amtc-servings">
-
-                                                    <div className="wm-amtc-reduce-servings"
-                                                         onClick={decreaseServings}>
-                                                        <MinusIcon/>
-                                                    </div>
-
-                                                    <div className="wm-amtc-servings-text font-size-1">
-                                                        {numberOfServings} Servings
-                                                    </div>
-
-                                                    <div className="wm-amtc-increase-servings"
-                                                         onClick={increaseServings}><
-                                                        PlusIcon/>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
+                                    {mealIngredientTags.map(item => {
+                                        return <li key={item} className="">
+                                            <small className="text-muted">{item}</small>
+                                        </li>
+                                    })
                                     }
-                                    {
-                                        showScheduleBtn ? <div className="wm-amtc-add-to-cart">
-                                            {
-                                                props.isUserSubscribed && <button
-                                                    type="button" className="btn-schedule-a-meal w-100
-                                                    text-white bg-color-purple"
-                                                    onClick={scheduleAMealHandler}>
-                                                    Schedule A Meal
-                                                </button>
-                                            }
-                                        </div> : <div className="wm-amtc-wrapper">
 
-                                            <div className="wm-amtc-remove-item w-100 justify-content-center"
-                                                 onClick={removeItemFromScheduleItems}>
-                                                <RemoveIcon/> <p className="wm-amtc-remove-item">Cancel</p>
-                                            </div>
+                                </ul>
+
+                            </div>
+
+                            <div className="card-customize-it-btn row border-top" onClick={clicked}>
+
+                                <div className="col-10">
+                                    <button type="button"
+                                            className="btn-customize-it w-100 text-left pl-1"
+                                    >
+                                        Customize It
+                                    </button>
+                                </div>
+
+                                <div className="col-2 d-flex justify-content-center">
+                                    <p className="align-self-center">></p>
+                                </div>
+
+                            </div>
+
+                            <div>
+
+
+                                {
+                                    shouldShowAddToCart
+
+                                        ?
+
+                                        isLoggedIn && <div className="w-100">
+
+                                            {
+                                                showAddToCartBtn ? <div className="wm-amtc-add-to-cart">
+
+                                                        <button
+                                                            type="button" className="btn-add-meal-to-cart w-100 "
+                                                            onClick={addToCart}
+                                                        >
+                                                            Add to Cart
+                                                        </button>
+                                                    </div> :
+
+                                                    <div className="wm-amtc-wrapper">
+
+                                                        <div className="wm-amtc-remove-item"
+                                                             onClick={removeItem}>
+                                                            <RemoveIcon/>
+                                                        </div>
+
+                                                        <div className="wm-amtc-servings">
+
+                                                            <div className="wm-amtc-reduce-servings"
+                                                                 onClick={decreaseServings}>
+                                                                <MinusIcon/>
+                                                            </div>
+
+                                                            <div className="wm-amtc-servings-text font-size-1">
+                                                                {numberOfServings} Servings
+                                                            </div>
+
+                                                            <div className="wm-amtc-increase-servings"
+                                                                 onClick={increaseServings}><
+                                                                PlusIcon/>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                            }
+                                            {
+                                                showScheduleBtn ? <div className="wm-amtc-add-to-cart">
+                                                    {
+                                                        props.isUserSubscribed && <button
+                                                            type="button" className="btn-schedule-a-meal w-100
+                                                    text-white bg-color-purple"
+                                                            onClick={scheduleAMealHandler}>
+                                                            Schedule A Meal
+                                                        </button>
+                                                    }
+                                                </div> : <div className="wm-amtc-wrapper">
+
+                                                    <div className="wm-amtc-remove-item w-100 justify-content-center"
+                                                         onClick={removeItemFromScheduleItems}>
+                                                        <RemoveIcon/> <p className="wm-amtc-remove-item">Cancel</p>
+                                                    </div>
+
+                                                </div>
+
+                                            }
 
                                         </div>
 
-                                    }
+                                        :
 
-                                </div>
+                                        isLoggedIn ? <div>
+                                            <p className="text-center bg-danger py-1 text-white">Sorry! You can't order
+                                                this
+                                                meal!</p>
+                                        </div> : null
 
-                                :
+                                }
+                            </div>
 
-                                isLoggedIn ? <div>
-                                    <p className="text-center bg-danger py-1 text-white">Sorry! You can't order this
-                                        meal!</p>
-                                </div> : null
-
-                        }
+                        </div>
 
                     </Aux>
 

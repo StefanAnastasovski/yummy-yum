@@ -29,13 +29,12 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Meet The Team v1.0 added">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/OurGoal/OurGoal.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/OurGoal/OurGoal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/OurGoal/healthy-vegetables-wooden-table.jpg" afterDir="false" />
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Our Goal v1.0 added">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/Routers/MainRouter/MainRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,14 +271,9 @@
       <workItem from="1627735480378" duration="14942000" />
       <workItem from="1627821321452" duration="8183000" />
       <workItem from="1627856517511" duration="7394000" />
-      <workItem from="1628331723812" duration="12462000" />
-    </task>
-    <task id="LOCAL-00064" summary="Subscription - Order Cart - Date Handler fixed">
-      <created>1626139243835</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1626139243835</updated>
+      <workItem from="1628331723812" duration="14143000" />
+      <workItem from="1628429605253" duration="3426000" />
+      <workItem from="1628722894958" duration="2430000" />
     </task>
     <task id="LOCAL-00065" summary="Subscription - Order Cart - Time  Handler fixed">
       <created>1626139423666</created>
@@ -617,7 +611,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628344992313</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Our Goal v1.0 added">
+      <created>1628349174662</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1628349174662</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -651,7 +652,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Cart - Delivery Time and Order Summary - fixed" />
     <MESSAGE value="Schedule - Delivery Date - fixed" />
     <MESSAGE value="Remove Cart Handler bug - fixed" />
     <MESSAGE value="Shipping Information Validator added" />
@@ -676,7 +676,8 @@
     <MESSAGE value="User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="fixup! User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="Meet The Team v1.0 added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Meet The Team v1.0 added" />
+    <MESSAGE value="Our Goal v1.0 added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Our Goal v1.0 added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -746,10 +747,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1628348202640">
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup" timestamp="1628725069905">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628348202640" />
+    <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628725069905" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627497614772" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />

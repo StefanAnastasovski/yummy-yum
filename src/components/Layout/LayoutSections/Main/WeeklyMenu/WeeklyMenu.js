@@ -6,7 +6,6 @@ import Menu from "./Menu";
 import MenuCalls from "../../../../../repository/get/getMenu";
 import SubscriptionCalls from "../../../../../repository/get/getSubscription";
 
-
 class WeeklyMenu extends Component {
 
     state = {
@@ -37,7 +36,13 @@ class WeeklyMenu extends Component {
             days: [],
             dates: [],
             time: []
-        }
+        },
+        caloriesFilter: {
+            caloriesFrom: 9999,
+            caloriesTo: 9999
+        },
+        isMenuFiltered: false,
+        menuFilteredItems: []
     }
 
     async componentDidMount() {
@@ -62,7 +67,7 @@ class WeeklyMenu extends Component {
     getDayOfWeek = (date, isCancellationDate) => {
         let day = date.getDay();
         let dayNumber = day;
-        if(day === 0 && isCancellationDate){
+        if (day === 0 && isCancellationDate) {
             dayNumber = 6
         }
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -755,6 +760,53 @@ class WeeklyMenu extends Component {
         this.forceUpdate();
     }
 
+    caloriesFilterHandler = (event) => {
+        if (event.target.name === "calories-filter-from") {
+            if (event.target.value <= 2500) {
+                let calories = {
+                    ...this.state.caloriesFilter
+                }
+                calories.caloriesFrom = event.target.value;
+                this.setState({
+                    caloriesFilter: calories
+                })
+            }
+        } else if (event.target.name === "calories-filter-to") {
+            if (event.target.value <= 2500) {
+                let calories = {
+                    ...this.state.caloriesFilter
+                }
+                calories.caloriesTo = event.target.value;
+                this.setState({
+                    caloriesFilter: calories
+                })
+            }
+        }
+    }
+
+    onApplyCallCaloriesFilter = () => {
+
+        let canContinue;
+
+        canContinue = this.state.caloriesFilter.caloriesFrom !== 9999 && !isNaN(this.state.caloriesFilter.caloriesFrom);
+
+        if ((this.state.caloriesFilter.caloriesTo !== 9999 && !isNaN(this.state.caloriesFilter.caloriesTo)) &&
+            (this.state.caloriesFilter.caloriesTo > this.state.caloriesFilter.caloriesFrom)) {
+            if (canContinue)
+                canContinue = true;
+        } else {
+            canContinue = false;
+        }
+
+        if (canContinue) {
+            this.setState({
+                isMenuFiltered: true,
+                menuFilteredItems: []
+            })
+        }
+
+    }
+
     render() {
 
         return (
@@ -795,6 +847,11 @@ class WeeklyMenu extends Component {
                             isUserSubscribed={this.state.isUserSubscribed}
                             userSubscriptionData={this.state.userSubscriptionData}
                             scheduleAMealHandler={this.scheduleAMealHandler.bind(this)}
+                            caloriesFilter={this.state.caloriesFilter}
+                            caloriesFilterHandler={this.caloriesFilterHandler.bind(this)}
+                            onApplyCallCaloriesFilter={this.onApplyCallCaloriesFilter}
+                            isMenuFiltered={this.state.isMenuFiltered}
+                            menuFilteredItems={this.state.menuFilteredItems}
                             // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
                         />
 

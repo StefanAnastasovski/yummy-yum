@@ -244,3 +244,14 @@
     color: #3c0c7a !important;
     border: 1px solid #3c0c7a;
 }
+
+.btn-calories-filter{
+    width: 5em;
+    padding: 0.1rem 0.5rem;
+}
+
+input.btn-calories-filter::-webkit-outer-spin-button,
+input.btn-calories-filter::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

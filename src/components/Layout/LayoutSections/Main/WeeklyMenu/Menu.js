@@ -131,7 +131,7 @@ const Menu = (props) => {
 // render() {
     let row1, row2, row3 = null;
 
-    if (props.isMenuExist) {
+    if (props.isMenuExist && !props.isMenuFiltered) {
         let menu = [];
         if (props.isMix) {
             let mixMenu = convertMealToRightFormat(props.mixRows[0], "Mix")
@@ -145,6 +145,12 @@ const Menu = (props) => {
             row3 = createCardRow(menu, 3);
         }
     }
+    if (props.isMenuFiltered) {
+        console.log(props.menuFilteredItems);
+        // row1 = createCardRow(menu, 1);
+        // row2 = createCardRow(menu, 2);
+        // row3 = createCardRow(menu, 3);
+    }
 
     return (
 
@@ -152,11 +158,9 @@ const Menu = (props) => {
 
             <h1 className="text-center py-5">Weekly Menu</h1>
 
-            <div className="wm-nav d-flex justify-content-between">
+            <div className="wm-nav">
 
-                <h3 className="">Meal Kits</h3>
-
-                <div className="wm-nav-right-menu d-flex align-items-center w-50 justify-content-end">
+                <div className="wm-nav-right-menu d-flex align-items-center justify-content-end">
 
                     <h4 className="pr-3">Meal Category: </h4>
 
@@ -218,27 +222,80 @@ const Menu = (props) => {
 
             </div>
 
+            <div className="wm-calories d-flex flex-row align-items-baseline pt-2">
+
+                <div>
+                    <h3 className="pr-2">Calories:</h3>
+                    <p className="font-size-2 text-danger">Max: 2500 kcal</p>
+                </div>
+
+                <div className="wm-calories-filter d-flex ">
+
+                    <div className="">
+                        <label className="text-color-green">From:</label>
+                        <input name="calories-filter-from" type="number"
+                               min="0" max="2500" className="ml-2 btn-calories-filter"
+                               value={props.caloriesFilter.caloriesFrom !== 9999 && props.caloriesFilter.caloriesFrom}
+                               onChange={props.caloriesFilterHandler}
+                        />
+                    </div>
+
+                    <div className="ml-3">
+                        <label className="text-color-green">To:</label>
+                        <input name="calories-filter-to" type="number"
+                               min="0" max="2500" className="ml-2 btn-calories-filter"
+                               value={props.caloriesFilter.caloriesTo !== 9999 && props.caloriesFilter.caloriesTo}
+                               onChange={props.caloriesFilterHandler}
+                        />
+                    </div>
+
+                    <div className="col d-flex align-items-baseline ml-3">
+                        <button type="button" className="btn-apply-order-history"
+                                onClick={props.onApplyCallCaloriesFilter}
+                        >Apply
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div>
+                <hr/>
+                <h3 className="">Meal Kits</h3>
+            </div>
+
             <div className="wm-menu-cards">
 
                 <div className="row">
 
                     {/*{checkRecipeRedirect()}*/}
 
-                    {props.isMenuExist ? <ul>
-                            <div className="row py-4">{row1}</div>
-                            <div className="row pb-4">{row2}</div>
-                            <div className="row">{row3}</div>
-                        </ul> :
-                        <div className="col py-5 text-center">
-                            <h1 className="text-danger ">
+                    {
+                        props.isMenuExist && !props.isMenuFiltered ? <ul>
+                                <div className="row py-4">{row1}</div>
+                                <div className="row pb-4">{row2}</div>
+                                <div className="row">{row3}</div>
+                            </ul> :
+                            !props.isMenuFiltered ?
+                                <div className="col py-5 text-center">
+                                    <h1 className="text-danger ">
                                 <span className="d-block">
                                     Sorry!
                                 </span>
-                                <span className="font-size-3">
+                                        <span className="font-size-3">
                                     The menu is not available at this moment!
                                 </span>
-                            </h1>
-                        </div>}
+                                    </h1>
+                                </div> :
+                                <div className="col py-5 text-center">
+                                    <h1 className="text-danger ">
+                                        <span className="font-size-3">
+                                            Please, set another calories range.
+                                        </span>
+                                    </h1>
+                                </div>
+                    }
 
                 </div>
 

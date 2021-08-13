@@ -307,6 +307,29 @@ class WeeklyMenu extends Component {
 
     }
 
+    getMenuMealBoxNutritionByMenuName = async (menuName) => {
+        let err = false;
+
+        await MenuCalls.fetchMenuMealBoxNutritionByMenuName(menuName).then((response) => {
+            console.log(response.data)
+            // this.setState({
+            //     menu: response.data.mealCategories,
+            //     isMenuExist: true
+            // })
+
+        }).catch((error) => {
+            console.log(error)
+            err = true;
+        })
+
+        if (err)
+            this.setState({
+                isMenuExist: false
+            })
+
+        return !err;
+    }
+
     getMenuByMenuName = async (menuName) => {
         let err = false;
 

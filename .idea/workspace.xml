@@ -29,12 +29,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Weekly Menu Card - Layout bug v0.1 - fixed">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="WeeklyMenu - Calories Filter v0.1 - added">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repository/get/getMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repository/get/getMenu.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,14 +272,9 @@
       <workItem from="1627856517511" duration="7394000" />
       <workItem from="1628331723812" duration="14143000" />
       <workItem from="1628429605253" duration="3426000" />
-      <workItem from="1628722894958" duration="10756000" />
-    </task>
-    <task id="LOCAL-00067" summary="Schedule Successfully message">
-      <created>1626142530167</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1626142530167</updated>
+      <workItem from="1628722894958" duration="10907000" />
+      <workItem from="1628769132929" duration="3647000" />
+      <workItem from="1628805735211" duration="1962000" />
     </task>
     <task id="LOCAL-00068" summary="Weekly Menu Take a Meal message issue fixed!">
       <created>1626290118710</created>
@@ -618,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628726128083</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="WeeklyMenu - Calories Filter v0.1 - added">
+      <created>1628735250642</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1628735250642</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -652,7 +653,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Shipping Information Validator added" />
     <MESSAGE value="Admin Dashboard - Number Of Orders Call - fixed" />
     <MESSAGE value="Admin Dashboard - Calendar - fixed" />
     <MESSAGE value="Admin Dashboard - Create Recipe - Meal Created Message added" />
@@ -677,7 +677,8 @@
     <MESSAGE value="Our Goal v1.0 added" />
     <MESSAGE value="Image - bug - fixed" />
     <MESSAGE value="Weekly Menu Card - Layout bug v0.1 - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Weekly Menu Card - Layout bug v0.1 - fixed" />
+    <MESSAGE value="WeeklyMenu - Calories Filter v0.1 - added" />
+    <option name="LAST_COMMIT_MESSAGE" value="WeeklyMenu - Calories Filter v0.1 - added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -731,10 +732,10 @@
     <state x="681" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625857537086" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1628726139016">
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1628735337123">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628726139016" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628735337123" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496421089" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627654927146" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
@@ -779,6 +780,11 @@
           <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/CreateRecipe/CreateRecipe.js</url>
           <line>14</line>
           <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js</url>
+          <line>54</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

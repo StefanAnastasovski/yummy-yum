@@ -125,7 +125,7 @@
     padding: 10px 0;
 }
 
-.meal-card-body{
+.meal-card-body {
     flex-grow: 1;
 }
 
@@ -245,13 +245,41 @@
     border: 1px solid #3c0c7a;
 }
 
-.btn-calories-filter{
+.btn-calories-filter {
     width: 5em;
     padding: 0.1rem 0.5rem;
 }
 
 input.btn-calories-filter::-webkit-outer-spin-button,
 input.btn-calories-filter::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.wm-calories-filter-arrow {
+    display: flex;
+    cursor: pointer;
+    height: 1.5em;
+    width: 1.5em;
+    background-color: #3c0c7a !important;
+    color: #abf192 !important;
+
+    padding: 5px;
+}
+
+.wm-calories-filter-arrow:hover {
+    background-color: #abf192 !important;
+    color: #3c0c7a !important;
+}
+
+.wm-calories-filter-arrow svg {
+    fill: #abf192 !important;
+}
+
+.wm-calories-filter-arrow:hover svg {
+    fill: #3c0c7a !important;
+}
+
+.w-33{
+    max-width: 33.33% !important;
 }

@@ -42,7 +42,9 @@ class WeeklyMenu extends Component {
             caloriesTo: 9999
         },
         isMenuFiltered: false,
-        menuFilteredItems: []
+        menuFiltered: [],
+        menuFilteredItems: [],
+        doesCalorieFilterEnabled: false
     }
 
     async componentDidMount() {
@@ -53,6 +55,7 @@ class WeeklyMenu extends Component {
         await this.setDate();
 
         let menu = await this.populateMenuName(year, month, mondayDate);
+
         if (menu) {
             await this.createAllMenus();
             await this.isUserSubscribed();
@@ -275,14 +278,26 @@ class WeeklyMenu extends Component {
                 mealFilter: event.target.value,
                 showMealFilterClass: "",
                 isMix: true,
-                showMealFilterBtnForm: ""
+                showMealFilterBtnForm: "",
+                doesCalorieFilterEnabled: false,
+                isMenuFiltered: false,
+                caloriesFilter: {
+                    caloriesFrom: 9999,
+                    caloriesTo: 9999
+                },
             });
         } else {
             this.setState({
                 mealFilter: event.target.value,
                 showMealFilterClass: "",
                 isMix: false,
-                showMealFilterBtnForm: ""
+                showMealFilterBtnForm: "",
+                doesCalorieFilterEnabled: false,
+                isMenuFiltered: false,
+                caloriesFilter: {
+                    caloriesFrom: 9999,
+                    caloriesTo: 9999
+                },
             });
 
         }
@@ -294,16 +309,15 @@ class WeeklyMenu extends Component {
             this.setState({
                 showMealFilter: !this.state.showMealFilter,
                 showMealFilterClass: "",
-                showMealFilterBtnForm: ""
+                showMealFilterBtnForm: "",
             })
         } else {
             this.setState({
                 showMealFilter: !this.state.showMealFilter,
                 showMealFilterClass: "d-block",
-                showMealFilterBtnForm: "ddm-btn-bottom-border-radius"
+                showMealFilterBtnForm: "ddm-btn-bottom-border-radius",
             })
         }
-
 
     }
 
@@ -311,11 +325,10 @@ class WeeklyMenu extends Component {
         let err = false;
 
         await MenuCalls.fetchMenuMealBoxNutritionByMenuName(menuName).then((response) => {
-            console.log(response.data)
-            // this.setState({
-            //     menu: response.data.mealCategories,
-            //     isMenuExist: true
-            // })
+            this.setState({
+                menuFilteredItems: response.data.mealCategories,
+                isMenuFiltered: true
+            })
 
         }).catch((error) => {
             console.log(error)
@@ -638,9 +651,9 @@ class WeeklyMenu extends Component {
 
     }
 
-    isWholeNumber = (n) => {
-        return !((n - Math.floor(n)) !== 0);
-    }
+    // isWholeNumber = (n) => {
+    //     return !((n - Math.floor(n)) !== 0);
+    // }
 
     scheduleAMealHandler = (cardId, mealInfo, mealImg) => {
 
@@ -807,14 +820,14 @@ class WeeklyMenu extends Component {
         }
     }
 
-    onApplyCallCaloriesFilter = () => {
+    onApplyCallCaloriesFilter = async () => {
 
         let canContinue;
 
         canContinue = this.state.caloriesFilter.caloriesFrom !== 9999 && !isNaN(this.state.caloriesFilter.caloriesFrom);
 
         if ((this.state.caloriesFilter.caloriesTo !== 9999 && !isNaN(this.state.caloriesFilter.caloriesTo)) &&
-            (this.state.caloriesFilter.caloriesTo > this.state.caloriesFilter.caloriesFrom)) {
+            (parseInt(this.state.caloriesFilter.caloriesTo) > parseInt(this.state.caloriesFilter.caloriesFrom))) {
             if (canContinue)
                 canContinue = true;
         } else {
@@ -822,11 +835,76 @@ class WeeklyMenu extends Component {
         }
 
         if (canContinue) {
+            await this.createFilteredMenu();
+
             this.setState({
                 isMenuFiltered: true,
-                menuFilteredItems: []
+                mealFilter: "Mix",
             })
         }
+
+    }
+
+    calorieFilterHandler = () => {
+
+        if (this.state.doesCalorieFilterEnabled) {
+            this.setState(prevState => ({
+                doesCalorieFilterEnabled: !prevState.doesCalorieFilterEnabled,
+                isMenuFiltered: !prevState.isMenuFiltered,
+            }))
+        } else {
+            this.setState(prevState => ({
+                doesCalorieFilterEnabled: !prevState.doesCalorieFilterEnabled,
+                isMenuFiltered: !prevState.isMenuFiltered,
+                caloriesFilter: {
+                    caloriesFrom: 9999,
+                    caloriesTo: 9999
+                },
+                mealFilter: "Mix",
+                isMix: true
+            }))
+        }
+
+    }
+
+    createFilteredMenu = async () => {
+
+        await this.getMenuMealBoxNutritionByMenuName(this.state.menuName);
+
+        let allMeals = [];
+
+        [...this.state.menuFilteredItems].forEach((item => {
+            if (item.category !== "Mix") {
+                allMeals.push(item.meals);
+            }
+        }));
+
+        let temp = [];
+        allMeals.forEach(item => {
+            temp = temp.concat(item);
+        })
+        allMeals = temp;
+
+        let mealSorted = allMeals.sort((a, b) => {
+            return a.mealBoxNutrition.calories - b.mealBoxNutrition.calories
+        })
+
+        let mealSortedTemp = [];
+
+        if (this.state.caloriesFilter.caloriesFrom !== 9999 && this.state.caloriesFilter.caloriesTo !== 9999) {
+
+            mealSorted.forEach((item, index) => {
+                if (item.mealBoxNutrition.calories >= this.state.caloriesFilter.caloriesFrom &&
+                    item.mealBoxNutrition.calories <= this.state.caloriesFilter.caloriesTo
+                ) {
+                    mealSortedTemp.push(item);
+                }
+            })
+        }
+
+        this.setState({
+            menuFiltered: mealSortedTemp
+        })
 
     }
 
@@ -874,7 +952,10 @@ class WeeklyMenu extends Component {
                             caloriesFilterHandler={this.caloriesFilterHandler.bind(this)}
                             onApplyCallCaloriesFilter={this.onApplyCallCaloriesFilter}
                             isMenuFiltered={this.state.isMenuFiltered}
-                            menuFilteredItems={this.state.menuFilteredItems}
+                            menuFiltered={this.state.menuFiltered}
+                            doesCalorieFilterEnabled={this.state.doesCalorieFilterEnabled}
+                            calorieFilterHandler={this.calorieFilterHandler}
+
                             // getMainRecipeImage={this.getMainRecipeImage.bind(this)}
                         />
 

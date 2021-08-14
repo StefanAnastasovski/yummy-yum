@@ -6,6 +6,8 @@ import NextIcon from "./WeekIcons/NextIcon";
 import PreviousIcon from "./WeekIcons/PreviousIcon";
 import Aux from "../../../../../hoc/Auxilliary";
 import WeeklyMenuCard from "./WeeklyMenuCard/WeeklyMenuCard";
+import ArrowUpIcon from "./CaloriesFilterIcons/ArrowUpIcon";
+import ArrowRightIcon from "./CaloriesFilterIcons/ArrowRightIcon";
 
 const Menu = (props) => {
 
@@ -18,7 +20,7 @@ const Menu = (props) => {
         });
     }
 
-    let createCardRow = (meals, rowNumber) => {
+    let createCardRow = (meals, rowNumber, isFiltered) => {
         let rowSlice;
         let keyIndex1;
         let keyIndex2;
@@ -37,37 +39,48 @@ const Menu = (props) => {
         }
         let showCard;
 
+
         return meals.slice(rowSlice[0], rowSlice[1]).map((item, index) => {
             let margin = "";
+
             if (index === 1) {
                 margin = "mx-3";
             }
 
             let menuName = props.mealMenuName.split("-");
             let id = [...menuName].splice(1,).join("");
-            showCard = props.customizeCardIndex !== item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString();
+
+            showCard =
+                !isFiltered ?
+                    props.customizeCardIndex !== item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString() :
+                    props.customizeCardIndex !== item.mealCategory.category[0] + id + keyIndex1.toString() + index.toString();
+
+            let mealName = !isFiltered ? item.meal.mealName : item.mealName;
+            let mealCategory = !isFiltered ? item.meal.mealCategory.category : item.mealCategory.category;
+
             return <li
-                key={"CardID" + id + keyIndex1.toString() + index.toString()} className={"col " + margin}
-                onClick={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
-                onContextMenu={props.populateMealInfoOnClick.bind(this, item.meal.mealName, id + keyIndex1.toString() + index.toString(), item.meal.mealCategory.category)}
+                className={"col " + margin}
+                key={"CardID" + id + keyIndex1.toString() + index.toString()}
+                onClick={props.populateMealInfoOnClick.bind(this, mealName, id + keyIndex1.toString() + index.toString(), mealCategory)}
+                onContextMenu={props.populateMealInfoOnClick.bind(this, mealName, id + keyIndex1.toString() + index.toString(), mealCategory)}
             >
                 <WeeklyMenuCard
                     customizeItCardOnClickHandler={props.customizeItCardOnClickHandler}
                     addToCartHandler={props.addToCartHandler}
                     showCard={showCard}
                     mealMenuName={props.mealMenuName}
-                    cardIdNumber={(item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString())}
-                    img={item.meal.image}
-                    meal={item.meal}
+                    cardIdNumber={(mealCategory[0] + id + keyIndex1.toString() + index.toString())}
+                    img={!isFiltered ? item.meal.image : item.image}
+                    meal={!isFiltered ? item.meal : item}
                     key={"CardID" + keyIndex2.toString() + index.toString()}
                     customizeCardClicked={props.customizeCardClicked}
-                    populateLocalStorageOnCustomizeIt={() => populateLocalStorage(item.meal.mealName,
-                        (item.meal.mealCategory.category[0] + id + keyIndex1.toString() + index.toString()))}
+                    populateLocalStorageOnCustomizeIt={() => populateLocalStorage(mealName,
+                        (mealCategory[0] + id + keyIndex1.toString() + index.toString()))}
                     removeItemFromCart={props.removeItemFromCart}
                     removeItemFromScheduleItems={props.removeItemFromScheduleItems}
                     increaseServings={props.increaseServings}
                     decreaseServings={props.decreaseServings}
-                    mealCustomizeOptions={item.meal.mealCustomizeOptions}
+                    mealCustomizeOptions={!isFiltered ? item.meal.mealCustomizeOptions : item.mealCustomizeOptions}
                     isUserSubscribed={props.isUserSubscribed}
                     userSubscriptionData={props.userSubscriptionData}
                     scheduleAMealHandler={props.scheduleAMealHandler}
@@ -75,6 +88,7 @@ const Menu = (props) => {
 
             </li>
         });
+
     }
 
     let populateLocalStorage = (mealName, cardIdNumber) => {
@@ -128,28 +142,46 @@ const Menu = (props) => {
         return menu;
     }
 
+    let checkHowManyRows = () => {
+        return Math.ceil(props.menuFiltered.slice(0, 9).length / 3);
+    }
+
 // render() {
-    let row1, row2, row3 = null;
+
+    let rows = [];
 
     if (props.isMenuExist && !props.isMenuFiltered) {
         let menu = [];
         if (props.isMix) {
             let mixMenu = convertMealToRightFormat(props.mixRows[0], "Mix")
-            row1 = createCardRow(mixMenu, 1);
-            row2 = createCardRow(mixMenu, 2);
-            row3 = createCardRow(mixMenu, 3);
+            for (let i = 0; i < 3; i++) {
+                rows.push(createCardRow(mixMenu, (i + 1), false));
+            }
         } else {
             menu = checkMenuName(props.mealMenuFilter);
-            row1 = createCardRow(menu, 1);
-            row2 = createCardRow(menu, 2);
-            row3 = createCardRow(menu, 3);
+            for (let i = 0; i < 3; i++) {
+                rows.push(createCardRow(menu, (i + 1), false));
+            }
         }
     }
     if (props.isMenuFiltered) {
-        console.log(props.menuFilteredItems);
-        // row1 = createCardRow(menu, 1);
-        // row2 = createCardRow(menu, 2);
-        // row3 = createCardRow(menu, 3);
+
+        let numberOfRows = checkHowManyRows();
+
+        for (let i = 0; i < numberOfRows; i++) {
+            rows[i] = createCardRow(props.menuFiltered.slice(0, 9), (i + 1), true)
+
+            if (i === 0 && rows[i].length === 2) {
+                rows[i].push(<li key={"temp-3" + i} className="col"></li>)
+            }
+
+            if (rows[i].length === 1) {
+                rows[i].push(<li key={"temp-2" + i} className="col mx-3"></li>)
+                rows[i].push(<li key={"temp-3" + i} className="col"></li>)
+            }
+
+        }
+
     }
 
     return (
@@ -222,39 +254,56 @@ const Menu = (props) => {
 
             </div>
 
-            <div className="wm-calories d-flex flex-row align-items-baseline pt-2">
+            <div className="wm-calories d-flex flex-column align-items-baseline pt-2">
 
-                <div>
-                    <h3 className="pr-2">Calories:</h3>
-                    <p className="font-size-2 text-danger">Max: 2500 kcal</p>
+                <div className="d-flex align-items-baseline">
+
+                    <h5 className="pr-2">Calorie Filter</h5>
+                    {/*calorieFilterHandler*/}
+                    <div className="wm-calories-filter-arrow"
+                         onClick={props.calorieFilterHandler}>
+                        {props.doesCalorieFilterEnabled ?
+                            <ArrowUpIcon/>
+                            :
+                            <ArrowRightIcon/>
+                        }
+                    </div>
+
+
                 </div>
 
-                <div className="wm-calories-filter d-flex ">
+                <div className="d-flex flex-column">
 
-                    <div className="">
-                        <label className="text-color-green">From:</label>
-                        <input name="calories-filter-from" type="number"
-                               min="0" max="2500" className="ml-2 btn-calories-filter"
-                               value={props.caloriesFilter.caloriesFrom !== 9999 && props.caloriesFilter.caloriesFrom}
-                               onChange={props.caloriesFilterHandler}
-                        />
-                    </div>
+                    {props.doesCalorieFilterEnabled && <p className="font-size-2 text-danger">Max: 2500 kcal</p>}
 
-                    <div className="ml-3">
-                        <label className="text-color-green">To:</label>
-                        <input name="calories-filter-to" type="number"
-                               min="0" max="2500" className="ml-2 btn-calories-filter"
-                               value={props.caloriesFilter.caloriesTo !== 9999 && props.caloriesFilter.caloriesTo}
-                               onChange={props.caloriesFilterHandler}
-                        />
-                    </div>
+                    {props.doesCalorieFilterEnabled && <div className="wm-calories-filter d-flex ">
 
-                    <div className="col d-flex align-items-baseline ml-3">
-                        <button type="button" className="btn-apply-order-history"
-                                onClick={props.onApplyCallCaloriesFilter}
-                        >Apply
-                        </button>
-                    </div>
+                        <div className="">
+                            <label className="text-color-green">From:</label>
+                            <input name="calories-filter-from" type="number"
+                                   min="0" max="2500" className="ml-2 btn-calories-filter"
+                                   value={props.caloriesFilter.caloriesFrom !== 9999 && props.caloriesFilter.caloriesFrom}
+                                   onChange={props.caloriesFilterHandler}
+                            />
+                        </div>
+
+                        <div className="ml-3">
+                            <label className="text-color-green">To:</label>
+                            <input name="calories-filter-to" type="number"
+                                   min="0" max="2500" className="ml-2 btn-calories-filter"
+                                   value={props.caloriesFilter.caloriesTo !== 9999 && props.caloriesFilter.caloriesTo}
+                                   onChange={props.caloriesFilterHandler}
+                            />
+                        </div>
+
+                        <div className="col d-flex align-items-baseline ml-3">
+                            <button type="button" className="btn-apply-order-history"
+                                    onClick={props.onApplyCallCaloriesFilter}
+                            >Apply
+                            </button>
+                        </div>
+
+                    </div>}
 
                 </div>
 
@@ -262,39 +311,65 @@ const Menu = (props) => {
 
             <div>
                 <hr/>
-                <h3 className="">Meal Kits</h3>
+                <h3 className="pb-2">Meal Kits</h3>
             </div>
 
             <div className="wm-menu-cards">
 
                 <div className="row">
 
-                    {/*{checkRecipeRedirect()}*/}
 
                     {
-                        props.isMenuExist && !props.isMenuFiltered ? <ul>
-                                <div className="row py-4">{row1}</div>
-                                <div className="row pb-4">{row2}</div>
-                                <div className="row">{row3}</div>
-                            </ul> :
-                            !props.isMenuFiltered ?
-                                <div className="col py-5 text-center">
-                                    <h1 className="text-danger ">
+                        props.isMenuExist && !props.isMenuFiltered && <ul>
+                            {
+                                rows.map((item, index) => {
+                                    if (!(index === rows.length - 1)) {
+                                        return <div key={"menu-" + index} className="row">{item}</div>
+                                    } else {
+                                        return <div key={"menu-" + index} className="row py-4">{item}</div>
+                                    }
+                                })
+                            }
+                        </ul>
+                    }
+
+                    {
+                        !props.isMenuExist && <div className="col py-5 text-center">
+                            <h1 className="text-danger ">
                                 <span className="d-block">
                                     Sorry!
                                 </span>
-                                        <span className="font-size-3">
+                                <span className="font-size-3">
                                     The menu is not available at this moment!
                                 </span>
-                                    </h1>
-                                </div> :
-                                <div className="col py-5 text-center">
-                                    <h1 className="text-danger ">
+                            </h1>
+                        </div>
+                    }
+
+                    {
+                        props.isMenuFiltered &&
+                        <ul>
+                            {
+                                rows.map((item, index) => {
+                                    if (!(index === rows.length - 1)) {
+                                        return <div key={"menu-" + index} className="row">{item}</div>
+                                    } else {
+                                        return <div key={"menu-" + index} className="row py-4">{item}</div>
+                                    }
+                                })
+                            }
+                        </ul>
+                    }
+
+                    {
+                        props.menuFiltered.length === 0 && props.isMenuFiltered &&
+                        <div className="col py-5 text-center">
+                            <h1 className="text-danger ">
                                         <span className="font-size-3">
                                             Please, set another calories range.
                                         </span>
-                                    </h1>
-                                </div>
+                            </h1>
+                        </div>
                     }
 
                 </div>

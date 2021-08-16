@@ -66,7 +66,7 @@ class MainRouter extends Component {
         let urlPath = window.location.pathname;
 
         if (isLoggedIn === "YES") {
-            let shouldRedirect = false;
+            let shouldRedirect = true;
             if (isAdmin === "NO") {
                 if (urls.includes(pathURL)) {
                     shouldRedirect = false;
@@ -75,14 +75,25 @@ class MainRouter extends Component {
                 } else shouldRedirect = !/\/meals/.test(urlPath);
             }
             if (isAdmin === "YES") {
+
                 if (urls.includes(pathURL)) {
                     shouldRedirect = false;
-                } else if (dashboardUserURLS.includes(pathURL)) {
+                }
+                if (dashboardUserURLS.includes(pathURL)) {
                     shouldRedirect = false;
-                } else if (dashboardAdminURLS.includes(pathURL)) {
+                }
+                if (dashboardAdminURLS.includes(pathURL)) {
                     shouldRedirect = false;
-                } else shouldRedirect = !/\/meals/.test(urlPath);
+                }
+                if (/\/dashboard\/admin\/orders\/order-details\/order-id=/.test(urlPath)) {
+                    shouldRedirect = false;
+                }
+                if(/\/meals/.test(urlPath)){
+                   shouldRedirect = false
+                }
+
             }
+
             if (shouldRedirect) {
                 this.setState({
                     redirect: shouldRedirect,
@@ -465,7 +476,7 @@ class MainRouter extends Component {
 
                         <Route exact path="/meet-the-team">
 
-                            <MeetTheTeam />
+                            <MeetTheTeam/>
 
                         </Route>
 
@@ -475,7 +486,7 @@ class MainRouter extends Component {
 
                         <Route exact path="/our-goal">
 
-                            <OurGoal />
+                            <OurGoal/>
 
                         </Route>
 

@@ -59,26 +59,31 @@ const MRHeader = (props) => {
                             </span>
                         </h4>
 
-                        <div className="mc-options">
-                            <select
-                                value={props.mealInformation.customizeItValue}
-                                name={props.mealInformation.customizeItValue}
-                                onChange={props.onChangeCustomizeItHandler}
-                                className="meal-recipe-customize-it"
-                            >
-                                {options.map((item, index) => {
-                                    return <option
-                                        key={index} value={item.value}
+                        {
+                            isLoggedIn === "YES" && <Aux>
+                                <div className="mc-options">
+                                    <select
+                                        value={props.mealInformation.customizeItValue}
+                                        name={props.mealInformation.customizeItValue}
+                                        onChange={props.onChangeCustomizeItHandler}
+                                        className="meal-recipe-customize-it"
                                     >
-                                        {item.label}
-                                    </option>
-                                })}
-                            </select>
-                        </div>
-                        <p className="font-size-2">
-                            ***Free customization option.
-                            Add or remove ingredients at no extra cost.
-                        </p>
+                                        {options.map((item, index) => {
+                                            return <option
+                                                key={index} value={item.value}
+                                            >
+                                                {item.label}
+                                            </option>
+                                        })}
+                                    </select>
+                                </div>
+
+                                <p className="font-size-2">
+                                    ***Free customization option.
+                                    Add or remove ingredients at no extra cost.
+                                </p>
+                            </Aux>
+                        }
 
 
                         {

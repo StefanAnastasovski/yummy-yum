@@ -5,13 +5,16 @@ const CustomizeItCard = (props) => {
 
     let customizeArray = JSON.parse(localStorage.getItem("mealRecipe"));
 
-    let options = props.mealCustomizeOptions.map(item => {
+    let options = [] ;
+    if( props.mealCustomizeOptions.length > 0){
+       options = props.mealCustomizeOptions[0].mealCustomizeOption.split("|").map(item => {
         return {
-            label: item.mealCustomizeOption,
-            value: item.mealCustomizeOption,
+            label: item.trim(),
+            value: item.trim(),
             checked: false
         }
     })
+    }
 
     options.push({
         label: "Default",

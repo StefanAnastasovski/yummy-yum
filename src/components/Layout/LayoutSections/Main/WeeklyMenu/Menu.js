@@ -171,7 +171,7 @@ const Menu = (props) => {
         for (let i = 0; i < numberOfRows; i++) {
             rows[i] = createCardRow(props.menuFiltered.slice(0, 9), (i + 1), true)
 
-            if (i === 0 && rows[i].length === 2) {
+            if (rows[i].length === 2) {
                 rows[i].push(<li key={"temp-3" + i} className="col"></li>)
             }
 

@@ -29,7 +29,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Menu - Filtered Menu - Layout - fixed">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Cart - Schedule Filters - bug - fixed">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js" afterDir="false" />
@@ -276,14 +276,8 @@
       <workItem from="1628805735211" duration="2158000" />
       <workItem from="1628899263966" duration="5863000" />
       <workItem from="1628965054459" duration="16168000" />
-      <workItem from="1629122484332" duration="8831000" />
-    </task>
-    <task id="LOCAL-00074" summary="change /choices path to /weekly-menu path">
-      <created>1626718051549</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1626718051549</updated>
+      <workItem from="1629122484332" duration="9816000" />
+      <workItem from="1629153232989" duration="1275000" />
     </task>
     <task id="LOCAL-00075" summary="Forbid URL without token">
       <created>1626721481369</created>
@@ -621,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629144031085</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00123" summary="Cart - Schedule Filters - bug - fixed">
+      <created>1629145299276</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
+      <option name="project" value="LOCAL" />
+      <updated>1629145299276</updated>
+    </task>
+    <option name="localTasksCounter" value="124" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,7 +663,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! WeeklyMenu - Schedule Button - Sunday bug - fixed" />
     <MESSAGE value="Logout - clear Local Storage" />
     <MESSAGE value="fixup! Weekly Menu Card - Show Buttons bug - fixed" />
     <MESSAGE value="Create Order Invoice + show Orders in Admin Dashboard" />
@@ -687,7 +687,8 @@
     <MESSAGE value="WeeklyMenu - CustomizeItCard - bug - fixed" />
     <MESSAGE value="Meal Recipe - CustomizeItCard - bug - fixed" />
     <MESSAGE value="Menu - Filtered Menu - Layout - fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu - Filtered Menu - Layout - fixed" />
+    <MESSAGE value="Cart - Schedule Filters - bug - fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart - Schedule Filters - bug - fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -719,22 +720,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1626104575740" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1629123391947">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1629146223879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1629123391947">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1629146223879" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1629146223879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1629123391947">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1629146223879" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1629146223879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1629123391947">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1629146223879" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1629146223879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1629146223879" />
     <state x="-957" y="261" width="955" height="525" key="StructurePopup" timestamp="1628978373692">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
@@ -758,12 +759,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="667" y="253" width="890" height="564" key="find.popup" timestamp="1629144268051">
+    <state x="667" y="253" width="890" height="564" key="find.popup" timestamp="1629146204664">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628731219527" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628980367739" />
-    <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1629144268051" />
+    <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1629146204664" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1629142869203">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -799,9 +800,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js</url>
-          <line>644</line>
-          <properties lambdaOrdinal="-1" />
+          <line>643</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js</url>
+          <line>449</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js</url>
+          <line>339</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -286,12 +286,11 @@ class Cart extends Component {
     }
 
     allowToContinueSchedule = async () => {
-
+        // console.log("HERE")
         //DATA & SET
         let subscription = JSON.parse(localStorage.getItem("subscription"));
         let scheduleCartItems = JSON.parse(localStorage.getItem("scheduleCartItems"));
         // let userInformation = JSON.parse(localStorage.getItem("userInformation")).subscriptionPlanValues;
-
         let weeklyAllowedNumberOfMeals = subscription.numberOfWeeklyMeals * subscription.numberOfWeeklyDeliveryDays;
         let startDate = subscription.activationDate;
         let endDate = subscription.canceledDate;
@@ -308,6 +307,7 @@ class Cart extends Component {
         if (!subscription.isCanceled) {
             scheduledMeals = this.state.subscriptionOrderedMeals;
             if (subscriptionType === "Weekly") {
+
                 await this.getOrderMeals(startDate, endDate);
                 scheduledMeals = this.state.subscriptionOrderedMeals;
                 if (scheduledMeals.length + scheduleCartItems.length < weeklyAllowedNumberOfMeals) {
@@ -345,16 +345,14 @@ class Cart extends Component {
                     JSON.parse(localStorage.getItem("scheduleCartItems")))).localStorageItems;
 
                 await this.getOrderMeals(startDate, endDate);
-
                 let scheduledMeals = (await this.separateMealsByWeeks("database",
                     this.state.subscriptionOrderedMeals)).databaseItems;
 
                 // let isReadyToContinue = false;
                 let isScheduledMealsExist = scheduledMeals.length > 0;
                 // Set
-
                 //Checking
-                this.scheduleMealsMonthlyHandler(mealsToBeScheduled, scheduledMeals,
+                await this.scheduleMealsMonthlyHandler(mealsToBeScheduled, scheduledMeals,
                     isScheduledMealsExist, weeklyAllowedNumberOfMeals);
 
             }
@@ -454,13 +452,11 @@ class Cart extends Component {
 
         let canScheduleMeals = false;
         if (isScheduledMealsExist) {
-
             let scheduledMealsIndex = 0
             let isScheduledMealsListExist = false;
             let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
 
             mealsToBeScheduled.forEach((mealsToBeScheduledList, index) => {
-
                 canScheduleMeals = false;
 
                 //set the index of the correct meals array
@@ -473,7 +469,7 @@ class Cart extends Component {
                 })
 
                 if (weeklyAllowedNumberOfMeals - scheduledMeals[scheduledMealsIndex].meals.length
-                    === mealsToBeScheduledList.meals.length) {
+                    >= mealsToBeScheduledList.meals.length) {
                     let message = ``;
                     this.mealScheduleErrorHandler(scheduleMealMonthlyError, mealsToBeScheduled,
                         mealsToBeScheduledList, message);
@@ -494,6 +490,8 @@ class Cart extends Component {
             }
 
         } else if (!isScheduledMealsExist) {
+            console.log("HERE 2")
+
             let scheduleMealMonthlyError = this.state.scheduleMealMonthlyError;
             canScheduleMeals = false;
             let arrayOfErrors = [];

@@ -38,6 +38,7 @@ const MRRecipeSteps = (props) => {
         let mealCookingSteps = props.mealCookingSteps.stepTitle[0].length - 1;
 
         recipeSteps = props.mealCookingSteps.stepTitle[0].map((item, index) => {
+
             let margin = "";
 
             if ((index + 1) % 2 === 0) {
@@ -52,7 +53,7 @@ const MRRecipeSteps = (props) => {
                 return <li key={"cs-" + index} className="row mb-5 d-flex flex-row">
 
                     <MRRecipeStepsCard
-                        img={props.images[index]}
+                        img={props.images[0].cookingStepImages[index]}
                         stepNumber={index + 1}
                         stepTitle={props.mealCookingSteps.stepTitle[0][index]}
                         stepDescription={props.mealCookingSteps.stepDescription[0][index]}
@@ -65,7 +66,7 @@ const MRRecipeSteps = (props) => {
 
             } else {
                 elements.push(<MRRecipeStepsCard
-                    img={props.images[index]}
+                    img={props.images[0].cookingStepImages[index]}
                     stepNumber={index + 1}
                     stepTitle={props.mealCookingSteps.stepTitle[0][index]}
                     stepDescription={props.mealCookingSteps.stepDescription[0][index]}

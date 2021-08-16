@@ -30,15 +30,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="WeeklyMenu - Calories Filter v1.0 - added">
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CaloriesFilterIcons/ArrowRightIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/CaloriesFilterIcons/ArrowUpIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/Filters/arrow-up.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/Filters/right-arrow.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRHeader/MRHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,14 +277,8 @@
       <workItem from="1628769132929" duration="3647000" />
       <workItem from="1628805735211" duration="2158000" />
       <workItem from="1628899263966" duration="5863000" />
-      <workItem from="1628965054459" duration="16083000" />
-    </task>
-    <task id="LOCAL-00069" summary="Weekly Menu - Schedule Button modification v0.1">
-      <created>1626291255260</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1626291255260</updated>
+      <workItem from="1628965054459" duration="16168000" />
+      <workItem from="1629122484332" duration="5144000" />
     </task>
     <task id="LOCAL-00070" summary="Subscription - Order Cart - Local Storage fixed">
       <created>1626711947611</created>
@@ -626,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628813668547</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="WeeklyMenu - Calories Filter v1.0 - added">
+      <created>1628982385833</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1628982385834</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -724,22 +721,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1626104575740" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1626116581076">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1629123391947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1626116581076" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1626116581076">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1629123391947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1626116581076" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1626116581076">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1629123391947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1626116581076" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1626116581076">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1629123391947">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1626116581076" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1629123391947" />
     <state x="-957" y="261" width="955" height="525" key="StructurePopup" timestamp="1628978373692">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
@@ -747,11 +744,11 @@
     <state x="-957" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628978373692" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1628813671749">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1628982391193">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628735337123" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1627496421089" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628982391193" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1628813671749" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
     <state x="247" y="0" width="1604" height="803" maximized="true" key="dock-window-1" timestamp="1627829412505">
@@ -763,12 +760,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1628980367739">
+    <state x="667" y="253" width="890" height="564" key="find.popup" timestamp="1629140210777">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628731219527" />
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628980367739" />
-    <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1627644538753" />
+    <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1629140210777" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1628969041493">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -800,7 +797,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js</url>
           <line>11</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>

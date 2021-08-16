@@ -57,7 +57,7 @@ class MealRecipe extends Component {
     populateStateWithMealInfo = (mealInfo) => {
         let array = JSON.parse(localStorage.getItem("shoppingCartItems"));
         let customizeItValue = "Default";
-        array.forEach(item => {
+        array && array.forEach(item => {
             if (item.menuCardIndex === mealInfo.cardIdNumber) {
                 customizeItValue = item.customizeIt;
             }
@@ -79,7 +79,6 @@ class MealRecipe extends Component {
     createMealRecipe = async (mealName) => {
 
         return await RecipeCalls.fetchRecipeByMealName(mealName).then((response) => {
-
             let data = response.data;
             let difficultyLevel = data.mealOverview.difficultyLevel;
             let spiceLevel = data.mealOverview.spiceLevel;
@@ -166,11 +165,11 @@ class MealRecipe extends Component {
     }
 
     sliderNextImg = () => {
-        console.log("Next IMG")
+        // console.log("Next IMG")
     }
 
     sliderPreviousImg = () => {
-        console.log("Previous IMG")
+        // console.log("Previous IMG")
     }
 
     addToCartHandler = (event) => {
@@ -313,7 +312,7 @@ class MealRecipe extends Component {
                     <div className="mr-recipe-steps-wrapper ">
                         {
                             !this.state.loading && <MRRecipeSteps
-                                images={this.state.images[0].cookingStepImages}
+                                images={this.state.images}
                                 mealRecipeSteps={this.state.recipeSteps}
                                 mealCookingSteps={this.state.cookingSteps}
                                 mealRecipeInstructions={this.state.recipeInstructions}

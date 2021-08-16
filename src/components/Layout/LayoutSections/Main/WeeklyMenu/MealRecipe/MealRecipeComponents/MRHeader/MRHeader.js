@@ -21,12 +21,13 @@ const MRHeader = (props) => {
     });
 
 
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
     const cartItems = JSON.parse(localStorage.getItem("shoppingCartItems"))
     const mealInfo = JSON.parse(localStorage.getItem("mealInfo"));
 
     let isElementExist = true;
 
-    cartItems.forEach(item => {
+    isLoggedIn === "YES" && cartItems.forEach(item => {
         if (item.menuCardIndex === mealInfo.cardIdNumber)
             isElementExist = false;
     })

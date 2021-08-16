@@ -6,13 +6,17 @@ import Aux from "../../../../../../../../hoc/Auxilliary";
 
 const MRHeader = (props) => {
 
-    let options = props.mealCustomizeOptions.map(item => {
-        return {
-            label: item.mealCustomizeOption,
-            value: item.mealCustomizeOption,
-            checked: false
-        }
-    })
+    let options = [];
+
+    if (props.mealCustomizeOptions.length > 0) {
+        props.mealCustomizeOptions[0].mealCustomizeOption.split("|").forEach(item => {
+            options.push({
+                label: item.trim(),
+                value: item.trim(),
+                checked: false
+            })
+        })
+    }
 
     options.push({
         label: "Default",

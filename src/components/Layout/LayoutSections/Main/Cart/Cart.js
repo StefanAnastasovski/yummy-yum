@@ -703,6 +703,10 @@ class Cart extends Component {
         }
 
         items = shoppingCartItems.concat(scheduleCartItems);
+
+        localStorage.setItem("scheduleCartItems", JSON.stringify(scheduleCartItems));
+        localStorage.setItem("shoppingCartItems", JSON.stringify(shoppingCartItems));
+
         this.setState({
             items: items,
             loading: false,

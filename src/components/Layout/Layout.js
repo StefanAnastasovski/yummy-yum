@@ -9,8 +9,6 @@ import PopUpBox from "./LayoutSections/PopUp/PopUpBox";
 import SubscribedMessage from "./LayoutSections/PopUp/PopUpMessages/SubscribedMessage";
 import LoggedOutMessage from "./LayoutSections/PopUp/PopUpMessages/LoggedOutMessage";
 import UpdatePasswordMessage from "./LayoutSections/PopUp/PopUpMessages/UpdatePasswordMessage";
-// import WeeklyMenuCard from "./LayoutSections/Main/WeeklyMenu/WeeklyMenuCard/WeeklyMenuCard";
-// import MenuCalls from "../../repository/get/getMenu";
 
 class Layout extends Component {
 //
@@ -20,49 +18,6 @@ class Layout extends Component {
         isRedirectedToHome: false,
         isRedirectedFromUpdatePassword: false,
         isSubscribeFieldCorrect: false,
-        //weekly-menu
-        // mealRecipe: {
-        //     mealName: "",
-        //     mealDescription: "",
-        //     mealTimeTag: "",
-        //     mealIngredientTag: "",
-        //     price: 6.99,
-        //     mealCategory: "",
-        //     mealOverview: {
-        //         difficultyLevel: "",
-        //         spiceLevel: "",
-        //         prepCookTime: "",
-        //         cookWithin: 1
-        //     },
-        //     mealChef: {
-        //         fullName: "",
-        //         chefMealDescription: ""
-        //     },
-        //     mealBox: {
-        //         serveQuantity: 2,
-        //         mealIngredients: ""
-        //     },
-        //     mealBoxNutrition: {
-        //         calories: 0,
-        //         protein: 0,
-        //         carbohydrates: 0,
-        //         fat: 0
-        //     },
-        //     cookingSteps: {
-        //         stepNumber: 1,
-        //         stepTitle: "",
-        //         stepDescription: ""
-        //     },
-        //     recipeSteps: {
-        //         mealUtensilsRow1: "",
-        //         mealUtensilsRow2: ""
-        //     },
-        //     recipeInstructions: {
-        //         cookSteps: "",
-        //         guidelines: "",
-        //         customizeInstructions: ""
-        //     }
-        // },
         menu: [],
         allMenu: [],
         mixMenu: [],
@@ -74,19 +29,7 @@ class Layout extends Component {
     }
 
     async componentDidMount() {
-        let urlPath = window.location.pathname;
-        console.log(urlPath)
-        if (!/\/meals/.test(urlPath)) {
-            // localStorage.setItem("mealInfo", JSON.stringify({mealName: "", mealNameDate: ""}))
-        }
-        // if (localStorage.getItem("shoppingCartItems") === null) {
-        //     localStorage.setItem("shoppingCartItems", JSON.stringify([]))
-        // }
-
-        if (localStorage.getItem("isLoggedIn") === "NO" && this.state.isRedirectedToHome) {
-            // console.log("dasd")
-        }
-
+        console.log(window.location.pathname)
     }
 
     isSubscribeFieldIsCorrectPopUpBoxHandler = (value) => {

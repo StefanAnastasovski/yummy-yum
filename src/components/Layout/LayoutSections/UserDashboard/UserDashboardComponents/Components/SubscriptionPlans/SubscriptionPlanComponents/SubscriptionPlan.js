@@ -5,19 +5,27 @@ import Aux from "../../../../../../../../hoc/Auxilliary";
 const SubscriptionPlan = (props) => {
 
     let subscriptionPlanValues = JSON.parse(localStorage.getItem("userInformation"));
+    let isLoggedIn = localStorage.getItem("isLoggedIn") === "YES";
+    let numberOfWeeklyMeals = [];
+    let servingsPerMeal = [];
+    let weeklyDeliveryDay = [];
+    let weeklyDeliveryDayFields = [];
 
-    let numberOfWeeklyMeals = Array.from(
-        {length: props.selectedSubscriptionPlanValues.numberOfWeeklyMealsLimit},
-        (x, i) => i + 1)
-    let servingsPerMeal = Array.from(
-        {length: props.selectedSubscriptionPlanValues.servingsPerMealLimit},
-        (x, i) => i + 1);
-    let weeklyDeliveryDay = Array.from(
-        {length: props.selectedSubscriptionPlanValues.weeklyDeliveryDayLimit},
-        (x, i) => i + 1);
-    let weeklyDeliveryDayFields = Array.from(
-        {length: subscriptionPlanValues.subscriptionPlanValues.numberOfWeeklyDeliveryDays},
-        (x, i) => i + 1);
+    if (isLoggedIn) {
+        numberOfWeeklyMeals = Array.from(
+            {length: props.selectedSubscriptionPlanValues.numberOfWeeklyMealsLimit},
+            (x, i) => i + 1)
+        servingsPerMeal = Array.from(
+            {length: props.selectedSubscriptionPlanValues.servingsPerMealLimit},
+            (x, i) => i + 1);
+        weeklyDeliveryDay = Array.from(
+            {length: props.selectedSubscriptionPlanValues.weeklyDeliveryDayLimit},
+            (x, i) => i + 1);
+        weeklyDeliveryDayFields = Array.from(
+            {length: subscriptionPlanValues.subscriptionPlanValues.numberOfWeeklyDeliveryDays},
+            (x, i) => i + 1);
+    }
+
 
     let subscriptionType = ["Weekly", "Monthly"];
     let weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -38,7 +46,7 @@ const SubscriptionPlan = (props) => {
         <Aux>
             <div className="row d-flex flex-column">
 
-                {!props.isSubscriptionExist ? <div className="col d-flex flex-column py-3 pr-1">
+                {!props.isSubscriptionExist && isLoggedIn ? <div className="col d-flex flex-column py-3 pr-1">
                         <p>
                             Subscription Plan:
                         </p>
@@ -65,7 +73,7 @@ const SubscriptionPlan = (props) => {
 
 
                 {
-                    !props.isSubscriptionExist ? <div className={"col d-flex py-3" + flexColumn}>
+                    !props.isSubscriptionExist && isLoggedIn ? <div className={"col d-flex py-3" + flexColumn}>
 
 
                             <div className="row d-flex w-100">
@@ -127,7 +135,7 @@ const SubscriptionPlan = (props) => {
 
 
                 {
-                    !props.isSubscriptionExist ? <div className={"col d-flex py-3" + flexColumn}>
+                    !props.isSubscriptionExist && isLoggedIn ? <div className={"col d-flex py-3" + flexColumn}>
 
                             <div className="col pr-1">
                                 <p>
@@ -215,7 +223,7 @@ const SubscriptionPlan = (props) => {
                                 </p>
                             </div>
                             {
-                                !props.isSubscriptionExist ? weeklyDeliveryDayFields.map((item, indexDayField) => {
+                                !props.isSubscriptionExist && isLoggedIn ? weeklyDeliveryDayFields.map((item, indexDayField) => {
                                         // console.log(weeklyDeliveryDayFields)
                                         // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays)
                                         // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[item-1])

@@ -5,6 +5,7 @@ import Aux from "../../../../../../hoc/Auxilliary";
 const OrderSummary = (props) => {
 
     let shouldShowScheduleBtn = JSON.parse(localStorage.getItem("scheduleCartItems"));
+    let isLoggedIn = localStorage.getItem("isLoggedIn") === "YES";
 
     return (
 
@@ -63,7 +64,7 @@ const OrderSummary = (props) => {
                 </button>
 
                 {
-                    props.redirectToCheckoutError.length > 0 ?
+                    isLoggedIn && props.redirectToCheckoutError.length > 0 ?
                         <p className="text-danger text-center font-size-1">{props.redirectToCheckoutError} </p> : null
                 }
 
@@ -71,7 +72,7 @@ const OrderSummary = (props) => {
 
             {
 
-                shouldShowScheduleBtn.length > 0 &&
+                isLoggedIn && shouldShowScheduleBtn.length > 0 &&
 
                 <Aux>
 
@@ -87,12 +88,12 @@ const OrderSummary = (props) => {
 
 
                         {
-                            props.scheduleMealError.length > 0 &&
+                            isLoggedIn && props.scheduleMealError.length > 0 &&
                             <p className="text-danger text-center font-size-2">{props.scheduleMealError} </p>
                         }
 
                         {
-                            props.scheduleMealMonthlyError.length > 0 &&
+                            isLoggedIn && props.scheduleMealMonthlyError.length > 0 &&
                             props.scheduleMealMonthlyError.map((item, index) => {
 
                                 if (!(item.message.length === 0)) {

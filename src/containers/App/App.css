@@ -66,10 +66,39 @@ div.card:hover {
 
 @media (max-width: 1199px) {
 
+    /*admin dashboard*/
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics .col-2 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .w-75 {
+        width: 100% !important;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .admin-actions .btn-admin-action .w-50 {
+        width: 75% !important;
+    }
 
 }
 
 @media (max-width: 991px) {
+
+    /*admin dashboard*/
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .w-75 {
+        width: 100% !important;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .admin-actions {
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        align-self: center;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .admin-actions :nth-child(2) {
+        margin-right: 0 !important;
+    }
 
 }
 
@@ -84,19 +113,73 @@ div.card:hover {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
+    /*admin dashboard*/
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select {
+        flex-direction: column !important;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select label {
+        width: 25%;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select div.col > input {
+        align-self: center;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select div.col:first-child > input {
+        margin-bottom: 1rem;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select .col-2 {
+        flex: 0 0 35%;
+        max-width: 35%;
+        margin-top: 1rem;
+        padding: 0;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select .col-2 {
+        flex: 0 0 35%;
+        max-width: 35%;
+        margin-top: 1rem;
+        padding: 0;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select .btn-order-info-apply {
+        width: 100%;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics .col-2 {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .admin-actions {
+        flex-direction: column !important;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .admin-actions :nth-child(2) {
+        margin: 0 !important;
+    }
+
+    .admin-dashboard-wrapper div.px-5 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
 }
 
 @media (max-width: 480px) {
 
     /*user dashboard*/
-    .user-dashboard-wrapper .dashboard-wrapper.px-5, .user-dashboard-wrapper .dashboard-wrapper .user-menu{
-        padding-left: 1rem!important;
-        padding-right: 1rem!important;
+    .user-dashboard-wrapper .dashboard-wrapper.px-5, .user-dashboard-wrapper .dashboard-wrapper .user-menu {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
-    .user-dashboard-wrapper .dashboard-wrapper .user-menu{
-        padding-top: 2rem!important;
-        padding-bottom: 2rem!important;
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
     }
 
     .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .user-info > div {
@@ -137,12 +220,45 @@ div.card:hover {
         width: 100% !important;
     }
 
-    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .btn-apply-order-history{
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .btn-apply-order-history {
         width: 100% !important;
+    }
+
+    /*admin dashboard*/
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics div.col.d-flex {
+        flex-direction: column;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics div.col.d-flex p {
+        width: 50%;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics div.col.d-flex p:nth-child(2) {
+        text-align: center;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-users-metrics div.d-flex {
+        align-items: center;
+    }
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info .adw-calendar-select .col-2 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 
 }
 
 @media (max-width: 374px) {
 
+    /*admin dashboard*/
+
+    .admin-dashboard-wrapper .dashboard-wrapper .users-info{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .admin-dashboard-wrapper div.px-5 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 }

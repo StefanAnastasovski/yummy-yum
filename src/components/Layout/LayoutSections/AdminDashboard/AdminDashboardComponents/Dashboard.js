@@ -15,9 +15,9 @@ const Dashboard = (props) => {
 
             <div className="col d-flex flex-column">
 
-                <div className="row d-flex flex-column">
+                <div className="users-info row d-flex flex-column">
 
-                    <div className="col w-75 pb-2 d-flex flex-row justify-content-around">
+                    <div className="adw-calendar-select col w-75 pb-2 d-flex flex-row justify-content-around">
                         <div className="col d-flex align-items-baseline">
                             <label>Order From:</label>
                             <input type="date"
@@ -46,7 +46,7 @@ const Dashboard = (props) => {
                         </div>
                     </div>
 
-                    <div className="col d-flex flex-column">
+                    <div className="adw-users-metrics col d-flex flex-column">
                         <div className="col d-flex ">
                             <p className="col-2">Orders:</p>
                             <p className="font-weight-bold bg-white px-5 py-1 ml-3 text-color-green">
@@ -71,14 +71,13 @@ const Dashboard = (props) => {
                     </div>
                 </div>
 
-
             </div>
 
-            <div className="container d-flex flex-row">
+            <div className="container d-flex flex-row admin-actions">
 
                 <div className="col mb-5 mt-5 border border-success">
 
-                    <div className="col d-flex justify-content-center pt-5 pb-3">
+                    <div className="col d-flex justify-content-center pt-5 pb-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/create-recipe"}>
                             <button className="w-50 btn-create-recipe" onClick={props.onSubmitRoute}>
                                 Create Recipe
@@ -86,7 +85,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center py-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/create-menu"}>
                             <button className="w-50 btn-create-menu" onClick={props.onSubmitRoute}>
                                 Create Menu
@@ -94,7 +93,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center py-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/create-coupon"}>
                             <button className="w-50 btn-create-coupon" onClick={props.onSubmitRoute}>
                                 Create Coupon
@@ -102,7 +101,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center pt-3 pb-5">
+                    <div className="col d-flex justify-content-center pt-3 pb-5 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/create-subscription-plan"}>
                             <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
                                 Create Subscription Plan
@@ -112,7 +111,7 @@ const Dashboard = (props) => {
 
                 </div>
 
-                <div className="col mb-5 border border-success m-5">
+                <div className="col mb-5 border border-success m-5 btn-admin-action">
 
                     <div className="col d-flex justify-content-center pt-5 pb-3">
                         <a className="w-100 text-center" href={window.location.href + "/orders"}>
@@ -122,7 +121,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center py-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/subscription"}>
                             <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
                                 Subscription
@@ -130,7 +129,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center py-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/manage-coupon"}>
                             <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
                                 Manage Coupons
@@ -139,7 +138,7 @@ const Dashboard = (props) => {
                     </div>
 
 
-                    <div className="col d-flex justify-content-center py-3">
+                    <div className="col d-flex justify-content-center py-3 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/manage-subscription-plan"}>
                             <button className="w-50 btn-create-subscription-plan" onClick={props.onSubmitRoute}>
                                 Manage Subscription Plan
@@ -147,7 +146,7 @@ const Dashboard = (props) => {
                         </a>
                     </div>
 
-                    <div className="col d-flex justify-content-center pt-3 pb-5">
+                    <div className="col d-flex justify-content-center pt-3 pb-5 btn-admin-action">
                         <a className="w-100 text-center" href={window.location.href + "/send-email"}>
                             <button className="w-50 btn-send-email" onClick={props.onSubmitRoute}>
                                 Send Email

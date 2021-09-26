@@ -29,14 +29,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="files removed v0.1">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="User Dashboard - Responsive Design v0.1">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation/UserBillingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation/UserBillingInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation/UserPersonalInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation/UserPersonalInformation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation/UserShippingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation/UserShippingInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -291,14 +287,7 @@
       <workItem from="1631213658388" duration="5858000" />
       <workItem from="1631421924244" duration="684000" />
       <workItem from="1631810845416" duration="432000" />
-      <workItem from="1632671993810" duration="6014000" />
-    </task>
-    <task id="LOCAL-00081" summary="Payment bugs fixed">
-      <created>1627495588001</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1627495588001</updated>
+      <workItem from="1632671993810" duration="9100000" />
     </task>
     <task id="LOCAL-00082" summary="weeklyAllowedNumberOfMeals bug - fixed">
       <created>1627496417212</created>
@@ -636,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632674090851</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="User Dashboard - Responsive Design v0.1">
+      <created>1632678256111</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1632678256111</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +673,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Order + Component - structure" />
     <MESSAGE value="fixup! Order + Component - structure" />
     <MESSAGE value="Admin Dashboard - Subscription comp - added" />
     <MESSAGE value="Admin Dashboard - Subscription v1.0 - added" />
@@ -702,7 +697,8 @@
     <MESSAGE value="UserDashboard - folder structure" />
     <MESSAGE value="Menu - WeeklyMenu - padding bug fixed" />
     <MESSAGE value="files removed v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="files removed v0.1" />
+    <MESSAGE value="User Dashboard - Responsive Design v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="User Dashboard - Responsive Design v0.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">

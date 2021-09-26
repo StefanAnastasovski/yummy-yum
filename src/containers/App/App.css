@@ -29,11 +29,11 @@ body, p, h1, h2, h3, h4, h5, a, input, textarea, button {
     color: #4a099a !important;
 }
 
-.bg-light-lemon-green{
-    background-color: #d7ffa2!important;
+.bg-light-lemon-green {
+    background-color: #d7ffa2 !important;
 }
 
-.bg-color-purple{
+.bg-color-purple {
     background-color: #4a099a !important;
 }
 
@@ -60,5 +60,89 @@ body .row, body .col, body .col-3, body ul, body .col-8, body .col-4, body .col-
 
 div.card:hover {
     box-shadow: 10px 6px 12px 4px rgba(167, 117, 45, 0.33);
+
+}
+
+
+@media (max-width: 1199px) {
+
+
+}
+
+@media (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+    /*user dashboard*/
+    .user-dashboard-wrapper .dashboard-wrapper {
+        flex-direction: column;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .col-4, .user-dashboard-wrapper .dashboard-wrapper .col-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /*user dashboard*/
+    .user-dashboard-wrapper .dashboard-wrapper.px-5, .user-dashboard-wrapper .dashboard-wrapper .user-menu{
+        padding-left: 1rem!important;
+        padding-right: 1rem!important;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu{
+        padding-top: 2rem!important;
+        padding-bottom: 2rem!important;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .user-info > div {
+        flex-direction: column;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .user-info div .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info > div {
+        flex-direction: column;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info .pl-1 {
+        padding-left: 0 !important;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info .pr-1 {
+        padding-right: 0 !important;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info > div .subs-info-date-and-time {
+        flex-direction: column;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info-date-and-time div:first-child {
+        margin-bottom: 1rem;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info > div div.row.d-flex {
+        flex-direction: column;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info .w-75,
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .subs-info .w-50 {
+        width: 100% !important;
+    }
+
+    .user-dashboard-wrapper .dashboard-wrapper .user-menu-body-main .btn-apply-order-history{
+        width: 100% !important;
+    }
+
+}
+
+@media (max-width: 374px) {
 
 }

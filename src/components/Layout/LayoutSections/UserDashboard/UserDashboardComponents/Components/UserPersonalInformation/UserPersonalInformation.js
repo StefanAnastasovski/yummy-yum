@@ -8,7 +8,7 @@ const UserPersonalInformation = (props) => {
 
         <div className="user-menu-body-main col">
             <div className="container">
-                <div className="row d-flex flex-column">
+                <div className="user-info row d-flex flex-column">
                     <div className="col d-flex py-3">
                         <p className="col-3">
                             Full Name:

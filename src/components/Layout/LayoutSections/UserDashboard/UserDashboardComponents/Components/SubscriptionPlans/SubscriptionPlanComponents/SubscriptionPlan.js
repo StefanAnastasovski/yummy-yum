@@ -44,7 +44,7 @@ const SubscriptionPlan = (props) => {
 
     return (
         <Aux>
-            <div className="row d-flex flex-column">
+            <div className="subs-info row d-flex flex-column">
 
                 {!props.isSubscriptionExist && isLoggedIn ? <div className="col d-flex flex-column py-3 pr-1">
                         <p>
@@ -227,7 +227,7 @@ const SubscriptionPlan = (props) => {
                                         // console.log(weeklyDeliveryDayFields)
                                         // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays)
                                         // console.log(subscriptionPlanValues.subscriptionPlanValues.weeklyDeliveryDays[item-1])
-                                        return <div className="row"
+                                        return <div className="row subs-info-date-and-time"
                                                     key={"weekly-delivery-day-id-" + (indexDayField + 1)}>
                                             <div className="col pr-1">
                                                 <p className="text-color-green">Day #{(indexDayField + 1)}</p>

@@ -29,17 +29,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="UserDashboard - folder structure">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="files removed v0.1">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/meal1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SellingOrderCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/CartTypes/SellingOrderCart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlanPrices.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/SubscriptionPlans/SubscriptionPlanComponents/SubscriptionPlan.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation/UserBillingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserBillingInformation/UserBillingInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation/UserPersonalInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserPersonalInformation/UserPersonalInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation/UserShippingInformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/UserDashboard/UserDashboardComponents/Components/UserShippingInformation/UserShippingInformation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,21 +291,7 @@
       <workItem from="1631213658388" duration="5858000" />
       <workItem from="1631421924244" duration="684000" />
       <workItem from="1631810845416" duration="432000" />
-      <workItem from="1632671993810" duration="1922000" />
-    </task>
-    <task id="LOCAL-00079" summary="Zip Code field bug fixed">
-      <created>1627465831745</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1627465831746</updated>
-    </task>
-    <task id="LOCAL-00080" summary="Shipping Address, CVV fields and Payment bugs fixed">
-      <created>1627472293416</created>
-      <option name="number" value="00080" />
-      <option name="presentableId" value="LOCAL-00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1627472293416</updated>
+      <workItem from="1632671993810" duration="6014000" />
     </task>
     <task id="LOCAL-00081" summary="Payment bugs fixed">
       <created>1627495588001</created>
@@ -638,7 +622,21 @@
       <option name="project" value="LOCAL" />
       <updated>1631233515978</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="Menu - WeeklyMenu - padding bug fixed">
+      <created>1632674004227</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1632674004227</updated>
+    </task>
+    <task id="LOCAL-00129" summary="files removed v0.1">
+      <created>1632674090851</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1632674090851</updated>
+    </task>
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,8 +677,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="SubscriptionOrderCart - Customize It bug - fixed" />
-    <MESSAGE value="deliveryDateAndTimeHandler - fixed" />
     <MESSAGE value="Order + Component - structure" />
     <MESSAGE value="fixup! Order + Component - structure" />
     <MESSAGE value="Admin Dashboard - Subscription comp - added" />
@@ -704,7 +700,9 @@
     <MESSAGE value="Main Router - Order Details route bug - fixed" />
     <MESSAGE value="Log Out - bug - fixed" />
     <MESSAGE value="UserDashboard - folder structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="UserDashboard - folder structure" />
+    <MESSAGE value="Menu - WeeklyMenu - padding bug fixed" />
+    <MESSAGE value="files removed v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="files removed v0.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -756,17 +754,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1629146223879" />
-    <state x="-957" y="261" width="955" height="525" key="StructurePopup" timestamp="1628978373692">
+    <state x="-1239" y="267" width="955" height="525" key="StructurePopup" timestamp="1632677417961">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1239" y="267" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627830998721" />
+    <state x="-1239" y="267" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1632677417961" />
     <state x="-957" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628978373692" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1631233527513">
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1632674092538">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1631233527513" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1632674092538" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628982391193" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1629144032777" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
@@ -786,10 +784,10 @@
     <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631052008737" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631148659004" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
-    <state x="615" y="244" width="672" height="677" key="run.anything.popup" timestamp="1629142869203">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1632677710029">
+      <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
-    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628347876366" />
+    <state x="-1305" y="250" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1632677710029" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628969041493" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1629142869203" />
     <state x="615" y="244" width="672" height="677" key="run.anything.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625281319400" />

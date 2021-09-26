@@ -8,25 +8,6 @@ import HeaderUsername from "./HeaderComponents/HeaderUsername";
 
 const Header = (props) => {
 
-    // state = {
-    //     showDDMenu: "d-none",
-    //     isShowDDMenu: false
-    // }
-
-    // showDDMenuHandler = () => {
-    //     if (this.state.isShowDDMenu) {
-    //         this.setState({
-    //             showDDMenu: "d-none",
-    //             isShowDDMenu: false
-    //         })
-    //     } else {
-    //         this.setState({
-    //             showDDMenu: "d-block",
-    //             isShowDDMenu: true
-    //         })
-    //     }
-    // }
-
         return (
 
             <div className="header-wrapper">

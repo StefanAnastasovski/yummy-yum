@@ -20,7 +20,6 @@ const SellingOrderCart = (props) => {
 
             </div>
 
-
             <div className="shopping-cart-card-body mx-1">
 
                 <div className="shopping-cart-mealname">
@@ -59,7 +58,6 @@ const SellingOrderCart = (props) => {
                 </div>
 
             </div>
-
 
             <div className="shopping-cart-card-info">
 

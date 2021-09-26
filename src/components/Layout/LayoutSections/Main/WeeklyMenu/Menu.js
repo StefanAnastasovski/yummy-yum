@@ -323,7 +323,7 @@ const Menu = (props) => {
                         props.isMenuExist && !props.isMenuFiltered && <ul>
                             {
                                 rows.map((item, index) => {
-                                    if (!(index === rows.length - 1)) {
+                                    if (index !== 1) {
                                         return <div key={"menu-" + index} className="row">{item}</div>
                                     } else {
                                         return <div key={"menu-" + index} className="row py-4">{item}</div>
@@ -351,10 +351,17 @@ const Menu = (props) => {
                         <ul>
                             {
                                 rows.map((item, index) => {
-                                    if (!(index === rows.length - 1)) {
-                                        return <div key={"menu-" + index} className="row">{item}</div>
+                                    if (rows.length === 3) {
+                                        if (index !== 1)
+                                            return <div key={"menu-" + index} className="row">{item}</div>
+                                        else
+                                            return <div key={"menu-" + index} className="row py-4">{item}</div>
                                     } else {
-                                        return <div key={"menu-" + index} className="row py-4">{item}</div>
+                                        if (!(index === rows.length - 1)) {
+                                            return <div key={"menu-" + index} className="row">{item}</div>
+                                        } else {
+                                            return <div key={"menu-" + index} className="row py-4">{item}</div>
+                                        }
                                     }
                                 })
                             }

@@ -263,7 +263,7 @@ class Footer extends Component {
                         <div className="cr-section mx-5">
 
                             <p className="text-center w-100 px-5 pt-3">
-                                ©2020 YummyYum Inc. YummyYum is a meal delivery service supplying
+                                ©2021 YummyYum Inc. YummyYum is a meal delivery service supplying
                                 weekly deliveries of fresh, perfectly
                                 portioned ingredients and chef-designed recipes.
                             </p>

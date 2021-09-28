@@ -37,8 +37,9 @@ const MRRecipeSteps = (props) => {
         let elements = [];
         let mealCookingSteps = props.mealCookingSteps.stepTitle[0].length - 1;
 
-        recipeSteps = props.mealCookingSteps.stepTitle[0].map((item, index) => {
 
+        recipeSteps = props.mealCookingSteps.stepTitle[0].map((item, index) => {
+            console.log("index = " + index)
             let margin = "";
 
             if ((index + 1) % 2 === 0) {
@@ -48,8 +49,10 @@ const MRRecipeSteps = (props) => {
             }
 
 
-            if (index === mealCookingSteps) {
+
+            if (index === mealCookingSteps && (index + 1) % 2 !== 0) {
                 margin = "mr-5"
+
                 return <li key={"cs-" + index} className="row mb-5 d-flex flex-row">
 
                     <MRRecipeStepsCard
@@ -92,6 +95,8 @@ const MRRecipeSteps = (props) => {
             return null;
 
         });
+
+        console.log(recipeSteps)
 
 
     }
@@ -149,46 +154,6 @@ const MRRecipeSteps = (props) => {
                         </ul>
 
                     </div>
-
-                    {/*<div className="mr-rs-s4 my-5">*/}
-
-                    {/*    <h5>Customize It Instructions</h5>*/}
-
-                    {/*    <ul className="list-unstyled mr-rs-customize-it-instructions text-color-green mt-3">*/}
-
-                    {/*        <li>*/}
-                    {/*            <p className="py-2">If using <strong>chicken breasts</strong>, pat dry and*/}
-                    {/*                season both sides with a pinch*/}
-                    {/*                of <strong>salt</strong> and <strong>pepper</strong>. Follow same instructions as*/}
-                    {/*                salmon*/}
-                    {/*                in Step 3, cooking until chicken reaches minimum internal temperature, 5-7 minutes*/}
-                    {/*                per*/}
-                    {/*                side.*/}
-                    {/*            </p>*/}
-                    {/*        </li>*/}
-
-                    {/*        <li>*/}
-                    {/*            <p className="py-2">If using <strong>sirloin steaks</strong>, pat dry*/}
-                    {/*                and season*/}
-                    {/*                both sides with a pinch of*/}
-                    {/*                salt and pepper. Follow same instructions as salmon in Step 3, cooking until steak*/}
-                    {/*                reaches minimum internal temperature, 4-6 minutes per side.*/}
-                    {/*            </p>*/}
-                    {/*        </li>*/}
-
-                    {/*        <li>*/}
-                    {/*            <p className="py-2">If using <strong>filet mignon</strong>, pat dry and*/}
-                    {/*                season*/}
-                    {/*                both sides with a pinch of*/}
-                    {/*                salt and pepper. Follow same instructions as salmon in Step 3, cooking until filets*/}
-                    {/*                reach minimum internal temperature, 5-8 minutes per side.*/}
-                    {/*            </p>*/}
-                    {/*        </li>*/}
-
-                    {/*    </ul>*/}
-
-                    {/*</div>*/}
-
 
                     <ul className="mr-rs-s5 my-5">
 

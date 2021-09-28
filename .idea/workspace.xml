@@ -29,10 +29,16 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Home Page - Top Meals - cards - height fixed">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Home Recipe - Cook Steps - cards - order fixed">
+      <change afterPath="$PROJECT_DIR$/public/chef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/how it works 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/how it works 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/HowItWorks/how it works 3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/MealRecipe/MealRecipeComponents/MRRecipeSteps/MRRecipeSteps.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +67,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -76,18 +82,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\public" />
+      <recent name="E:\Projects\src\images\How It Works" />
       <recent name="E:\Projects\src\images\Filters" />
       <recent name="E:\Projects\src\images\OurGoal" />
       <recent name="E:\Projects\src\images\Checkout" />
-      <recent name="E:\Projects\src\images\MealRecipe\Icons" />
-      <recent name="E:\Projects\src\images\Header\Icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Projects\public" />
+      <recent name="E:\Projects\src\images\HowItWorks" />
+      <recent name="E:\Projects\src\images\How It Works" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\UserShippingInformation" />
       <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components\UserPersonalInformation" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\Components" />
-      <recent name="E:\Projects\src\components\Layout\LayoutSections\UserDashboard\UserDashboardComponents\UserBillingInformation" />
-      <recent name="E:\Projects\src\images\Filters" />
     </key>
   </component>
   <component name="RunManager">
@@ -289,14 +295,8 @@
       <workItem from="1632671993810" duration="18385000" />
       <workItem from="1632735081602" duration="783000" />
       <workItem from="1632828909018" duration="2256000" />
-      <workItem from="1632853850627" duration="1826000" />
-    </task>
-    <task id="LOCAL-00085" summary="fixup! WeeklyMenu not logged in - bug - fixed">
-      <created>1627645982566</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1627645982566</updated>
+      <workItem from="1632853850627" duration="3188000" />
+      <workItem from="1632869721110" duration="816000" />
     </task>
     <task id="LOCAL-00086" summary="Cart - Delivery Date bug - fixed">
       <created>1627648704493</created>
@@ -634,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632867372757</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="Home Recipe - Cook Steps - cards - order fixed">
+      <created>1632868352660</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1632868352660</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -675,7 +682,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Admin Dashboard - Send Email bug - fixed" />
     <MESSAGE value="User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="fixup! User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="Meet The Team v1.0 added" />
@@ -700,7 +706,8 @@
     <MESSAGE value="Admin Dashboard - Responsive Design v0.1" />
     <MESSAGE value="Home Page - Responsive Design v0.1" />
     <MESSAGE value="Home Page - Top Meals - cards - height fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home Page - Top Meals - cards - height fixed" />
+    <MESSAGE value="Home Recipe - Cook Steps - cards - order fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home Recipe - Cook Steps - cards - order fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -715,10 +722,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="322" key="#com.intellij.fileTypes.FileTypeChooser/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1630972214156" />
-    <state x="-1230" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1628349147661">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1632870474958">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1230" y="273" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1628349147661" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632870474958" />
     <state x="-1741" y="18" width="1479" height="967" key="CommitChangelistDialog2" timestamp="1627776085690">
       <screen x="-1920" y="6" width="1920" height="1040" />
     </state>
@@ -775,11 +783,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1632867476161">
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1632869508516">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1629158462273" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632867476161" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632869508516" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631148659004" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1632691716886">
@@ -828,6 +836,10 @@
           <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Cart/Cart.js</url>
           <line>339</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/HowItWorks/HowItWorks.js</url>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

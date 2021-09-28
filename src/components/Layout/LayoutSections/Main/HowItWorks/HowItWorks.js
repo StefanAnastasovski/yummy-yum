@@ -4,6 +4,11 @@ import './HowItWorks.css';
 import ManageDeliveryIcon from "./HIWIcons/ManageDeliveryIcon";
 import OrderIcon from "./HIWIcons/OrderIcon";
 import MealBoxIcon from "./HIWIcons/MealBoxIcon";
+import Image from "../WeeklyMenu/MealRecipe/MealRecipeComponents/Images/Image";
+
+import IMGSTEP1 from '../../../../../images/HowItWorks/how it works 1.png';
+import IMGSTEP2 from '../../../../../images/HowItWorks/how it works 2.jpg';
+import IMGSTEP3 from '../../../../../images/HowItWorks/how it works 3.jpg';
 
 const HowItWorks = (props) => {
 
@@ -27,11 +32,13 @@ const HowItWorks = (props) => {
 
                         <div className="row w-100">
 
-                            <div className="col bg-info mr-2">
-                                Image 1
+                            <div className="col  mr-2">
+                                <Image className={"how-it-works-step-" + 1}
+                                       img={IMGSTEP1}
+                                />
                             </div>
 
-                            <div className="col ml-2">
+                            <div className="col ml-2 hiw-i">
 
                                 <h1 className="text-color-green">1. Pick Your Meals</h1>
                                 <p>Select recipes each week that fit your preferences and dietary restrictions. Accept
@@ -44,7 +51,7 @@ const HowItWorks = (props) => {
 
                         <div className="row w-100 pt-5">
 
-                            <div className="col mr-2">
+                            <div className="col mr-2 hiw-i">
 
                                 <h1 className="text-color-green">2. Customize Your Plate</h1>
                                 <p>Use our Customize It feature to upgrade, swap, or double up your favorite protein on
@@ -53,20 +60,24 @@ const HowItWorks = (props) => {
 
                             </div>
 
-                            <div className="col bg-info ml-2">
-                                Image 2
+                            <div className="col  ml-2">
+                                <Image className={"how-it-works-step-" + 2}
+                                       img={IMGSTEP2}
+                                />
                             </div>
 
                         </div>
 
                         <div className="row w-100 pt-5">
 
-                            <div className="col bg-info mr-2">
-                                Image 3
+                            <div className="col mr-2">
+                                <Image className={"how-it-works-step-" + 3}
+                                       img={IMGSTEP3}
+                                />
                             </div>
 
 
-                            <div className="col ml-2">
+                            <div className="col ml-2 hiw-i">
 
                                 <h1 className="text-color-green">3. Cook And Enjoy!</h1>
                                 <p>Fresh, pre-portioned ingredients delivered right to your door – effortlessly create

@@ -45,3 +45,7 @@
     z-index: 1000;
     border: 1px solid #530ea2;
 }
+
+.main-wrapper .how-it-works-wrapper .hiw-steps .hiw-i {
+    align-self: center;
+}

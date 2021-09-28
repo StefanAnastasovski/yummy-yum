@@ -29,11 +29,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Admin Dashboard - Responsive Design v0.1">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Home Page - Responsive Design v0.1">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Footer/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Home/Home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/Login/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,14 +287,10 @@
       <workItem from="1631213658388" duration="5858000" />
       <workItem from="1631421924244" duration="684000" />
       <workItem from="1631810845416" duration="432000" />
-      <workItem from="1632671993810" duration="17620000" />
-    </task>
-    <task id="LOCAL-00083" summary="WeeklyMenu not logged in - bug - fixed">
-      <created>1627642507874</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1627642507874</updated>
+      <workItem from="1632671993810" duration="18385000" />
+      <workItem from="1632735081602" duration="783000" />
+      <workItem from="1632828909018" duration="2256000" />
+      <workItem from="1632853850627" duration="803000" />
     </task>
     <task id="LOCAL-00084" summary="Cart - Delivery Date - 32date bug fixed">
       <created>1627645044850</created>
@@ -632,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632681621457</updated>
     </task>
-    <option name="localTasksCounter" value="132" />
+    <task id="LOCAL-00132" summary="Home Page - Responsive Design v0.1">
+      <created>1632693443904</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1632693443904</updated>
+    </task>
+    <option name="localTasksCounter" value="133" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,7 +676,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Admin Dashboard - Subscription comp - added" />
     <MESSAGE value="Admin Dashboard - Subscription v1.0 - added" />
     <MESSAGE value="Admin Dashboard - Send Email bug - fixed" />
     <MESSAGE value="User Dashboard - Login and LogOut Local Storage" />
@@ -698,7 +700,8 @@
     <MESSAGE value="files removed v0.1" />
     <MESSAGE value="User Dashboard - Responsive Design v0.1" />
     <MESSAGE value="Admin Dashboard - Responsive Design v0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin Dashboard - Responsive Design v0.1" />
+    <MESSAGE value="Home Page - Responsive Design v0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Home Page - Responsive Design v0.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -757,11 +760,11 @@
     <state x="-957" y="261" width="955" height="525" key="StructurePopup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628978373692" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1624633008278" />
     <state x="681" y="261" width="955" height="525" key="StructurePopup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625191659632" />
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2" timestamp="1632674092538">
-      <screen x="-1920" y="6" width="1920" height="1040" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1632867188205">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1632674092538" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1628982391193" />
+    <state x="-1368" y="259" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1632693447828" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632867188205" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1629144032777" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625282446399" />
     <state x="247" y="0" width="1604" height="803" maximized="true" key="dock-window-1" timestamp="1627829412505">
@@ -773,11 +776,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="667" y="253" width="890" height="564" key="find.popup" timestamp="1631148659004">
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1632867213837">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1629158462273" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1631052008737" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632867213837" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631148659004" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1632691716886">

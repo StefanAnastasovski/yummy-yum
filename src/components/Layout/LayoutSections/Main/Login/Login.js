@@ -123,7 +123,7 @@ class Login extends Component {
                                 <div>
 
                                     <h2 className="text-center">
-                                        Log in
+                                        Log In
                                     </h2>
 
                                     <form onSubmit={this.handleSubmitLogin}>

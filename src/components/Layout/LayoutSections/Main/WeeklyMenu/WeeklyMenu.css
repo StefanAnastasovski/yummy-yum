@@ -245,6 +245,10 @@
     border: 1px solid #3c0c7a;
 }
 
+.wm-menu-cards > div.row > ul{
+    min-width: 100%;
+}
+
 .btn-calories-filter {
     width: 5em;
     padding: 0.1rem 0.5rem;

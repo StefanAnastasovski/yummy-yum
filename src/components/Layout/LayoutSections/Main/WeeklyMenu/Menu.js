@@ -10,7 +10,7 @@ import ArrowUpIcon from "./CaloriesFilterIcons/ArrowUpIcon";
 import ArrowRightIcon from "./CaloriesFilterIcons/ArrowRightIcon";
 
 const Menu = (props) => {
-
+    console.log(props)
     let convertMealToRightFormat = (menuList, categoryName) => {
         return menuList.map(item => {
             return {
@@ -347,10 +347,11 @@ const Menu = (props) => {
                     }
 
                     {
-                        props.isMenuFiltered &&
+                        props.isMenuFiltered  && props.menuFiltered.length > 0 &&
                         <ul>
                             {
                                 rows.map((item, index) => {
+                                    console.log(props.isMenuFiltered)
                                     if (rows.length === 3) {
                                         if (index !== 1)
                                             return <div key={"menu-" + index} className="row">{item}</div>

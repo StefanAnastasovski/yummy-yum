@@ -125,37 +125,27 @@ class SendEmail extends Component {
 
     toHandler = (event) => {
         console.log(event.target)
-        // console.log(event.target.value)
-        // let rec = this.state.recipients;
-        // let arr = event.target.value.split(", ");
-        // console.log(rec)
-        // for (let i = 0; i < arr.length; i++) {
-        //     console.log(arr[i]);
-        //     console.log(arr[i].length);
-        //     for (let j = 0; j < rec.length; j++) {
-        //         console.log(rec[j])
-        //         console.log(rec[j].length)
-        //     }
-        // }
-        // this.setState({
-        //     emailText: event.target.value
-        // })
     }
 
 
     handleSubmit = async (event) => {
-        // alert('Email is sent!');
-        // console.log(this.state)
-        event.preventDefault();
+
+        // event.preventDefault();
         let emailBody = {
             subject: this.state.emailSubject,
             text: this.state.emailText,
             recipients: this.state.recipients
         }
-        console.log(emailBody)
+
         try {
             await postEmailToSubscribers.sendEmail(emailBody).then(response => {
                 console.log(response)
+                this.setState({
+                    recipients: [],
+                    emailSubject: "",
+                    emailText: "",
+                    isUnchecked: true
+                })
             }).catch(e => {
                 console.log(e);
             })

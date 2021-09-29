@@ -29,11 +29,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="How It Works - Steps - images added + favicon">
+    <list default="true" id="51263e09-a8d1-4e9a-9c3e-8ef628a0fb34" name="Default Changelist" comment="Menu - Filter - width fixed">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/Main/WeeklyMenu/WeeklyMenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/SendEmail/SendEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/LayoutSections/AdminDashboard/AdminDashboardComponents/Components/SendEmail/SendEmail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,14 +290,7 @@
       <workItem from="1632735081602" duration="783000" />
       <workItem from="1632828909018" duration="2256000" />
       <workItem from="1632853850627" duration="3188000" />
-      <workItem from="1632869721110" duration="2195000" />
-    </task>
-    <task id="LOCAL-00087" summary="fixup! Cart - Delivery Date - 32date bug fixed">
-      <created>1627651559332</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1627651559332</updated>
+      <workItem from="1632869721110" duration="3322000" />
     </task>
     <task id="LOCAL-00088" summary="Cart - Delivery Time and Order Summary - fixed">
       <created>1627761909218</created>
@@ -636,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632870573182</updated>
     </task>
-    <option name="localTasksCounter" value="136" />
+    <task id="LOCAL-00136" summary="Menu - Filter - width fixed">
+      <created>1632872855107</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1632872855107</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -677,7 +676,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="fixup! User Dashboard - Login and LogOut Local Storage" />
     <MESSAGE value="Meet The Team v1.0 added" />
     <MESSAGE value="Our Goal v1.0 added" />
     <MESSAGE value="Image - bug - fixed" />
@@ -702,7 +700,8 @@
     <MESSAGE value="Home Page - Top Meals - cards - height fixed" />
     <MESSAGE value="Home Recipe - Cook Steps - cards - order fixed" />
     <MESSAGE value="How It Works - Steps - images added + favicon" />
-    <option name="LAST_COMMIT_MESSAGE" value="How It Works - Steps - images added + favicon" />
+    <MESSAGE value="Menu - Filter - width fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu - Filter - width fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1208" y="335" key="#Images" timestamp="1628347187575">
@@ -778,11 +777,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="0" width="533" height="803" maximized="true" key="dock-window-2/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1627856934036" />
-    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1632872236462">
+    <state x="667" y="253" width="873" height="564" key="find.popup" timestamp="1632873455497">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1485" y="29" width="1353" height="952" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@-1920.6.1920.1040" timestamp="1629158462273" />
-    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632872236462" />
+    <state x="667" y="253" width="873" height="564" key="find.popup/-1920.6.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1632873455497" />
     <state x="667" y="253" width="890" height="564" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631148659004" />
     <state x="435" y="23" width="1353" height="952" key="find.popup/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1625278701232" />
     <state x="-1305" y="250" width="672" height="677" key="run.anything.popup" timestamp="1632691716886">
